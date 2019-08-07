@@ -1,0 +1,45 @@
+
+<div class="login">
+  <h1>
+    <span class="main-slogan">
+      logger sign-in
+    </span>
+  </h1>
+  <form class="form"  [formGroup]="rForm"  (ngSubmit)="login()">
+
+    <div class="form-group">
+      <div class="col-1-of-1">
+        <div class="controls">
+          <label for="">email</label> <br />
+          <input type="text" class="input-field" formControlName="Email" />
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid">
+           a valid email address is a required field.
+          </div>
+        </div>
+        <div class="controls">
+          <label for="">password</label> <br />
+          <input type="password" class="input-field" formControlName="Password" />
+          <div class="alert" *ngIf="!rForm.controls['Password'].valid">
+            password is not provided.
+          </div>
+        </div>
+        <div class="controls">
+          <input type="submit" value="sign-in" class="button" [disabled]="!rForm.valid" />
+        </div>
+        <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      </div>
+
+    </div>
+    <!-- <div class="forgot-password">
+        <h1>
+          <span class="sub-header">
+            <a routerLink="forgot-password">
+                Forgot password?
+            </a>
+          </span>
+        </h1>
+      </div> -->
+      <div *ngIf="error" class="error">{{error}}</div>
+  </form>
+
+</div>
