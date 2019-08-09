@@ -14,7 +14,6 @@ import { Category } from 'src/app/_models';
 })
 export class AddAssertComponent implements OnInit {
 
-  rForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -25,10 +24,6 @@ export class AddAssertComponent implements OnInit {
   Category: string;
   Description: any;
   constructor(
-    private fb: FormBuilder,
-    private routeTo: Router,
-    private route: ActivatedRoute,
-    private smsService: SmsService,
     private messageService: MessageService,
     private assertService: AssertService,
     private categoryService: CategoryService
@@ -37,11 +32,6 @@ export class AddAssertComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rForm = this.fb.group({
-      CategoryId: [null, Validators.required],
-      Category: [this.text, Validators.required],
-      Description: [null, Validators.required]
-    });
     this.getCatagories();
   }
 
@@ -55,20 +45,32 @@ export class AddAssertComponent implements OnInit {
       CategoryId: this.getSelectedCatergoryId(),
       Description: this.Description
     };
+    if(!model.CategoryId){
+      return false;
+    }
     this.assertService.addAssert(model).subscribe(response => {
       this.messageService.add({ severity: 'success', summary: JSON.stringify(response), detail: 'Order submitted' });
     });
   }
   search(event) {
+    const catagories = this.catagories.filter(x => x.description != null && x.description !== '');
 
-    this.searchResults = this.catagories.filter(x => x.description.toLocaleLowerCase()
+    this.searchResults = catagories.filter(x => x.description.toLocaleLowerCase()
       .includes(event.query.toLocaleLowerCase())).map(x => x.description);
   }
 
   getSelectedCatergoryId() {
-    const cat = this.catagories.filter(x => x.description.toLocaleLowerCase() === this.Category.toLocaleLowerCase());
+    const catagories = this.catagories.filter(x => x.description != null && x.description !== '');
+
+    const cat = catagories.filter(x => x.description.toLocaleLowerCase() === this.Category.toLocaleLowerCase());
     if (cat.length) {
       return cat[0].categoryId;
+    } else {
+      this.categoryService.addCategory({ Description: this.Category }).subscribe(res => {
+        this.catagories.push(res);
+        return res.categoryId;
+      });
     }
+    return '';
   }
 }

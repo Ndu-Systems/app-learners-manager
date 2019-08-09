@@ -23,7 +23,7 @@
                 Description is a required field.
             </div>
           </div>
-  
+
           <div class="controls">
             <input type="submit" value="Save" (click)="addAssert()" class="action-button" [disabled]="!Category || !Description" />
           </div>
@@ -34,6 +34,4 @@
       
     </div>
   </div>
-  {{rForm.value|json}}
   <p-toast></p-toast>
-  

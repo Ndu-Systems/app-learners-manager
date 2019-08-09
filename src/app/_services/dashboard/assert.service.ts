@@ -26,6 +26,12 @@ export class AssertService {
   addAssert(model): Observable<Assert> {
     return this.http.post<Assert>(`${this.url}api/assets`, model);
   }
+  addAssertDataStore(model) {
+    return this.http.post<Assert>(`${this.url}api/assets`, model).subscribe(data => {
+      this.dataStore.asserts.push(data);
+      this._asserts.next(Object.assign({}, this.dataStore).asserts);
+    }, error => console.log('Could not add assets'));
+  }
 
   getAsserts(): Observable<Assert[]> {
     return this.http.get<Assert[]>(`${this.url}api/assets`);
@@ -54,5 +60,14 @@ export class AssertService {
       }, error => console.log('Could not find assert.'));
   }
 
+  updateAssert(model: Assert) {
+    this.http.put<Assert>(`${this.url}api/assets/${model.assetId}`, JSON.stringify(model))
+      .subscribe(data => {
+        this.dataStore.asserts.forEach((item, index) => {
+          if (item.assetId === data.assetId) { this.dataStore.asserts[index] = data; }
+        });
+        this._asserts.next(Object.assign({}, this.dataStore).asserts);
+      }, error => console.log('Could not update assert'));
+  }
 
 }
