@@ -4,6 +4,7 @@ import { DashboardRoutingModule, declarations } from './dashboard-routing.module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MessageService } from 'primeng/api';
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    AutoCompleteModule
   ],
   declarations: [...declarations],
   providers: [MessageService]

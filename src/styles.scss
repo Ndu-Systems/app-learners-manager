@@ -1,27 +1,3 @@
 
 @import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:400,400i,500,500i,700,700i,900,900i&display=swap');
-*{
-padding: 0;
-margin: 0;
-width: 100%;
-box-sizing: border-box;
-}
-
-body{
-    font-family: 'Red Hat Display', sans-serif;
-    // padding: 2rem;
-}
-
-.main-section{
-    padding: 2rem;
-    height: 90vh;
-}
-.container-section{
-    background: #fff;
-    padding: 2rem;
-    padding-bottom: 4rem;
-    margin: 2rem 0;
-    h1{
-        font-weight: 400;
-    }
-}
+@import './assets/scss/base'

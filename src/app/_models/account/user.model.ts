@@ -1,4 +1,4 @@
-import { Role } from '../_enums';
+import { Role } from '../../_enums';
 export class User {
     id: number;
     username: string;

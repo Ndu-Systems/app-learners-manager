@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssertService } from 'src/app/_services/dashboard/assert.service';
-import { CetatgoryService } from 'src/app/_services/dashboard/cetatgory.service';
+import { CategoryService } from 'src/app/_services/dashboard/category.service';
 
 @Component({
   selector: 'app-asserts',
@@ -11,7 +11,7 @@ export class AssertsComponent implements OnInit {
 
   constructor(
     private assertService: AssertService,
-    private cetatgoryService: CetatgoryService,
+    private categoryService: CategoryService,
     ) { }
   assets: any[];
   catagories: any[];
@@ -26,7 +26,7 @@ export class AssertsComponent implements OnInit {
   }
 
   getCatagories() {
-    this.cetatgoryService.getCatagories().subscribe(res => {
+    this.categoryService.getCatagories().subscribe(res => {
       this.catagories = res;
     });
   }
@@ -36,8 +36,8 @@ export class AssertsComponent implements OnInit {
      alert(JSON.stringify(res));
     });
   }
-  addCatagory(model) {
-    this.cetatgoryService.addCatagory(model).subscribe(res => {
+  addCategory(model) {
+    this.categoryService.addCategory(model).subscribe(res => {
       alert(JSON.stringify(res));
     });
   }
