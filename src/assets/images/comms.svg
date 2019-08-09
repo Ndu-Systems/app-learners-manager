@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="comms" transform="translate(-914 -231)">
+    <circle id="comms-2" data-name="comms" cx="32" cy="32" r="32" transform="translate(914 231)" fill="#3742fa" opacity="0.1"/>
+    <path id="paper-plane-solid" d="M26.672.15.71,15.128a1.345,1.345,0,0,0,.123,2.42l5.954,2.5L22.88,5.864a.336.336,0,0,1,.482.465L9.868,22.768v4.509a1.344,1.344,0,0,0,2.381.885l3.557-4.33,6.979,2.924a1.348,1.348,0,0,0,1.848-1.019l4.033-24.2A1.344,1.344,0,0,0,26.672.15Z" transform="translate(931.99 249.031)" fill="#3742fa"/>
+  </g>
+</svg>
