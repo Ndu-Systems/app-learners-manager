@@ -1,0 +1,16 @@
+.parents{
+    .parent{
+        margin: .5rem;
+        background: #F5F6FA;
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% auto;
+        h1{
+            font-size: 1rem;
+            span{
+                display: block;
+                font-size: .6rem;
+            }
+        }
+    }
+}

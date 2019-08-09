@@ -7,6 +7,7 @@ import { CommunicationComponent } from './communication/communication.component'
 import { AssertsComponent } from './asserts/asserts.component';
 import { AddAssertComponent } from './asserts/add-assert/add-assert.component';
 import { ParentsComponent } from './parents/parents.component';
+import { AddParentComponent } from './parents/add-parent/add-parent.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'asserts', component: AssertsComponent },
       { path: 'add-assert', component: AddAssertComponent },
       { path: 'parents', component: ParentsComponent },
+      { path: 'add-parent', component: AddParentComponent },
     ]
   },
 ];
@@ -27,7 +29,8 @@ export const declarations: Array<any> = [
   CommunicationComponent,
   AssertsComponent,
   AddAssertComponent,
-  ParentsComponent
+  ParentsComponent,
+  AddParentComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

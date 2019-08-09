@@ -1,3 +1,39 @@
-<p>
-  parents works!
-</p>
+<div class="main-section">
+    <div class="header">
+        <h1>
+            Parents 
+          </h1>
+          <a routerLink="../add-parent">Add Parent</a>
+    </div>
+    <div class="container-section">
+  
+      <div class="parents">
+        <h3>
+          All Parents
+        </h3>
+        <div class="parent" *ngFor="let item of parents">
+         <h1>
+            {{item.fullName}}
+            <span>Full Name</span>
+         </h1>
+         <h1>
+            {{item.cellphone}}
+            <span>Cellphone number</span>
+         </h1>
+         <h1>
+            {{item.email}}
+            <span>Email address</span>
+         </h1>
+         <h1>
+            {{item.gender}}
+            <span>Gender</span>
+         </h1>
+         <h1>
+            {{item.address}}
+            <span>Address</span>
+         </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-toast></p-toast>

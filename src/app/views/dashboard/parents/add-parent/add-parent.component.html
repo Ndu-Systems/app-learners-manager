@@ -1,0 +1,64 @@
+<div class="main-section">
+    <h1>
+        Parent
+    </h1>
+    <div class="container-section">
+      <h1>
+          Add a new parent
+      </h1>
+      <form class="form" [formGroup]="rForm" (ngSubmit)="save(rForm.value)">
+          <div class="controls">
+            <label for="">FullName <span>*</span></label> <br />
+            <input type="text" class="input-field" formControlName="FullName" />
+            <div class="alert" *ngIf="!rForm.controls['FullName'].valid">
+                FullName  is a required field.
+            </div>
+          </div>
+    
+          <div class="controls">
+            <label for="">Gender <span>*</span></label> <br />
+            <select class="input-field" formControlName="Gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              </select>
+            <div class="alert" *ngIf="!rForm.controls['Gender'].valid">
+                Gender is a required field.
+            </div>
+          </div>
+
+          <div class="controls">
+            <label for="">Cellphone <span>*</span></label> <br />
+            <input type="text" class="input-field" formControlName="Cellphone" />
+            <div class="alert" *ngIf="!rForm.controls['Cellphone'].valid">
+                Cellphone is a required field.
+            </div>
+          </div>
+
+          <div class="controls">
+            <label for="">Email <span>*</span></label> <br />
+            <input type="email" class="input-field" formControlName="Email" />
+            <div class="alert" *ngIf="!rForm.controls['Email'].valid">
+                Email is a required field.
+            </div>
+          </div>
+  
+          <div class="controls">
+            <label for="">Address <span>*</span></label> <br />
+            <input type="text" class="input-field" formControlName="Address" />
+            <div class="alert" *ngIf="!rForm.controls['Address'].valid">
+                Address is a required field.
+            </div>
+          </div>
+  
+          
+       
+    
+          <div class="controls">
+            <input type="submit" value="Add Parent" class="action-button" [disabled]="!rForm.valid" />
+          </div>
+          <div *ngIf="error" class="error">{{error}}</div>
+        </form>
+    </div>
+  </div>
+  <p-toast></p-toast>
+  
