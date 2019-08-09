@@ -17,12 +17,11 @@
           <div class="controls">
             <label for="">Category <span>*</span></label> <br />
             <p-autoComplete [suggestions]="" (completeMethod)="search($event)"  formControlName="Category"></p-autoComplete>
-
             <div class="alert" *ngIf="!rForm.controls['Category'].valid">
                 Category  is a required field.
             </div>
           </div>
-    
+
           <div class="controls">
             <label for="">Description <span>*</span></label> <br />
             <input type="text" class="input-field" formControlName="Description" />
@@ -30,15 +29,14 @@
                 Description is a required field.
             </div>
           </div>
-  
+
           <div class="controls">
             <input type="submit" value="Save" class="action-button" [disabled]="!rForm.valid" />
           </div>
           <div *ngIf="error" class="error">{{error}}</div>
         </form>
-      
+
     </div>
   </div>
   {{rForm.value|json}}
   <p-toast></p-toast>
-  

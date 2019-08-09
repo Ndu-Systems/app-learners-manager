@@ -52,10 +52,6 @@ export class AddAssertComponent implements OnInit {
     });
   }
   search(event) {
-    console.log(event);
-    console.log( this.catagories);
-
     this.searchResults = this.catagories.filter(x => x.description.includes(event.query));
-    console.log( this.searchResults);
   }
 }
