@@ -1,8 +1,8 @@
-import { Assert } from './../../_models/assert';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Assert } from 'src/app/_models';
 
 @Injectable({
   providedIn: 'root'

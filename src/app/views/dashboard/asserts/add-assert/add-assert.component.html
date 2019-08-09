@@ -16,7 +16,7 @@
           </div>
           <div class="controls">
             <label for="">Category <span>*</span></label> <br />
-            <p-autoComplete [(ngModel)]="text" [suggestions]="" (completeMethod)="search($event)"  formControlName="Category"></p-autoComplete>
+            <p-autoComplete [suggestions]="" (completeMethod)="search($event)"  formControlName="Category"></p-autoComplete>
 
             <div class="alert" *ngIf="!rForm.controls['Category'].valid">
                 Category  is a required field.
