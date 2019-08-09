@@ -29,7 +29,6 @@ p{
 button{
     background-color: #FDC500;
     border: none;
-    // height: 5%;
     width: 10%;
     color: #ffffff;
     letter-spacing: .2ch;
@@ -38,6 +37,7 @@ button{
     margin-top: 5%;
     justify-content: center;
     padding: 1rem .5rem;
+    cursor: pointer;
 }
 .login a:hover{
     color: #FDC500;
