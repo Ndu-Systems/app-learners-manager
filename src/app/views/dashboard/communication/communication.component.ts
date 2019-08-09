@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { SendSMSBody } from '../models';
 import { SmsService } from 'src/app/_services/dashboard/sms.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-communication',
@@ -22,6 +24,7 @@ export class CommunicationComponent implements OnInit {
     private routeTo: Router,
     private route: ActivatedRoute,
     private smsService: SmsService,
+    private messageService:MessageService
   ) {
 
   }
@@ -38,8 +41,8 @@ export class CommunicationComponent implements OnInit {
   send(model: SendSMSBody) {
     this.smsService.send(model).subscribe(response => {
       alert(JSON.stringify(response));
+      this.messageService.add({severity:'success', summary: 'Success Message', detail:'Order submitted'});
+
     });
   }
-
-
 }
