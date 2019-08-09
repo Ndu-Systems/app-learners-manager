@@ -1,0 +1,43 @@
+.container-section{
+.form {
+    width: 80%;
+    margin: 0 auto;
+    .controls {
+      margin: 1.5rem 0;
+      label {
+        text-align: left;
+        text-transform: capitalize;
+        span{
+            color: rgb(224, 6, 6);
+        }
+      }
+      .input-field {
+        padding: 1rem 1.5rem;
+        border: none;
+        color: #130F40;
+        background: #F5F6FA;
+      }
+      .action-button {
+        background: #3742fa;
+        color: #fff;
+        width: 33%;
+        float: right;
+        padding: 1rem 1.5rem;
+        border: none;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          background: rgb(25, 36, 243);
+        }
+        &:disabled {
+          background: rgba(148, 148, 149, 0.712);
+          cursor: no-drop;
+        }
+      }
+      .alert {
+        color: #ffcc00;
+      }
+    }
+  }
+}
