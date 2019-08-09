@@ -1,3 +1,44 @@
-<p>
-  add-assert works!
-</p>
+<div class="main-section">
+    <h1>
+        School asserts
+    </h1>
+    <div class="container-section">
+      <h1>
+          Add new assert
+      </h1>
+      <form class="form" [formGroup]="rForm" (ngSubmit)="send(rForm.value)">
+          <div class="controls">
+            <label for="">Subject <span>*</span></label> <br />
+            <input type="text" class="input-field" formControlName="Subject" />
+            <div class="alert" *ngIf="!rForm.controls['Subject'].valid">
+              Subject  is a required field.
+            </div>
+          </div>
+    
+          <div class="controls">
+            <label for="">Recipient <span>*</span></label> <br />
+            <input type="text" class="input-field" formControlName="SendTo" />
+            <div class="alert" *ngIf="!rForm.controls['SendTo'].valid">
+              Recipient is a required field.
+            </div>
+          </div>
+  
+          
+          <div class="controls">
+            <label for="">Message <span>*</span></label> <br />
+            <textarea name="" id="" class="input-field textarea" formControlName="Body" cols="30" rows="10"></textarea>
+           <div class="alert" *ngIf="!rForm.controls['Body'].valid">
+            Message is  a required field.
+            </div>
+          </div>
+    
+          <div class="controls">
+            <input type="submit" value="Send" class="action-button" [disabled]="!rForm.valid" />
+          </div>
+          <div *ngIf="error" class="error">{{error}}</div>
+        </form>
+      
+    </div>
+  </div>
+  <p-toast></p-toast>
+  
