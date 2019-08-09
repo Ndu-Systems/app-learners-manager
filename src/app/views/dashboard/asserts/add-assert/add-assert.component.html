@@ -6,37 +6,32 @@
       <h1>
           Add new assert
       </h1>
-      <form class="form" [formGroup]="rForm" (ngSubmit)="addAssert(rForm.value)">
+      <div class="form" >
           <div class="controls">
             <label for="">Category <span>*</span></label> <br />
-            <input type="text" class="input-field" formControlName="Category" />
-            <div class="alert" *ngIf="!rForm.controls['Category'].valid">
+            <p-autoComplete [(ngModel)]="Category" [suggestions]="searchResults" (completeMethod)="search($event)"></p-autoComplete>
+            <div class="alert" *ngIf="!Category">
                 Category  is a required field.
             </div>
           </div>
-          <div class="controls">
-            <label for="">Category <span>*</span></label> <br />
-            <p-autoComplete [suggestions]="" (completeMethod)="search($event)"  formControlName="Category"></p-autoComplete>
-            <div class="alert" *ngIf="!rForm.controls['Category'].valid">
-                Category  is a required field.
-            </div>
-          </div>
-
+        
+    
           <div class="controls">
             <label for="">Description <span>*</span></label> <br />
-            <input type="text" class="input-field" formControlName="Description" />
-            <div class="alert" *ngIf="!rForm.controls['Description'].valid">
+            <input type="text"  [(ngModel)]="Description" class="input-field"  />
+            <div class="alert" *ngIf="!Description">
                 Description is a required field.
             </div>
           </div>
 
           <div class="controls">
-            <input type="submit" value="Save" class="action-button" [disabled]="!rForm.valid" />
+            <input type="submit" value="Save" (click)="addAssert()" class="action-button" [disabled]="!Category || !Description" />
           </div>
           <div *ngIf="error" class="error">{{error}}</div>
-        </form>
+        </div>
 
+
+      
     </div>
   </div>
-  {{rForm.value|json}}
   <p-toast></p-toast>

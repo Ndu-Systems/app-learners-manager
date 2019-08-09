@@ -21,8 +21,6 @@ export class CommunicationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private routeTo: Router,
-    private route: ActivatedRoute,
     private smsService: SmsService,
     private messageService: MessageService
   ) {

@@ -5,6 +5,7 @@ import { SmsService } from 'src/app/_services/dashboard/sms.service';
 import { MessageService } from 'primeng/api';
 import { AssertService } from 'src/app/_services/dashboard/assert.service';
 import { CategoryService } from 'src/app/_services/dashboard/category.service';
+import { Category } from 'src/app/_models';
 
 @Component({
   selector: 'app-add-assert',
@@ -13,18 +14,16 @@ import { CategoryService } from 'src/app/_services/dashboard/category.service';
 })
 export class AddAssertComponent implements OnInit {
 
-  rForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
   error = '';
-  catagories: any;
-  searchResults
+  catagories: Category[];
+  searchResults: string[];
+  text: string;
+  Category: string;
+  Description: any;
   constructor(
-    private fb: FormBuilder,
-    private routeTo: Router,
-    private route: ActivatedRoute,
-    private smsService: SmsService,
     private messageService: MessageService,
     private assertService: AssertService,
     private categoryService: CategoryService
@@ -33,11 +32,6 @@ export class AddAssertComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rForm = this.fb.group({
-      CategoryId: [null, Validators.required],
-      Category: [null, Validators.required],
-      Description: [null, Validators.required]
-    });
     this.getCatagories();
   }
 
@@ -46,12 +40,37 @@ export class AddAssertComponent implements OnInit {
       this.catagories = res;
     });
   }
-  addAssert(model) {
-    this.smsService.send(model).subscribe(response => {
-      this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
+  addAssert() {
+    const model = {
+      CategoryId: this.getSelectedCatergoryId(),
+      Description: this.Description
+    };
+    if(!model.CategoryId){
+      return false;
+    }
+    this.assertService.addAssert(model).subscribe(response => {
+      this.messageService.add({ severity: 'success', summary: JSON.stringify(response), detail: 'Order submitted' });
     });
   }
   search(event) {
-    this.searchResults = this.catagories.filter(x => x.description.includes(event.query));
+    const catagories = this.catagories.filter(x => x.description != null && x.description !== '');
+
+    this.searchResults = catagories.filter(x => x.description.toLocaleLowerCase()
+      .includes(event.query.toLocaleLowerCase())).map(x => x.description);
+  }
+
+  getSelectedCatergoryId() {
+    const catagories = this.catagories.filter(x => x.description != null && x.description !== '');
+
+    const cat = catagories.filter(x => x.description.toLocaleLowerCase() === this.Category.toLocaleLowerCase());
+    if (cat.length) {
+      return cat[0].categoryId;
+    } else {
+      this.categoryService.addCategory({ Description: this.Category }).subscribe(res => {
+        this.catagories.push(res);
+        return res.categoryId;
+      });
+    }
+    return '';
   }
 }
