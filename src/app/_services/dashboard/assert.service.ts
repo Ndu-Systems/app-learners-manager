@@ -8,7 +8,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AssertService {
-  asserts:Observable<Assert[]>;
+  asserts: Observable<Assert[]>;
   private _asserts: BehaviorSubject<Assert[]>;
   url: string;
   private dataStore: {
@@ -18,6 +18,9 @@ export class AssertService {
     private http: HttpClient
   ) {
     this.url = environment.API_URL;
+    this.dataStore = { asserts: [] };
+    this._asserts = <BehaviorSubject<Assert[]>>new BehaviorSubject([]);
+    this.asserts = this._asserts.asObservable();
   }
 
   addAssert(model): Observable<Assert> {
@@ -26,6 +29,29 @@ export class AssertService {
 
   getAsserts(): Observable<Assert[]> {
     return this.http.get<Assert[]>(`${this.url}api/assets`);
+  }
+
+  getAssertsDataStore() {
+    this.http.get<Assert[]>(`${this.url}api/assets`).subscribe(data => {
+      this.dataStore.asserts = data;
+      this._asserts.next(Object.assign({}, this.dataStore).asserts);
+    }, error => console.log('Could not load asserts.'));
+  }
+
+  getById(id: string) {
+    this.http.get<Assert>(`${this.url}api/assets/${id}`)
+      .subscribe(data => {
+        let notFound = true;
+        this.dataStore.asserts.forEach((item, index) => {
+          if (item.assetId === data.assetId) {
+            this.dataStore.asserts[index] = data;
+            notFound = false;
+          }
+        });
+        if (notFound) {
+          this.dataStore.asserts.push(data);
+        }
+      }, error => console.log('Could not find assert.'));
   }
 
 
