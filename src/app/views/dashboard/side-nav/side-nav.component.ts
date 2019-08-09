@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/_services';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private accountService: AccountService) { }
 
   ngOnInit() {
   }
-
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['']);
+  }
 }
