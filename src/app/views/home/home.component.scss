@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+}
+.logo{
+    width: 20%;
+    margin-left: 2rem;
+}
+.tabs ,.login{
+    width: 40%;
+    align-content: center;
+    display: flex;
+}
+.tabs ul{
+    display: flex;
+    width: 50%;
+}
+.tabs li ,.login li{
+    list-style-type: none;
+    display: inline;
+    padding: 6%;
+    font-weight: 500;
+}
+a{
+    text-decoration: none;
+    color: black;
+}

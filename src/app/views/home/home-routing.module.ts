@@ -5,8 +5,12 @@ import { HomeComponent } from './home.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
-  { path: '', component: SignInComponent },
-  // { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent , children:[
+    { path: '', component: IndexComponent },
+    { path: 'sign-up', component: SignInComponent }
+  ]},
+ 
+  
 ];
 export const declarations: Array<any> = [
   IndexComponent,
