@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssertService } from 'src/app/_services/dashboard/assert.service';
-import { CategoryService } from 'src/app/_services/dashboard/cetatgory.service';
+import { CategoryService } from 'src/app/_services/dashboard/category.service';
 
 @Component({
   selector: 'app-asserts',
