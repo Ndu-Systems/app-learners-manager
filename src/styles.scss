@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:400,400i,500,500i,700,700i,900,900i&display=swap');
+*{
+padding: 0;
+margin: 0;
+width: 100%;
+box-sizing: border-box;
+}
+
+body{
+    font-family: 'Red Hat Display', sans-serif;
+    padding: 2rem;
+}
+
+.main-section{
+    padding: 2rem;
+    height: 90vh;
+}
+.container-section{
+    background: #fff;
+    padding: 2rem;
+    margin: 2rem 0;
+    h1{
+        font-weight: 400;
+    }
+}

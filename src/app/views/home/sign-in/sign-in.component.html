@@ -1,0 +1,56 @@
+<div class="main">
+  <div class="header">
+    <h1>
+      School
+    </h1>
+  </div>
+  <div class="banner">
+    <h1>
+      Sign in to your account
+    </h1>
+  </div>
+  <div class="body">
+    <form class="form" [formGroup]="rForm" (ngSubmit)="login()">
+      <div class="controls">
+        <label for="">email <span>*</span></label> <br />
+        <input type="text" class="input-field" formControlName="Email" />
+        <div class="alert" *ngIf="!rForm.controls['Email'].valid">
+          A valid email address is a required field.
+        </div>
+      </div>
+
+      <div class="controls">
+        <label for="">password <span>*</span></label> <br />
+        <input type="password" class="input-field" formControlName="Password" />
+        <div class="alert" *ngIf="!rForm.controls['Password'].valid">
+          Password is not provided.
+        </div>
+      </div>
+
+      <div class="controls">
+        <input type="submit" value="sign in" class="action-button" [disabled]="!rForm.valid" />
+      </div>
+      <!-- <div class="controls">
+        <img *ngIf="loading" class="pl-2"
+          src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      </div> -->
+      <div *ngIf="error" class="error">{{error}}</div>
+    </form>
+  </div>
+</div>
+
+<div class="footer">
+  <section>
+
+  </section>
+
+  <section>
+    <h1>Our Contacts</h1>
+  </section>
+  <section>
+    <h1>News</h1>
+  </section>
+  <section>
+    <h1>Upcoming</h1>
+  </section>
+</div>

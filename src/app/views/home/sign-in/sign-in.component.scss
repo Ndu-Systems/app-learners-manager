@@ -1,0 +1,73 @@
+.header {
+  height: 10vh;
+  background: #fff;
+  padding: 1rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+.banner {
+  background-image: linear-gradient(#00000060, #6e6e6e81), url(../../../../assets/images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 45vh;
+  padding-top: 12rem;
+
+  h1 {
+    text-align: center;
+    color: #ffcc00;
+    margin: auto 0;
+  }
+}
+
+.body {
+  padding: 2rem;
+  .form {
+    width: 40%;
+    margin: 0 auto;
+    .controls {
+      margin: 1.5rem 0;
+      label {
+        text-align: left;
+        text-transform: capitalize;
+        span{
+            color: rgb(224, 6, 6);
+        }
+      }
+      .input-field {
+        padding: 1rem 1.5rem;
+        border: none;
+      }
+      .action-button {
+        background: #3742fa;
+        color: #fff;
+        width: 33%;
+        float: right;
+        padding: 1rem 1.5rem;
+        border: none;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          background: rgb(25, 36, 243);
+        }
+        &:disabled {
+          background: rgba(148, 148, 149, 0.712);
+          cursor: no-drop;
+        }
+      }
+      .alert {
+        color: #ffcc00;
+      }
+    }
+  }
+}
+
+.footer {
+  background: #130f40;
+  color: #ffcc00;
+  padding: 5rem;
+  display: grid;
+  margin-top: 6rem;
+  grid-template-columns: repeat(4, 25%);
+}
