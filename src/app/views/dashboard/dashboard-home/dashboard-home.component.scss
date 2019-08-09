@@ -1,11 +1,10 @@
 .cards {
-    margin: 0 auto;
-    margin-top: 2rem;
+  margin: 0 auto;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 28%);
   grid-gap: 3rem;
   text-align: center;
-  
 
   .card {
     display: grid;

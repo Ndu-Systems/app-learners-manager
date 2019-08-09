@@ -8,9 +8,9 @@
     height: 7vh;
     border-top-left-radius: 0.8rem;
     text-align: center;
-    padding-top: .6rem;
+    padding-top: 0.6rem;
 
-    img{
+    img {
       width: 60%;
     }
   }
@@ -23,7 +23,7 @@
       list-style: none;
       li {
         padding: 1.5rem 0.5rem;
-        border-bottom: 1px solid #051F3E;
+        border-bottom: 1px solid #051f3e;
         display: grid;
         grid-template-columns: 8% auto;
         img {
