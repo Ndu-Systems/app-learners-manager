@@ -6,10 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CetatgoryService {
-
-
-
+export class CategoryService {
   url: string;
   constructor(
     private http: HttpClient
@@ -17,14 +14,10 @@ export class CetatgoryService {
     this.url = environment.API_URL;
   }
 
-
-  addCatagory(model): Observable<any> {
+  addCategory(model): Observable<any> {
     return this.http.post<any>(`${this.url}api/categories`, model);
   }
   getCatagories(): Observable<any> {
     return this.http.get<any>(`${this.url}api/categories`);
   }
-
-
-
 }
