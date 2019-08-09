@@ -16,10 +16,10 @@ export class ParentService {
   }
 
   addParent(model): Observable<any> {
-    return this.http.post<any>(`${this.url}api/categories`, model);
+    return this.http.post<any>(`${this.url}api/parents`, model);
   }
-  getParent(): Observable<any> {
-    return this.http.get<any>(`${this.url}api/categories`);
+  getParents(): Observable<any> {
+    return this.http.get<any>(`${this.url}api/parents`);
   }
 
 }
