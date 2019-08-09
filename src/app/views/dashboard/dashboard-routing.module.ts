@@ -6,6 +6,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { CommunicationComponent } from './communication/communication.component';
 import { AssertsComponent } from './asserts/asserts.component';
 import { AddAssertComponent } from './asserts/add-assert/add-assert.component';
+import { ParentsComponent } from './parents/parents.component';
 
 
 const routes: Routes = [
@@ -14,12 +15,19 @@ const routes: Routes = [
       { path: '', component: DashboardHomeComponent },
       { path: 'messaging', component: CommunicationComponent },
       { path: 'asserts', component: AssertsComponent },
-      { path: 'add-assert', component: AddAssertComponent }
+      { path: 'add-assert', component: AddAssertComponent },
+      { path: 'parents', component: ParentsComponent },
     ]
   },
 ];
 export const declarations: Array<any> = [
-  DashboardComponent, SideNavComponent, DashboardHomeComponent, CommunicationComponent, AssertsComponent, AddAssertComponent
+  DashboardComponent,
+  SideNavComponent,
+  DashboardHomeComponent,
+  CommunicationComponent,
+  AssertsComponent,
+  AddAssertComponent,
+  ParentsComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
