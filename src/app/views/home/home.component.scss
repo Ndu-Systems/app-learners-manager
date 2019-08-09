@@ -46,4 +46,19 @@ a{
     padding: 5rem;
     display: grid;
     grid-template-columns: repeat(4, 25%);
+    line-height: 3rem;
+    letter-spacing: .1rem;
+  }
+  h5{
+      color: #ffffff;
+      letter-spacing: 0;
+  }
+ .footer img{
+     width: 40%;
+ }
+ .input-field {
+    padding: 1rem;
+    border: none;
+    color: #130F40;
+    background: #F5F6FA;
   }
