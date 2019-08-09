@@ -10,18 +10,14 @@ import { SendSMSBody } from 'src/app/views/dashboard/models';
   providedIn: 'root'
 })
 export class SmsService {
-
-
   url: string;
   constructor(
     private http: HttpClient
   ) {
     this.url = environment.API_URL;
   }
-
   send(model: SendSMSBody): Observable<any> {
     return this.http.post<any>(`${this.url}api/sms/send-sms`, model);
   }
-
 
 }
