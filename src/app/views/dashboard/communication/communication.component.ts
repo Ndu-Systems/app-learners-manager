@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SendSMSBody } from '../models';
+import { SmsService } from 'src/app/_services/dashboard/sms.service';
 
 @Component({
   selector: 'app-communication',
   templateUrl: './communication.component.html',
-  styleUrls: ['./communication.component.css']
+  styleUrls: ['./communication.component.scss']
 })
 export class CommunicationComponent implements OnInit {
 
@@ -19,23 +21,25 @@ export class CommunicationComponent implements OnInit {
     private fb: FormBuilder,
     private routeTo: Router,
     private route: ActivatedRoute,
+    private smsService: SmsService,
   ) {
 
   }
 
   ngOnInit() {
     this.rForm = this.fb.group({
-      Email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      Password: [null, Validators.required]
+      Subject: [null, Validators.required],
+      SendTo: [null, Validators.required],
+      Body: [null, Validators.required],
+      FromNumber: ['+12134442683', Validators.required],
     });
-
-    // get return url from route parameters or default to dashboard
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
   }
 
+  send(model: SendSMSBody) {
+    this.smsService.send(model).subscribe(response => {
+      alert(JSON.stringify(response));
+    });
+  }
 
 
 }
