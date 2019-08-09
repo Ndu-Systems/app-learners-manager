@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SendSMSBody } from '../models';
+import { SendSMSBody } from '../../../_models';
 import { SmsService } from 'src/app/_services/dashboard/sms.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 

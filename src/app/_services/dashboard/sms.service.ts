@@ -4,7 +4,7 @@ import { User } from 'src/app/_models/user';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { SendSMSBody } from 'src/app/views/dashboard/models';
+import { SendSMSBody } from 'src/app/_models';
 
 @Injectable({
   providedIn: 'root'
