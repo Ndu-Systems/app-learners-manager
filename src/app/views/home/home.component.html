@@ -30,7 +30,8 @@
         <h5>Education activists make submissions to<br> state capture commission</h5>
     </section>
     <section>
-        <h1>Sunscribe Newsletter</h1>
-        <input type="text" placeholder="email..." />
+        <h1>Subscribe Newsletter</h1>
+        <input type="text" class="input-field" placeholder="enter email..." />
+        <input type="submit" value="Subscribe" class="form-button" [disabled]="!rForm.valid"/>
     </section>
 </div>
