@@ -42,7 +42,7 @@
         border: none;
         text-transform: uppercase;
         cursor: pointer;
-
+        margin-bottom: 4rem;
         &:hover {
           background: rgb(25, 36, 243);
         }
@@ -58,11 +58,3 @@
   }
 }
 
-.footer {
-  background: #130f40;
-  color: #ffcc00;
-  padding: 5rem;
-  display: grid;
-  margin-top: 6rem;
-  grid-template-columns: repeat(4, 25%);
-}
