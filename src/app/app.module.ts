@@ -4,8 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JwtInterceptor, ErrorInterceptor }
-from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';;
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ from './_helpers';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

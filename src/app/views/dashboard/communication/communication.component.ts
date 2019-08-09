@@ -24,7 +24,7 @@ export class CommunicationComponent implements OnInit {
     private routeTo: Router,
     private route: ActivatedRoute,
     private smsService: SmsService,
-    private messageService:MessageService
+    private messageService: MessageService
   ) {
 
   }
@@ -40,9 +40,8 @@ export class CommunicationComponent implements OnInit {
 
   send(model: SendSMSBody) {
     this.smsService.send(model).subscribe(response => {
-      alert(JSON.stringify(response));
-      this.messageService.add({severity:'success', summary: 'Success Message', detail:'Order submitted'});
-
+      // alert(JSON.stringify(response));
+      this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
     });
   }
 }
