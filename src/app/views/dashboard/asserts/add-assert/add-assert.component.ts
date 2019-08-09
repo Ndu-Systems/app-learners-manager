@@ -5,6 +5,7 @@ import { SmsService } from 'src/app/_services/dashboard/sms.service';
 import { MessageService } from 'primeng/api';
 import { AssertService } from 'src/app/_services/dashboard/assert.service';
 import { CategoryService } from 'src/app/_services/dashboard/category.service';
+import { Category } from 'src/app/_models';
 
 @Component({
   selector: 'app-add-assert',
@@ -18,8 +19,11 @@ export class AddAssertComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
-  catagories: any;
-  searchResults
+  catagories: Category[];
+  searchResults: string[];
+  text: string;
+  Category: string;
+  Description: any;
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -35,7 +39,7 @@ export class AddAssertComponent implements OnInit {
   ngOnInit() {
     this.rForm = this.fb.group({
       CategoryId: [null, Validators.required],
-      Category: [null, Validators.required],
+      Category: [this.text, Validators.required],
       Description: [null, Validators.required]
     });
     this.getCatagories();
@@ -46,16 +50,25 @@ export class AddAssertComponent implements OnInit {
       this.catagories = res;
     });
   }
-  addAssert(model) {
-    this.smsService.send(model).subscribe(response => {
-      this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
+  addAssert() {
+    const model = {
+      CategoryId: this.getSelectedCatergoryId(),
+      Description: this.Description
+    };
+    this.assertService.addAssert(model).subscribe(response => {
+      this.messageService.add({ severity: 'success', summary: JSON.stringify(response), detail: 'Order submitted' });
     });
   }
   search(event) {
-    console.log(event);
-    console.log( this.catagories);
 
-    this.searchResults = this.catagories.filter(x => x.description.includes(event.query));
-    console.log( this.searchResults);
+    this.searchResults = this.catagories.filter(x => x.description.toLocaleLowerCase()
+      .includes(event.query.toLocaleLowerCase())).map(x => x.description);
+  }
+
+  getSelectedCatergoryId() {
+    const cat = this.catagories.filter(x => x.description.toLocaleLowerCase() === this.Category.toLocaleLowerCase());
+    if (cat.length) {
+      return cat[0].categoryId;
+    }
   }
 }

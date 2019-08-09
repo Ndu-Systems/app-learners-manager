@@ -17,6 +17,6 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     AutoCompleteModule
   ],
   declarations: [...declarations],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class DashboardModule { }
