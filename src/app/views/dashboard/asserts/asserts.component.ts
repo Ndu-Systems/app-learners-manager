@@ -11,7 +11,7 @@ export class AssertsComponent implements OnInit {
 
   constructor(
     private assertService: AssertService,
-    private CategoryService: CategoryService,
+    private categoryService: CategoryService,
     ) { }
   assets: any[];
   catagories: any[];
@@ -26,7 +26,7 @@ export class AssertsComponent implements OnInit {
   }
 
   getCatagories() {
-    this.CategoryService.getCatagories().subscribe(res => {
+    this.categoryService.getCatagories().subscribe(res => {
       this.catagories = res;
     });
   }
@@ -37,7 +37,7 @@ export class AssertsComponent implements OnInit {
     });
   }
   addCategory(model) {
-    this.CategoryService.addCategory(model).subscribe(res => {
+    this.categoryService.addCategory(model).subscribe(res => {
       alert(JSON.stringify(res));
     });
   }
