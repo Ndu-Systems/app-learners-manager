@@ -21,12 +21,6 @@ export class AssertService {
     return this.http.post<any>(`${this.url}api/assets`, model);
   }
 
-  addCatagory(model): Observable<any> {
-    return this.http.post<any>(`${this.url}api/categories`, model);
-  }
-  getCatagories(): Observable<any> {
-    return this.http.get<any>(`${this.url}api/categories`);
-  }
   getAsserts(): Observable<any> {
     return this.http.get<any>(`${this.url}api/assets`);
   }
