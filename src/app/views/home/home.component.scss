@@ -47,11 +47,11 @@ a{
     display: grid;
     grid-template-columns: repeat(4, 25%);
     line-height: 3rem;
-    letter-spacing: .1rem;
+    letter-spacing: 2px;
   }
   h5{
       color: #ffffff;
-      letter-spacing: 0;
+      font-weight: 400;
   }
  .footer img{
      width: 40%;
@@ -61,4 +61,15 @@ a{
     border: none;
     color: #130F40;
     background: #F5F6FA;
+  }
+  .form-button {
+    background: #ffcc00;
+    color: #fff;
+    width: 33%;
+    float: right;
+    padding: 1rem .5rem;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1rem;
   }
