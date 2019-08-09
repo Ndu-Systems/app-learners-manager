@@ -18,7 +18,8 @@ export class AddAssertComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
-
+  catagories: any;
+  searchResults
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -37,13 +38,24 @@ export class AddAssertComponent implements OnInit {
       Category: [null, Validators.required],
       Description: [null, Validators.required]
     });
+    this.getCatagories();
   }
 
-  saveAssert(model) {
+  getCatagories() {
+    this.categoryService.getCatagories().subscribe(res => {
+      this.catagories = res;
+    });
+  }
+  addAssert(model) {
     this.smsService.send(model).subscribe(response => {
-      // alert(JSON.stringify(response));
       this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
     });
   }
+  search(event) {
+    console.log(event);
+    console.log( this.catagories);
 
+    this.searchResults = this.catagories.filter(x => x.description.includes(event.query));
+    console.log( this.searchResults);
+  }
 }

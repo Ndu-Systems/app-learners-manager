@@ -6,10 +6,18 @@
       <h1>
           Add new assert
       </h1>
-      <form class="form" [formGroup]="rForm" (ngSubmit)="send(rForm.value)">
+      <form class="form" [formGroup]="rForm" (ngSubmit)="addAssert(rForm.value)">
           <div class="controls">
             <label for="">Category <span>*</span></label> <br />
             <input type="text" class="input-field" formControlName="Category" />
+            <div class="alert" *ngIf="!rForm.controls['Category'].valid">
+                Category  is a required field.
+            </div>
+          </div>
+          <div class="controls">
+            <label for="">Category <span>*</span></label> <br />
+            <p-autoComplete [(ngModel)]="text" [suggestions]="" (completeMethod)="search($event)"  formControlName="Category"></p-autoComplete>
+
             <div class="alert" *ngIf="!rForm.controls['Category'].valid">
                 Category  is a required field.
             </div>
@@ -24,12 +32,13 @@
           </div>
   
           <div class="controls">
-            <input type="submit" value="Send" class="action-button" [disabled]="!rForm.valid" />
+            <input type="submit" value="Save" class="action-button" [disabled]="!rForm.valid" />
           </div>
           <div *ngIf="error" class="error">{{error}}</div>
         </form>
       
     </div>
   </div>
+  {{rForm.value|json}}
   <p-toast></p-toast>
   
