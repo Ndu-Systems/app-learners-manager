@@ -1,6 +1,6 @@
 export interface SendSMSBody {
     Subject: string;
-    SendTo: string;
+    SentTo: string;
     FromNumber: string;
     Body: string;
 }

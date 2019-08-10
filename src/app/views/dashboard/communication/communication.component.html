@@ -14,16 +14,16 @@
             Subject  is a required field.
           </div>
         </div>
-  
+
         <div class="controls">
           <label for="">Recipient <span>*</span></label> <br />
-          <input type="text" class="input-field" formControlName="SendTo" />
-          <div class="alert" *ngIf="!rForm.controls['SendTo'].valid">
+          <input type="text" class="input-field" formControlName="SentTo" />
+          <div class="alert" *ngIf="!rForm.controls['SentTo'].valid">
             Recipient is a required field.
           </div>
         </div>
 
-        
+
         <div class="controls">
           <label for="">Message <span>*</span></label> <br />
           <textarea name="" id="" class="input-field textarea" formControlName="Body" cols="30" rows="10"></textarea>
@@ -31,13 +31,13 @@
           Message is  a required field.
           </div>
         </div>
-  
+
         <div class="controls">
           <input type="submit" value="Send" class="action-button" [disabled]="!rForm.valid" />
         </div>
         <div *ngIf="error" class="error">{{error}}</div>
       </form>
-    
+
   </div>
 </div>
 <p-toast></p-toast>

@@ -30,7 +30,7 @@ export class CommunicationComponent implements OnInit {
   ngOnInit() {
     this.rForm = this.fb.group({
       Subject: [null, Validators.required],
-      SendTo: [null, Validators.required],
+      SentTo: [null, Validators.required],
       Body: [null, Validators.required],
       FromNumber: ['+12134442683', Validators.required],
     });
