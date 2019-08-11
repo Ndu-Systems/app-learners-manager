@@ -38,7 +38,6 @@ export class CommunicationComponent implements OnInit {
 
   send(model: SendSMSBody) {
     this.smsService.send(model).subscribe(response => {
-      // alert(JSON.stringify(response));
       this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
     });
   }
