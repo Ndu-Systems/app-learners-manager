@@ -30,7 +30,7 @@ export class CommunicationComponent implements OnInit {
   ngOnInit() {
     this.rForm = this.fb.group({
       Subject: [null, Validators.required],
-      SendTo: [null, Validators.required],
+      SentTo: [null, Validators.required],
       Body: [null, Validators.required],
       FromNumber: ['+12134442683', Validators.required],
     });
@@ -38,7 +38,6 @@ export class CommunicationComponent implements OnInit {
 
   send(model: SendSMSBody) {
     this.smsService.send(model).subscribe(response => {
-      // alert(JSON.stringify(response));
       this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
     });
   }
