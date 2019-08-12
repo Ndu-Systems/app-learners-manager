@@ -7,7 +7,7 @@
    </div>
    <div class="container-section">
 
-      <div class="parents">
+      <div class="table-container">
          <div class="table-cols search">
             <h1>
                All Parents
@@ -31,23 +31,26 @@
             </h1>
 
          </div>
-         <div class="table-cols" *ngFor="let item of parents">
-            <h1>
-               {{item.fullName}}
-            </h1>
-            <h1>
-               {{item.cellphone}}
-            </h1>
-            <h1>
-               {{item.email}}
-            </h1>
-            <h1>
-               {{item.gender}}
-            </h1>
-            <h1>
-               {{item.address}}
-            </h1>
+         <div class="table-body">
+            <div class="table-cols" *ngFor="let item of parents">
+               <h1>
+                  {{item.fullName}}
+               </h1>
+               <h1>
+                  {{item.cellphone}}
+               </h1>
+               <h1>
+                  {{item.email}}
+               </h1>
+               <h1>
+                  {{item.gender}}
+               </h1>
+               <h1>
+                  {{item.address}}
+               </h1>
+            </div>
          </div>
+        
       </div>
    </div>
 </div>
