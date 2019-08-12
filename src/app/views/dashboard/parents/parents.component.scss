@@ -1,16 +1,31 @@
-.parents{
-    .parent{
-        margin: .5rem;
-        background: #F5F6FA;
-        padding: 1.5rem;
-        display: grid;
-        grid-template-columns: 20% 20% 20% 20% auto;
-        h1{
-            font-size: 1rem;
-            span{
-                display: block;
-                font-size: .6rem;
-            }
-        }
+.parents {
+  .table-cols {
+    margin: 0;
+    padding: 0.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 25% 20% 20% 20% auto;
+    border-bottom: 1px solid #d5d6d9;
+    h1 {
+      font-size: 0.8rem;
     }
+  }
+  .table-header {
+    border: none;
+    background: #f5f6fa;
+
+    h1 {
+      font-weight: 700;
+    }
+  }
+  .search {
+    background: #ffffff;
+
+    -webkit-box-shadow: 20px 48px 54px -12px rgba(122, 122, 122, 0.6);
+    -moz-box-shadow: 20px 48px 54px -12px rgba(122, 122, 122, 0.6);
+    box-shadow: 20px 48px 54px -12px rgba(122, 122, 122, 0.6);
+  }
+}
+.container-section {
+  padding: 0.5rem;
+  padding-top: 0;
 }

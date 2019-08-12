@@ -1,39 +1,54 @@
 <div class="main-section">
-    <div class="header">
-        <h1>
-            Parents 
-          </h1>
-          <a routerLink="../add-parent">Add Parent</a>
-    </div>
-    <div class="container-section">
-  
+   <div class="header">
+      <h1>
+         Parents
+      </h1>
+      <a routerLink="../add-parent">Add Parent</a>
+   </div>
+   <div class="container-section">
+
       <div class="parents">
-        <h3>
-          All Parents
-        </h3>
-        <div class="parent" *ngFor="let item of parents">
-         <h1>
-            {{item.fullName}}
-            <span>Full Name</span>
-         </h1>
-         <h1>
-            {{item.cellphone}}
-            <span>Cellphone number</span>
-         </h1>
-         <h1>
-            {{item.email}}
-            <span>Email address</span>
-         </h1>
-         <h1>
-            {{item.gender}}
-            <span>Gender</span>
-         </h1>
-         <h1>
-            {{item.address}}
-            <span>Address</span>
-         </h1>
-        </div>
+         <div class="table-cols search">
+            <h1>
+               All Parents
+            </h1>
+            <input type="text">
+         </div>
+         <div class="table-cols table-header">
+            <h1>
+               Full Name
+            </h1>
+            <h1>
+               Id Number </h1>
+            <h1>
+               Cellphone number
+            </h1>
+            <h1>
+               Email address
+            </h1>
+            <h1>
+               Gender
+            </h1>
+
+         </div>
+         <div class="table-cols" *ngFor="let item of parents">
+            <h1>
+               {{item.fullName}}
+            </h1>
+            <h1>
+               {{item.cellphone}}
+            </h1>
+            <h1>
+               {{item.email}}
+            </h1>
+            <h1>
+               {{item.gender}}
+            </h1>
+            <h1>
+               {{item.address}}
+            </h1>
+         </div>
       </div>
-    </div>
-  </div>
-  <p-toast></p-toast>
+   </div>
+</div>
+<p-toast></p-toast>
