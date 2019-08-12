@@ -30,6 +30,7 @@ export class AddParentComponent implements OnInit {
     this.rForm = this.fb.group({
       FullName: [null, Validators.required],
       Gender: [null, Validators.required],
+      IDNumber: [null, Validators.required],
       Cellphone: [null, Validators.required],
       Email: [null, Validators.required],
       Address: [null, Validators.required],
@@ -38,9 +39,7 @@ export class AddParentComponent implements OnInit {
   }
 
   save(model) {
-    this.parentService.addParent(model).subscribe(response => {
-      this.messageService.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted' });
-    });
+    this.parentService.addParent(model);
   }
 
 }

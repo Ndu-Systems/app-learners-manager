@@ -1,7 +1,11 @@
 export interface Parent {
-    FullName: string;
-    Gender: string;
-    Cellphone: string;
-    Email: string;
-    Address: string;
+    parentId: string;
+    fullName: string;
+    nationality?: any;
+    idNumber: string;
+    gender: string;
+    cellphone: string;
+    email: string;
+    address: string;
+    statusId: number;
 }

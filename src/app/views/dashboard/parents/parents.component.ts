@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AssertService } from 'src/app/_services/dashboard/assert.service';
 import { ParentService } from 'src/app/_services/dashboard/parent.service';
 
 @Component({
@@ -8,18 +7,16 @@ import { ParentService } from 'src/app/_services/dashboard/parent.service';
   styleUrls: ['./parents.component.scss']
 })
 export class ParentsComponent implements OnInit {
-
-
+  parents;
   constructor(
     private parentService: ParentService
-    ) { }
-  parents: any[];
+  ) {
+  }
   ngOnInit() {
-    this.getParents();
-  }
-  getParents() {
-    this.parentService.getParents().subscribe(res => {
-      this.parents = res;
+    this.parentService.parents.subscribe(data => {
+      this.parents = data;
     });
+    // this.parents = this.parentService.parents;
   }
+
 }
