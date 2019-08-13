@@ -16,7 +16,6 @@ export class ParentsComponent implements OnInit {
     this.parentService.parents.subscribe(data => {
       this.parents = data;
     });
-    // this.parents = this.parentService.parents;
   }
 
 }
