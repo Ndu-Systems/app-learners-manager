@@ -25,7 +25,6 @@ export class AccountService {
     return this.currentUserSubject.value;
   }
   login(email: string, password: string) {
-    
     return this.http.post<any>(`${this.url}api/accounts/login`,
       { email, password }).pipe(map(user => {
         // login is successfull if there is a JSON Web Token in the response

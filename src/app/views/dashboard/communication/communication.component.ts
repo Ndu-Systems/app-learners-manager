@@ -23,9 +23,7 @@ export class CommunicationComponent implements OnInit {
     private fb: FormBuilder,
     private smsService: SmsService,
     private messageService: MessageService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.rForm = this.fb.group({

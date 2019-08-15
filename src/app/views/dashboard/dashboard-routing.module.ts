@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
-import { CommunicationComponent } from './communication/communication.component';
-import { AssertsComponent } from './asserts/asserts.component';
-import { AddAssertComponent } from './asserts/add-assert/add-assert.component';
-import { ParentsComponent } from './parents/parents.component';
-import { AddParentComponent } from './parents/add-parent/add-parent.component';
+import { SideNavComponent } from './side-nav';
+import { DashboardHomeComponent } from './dashboard-home';
+import { CommunicationComponent } from './communication';
+import { AssertsComponent, AddAssertComponent } from './asserts';
+import { ParentsComponent, AddParentComponent } from './parents';
 
 
 const routes: Routes = [
