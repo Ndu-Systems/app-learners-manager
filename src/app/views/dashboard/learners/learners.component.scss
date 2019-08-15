@@ -1,0 +1,12 @@
+@import '../../../../assets/scss/variables';
+
+.table-container .table-cols {
+  grid-template-columns: 25% 15% 20% 10% 10% auto;
+}
+
+a.more {
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+}

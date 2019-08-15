@@ -1,3 +1,4 @@
+
 export class Learner {
   learnerId: string;
   firstName: string;
@@ -11,3 +12,4 @@ export class Learner {
   section: string;
   statusId: number;
 }
+

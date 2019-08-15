@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Learner } from 'src/app/_models';
 import { LearnerService } from 'src/app/_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-learners',
@@ -11,12 +12,17 @@ import { LearnerService } from 'src/app/_services';
 export class LearnersComponent implements OnInit {
   learners: Observable<Learner[]>;
   constructor(
+    private routeTo: Router,
     private learnerService: LearnerService
   ) { }
 
   ngOnInit() {
     this.learners = this.learnerService.learners;
     this.learnerService.getAll();
+  }
+
+  viewLearnerDetails(id: string) {
+     this.routeTo.navigate([`dashboard/learners/${id}`]);
   }
 
 }

@@ -1,0 +1,76 @@
+<div class="main-section">
+  <div class="header">
+    <h1>
+      learners
+    </h1>
+    <div class="bread-crumb">
+      <a (click)="toLearners()" class="home">learners </a> / <a class="cta">learner details</a>
+    </div>
+  </div>
+  <div class="col-1-of-2">
+    <div class="container-section">
+      <div class="learner col-1-of-2">
+        <div>
+          <img src="assets/images/dashboard/student/student-detail-icon.svg" alt="student-detail-icon" class="icon">
+        </div>
+        <div class="details col-1-of-2" *ngIf="learner | async; let item;">
+          <div class="title">
+            <h1>fullname:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.firstName}} {{item.lastName}}</h1>
+          </div>
+
+          <div class="title">
+            <h1>gender:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.gender}}</h1>
+          </div>
+
+          <div class="title">
+            <h1>race:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.race}}</h1>
+          </div>
+
+          <div class="title">
+            <h1>dateOfBirth:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.dateOfBirth}}</h1>
+          </div>
+
+          <div class="title">
+            <h1>idNumber:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.idNumber}}</h1>
+          </div>
+          <div class="title">
+            <h1>schoolName:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.schoolName}}</h1>
+          </div>
+          <div class="title">
+            <h1>grade:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.grade}}</h1>
+          </div>
+          <div class="title">
+            <h1>section:</h1>
+          </div>
+          <div class="value">
+            <h1>{{item.section}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-section">
+      <p>Parent details</p>
+    </div>
+  </div>
+</div>

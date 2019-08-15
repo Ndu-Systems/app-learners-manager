@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Learner } from 'src/app/_models';
+import { Learner, LearnerParents } from 'src/app/_models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,12 +13,13 @@ export class LearnerService {
   learners: Observable<Learner[]>;
   url: string;
   private dataStore: {
-    learners: Learner[]
+    learners: Learner[],
+    learnerParents: LearnerParents[]
   };
 
   constructor(private http: HttpClient) {
     this.url = environment.API_URL;
-    this.dataStore = { learners: [] };
+    this.dataStore = { learners: [], learnerParents: [] };
     this.learners = this._learnersSubject.asObservable();
   }
 
@@ -28,4 +29,38 @@ export class LearnerService {
       this._learnersSubject.next(Object.assign({}, this.dataStore).learners);
     }, error => console.log('could not load learners'));
   }
+
+  getById(id: string) {
+    this.http.get<Learner>(`${this.url}api/learners/${id}`).subscribe(data => {
+      let notfound = true;
+      this.dataStore.learners.forEach((item, index) => {
+        if (item.learnerId === data.learnerId) {
+          this.dataStore.learners[index] = data;
+          notfound = false;
+        }
+      });
+      if (notfound) {
+        this.dataStore.learners.push(data);
+      }
+      this._learnersSubject.next(Object.assign({}, this.dataStore).learners);
+    }, error => console.log('could not load learner'));
+  }
+
+  getParentsForLearner(id: string) {
+    this.http.get<LearnerParents>(`${this.url}api/learners/${id}/parents`).subscribe(data => {
+      let notfound = true;
+      this.dataStore.learnerParents.forEach((item, index) => {
+        if (item.learnerId === data.learnerId) {
+          this.dataStore.learnerParents[index] = data;
+          notfound = false;
+        }
+      });
+      if (notfound) {
+        this.dataStore.learnerParents.push(data);
+      }
+      this._learnersSubject.next(Object.assign({}, this.dataStore).learnerParents);
+    }, error => console.log('could not load parents for learner'));
+  }
+
+
 }
