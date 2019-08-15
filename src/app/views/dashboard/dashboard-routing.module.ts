@@ -7,7 +7,6 @@ import { CommunicationComponent } from './communication';
 import { AssertsComponent, AddAssertComponent } from './asserts';
 import { ParentsComponent, AddParentComponent } from './parents';
 
-
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
