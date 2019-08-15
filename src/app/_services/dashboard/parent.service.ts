@@ -8,6 +8,7 @@ import { Parent } from 'src/app/_models/parent.model';
   providedIn: 'root'
 })
 export class ParentService {
+  // tslint:disable-next-line: variable-name
   private _parents = new BehaviorSubject<Parent[]>([]);
   parents: Observable<Parent[]>;
   url: string;

@@ -1,53 +1,53 @@
 <div class="main-section">
-    <div class="header">
-       <h1>
-          learners
-       </h1>
-       <a class="cta" routerLink="learners">add learners</a>
+  <div class="header">
+    <h1>
+      learners
+    </h1>
+    <a class="cta" routerLink="learners">add learners</a>
+  </div>
+  <div class="container-section">
+    <div class="table-container">
+      <div class="search">
+        <h1>
+          all learners
+        </h1>
+      </div>
+      <div class="table-cols table-header">
+        <h1>
+          full name
+        </h1>
+        <h1>
+         gender
+        </h1>
+        <h1>
+          id number
+        </h1>
+        <h1>
+          grade
+        </h1>
+        <h1>
+          section
+        </h1>
+      </div>
+      <div class="table-body">
+        <div class="table-cols" *ngFor="let item of learners | async">
+          <h1>
+            {{item.firstName}} {{item.lastName}}
+          </h1>
+          <h1>
+            {{item.gender}}
+          </h1>
+          <h1>
+            {{item.idNumber}}
+          </h1>
+          <h1>
+            {{item.grade}}
+          </h1>
+          <h1>
+            {{item.section}}
+          </h1>
+        </div>
+      </div>
     </div>
-    <div class="container-section">
-       <div class="table-container">
-          <div class="search">
-             <h1>
-                all learners
-             </h1>
-          </div>
-          <div class="table-cols table-header">
-             <h1>
-                Full Name
-             </h1>
-             <h1>
-                Id Number </h1>
-             <h1>
-                Cellphone number
-             </h1>
-             <h1>
-                Email address
-             </h1>
-             <h1>
-                Gender
-             </h1>
-
-          </div>
-          <div class="table-body">
-             <div class="table-cols" *ngFor="let item of parents">
-                <h1>
-                   {{item.fullName}}
-                </h1>
-                <h1>
-                   {{item.cellphone}}
-                </h1>
-                <h1>
-                   {{item.email}}
-                </h1>
-                <h1>
-                   {{item.gender}}
-                </h1>
-                <h1>
-                   {{item.address}}
-                </h1>
-             </div>
-          </div>
-       </div>
-    </div>
- </div>
+  </div>
+</div>
