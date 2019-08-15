@@ -1,4 +1,7 @@
 @import './components/loader';
+@import './components/table';
+@import './variables';
+@import './grid';
 
 * {
   padding: 0;
@@ -14,6 +17,16 @@ body {
 
 h1 {
   font-size: 1.2rem;
+  text-transform: capitalize;
+  padding-bottom: 1rem;
+}
+
+a {
+  &.cta{
+    font-weight: 700;
+    color: $blue-color;
+    text-transform: capitalize;
+  }
 }
 
 .main-section {
@@ -26,15 +39,13 @@ h1 {
   padding: 2rem;
   padding-bottom: 4rem;
   margin: 2rem 0;
-
+  height: 70vh;
   h1 {
     font-weight: 400;
   }
 }
 
-img.loading {
-  width: 2rem;
-}
+
 
 .container-section {
   .form {
