@@ -1,13 +1,3 @@
-@import '../../../../../assets/scss/variables';
-
-.bread-crumb {
-  a.home {
-    cursor: pointer;
-    color: $gray-color;
-    font-weight: 400;
-  }
-}
-
 img.icon {
   width: 173px;
 }
@@ -47,6 +37,20 @@ img.icon {
           h1 {
             font-weight: 800;
           }
+        }
+      }
+    }
+  }
+
+  .table-container {
+    .table-body {
+      .table-cols {
+        padding: 1rem;
+
+        a.cta {
+          margin-left: 1rem;
+          font-size: 12px;
+          cursor: pointer;
         }
       }
     }

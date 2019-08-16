@@ -13,13 +13,12 @@ export class LearnerService {
   learners: Observable<Learner[]>;
   url: string;
   private dataStore: {
-    learners: Learner[],
-    learnerParents: LearnerParents[]
-  };
+    learners: Learner[]
+   };
 
   constructor(private http: HttpClient) {
     this.url = environment.API_URL;
-    this.dataStore = { learners: [], learnerParents: [] };
+    this.dataStore = { learners: [] };
     this.learners = this._learnersSubject.asObservable();
   }
 
@@ -46,21 +45,6 @@ export class LearnerService {
     }, error => console.log('could not load learner'));
   }
 
-  getParentsForLearner(id: string) {
-    this.http.get<LearnerParents>(`${this.url}api/learners/${id}/parents`).subscribe(data => {
-      let notfound = true;
-      this.dataStore.learnerParents.forEach((item, index) => {
-        if (item.learnerId === data.learnerId) {
-          this.dataStore.learnerParents[index] = data;
-          notfound = false;
-        }
-      });
-      if (notfound) {
-        this.dataStore.learnerParents.push(data);
-      }
-      this._learnersSubject.next(Object.assign({}, this.dataStore).learnerParents);
-    }, error => console.log('could not load parents for learner'));
-  }
 
 
 }
