@@ -1,11 +1,6 @@
 img.icon {
   width: 173px;
 }
-
-.container-section {
-  padding: 2rem 0;
-  width: 35vw;
-
   .header {
     padding: 0 1rem;
     margin-bottom: 1rem;
@@ -16,43 +11,8 @@ img.icon {
     }
   }
 
-  .container-body {
-    padding: 2rem;
-    padding-top: 1rem;
-
-    &.col-1-of-2 {
-      grid-template-columns: 30% auto;
-      margin-bottom: 0;
-    }
-
-    .details {
-
-      &.col-1-of-2 {
-        grid-template-columns: 30% auto;
-        grid-gap: 1rem;
-      }
-
-      div {
-        &.title {
-          h1 {
-            font-weight: 800;
-          }
-        }
-      }
-    }
-  }
-
-  .table-container {
-    .table-body {
-      .table-cols {
-        padding: 1rem;
-
-        a.cta {
-          margin-left: 1rem;
-          font-size: 12px;
-          cursor: pointer;
-        }
-      }
-    }
-  }
+a.cta {
+  margin-left: 1rem;
+  font-size: 12px;
+  cursor: pointer;
 }

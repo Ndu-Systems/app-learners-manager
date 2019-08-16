@@ -1,5 +1,5 @@
 @import './components/loader';
-@import './components/table';
+@import './components/table-container';
 @import './variables';
 @import './grid';
 
@@ -9,6 +9,8 @@
   margin: 0;
   width: 100%;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 body {

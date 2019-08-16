@@ -1,57 +1,35 @@
 <div class="main-section">
-   <div class="header">
-      <h1>
-         parents
-      </h1>
-      <a class="cta" routerLink="../add-parent">Add Parent</a>
-   </div>
-   <div class="container-section">
-
-      <div class="table-container">
-         <div class="table-cols search">
-            <h1>
-             all parents
-            </h1>
-            <input type="text">
-         </div>
-         <div class="table-cols table-header">
-            <h1>
-               Full Name
-            </h1>
-            <h1>
-               Id Number </h1>
-            <h1>
-               Cellphone number
-            </h1>
-            <h1>
-               Email address
-            </h1>
-            <h1>
-               Gender
-            </h1>
-
-         </div>
-         <div class="table-body">
-            <div class="table-cols" *ngFor="let item of parents">
-               <h1>
-                  {{item.fullName}}
-               </h1>
-               <h1>
-                  {{item.cellphone}}
-               </h1>
-               <h1>
-                  {{item.email}}
-               </h1>
-               <h1>
-                  {{item.gender}}
-               </h1>
-               <h1>
-                  {{item.address}}
-               </h1>
-            </div>
-         </div>
-
-      </div>
-   </div>
+  <div class="header">
+    <h1>
+      parents
+    </h1>
+    <a class="cta" routerLink="../add-parent">Add Parent</a>
+  </div>
+  <div class="container-section">
+    <div class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+          <tr>
+            <th>full name</th>
+            <th>gender</th>
+            <th>id number</th>
+            <th>cellphone number</th>
+            <th>email address</th>
+            <th>address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of parents">
+            <td>{{item.fullName}}</td>
+            <td>{{item.gender}}</td>
+            <td>{{item.idNumber}}</td>
+            <td>{{item.cellphone}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.address}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 <p-toast></p-toast>
