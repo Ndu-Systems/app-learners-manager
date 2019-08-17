@@ -5,7 +5,7 @@ import { SideNavComponent } from './side-nav';
 import { DashboardHomeComponent } from './dashboard-home';
 import { CommunicationComponent } from './communication';
 import { AssertsComponent, AddAssertComponent } from './asserts';
-import { ParentsComponent, AddParentComponent } from './parents';
+import { ParentsComponent, AddParentComponent, ParentDetailsComponent , ParentLearnerComponent} from './parents';
 import { LearnersComponent, LearnerDetailsComponent, LearnerParentsComponent } from './learners';
 
 const routes: Routes = [
@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'asserts', component: AssertsComponent },
       { path: 'add-assert', component: AddAssertComponent },
       { path: 'parents', component: ParentsComponent },
+      { path: 'parents/:id', component: ParentDetailsComponent },
       { path: 'add-parent', component: AddParentComponent },
       { path: 'learners', component: LearnersComponent },
       { path: 'learners/:id', component: LearnerDetailsComponent }
@@ -31,6 +32,8 @@ export const declarations: Array<any> = [
   AddAssertComponent,
   ParentsComponent,
   AddParentComponent,
+  ParentDetailsComponent,
+  ParentLearnerComponent,
   LearnersComponent,
   LearnerDetailsComponent,
   LearnerParentsComponent

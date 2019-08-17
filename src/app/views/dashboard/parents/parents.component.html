@@ -16,6 +16,7 @@
             <th>cellphone number</th>
             <th>email address</th>
             <th>address</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +27,9 @@
             <td>{{item.cellphone}}</td>
             <td>{{item.email}}</td>
             <td>{{item.address}}</td>
+            <td>
+              <a class="cta more" (click)="viewParentDetails(item.parentId)">view more</a>
+            </td>
           </tr>
         </tbody>
       </table>

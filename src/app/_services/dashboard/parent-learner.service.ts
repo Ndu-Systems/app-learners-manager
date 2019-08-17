@@ -1,47 +1,46 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Learner } from 'src/app/_models';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Parent } from 'src/app/_models/parent.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ParentService {
+export class ParentLearnerService {
 
-  // tslint:disable-next-line: variable-name
-  private _parents = new BehaviorSubject<Parent[]>([]);
-  parents: Observable<Parent[]>;
+  private _learners = new BehaviorSubject<Learner[]>([]);
+  learners: Observable<Learner[]>;
   url: string;
   constructor(
     private http: HttpClient
   ) {
     this.url = environment.API_URL;
-    this.parents = this._parents.asObservable();
+    this.learners = this._learners.asObservable();
   }
   getState() {
-    return this._parents.value;
+    return this._learners.value;
   }
 
   appendState(value) {
     const state = this.getState();
     state.push(value);
-    this._parents.next(state);
+    this._learners.next(state);
   }
   updateState(values) {
-    this._parents.next(values);
+    this._learners.next(values);
   }
 
-  modifyState(value) {
+  modifyState(value: Learner) {
     const state = this.getState();
-    const index = state.findIndex(x => x.parentId === value.parent);
+    const index = state.findIndex(x => x.learnerId === value.learnerId);
     if (index < 0) { return false; }
     state[index] = value;
     state.push(value);
-    this._parents.next(state);
+    this._learners.next(state);
   }
   // HTTP
-  addParent(model) {
+  addLearner(model) {
     this.http.post<any>(`${this.url}api/parents`, model).subscribe(data => {
       this.appendState(data);
     }, error => {
@@ -49,16 +48,13 @@ export class ParentService {
       console.log(`Error details: ${error}`);
     });
   }
-  getParents() {
-    this.http.get<any>(`${this.url}api/parents`).subscribe(data => {
+  getLeraners(parentId) {
+    this.http.get<any>(`${this.url}api/parents/${parentId}/learners`).subscribe(data => {
       this.updateState(data);
     }, error => {
       console.log(`Error source: ${this.url}api/parents`);
       console.log(`Error details: ${error}`);
     });
-  }
-  getById(parentId: string) {
-    throw new Error("Method not implemented.");
   }
 
 }
