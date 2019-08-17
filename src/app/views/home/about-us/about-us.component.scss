@@ -1,28 +1,90 @@
-.about{
+.about {
     width: 100%;
-    height: 100vh;
-}
-.about h1{
-    padding-top:6%;
-    width: 60%;
-    margin: auto;
-    font-size: 2rem;
-    letter-spacing: .2ch;
-    line-height: 2.5ch;
-    text-align: center;
+
+    h1 {
+        padding-top: 6%;
+        width: 70%;
+        margin: auto;
+        font-size: 30px;
+        letter-spacing: .5ch;
+        word-spacing: .2ch;
+        text-align: center;
+
+        @media only screen and (max-width: 600px) {
+            padding-top: 5rem;
+        }
+    }
+
+    .about-us-content {
+        width: 70%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 35% auto;
+        margin-top: 1rem;
+        justify-content: center;
+
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 100%;
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            margin: auto;
+        }
+
+        .paragraph {
+            padding-left: 2rem;
+            line-height: 2.3ch;
+            justify-content: center;
+        }
+    }
 
 }
-.about-us-content{
-    width: 60%;
-    margin: auto;
-    display: flex;
-    margin-top: 1rem;
-}
-img{
+
+.cards {
     width: 100%;
     margin: auto;
-}
-.paragraph{
-    padding-left: 2rem;
-    padding-right: 0%;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-bottom: 4.5rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-gap: 2rem;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+    }
+
+    .card {
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        padding-bottom: 2rem;
+        border-radius: .3rem;
+        -webkit-box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 1);
+        box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 1);
+
+        h2,
+        p {
+            font-size: 1rem;
+            justify-content: center;
+            padding: 1rem;
+            padding-top: 0%;
+            font-size: large;
+
+        }
+
+        img {
+            width: 20%;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+    }
 }
