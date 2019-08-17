@@ -1,0 +1,76 @@
+@import '../variables';
+
+.container-section {
+  .form {
+    width: 80%;
+    height: 30rem;
+    overflow-y: scroll;
+    margin: 0 auto;
+    .col-1-of-1{
+      grid-gap: 0;
+    }
+    .controls {
+
+      label {
+        text-align: left;
+        text-transform: capitalize;
+        font-weight: 500;
+        span {
+          color: rgb(224, 6, 6);
+        }
+      }
+
+      .input-field {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        color: #130F40;
+        background: #F5F6FA;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .action-button {
+        background: #3742fa;
+        color: #fff;
+        width: 33%;
+        float: right;
+        padding: 1rem 1.5rem;
+        border: none;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          background: rgb(25, 36, 243);
+        }
+
+        &:disabled {
+          background: rgba(148, 148, 149, 0.712);
+          cursor: no-drop;
+        }
+      }
+      &.actions{
+        .col-1-of-2{
+          margin: 0;
+          margin-top: 1rem;
+          .action-button {
+            width: 100%;
+          }
+          a.abort{
+            font-size: 20px;
+            text-align: center;
+            margin: 1rem 0;
+            font-weight: 500;
+            color: $gray-color;
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      .alert {
+        color: #ffcc00;
+        text-transform: capitalize;
+      }
+    }
+
+  }
+}

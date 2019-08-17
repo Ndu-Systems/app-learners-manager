@@ -1,0 +1,106 @@
+<div class="main-section">
+  <div class="header">
+    <h1>
+      learners
+    </h1>
+    <div class="bread-crumb">
+      <a (click)="toLearners()" class="home">learners </a> / <a class="cta">register a new learner</a>
+    </div>
+  </div>
+  <div class="col-1-of-2">
+    <div class="container-section">
+      <div class="col-1-of-1 header">
+        <h1>
+          register a new learner
+        </h1>
+      </div>
+      <div class="container-body">
+
+        <form [formGroup]="rForm" (ngSubmit)="addLearner()" class="box form-group form">
+          <div class="col-1-of-1">
+            <div class="controls">
+              <label for="FirstName" class="form-label">first name(s)</label><br />
+              <input type="text" class="input-field" formControlName="FirstName">
+              <div class="alert" *ngIf="!rForm.controls['FirstName'].valid">
+                name of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+              <label for="LastName" class="form-label">surname</label><br />
+              <input type="text" class="input-field" formControlName="LastName">
+              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
+                surname of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+                <label for="DateOfBirth" class="form-label">date of birth</label><br />
+                <input type="date" class="input-field" formControlName="DateOfBirth">
+                <div class="alert" *ngIf="!rForm.controls['DateOfBirth'].valid">
+                  date of birth of a learner is required
+                </div>
+              </div>
+            <div class="controls">
+              <label for="IDNumber" class="form-label">identification number</label><br />
+              <input type="number" class="input-field" formControlName="IDNumber">
+              <div class="alert" *ngIf="!rForm.controls['IDNumber'].valid">
+                 identification number of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+              <label for="Gender" class="form-label">gender</label><br />
+              <!-- <input type="text" class="input-field" formControlName="Gender"> -->
+              <select formControlName="Gender" class="input-field">
+                <option value="">Select Gender</option>
+                <option *ngFor="let gender of genders" [ngValue]="gender.description"
+                (change)="changeGender($event)"
+                >{{gender.description}}</option>
+              </select>
+              <div class="alert" *ngIf="!rForm.controls['Gender'].valid">
+                  gender of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+              <label for="LastName" class="form-label">surname</label><br />
+              <input type="text" class="input-field" formControlName="LastName">
+              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
+                surname of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+              <label for="LastName" class="form-label">surname</label><br />
+              <input type="text" class="input-field" formControlName="LastName">
+              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
+                surname of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+              <label for="LastName" class="form-label">surname</label><br />
+              <input type="text" class="input-field" formControlName="LastName">
+              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
+                surname of a learner is required
+              </div>
+            </div>
+            <div class="controls">
+              <label for="LastName" class="form-label">surname</label><br />
+              <input type="text" class="input-field" formControlName="LastName">
+              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
+                surname of a learner is required
+              </div>
+            </div>
+
+            <div class="controls actions">
+              <div class="col-1-of-2">
+                <a (click)="toLearners()" class="abort">cancel</a>
+                <input type="submit" value="Register Learner" class="action-button" [disabled]="!rForm.valid" />
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div class="container-section">
+
+    </div>
+  </div>
+</div>

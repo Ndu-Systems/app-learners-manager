@@ -3,52 +3,32 @@
     <h1>
       learners
     </h1>
-    <a class="cta" routerLink="learners">add learners</a>
+    <a class="cta" routerLink="../add-learner">add learners</a>
   </div>
   <div class="container-section">
-    <div class="table-container">
-      <div class="search">
-        <h1>
-          all learners
-        </h1>
-      </div>
-      <div class="table-cols table-header">
-        <h1>
-          full name
-        </h1>
-        <h1>
-          gender
-        </h1>
-        <h1>
-          id number
-        </h1>
-        <h1>
-          grade
-        </h1>
-        <h1>
-          section
-        </h1>
-      </div>
-      <div class="table-body">
-        <div class="table-cols" *ngFor="let item of learners | async">
-          <h1>
-            {{item.firstName}} {{item.lastName}}
-          </h1>
-          <h1>
-            {{item.gender}}
-          </h1>
-          <h1>
-            {{item.idNumber}}
-          </h1>
-          <h1>
-            {{item.grade}}
-          </h1>
-          <h1>
-            {{item.section}}
-          </h1>
-          <a class="cta more" (click)="viewLearnerDetails(item.learnerId)">view more</a>
-        </div>
-      </div>
+    <div class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+          <tr>
+            <th>full name</th>
+            <th>gender</th>
+            <th>id number</th>
+            <th>grade</th>
+            <th>grade</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of learners | async">
+            <td>{{item.firstName}} {{item.lastName}}</td>
+            <td>{{item.gender}}</td>
+            <td>{{item.idNumber}}</td>
+            <td>{{item.grade}}</td>
+            <td>{{item.section}}</td>
+            <td><a class="cta more" (click)="viewLearnerDetails(item.learnerId)">view more</a></td>
+          </tr>
+        <tbody>
+      </table>
     </div>
   </div>
 </div>

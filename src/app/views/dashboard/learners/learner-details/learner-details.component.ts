@@ -12,7 +12,6 @@ import { map } from 'rxjs/operators';
 })
 export class LearnerDetailsComponent implements OnInit {
   learner: Observable<Learner>;
-  learnerParents: Observable<LearnerParents>;
   learnerId = '';
   constructor(
     private routeTo: Router,
