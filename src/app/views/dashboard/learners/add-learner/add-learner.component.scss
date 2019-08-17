@@ -1,0 +1,51 @@
+
+@import '../../../../../assets/scss/variables';
+
+.bread-crumb {
+  a.home {
+    cursor: pointer;
+    color: $gray-color;
+    font-weight: 400;
+  }
+}
+
+.container-section {
+  padding: 2rem 0;
+  width: 35vw;
+
+  .header {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 3px 7px 6px -9px rgba(0, 0, 0, 0.45);
+
+    h1 {
+      font-weight: 500;
+    }
+  }
+
+  .container-body {
+    padding: 2rem;
+    padding-top: 1rem;
+
+    &.col-1-of-2 {
+      grid-template-columns: 30% auto;
+      margin-bottom: 0;
+    }
+
+    .details {
+
+      &.col-1-of-2 {
+        grid-template-columns: 30% auto;
+        grid-gap: 1rem;
+      }
+
+      div {
+        &.title {
+          h1 {
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+}

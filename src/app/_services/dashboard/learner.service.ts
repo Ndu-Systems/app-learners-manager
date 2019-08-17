@@ -14,7 +14,7 @@ export class LearnerService {
   url: string;
   private dataStore: {
     learners: Learner[]
-   };
+  };
 
   constructor(private http: HttpClient) {
     this.url = environment.API_URL;
@@ -45,6 +45,25 @@ export class LearnerService {
     }, error => console.log('could not load learner'));
   }
 
+  create(learner: Learner) {
+    this.http
+      .post<Learner>(`${this.url}api/learners`, JSON.stringify(learner))
+      .subscribe(data => {
+        this.dataStore.learners.push(data);
+        this._learnersSubject.next(Object.assign({}, this.dataStore).learners);
+      });
+  }
 
-
+  update(learner: Learner) {
+    this.http
+      .put<Learner>(`${this.url}api/learners`, JSON.stringify(learner))
+      .subscribe(data => {
+        this.dataStore.learners.forEach((item, index) => {
+          if (item.learnerId === data.learnerId) {
+            this.dataStore.learners[index] = data;
+          }
+        });
+        this._learnersSubject.next(Object.assign({}, this.dataStore).learners);
+      }, error => console.log('Could not update learner'));
+  }
 }
