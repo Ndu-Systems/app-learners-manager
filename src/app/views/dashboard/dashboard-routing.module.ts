@@ -6,7 +6,7 @@ import { DashboardHomeComponent } from './dashboard-home';
 import { CommunicationComponent } from './communication';
 import { AssertsComponent, AddAssertComponent } from './asserts';
 import { ParentsComponent, AddParentComponent, ParentDetailsComponent , ParentLearnerComponent} from './parents';
-import { LearnersComponent, LearnerDetailsComponent, LearnerParentsComponent, AddLearnerComponent } from './learners';
+import { LearnersComponent, AddLearnerComponent, LearnerDetailsComponent, LearnerParentsComponent } from './learners';
 
 const routes: Routes = [
   {
@@ -38,7 +38,9 @@ export const declarations: Array<any> = [
   LearnersComponent,
   LearnerDetailsComponent,
   LearnerParentsComponent,
-  AddLearnerComponent
+  AddLearnerComponent,
+  LearnerDetailsComponent
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

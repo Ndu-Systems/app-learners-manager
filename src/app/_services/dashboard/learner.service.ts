@@ -45,9 +45,9 @@ export class LearnerService {
     }, error => console.log('could not load learner'));
   }
 
-  create(learner: Learner) {
+  create(learner) {
     this.http
-      .post<Learner>(`${this.url}api/learners`, JSON.stringify(learner))
+      .post<any>(`${this.url}api/learners`, learner)
       .subscribe(data => {
         this.dataStore.learners.push(data);
         this._learnersSubject.next(Object.assign({}, this.dataStore).learners);

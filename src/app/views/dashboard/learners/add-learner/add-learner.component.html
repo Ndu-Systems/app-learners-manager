@@ -33,60 +33,70 @@
               </div>
             </div>
             <div class="controls">
-                <label for="DateOfBirth" class="form-label">date of birth</label><br />
-                <input type="date" class="input-field" formControlName="DateOfBirth">
-                <div class="alert" *ngIf="!rForm.controls['DateOfBirth'].valid">
-                  date of birth of a learner is required
-                </div>
+              <label for="DateOfBirth" class="form-label">date of birth</label><br />
+              <input type="date" class="input-field" formControlName="DateOfBirth">
+              <div class="alert" *ngIf="!rForm.controls['DateOfBirth'].valid">
+                date of birth of a learner is required
               </div>
+            </div>
             <div class="controls">
               <label for="IDNumber" class="form-label">identification number</label><br />
               <input type="number" class="input-field" formControlName="IDNumber">
               <div class="alert" *ngIf="!rForm.controls['IDNumber'].valid">
-                 identification number of a learner is required
+                identification number of a learner is required
               </div>
             </div>
             <div class="controls">
               <label for="Gender" class="form-label">gender</label><br />
-              <!-- <input type="text" class="input-field" formControlName="Gender"> -->
               <select formControlName="Gender" class="input-field">
                 <option value="">Select Gender</option>
-                <option *ngFor="let gender of genders" [ngValue]="gender.description"
-                (change)="changeGender($event)"
-                >{{gender.description}}</option>
+                <option *ngFor="let gender of genders" [ngValue]="gender.description" (change)="changeGender($event)">
+                  {{gender.description}}</option>
               </select>
               <div class="alert" *ngIf="!rForm.controls['Gender'].valid">
-                  gender of a learner is required
+                gender of a learner is required
               </div>
             </div>
             <div class="controls">
-              <label for="LastName" class="form-label">surname</label><br />
-              <input type="text" class="input-field" formControlName="LastName">
-              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
-                surname of a learner is required
+              <label for="Gender" class="form-label">race</label><br />
+              <select formControlName="Race" class="input-field">
+                <option value="">Select Race</option>
+                <option *ngFor="let race of races" [ngValue]="race.description" (change)="changeRace($event)">
+                  {{race.description}}</option>
+              </select>
+              <div class="alert" *ngIf="!rForm.controls['Race'].valid">
+                the race of a learner is required
               </div>
             </div>
             <div class="controls">
-              <label for="LastName" class="form-label">surname</label><br />
-              <input type="text" class="input-field" formControlName="LastName">
-              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
-                surname of a learner is required
+              <label for="SchoolName" class="form-label">school name</label><br />
+              <input type="text" class="input-field" formControlName="SchoolName">
+              <div class="alert" *ngIf="!rForm.controls['SchoolName'].valid">
+                school name of a learner is required
               </div>
             </div>
             <div class="controls">
-              <label for="LastName" class="form-label">surname</label><br />
-              <input type="text" class="input-field" formControlName="LastName">
-              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
-                surname of a learner is required
+                <label for="Gender" class="form-label">grade</label><br />
+                <select formControlName="Grade" class="input-field">
+                  <option value="">Select Grade</option>
+                  <option *ngFor="let grade of grades" [ngValue]="grade.description" (change)="changeGrade($event)">
+                    {{grade.description}}</option>
+                </select>
+                <div class="alert" *ngIf="!rForm.controls['Grade'].valid">
+                  learner's grade is required
+                </div>
               </div>
-            </div>
             <div class="controls">
-              <label for="LastName" class="form-label">surname</label><br />
-              <input type="text" class="input-field" formControlName="LastName">
-              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
-                surname of a learner is required
+                <label for="Section" class="form-label">section</label><br />
+                <select formControlName="Section" class="input-field">
+                  <option value="">Select Gender</option>
+                  <option *ngFor="let section of sections" [ngValue]="section.description" (change)="changeSection($event)">
+                    {{section.description}}</option>
+                </select>
+                <div class="alert" *ngIf="!rForm.controls['Section'].valid">
+                  learner's grade section is required
+                </div>
               </div>
-            </div>
 
             <div class="controls actions">
               <div class="col-1-of-2">
