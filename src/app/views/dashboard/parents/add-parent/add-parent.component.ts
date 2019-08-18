@@ -4,6 +4,7 @@ import { SmsService } from 'src/app/_services/dashboard/sms.service';
 import { MessageService } from 'primeng/api';
 import { SendSMSBody } from 'src/app/_models';
 import { ParentService } from 'src/app/_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-parent',
@@ -21,7 +22,8 @@ export class AddParentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private parentService: ParentService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private routeTo: Router
   ) {
 
   }
@@ -40,6 +42,10 @@ export class AddParentComponent implements OnInit {
 
   save(model) {
     this.parentService.addParent(model);
+  }
+
+  toParents() {
+    this.routeTo.navigate([`dashboard/parents`]);
   }
 
 }

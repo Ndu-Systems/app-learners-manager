@@ -54,6 +54,7 @@ export class AddLearnerComponent implements OnInit {
     this.learner.schoolName = this.f.SchoolName.value;
     this.learner.grade = this.f.Grade.value;
     this.learner.section = this.f.Section.value;
+    this.learner.race = this.f.Race.value;
     this.learnerService.create(this.learner);
     this.routeTo.navigate([`dashboard/learners`]);
   }
