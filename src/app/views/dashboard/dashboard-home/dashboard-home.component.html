@@ -4,7 +4,7 @@
   </h1>
 
   <div class="cards">
-    <div class="card">
+    <div class="card" (click)="navigateToPage('parents')">
       <div>
         <img src="assets/images/parents.svg" alt="">
       </div>
@@ -13,12 +13,12 @@
         <h1>
           Parents
           <span>
-            387
+            {{countParents}}
           </span>
         </h1>
       </div>
     </div>
-    <div class="card">
+    <div class="card"  (click)="navigateToPage('messaging')">
       <div>
         <img src="assets/images/comms.svg" alt="">
       </div>
@@ -27,12 +27,12 @@
         <h1>
           Messages sent
           <span>
-            387
+            {{countMessages}}
           </span>
         </h1>
       </div>
     </div>
-    <div class="card">
+    <div class="card"  (click)="navigateToPage('asserts')">
       <div>
         <img src="assets/images/asserts.svg" alt="">
       </div>
@@ -41,7 +41,7 @@
         <h1>
           Asserts
           <span>
-            387
+            {{countAsserts}}
           </span>
         </h1>
       </div>
