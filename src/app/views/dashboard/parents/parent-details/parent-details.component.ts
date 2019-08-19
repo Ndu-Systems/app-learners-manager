@@ -24,10 +24,7 @@ export class ParentDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(p => {
       this.parentId = p.id;
     });
-    // query from data store
     this.parent = this.parentService.parents.pipe(map(learners => learners.find(item => item.parentId === this.parentId)));
-    // get and load to data store
-    //this.parentService.getById(this.parentId);
   }
   toParents() {
     this.routeTo.navigate([`dashboard/parents`]);

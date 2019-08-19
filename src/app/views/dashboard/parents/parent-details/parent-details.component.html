@@ -26,17 +26,17 @@
             <h1>{{item.fullName}}</h1>
           </div>
 
-          <div class="title">
+          <div class="title"  *ngIf="item.nationality">
             <h1>Nationality:</h1>
           </div>
-          <div class="value">
+          <div class="value" *ngIf="item.nationality">
             <h1>{{item?.nationality}}</h1>
           </div>
 
-          <div class="title">
+          <div class="title"  *ngIf="item.idNumber">
             <h1>Id Number:</h1>
           </div>
-          <div class="value">
+          <div class="value"  *ngIf="item.idNumber">
             <h1>{{item.idNumber}}</h1>
           </div>
 
@@ -57,7 +57,7 @@
             <h1>email:</h1>
           </div>
           <div class="value">
-            <h1>{{item.email}}</h1>
+            <h1 class="email-address">{{item.email}}</h1>
           </div>
           <div class="title">
             <h1>address:</h1>
@@ -65,15 +65,10 @@
           <div class="value">
             <h1>{{item.address}}</h1>
           </div>
-          <div class="title">
-            <h1>section:</h1>
-          </div>
-          <div class="value">
-            <h1>{{item.section}}</h1>
-          </div>
         </div>
       </div>
     </div>
      <app-parent-learner [parentId]="parentId"></app-parent-learner>
   </div>
 </div>
+

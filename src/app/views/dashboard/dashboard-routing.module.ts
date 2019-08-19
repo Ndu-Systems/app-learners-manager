@@ -7,6 +7,7 @@ import { CommunicationComponent } from './communication';
 import { AssertsComponent, AddAssertComponent } from './asserts';
 import { ParentsComponent, AddParentComponent, ParentDetailsComponent , ParentLearnerComponent} from './parents';
 import { LearnersComponent, AddLearnerComponent, LearnerDetailsComponent, LearnerParentsComponent } from './learners';
+import { LinkLearnerToParentComponent } from './parents/link-learner-to-parent/link-learner-to-parent.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'add-assert', component: AddAssertComponent },
       { path: 'parents', component: ParentsComponent },
       { path: 'parents/:id', component: ParentDetailsComponent },
+      { path: 'link-learner-to-parent/:id', component: LinkLearnerToParentComponent },
       { path: 'add-parent', component: AddParentComponent },
       { path: 'learners', component: LearnersComponent },
       { path: 'learners/:id', component: LearnerDetailsComponent },
@@ -35,6 +37,7 @@ export const declarations: Array<any> = [
   AddParentComponent,
   ParentDetailsComponent,
   ParentLearnerComponent,
+  LinkLearnerToParentComponent,
   LearnersComponent,
   LearnerDetailsComponent,
   LearnerParentsComponent,
