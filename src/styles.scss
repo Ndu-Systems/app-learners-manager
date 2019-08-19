@@ -2,3 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:400,400i,500,500i,700,700i,900,900i&display=swap');
 @import './assets/scss/base';
 @import './assets/scss/components/home_pages';
+
+.banner{
+        background-image: linear-gradient(#00000060, #6e6e6e81), url(./assets/images/bg.jpg);
+}
