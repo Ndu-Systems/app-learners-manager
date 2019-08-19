@@ -8,6 +8,7 @@ import { AssertsComponent, AddAssertComponent } from './asserts';
 import { ParentsComponent, AddParentComponent, ParentDetailsComponent , ParentLearnerComponent} from './parents';
 import { LearnersComponent, AddLearnerComponent, LearnerDetailsComponent, LearnerParentsComponent } from './learners';
 import { LinkLearnerToParentComponent } from './parents/link-learner-to-parent/link-learner-to-parent.component';
+import { LinkParentToLearnerComponent } from './learners/link-parent-to-learner/link-parent-to-learner.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,9 @@ const routes: Routes = [
       { path: 'add-parent', component: AddParentComponent },
       { path: 'learners', component: LearnersComponent },
       { path: 'learners/:id', component: LearnerDetailsComponent },
-      { path: 'add-learner', component: AddLearnerComponent }
+      { path: 'add-learner', component: AddLearnerComponent },
+      { path: 'link-parent-to-learner/:id', component: LinkParentToLearnerComponent },
+
     ]
   },
 ];
@@ -42,7 +45,8 @@ export const declarations: Array<any> = [
   LearnerDetailsComponent,
   LearnerParentsComponent,
   AddLearnerComponent,
-  LearnerDetailsComponent
+  LearnerDetailsComponent,
+  LinkParentToLearnerComponent
 
 ];
 @NgModule({
