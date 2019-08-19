@@ -17,8 +17,8 @@ export class LearnersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.learners = this.learnerService.learners;
     this.learnerService.getAll();
+    this.learners = this.learnerService.learners;
   }
 
   viewLearnerDetails(id: string) {

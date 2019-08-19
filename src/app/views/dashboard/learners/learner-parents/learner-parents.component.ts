@@ -15,13 +15,16 @@ export class LearnerParentsComponent implements OnInit {
   learnerParents: Observable<LearnerParents>;
   constructor(
     private learnerParentsService: LearnerParentsService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.learnerParents = this.learnerParentsService.learnerParents
-    .pipe(map(learnerParents => learnerParents
-      .find(item => item.learnerId === this.learnerId)));
-    this.learnerParentsService.getParentsForLearner(this.learnerId);
+    this.getParentsForLearner();
   }
 
+  getParentsForLearner() {
+    this.learnerParents = this.learnerParentsService.learnerParents
+      .pipe(map(learnerParents => learnerParents
+        .find(item => item.learnerId === this.learnerId)));
+    this.learnerParentsService.getParentsForLearner(this.learnerId);
+  }
 }
