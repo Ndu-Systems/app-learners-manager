@@ -4,43 +4,121 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
+
+    h1 {
+        width: 60%;
+        margin: auto;
+        padding-top: 15%;
+        font-size: 2rem;
+        color: #ffffff;
+        letter-spacing: .7ch;
+        line-height: 2.5ch;
+        text-align: center;
+    }
+
+    p {
+        color: #ffffff;
+        width: 50%;
+        font-weight: 400;
+        margin: auto;
+        margin-top: 2rem;
+        letter-spacing: .2ch;
+        line-height: 3ch;
+        text-align: center;
+
+    }
+
+    button {
+        background-color: #FDC500;
+        border: none;
+        width: 10%;
+        color: #ffffff;
+        letter-spacing: .2ch;
+        margin: auto;
+        display: flex;
+        margin-top: 5%;
+        justify-content: center;
+        padding: 1rem .5rem;
+        cursor: pointer;
+    }
 }
-h1 {
-    width: 40%;
+
+.heading h1 {
+    width: 60%;
+    padding: 0%;
+    color: black;
     margin: auto;
-    padding-top: 15%;
-    font-size: 2rem;
-    color: #ffffff;
-    letter-spacing: .5ch;
-    line-height: 2.5ch;
+    font-size: 32px;
+    letter-spacing: .5rem;
+    margin-top: 5rem;
+}
+
+.about-us-content {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     text-align: center;
-}
-p{
-    color: #ffffff;
-    width: 45%;
-    margin: auto;
-    margin-top: 1rem;
-    letter-spacing: .2ch;
-    line-height: 3ch;
-    text-align: center;
-    
-}
-button{
-    background-color: #FDC500;
-    border: none;
-    width: 10%;
-    color: #ffffff;
-    letter-spacing: .2ch;
-    margin: auto;
-    display: flex;
-    margin-top: 5%;
     justify-content: center;
-    padding: 1rem .5rem;
-    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+        width: 100%;
+    }
+
+    img {
+        width: 90%;
+        margin: auto;
+    }
+
+    .paragraph {
+        padding-left: 1rem;
+        margin-right: 1rem;
+        p {
+            text-align: center;
+            color: black;
+            width: 100%;
+            text-align: left;
+            line-height: 3ch;
+        }
+    }
+
+ 
 }
-.login a:hover{
-    color: #FDC500;
+
+.testimonials{
+    width: 100%;
+    margin-bottom: 2rem;
+    h1 {
+        width: 100%;
+        padding: 0%;
+        margin-bottom: 2rem;
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        font-size: 2rem;
+        letter-spacing: .5rem;
+        word-spacing: .5rem;
+    }
+    .parents-say{
+        text-align: center;
+        width: 100%;
+        background: #042954;
+        padding: 2rem;
+    }
+    .parents-say p {
+        width: 80%;
+        margin: auto;
+        color: #ffffff;
+        line-height: 2rem;
+    }
+    img {
+        width: 3%;
+        margin: auto;
+    }
 }
-.login li{
-    margin-left: 20rem
-}
+
+
+

@@ -21,14 +21,13 @@ img{
     display: flex;
 }
 .login{
-    width: 15%;
-    text-align:center;
-    align-content:center;
-}
-.tabs ul{
+    width: 30%;
     display: flex;
-    width: 50%;
-  
+    margin-left: 20rem;
+}
+.tabs ul,.login li{
+    display: flex;
+    width: 80%;
 }
 .tabs li ,.login li{
     list-style-type: none;
