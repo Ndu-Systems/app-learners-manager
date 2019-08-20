@@ -37,4 +37,8 @@ export class LearnerParentsService {
       this._learnersParentsSubject.next(Object.assign({}, this.dataStore).learnerParents);
     }, error => console.log('could not load parents for learner'));
   }
+
+  addParentForLearner(learnerId: string, parentId: string): Observable<any> {
+    return this.http.post<any>(`${this.url}api/learners/${learnerId}/parents`, [{ parentId }]);
+  }
 }

@@ -58,7 +58,11 @@ export class ParentService {
     });
   }
   getById(parentId: string) {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
+  }
+
+  addLearnerForParent(parentId: string, learnerId): Observable<any> {
+    return this.http.post<any>(`${this.url}api/parents/${parentId}/learners`, [{ learnerId }]);
   }
 
 }

@@ -1,4 +1,4 @@
-
+@import "./../variables";
 .container-section {
   background: #fff;
   padding: 2rem;
@@ -6,6 +6,7 @@
   margin: 2rem 0;
   height: 70vh;
   overflow-y: scroll;
+  position: relative;
 
   .header {
     padding: 0 1rem;
@@ -18,7 +19,6 @@
   }
 
   &.content {
-
     padding: 2rem 0;
     width: 35vw;
 
@@ -42,7 +42,6 @@
       }
 
       .details {
-
         &.col-1-of-2 {
           grid-template-columns: 30% auto;
           grid-gap: 1rem;
@@ -54,7 +53,7 @@
               font-weight: 700;
             }
           }
-          &.value{
+          &.value {
             h1 {
               font-weight: 400;
             }
@@ -63,5 +62,16 @@
       }
     }
   }
-
+  .footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    button {
+      width: 30%;
+      padding: 1%;
+      background: $primary;
+      color: $white-color;
+      border: none;
+    }
+  }
 }

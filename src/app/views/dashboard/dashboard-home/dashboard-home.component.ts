@@ -38,9 +38,7 @@ export class DashboardHomeComponent implements OnInit {
     this.learnerService.learners.subscribe(data => {
       this.countLearners = data.length;
     });
-    // this.smsService.learners.subscribe(data => {
-    //   this.countLearners = data.length;
-    // });
+    this.learnerService.getAll();
   }
   navigateToPage(url: string) {
     this.routTo.navigate([`dashboard/${url}`]);

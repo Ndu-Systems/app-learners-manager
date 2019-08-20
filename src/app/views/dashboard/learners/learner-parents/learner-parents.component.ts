@@ -3,6 +3,7 @@ import { LearnerParents } from 'src/app/_models';
 import { Observable } from 'rxjs';
 import { LearnerParentsService } from 'src/app/_services';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-learner-parents',
@@ -14,7 +15,8 @@ export class LearnerParentsComponent implements OnInit {
   @Input() learnerId: string;
   learnerParents: Observable<LearnerParents>;
   constructor(
-    private learnerParentsService: LearnerParentsService
+    private learnerParentsService: LearnerParentsService,
+    private routeTo: Router
   ) { }
 
   ngOnInit() {
@@ -26,5 +28,8 @@ export class LearnerParentsComponent implements OnInit {
       .pipe(map(learnerParents => learnerParents
         .find(item => item.learnerId === this.learnerId)));
     this.learnerParentsService.getParentsForLearner(this.learnerId);
+  }
+  linkParent() {
+    this.routeTo.navigate([`dashboard/link-parent-to-learner/${this.learnerId}`]);
   }
 }
