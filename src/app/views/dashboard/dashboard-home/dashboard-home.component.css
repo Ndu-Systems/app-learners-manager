@@ -1,0 +1,37 @@
+.cards {
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (28%)[3];
+      grid-template-columns: repeat(3, 28%);
+  grid-gap: 3rem;
+  text-align: center;
+}
+
+.cards .card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  background: #fff;
+  border-radius: 0.6rem;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.cards .card img {
+  width: 3rem;
+  float: left;
+}
+
+.cards .card h1 {
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.cards .card h1 span {
+  font-weight: 700;
+  display: block;
+}
+/*# sourceMappingURL=dashboard-home.component.css.map */
