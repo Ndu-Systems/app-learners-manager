@@ -1,0 +1,11 @@
+.dashboard {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 14% auto;
+      grid-template-columns: 14% auto;
+  background: #F5F6FA;
+  margin: 2rem;
+  border-radius: .8rem;
+  width: 95%;
+}
+/*# sourceMappingURL=dashboard.component.css.map */

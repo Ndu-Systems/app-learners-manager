@@ -48,20 +48,22 @@
     padding: 0%;
     color: black;
     margin: auto;
-    font-size: 32px;
+    font-size: 2rem;
     letter-spacing: .5rem;
     margin-top: 5rem;
+
 }
 
 .about-us-content {
     width: 100%;
     margin: auto;
     display: grid;
-    grid-template-columns: 40% 50%;
+    grid-template-columns: 45% 45%;
     margin-top: 5rem;
     margin-bottom: 5rem;
     text-align: center;
     justify-content: center;
+
 
     @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
@@ -69,56 +71,156 @@
     }
 
     img {
-        width: 90%;
+        width: 40%;
         margin: auto;
     }
 
     .paragraph {
-        padding-left: 1rem;
-        margin-right: 1rem;
+        margin-left: 10rem;
+
         p {
-            text-align: center;
             color: black;
             width: 100%;
             text-align: left;
-            line-height: 3ch;
+            line-height: 2ch;
+        }
+
+        h5 {
+            text-align: left;
+            padding-bottom: 1rem;
         }
     }
 
- 
 }
 
-.testimonials{
+.testimonials,
+.Pride {
     width: 100%;
     margin-bottom: 2rem;
+
     h1 {
         width: 100%;
-        padding: 0%;
-        margin-bottom: 2rem;
-        color: black;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
         font-weight: bold;
         text-align: center;
         font-size: 2rem;
         letter-spacing: .5rem;
         word-spacing: .5rem;
+        background: rgb(54, 52, 77);
     }
-    .parents-say{
+
+    .cards {
         text-align: center;
         width: 100%;
-        background: #042954;
         padding: 2rem;
-    }
-    .parents-say p {
-        width: 80%;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 30% 30% 30%;
         margin: auto;
-        color: #ffffff;
-        line-height: 2rem;
+        justify-content: center;
     }
+
+    .card,
+    .Pride-card {
+        border: solid 1px rgb(148, 147, 146);
+    }
+
+    .card p,
+    h3 {
+        width: 100%;
+        margin: auto;
+        color: black;
+        line-height: 2rem;
+        padding-top: 1rem;
+
+    }
+
+    .edu {
+        padding-top: 4.3rem;
+        padding-bottom: 4rem;
+    }
+
     img {
-        width: 3%;
+        width: 100%;
         margin: auto;
     }
 }
 
+.stats {
+    width: 100%;
+    padding: 5rem;
+    margin: auto;
+    background: #042954;
 
+    .cards {
+        width: 80;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20%;
+        grid-gap: 1rem;
+        justify-content: center;
 
+        img {
+            width: 30%;
+        }
+        .card {
+            text-align: center;
+
+            h1 {
+                font-size: 2rem;
+                padding: 0%;
+                color: #ffffff;
+            }
+
+            p {
+                color: grey;
+                letter-spacing: .1rem;
+            }
+        }
+    }
+
+}
+
+.news {
+    h1 {
+        text-align: center;
+        padding: 2rem;
+        font-size: 2rem;
+        letter-spacing: 1rem;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-gap: 2rem;
+        justify-content: center;
+        margin-bottom: 5rem;
+    }
+
+    .card {
+        width: 100%;
+        margin: auto;
+
+        h3,
+        h6,
+        p,
+        .btn {
+            text-align: center;
+            padding-top: .5rem;
+        }
+
+        .btn {
+            margin-top: 1rem;
+        }
+
+        button {
+            border: none;
+            width: 50%;
+            height: 2rem;
+            color: #ffffff;
+            cursor: pointer;
+            background: #042954;
+        }
+    }
+}

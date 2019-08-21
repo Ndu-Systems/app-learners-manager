@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "parent-learner.component.scss"
+    ],
+    "names": [],
+    "file": "parent-learner.component.css"
+}
