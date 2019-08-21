@@ -1,4 +1,7 @@
 
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap');
 @import './variables';
 @import './grid';
 @import './components/index';
@@ -13,10 +16,11 @@
 }
 
 body {
-  font-family: 'Red Hat Display', sans-serif;
-  // padding: 2rem;
+  font-family: 'Roboto', sans-serif;
 }
-
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
 h1 {
   font-size: 1.2rem;
   text-transform: capitalize;

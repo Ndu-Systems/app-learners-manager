@@ -1,0 +1,26 @@
+.about-us-content {
+  padding:4%;
+  width: 70%;
+  margin:  0 auto;
+  h1 {
+    text-align: center;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: 40% auto;
+    grid-gap: 1rem;
+    .image {
+        text-align: right;
+      img {
+        width: 30%;
+      }
+    }
+    .paragraph {
+        text-align-last: left;
+        p{
+            padding: 1rem;
+        }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { SignInComponent } from './sign-in';
 import { AboutUsComponent } from './about-us';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { IntroSectionComponent } from './index/intro-section/intro-section.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ export const declarations: Array<any> = [
   HomeComponent,
   SignInComponent,
   AboutUsComponent,
-  ContactUsComponent
+  ContactUsComponent,
+  IntroSectionComponent
 
 ];
 @NgModule({

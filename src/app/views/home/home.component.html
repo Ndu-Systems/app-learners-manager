@@ -1,20 +1,25 @@
 <div class="navbar">
     <div class="logo">
-        <a href="https://www.education.gov.za/" target="blank"> <img
-                src="../../../assets/images/home-page/department-logo.png" alt="logo"></a>
+       <h1> Siphiwe 
+           <span>Secondary School</span>
+        </h1>
     </div>
-    <div class="tabs">
+    <div class="navigation">
         <ul>
-            <li><a routerLink="">Home</a></li>
-            <li><a routerLink="/about-us">About Us</a></li>
-            <li><a routerLink="/contact-us">Contact Us</a></li>
+            <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+            <li><a routerLink="/about-us"  routerLinkActive="active" >About Us</a></li>
+            <li><a routerLink="/contact-us"  routerLinkActive="active" >Contact Us</a></li>
+            <li><a routerLink="/login"  routerLinkActive="active" >Sign in</a></li>
+            <li><a routerLink="">
+                <img src="assets/images/betta/search-solid.svg" alt="">
+            </a></li>
         </ul>
     </div>
-    <div class="login">
-        <li><a routerLink="/login">Login</a></li>
-    </div>
+
 </div>
 <router-outlet></router-outlet>
+
+
 <div class="footer">
     <section>
         <img src="../../../assets/images/home-page/footer img.png" alt="department logo">

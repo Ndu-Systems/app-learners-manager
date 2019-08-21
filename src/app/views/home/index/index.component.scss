@@ -1,226 +1,172 @@
 .container {
-    background-image: url(../../../../assets/images/home-page/kid.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
+  // background-image: url(../../../../assets/images/home-page/kid.png);
+  background-image: url(../../../../assets/images/betta/main.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
 
-    h1 {
-        width: 60%;
-        margin: auto;
-        padding-top: 15%;
-        font-size: 2rem;
-        color: #ffffff;
-        letter-spacing: .7ch;
-        line-height: 2.5ch;
-        text-align: center;
-    }
-
-    p {
-        color: #ffffff;
-        width: 50%;
-        font-weight: 400;
-        margin: auto;
-        margin-top: 2rem;
-        letter-spacing: .2ch;
-        line-height: 3ch;
-        text-align: center;
-
-    }
-
-    button {
-        background-color: #FDC500;
-        border: none;
-        width: 10%;
-        color: #ffffff;
-        letter-spacing: .2ch;
-        margin: auto;
-        display: flex;
-        margin-top: 5%;
-        justify-content: center;
-        padding: 1rem .5rem;
-        cursor: pointer;
-    }
-}
-
-.heading h1 {
-    width: 60%;
-    padding: 0%;
-    color: black;
+  h1 {
+    width: 40%;
     margin: auto;
-    font-size: 2rem;
-    letter-spacing: .5rem;
-    margin-top: 5rem;
-
-}
-
-.about-us-content {
-    width: 100%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 45% 45%;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+    padding-top: 15%;
+    color: #ffffff;
     text-align: center;
+    font-size: 3.2rem;
+    letter-spacing: .2rem;
+
+    span {
+      color: #d1ab6a;
+    }
+  }
+
+  p {
+    color: #ffffff;
+    width: 50%;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 2rem;
+    line-height: 3ch;
+    text-align: center;
+  }
+
+  button {
+    background-color: #d1ab6a;
+    border: none;
+    width: 10%;
+    color: #ffffff;
+    margin: auto;
+    display: flex;
+    margin-top: 5%;
     justify-content: center;
-
-
-    @media only screen and (max-width: 600px) {
-        grid-template-columns: 100%;
-        width: 100%;
-    }
-
-    img {
-        width: 40%;
-        margin: auto;
-    }
-
-    .paragraph {
-        margin-left: 10rem;
-
-        p {
-            color: black;
-            width: 100%;
-            text-align: left;
-            line-height: 2ch;
-        }
-
-        h5 {
-            text-align: left;
-            padding-bottom: 1rem;
-        }
-    }
-
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+  }
 }
+
 
 .testimonials,
 .Pride {
+  width: 100%;
+  margin-bottom: 2rem;
+
+  h1 {
     width: 100%;
-    margin-bottom: 2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+    background: rgb(54, 52, 77);
+  }
 
-    h1 {
-        width: 100%;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        color: #ffffff;
-        font-weight: bold;
-        text-align: center;
-        font-size: 2rem;
-        letter-spacing: .5rem;
-        word-spacing: .5rem;
-        background: rgb(54, 52, 77);
-    }
+  .cards {
+    text-align: center;
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 30% 30% 30%;
+    margin: auto;
+    justify-content: center;
+  }
 
-    .cards {
-        text-align: center;
-        width: 100%;
-        padding: 2rem;
-        display: grid;
-        grid-gap: 1rem;
-        grid-template-columns: 30% 30% 30%;
-        margin: auto;
-        justify-content: center;
-    }
+  .card,
+  .Pride-card {
+    border: solid 1px rgb(148, 147, 146);
+  }
 
-    .card,
-    .Pride-card {
-        border: solid 1px rgb(148, 147, 146);
-    }
+  .card p,
+  h3 {
+    width: 100%;
+    margin: auto;
+    color: black;
+    line-height: 2rem;
+    padding-top: 1rem;
+  }
 
-    .card p,
-    h3 {
-        width: 100%;
-        margin: auto;
-        color: black;
-        line-height: 2rem;
-        padding-top: 1rem;
+  .edu {
+    padding-top: 4.3rem;
+    padding-bottom: 4rem;
+  }
 
-    }
-
-    .edu {
-        padding-top: 4.3rem;
-        padding-bottom: 4rem;
-    }
-
-    img {
-        width: 100%;
-        margin: auto;
-    }
+  img {
+    width: 100%;
+    margin: auto;
+  }
 }
 
 .stats {
-    width: 100%;
-    padding: 5rem;
-    margin: auto;
-    background: #042954;
+  width: 100%;
+  padding: 5rem;
+  margin: auto;
+  background: #042954;
 
-    .cards {
-        width: 80;
-        display: grid;
-        grid-template-columns: 20% 20% 20% 20%;
-        grid-gap: 1rem;
-        justify-content: center;
+  .cards {
+    width: 80;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-gap: 1rem;
+    justify-content: center;
 
-        img {
-            width: 30%;
-        }
-        .card {
-            text-align: center;
-
-            h1 {
-                font-size: 2rem;
-                padding: 0%;
-                color: #ffffff;
-            }
-
-            p {
-                color: grey;
-                letter-spacing: .1rem;
-            }
-        }
+    img {
+      width: 30%;
     }
+    .card {
+      text-align: center;
 
+      h1 {
+        font-size: 2rem;
+        padding: 0%;
+        color: #ffffff;
+      }
+
+      p {
+        color: grey;
+      }
+    }
+  }
 }
 
 .news {
-    h1 {
-        text-align: center;
-        padding: 2rem;
-        font-size: 2rem;
-        letter-spacing: 1rem;
+  h1 {
+    text-align: center;
+    padding: 2rem;
+    font-size: 2rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 2rem;
+    justify-content: center;
+    margin-bottom: 5rem;
+  }
+
+  .card {
+    width: 100%;
+    margin: auto;
+
+    h3,
+    h6,
+    p,
+    .btn {
+      text-align: center;
+      padding-top: 0.5rem;
     }
 
-    .cards {
-        display: grid;
-        grid-template-columns: 30% 30% 30%;
-        grid-gap: 2rem;
-        justify-content: center;
-        margin-bottom: 5rem;
+    .btn {
+      margin-top: 1rem;
     }
 
-    .card {
-        width: 100%;
-        margin: auto;
-
-        h3,
-        h6,
-        p,
-        .btn {
-            text-align: center;
-            padding-top: .5rem;
-        }
-
-        .btn {
-            margin-top: 1rem;
-        }
-
-        button {
-            border: none;
-            width: 50%;
-            height: 2rem;
-            color: #ffffff;
-            cursor: pointer;
-            background: #042954;
-        }
+    button {
+      border: none;
+      width: 50%;
+      height: 2rem;
+      color: #ffffff;
+      cursor: pointer;
+      background: #042954;
     }
+  }
 }

@@ -208,7 +208,7 @@
 }
 
 .container-section .form .controls .alert {
-  color: #ffcc00;
+  color: #d1ab6a;
   text-transform: capitalize;
 }
 
@@ -505,7 +505,7 @@ a.cta:hover {
 
 .banner h1 {
   text-align: center;
-  color: #ffcc00;
+  color: #d1ab6a;
   margin: auto 0;
 }
 
@@ -561,7 +561,7 @@ a.cta:hover {
 }
 
 .body .form .controls .alert {
-  color: #ffcc00;
+  color: #d1ab6a;
 }
 
 .banner {
