@@ -1,0 +1,36 @@
+.stats {
+    width: 100%;
+    padding: 5rem;
+    margin: auto;
+    background: #042954;
+    background-image: url(../../../../../assets/images/betta/classroom.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .cards {
+        width: 80;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20%;
+        grid-gap: 1rem;
+        justify-content: center;
+
+        img {
+            width: 30%;
+        }
+
+        .card {
+            text-align: center;
+
+            h1 {
+                font-size: 2rem;
+                padding: 0%;
+                color: #ffffff;
+            }
+
+            p {
+                color: grey;
+            }
+        }
+    }
+}

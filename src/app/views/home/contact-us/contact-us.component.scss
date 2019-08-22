@@ -1,0 +1,57 @@
+.google-maps {
+h1 {
+        font-size: 30px;
+        font-weight: 700;
+        color: #08275d;
+        padding: 2rem;
+        margin-left: 5rem;
+    }
+}
+
+.contacts {
+    display: grid;
+    grid-template-columns: 80% auto;
+    .container {
+        padding: 20px;
+        padding-top: 0%;
+        width: 50%;
+        margin: 5rem;
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #08275d;
+            padding-left: 0%;
+        }
+
+        input[type=text],
+        input[type=phonenumber],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+        }
+
+        input[type=submit] {
+            background: #d1ab6a;
+            color: #fff;
+            width: 33%;
+            float: right;
+            padding: 1rem 0.5rem;
+            border: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        input[type=submit]:hover {
+            background-color: #d1ab6a;
+            background: green;
+            justify-items: left;
+        }
+    }
+}

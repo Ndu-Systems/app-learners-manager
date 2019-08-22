@@ -6,6 +6,14 @@ import { SignInComponent } from './sign-in';
 import { AboutUsComponent } from './about-us';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { IntroSectionComponent } from './index/intro-section/intro-section.component';
+import { TestimonialsComponent } from './index/Testimonials/Testimonials.component';
+import {SubjectsComponent} from './index/Subjects/Subjects.component';
+import { StatisticsComponent } from './index/statistics/statistics.component';
+import { NewsComponent } from './index/news/news.component';
+
+
+
+
 
 
 const routes: Routes = [
@@ -24,8 +32,11 @@ export const declarations: Array<any> = [
   SignInComponent,
   AboutUsComponent,
   ContactUsComponent,
-  IntroSectionComponent
-
+  IntroSectionComponent,
+  TestimonialsComponent,
+  SubjectsComponent,
+  StatisticsComponent,
+  NewsComponent,
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,0 +1,50 @@
+.Pride {
+    width: 100%;
+    margin-bottom: 2rem;
+  
+    h1 {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      font-size: 2rem;
+      background: rgb(54, 52, 77);
+    }
+  
+    .cards {
+      text-align: center;
+      width: 100%;
+      padding: 2rem;
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: 30% 30% 30%;
+      margin: auto;
+      justify-content: center;
+    }
+  
+    .card,
+    .Pride-card {
+      border: solid 1px rgb(148, 147, 146);
+    }
+  
+    .card p,
+    h3 {
+      width: 100%;
+      margin: auto;
+      color: black;
+      line-height: 2rem;
+      padding-top: 1rem;
+    }
+  
+    .edu {
+      padding-top: 4.3rem;
+      padding-bottom: 4rem;
+    }
+  
+    img {
+      width: 100%;
+      margin: auto;
+    }
+  }
