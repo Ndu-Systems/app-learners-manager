@@ -1,9 +1,14 @@
 <div class="main">
   <div class="cards">
-    <div class="card">
-      <img src="../../../../assets/images/home-page/mom2.1.jpg" alt="mother">
+    <div class="left slide-btn" (click)="next(0)"> Prev </div>
+    <div class="right slide-btn" (click)="next(1)"> Next </div>
+    <div class="card" *ngIf="showOne">
+      <img src="assets/images/home-page/mom2.1.jpg" alt="mother">
       <h3>Miss Mbatha</h3>
       <h5>Parent</h5>
+      <h6>
+          "
+        </h6>
       <blockquote>
         Sithanda ukubonga ngosizo lika Mr Mbense ekuhleleni umcimbi omuhle kakhulu wosuku
         lokuzalwa lomntwana wethu u Zakhele Mbatha.Okubaluleke kakhulu, izingane zazijabulela kakhulu imidlalo futhi
@@ -11,18 +16,24 @@
         nesikhathi esihle kakhulu.
       </blockquote>
     </div>
-    <div class="card">
-      <img src="../../../../assets/images/home-page/dad1.jpg" alt="father">
+    <div class="card"  *ngIf="showTwo">
+      <img src="assets/images/home-page/dad1.jpg" alt="father">
       <h3>Mr S'beko</h3>
       <h5>Parent</h5>
+      <h6>
+          "
+        </h6>
       <blockquote>Siyabonga ngokunikela inkulisa enhle kangaka ngemisebenzi eminingi kangaka yothisha. U Xolani
         uyasithanda kakhulu iSiphiwe Secondary Schoolf uthi nathi siyayithanda. 
       </blockquote> 
     </div>
-    <div class="card">
-      <img src="../../../../assets/images/home-page/mom1.jpg" alt="mother">
+    <div class="card"  *ngIf="showThree">
+      <img src="assets/images/home-page/mom1.jpg" alt="mother">
       <h3>Mrs.Nkosi</h3>
       <h5>Parent</h5>
+      <h6>
+        "
+      </h6>
       <blockquote>
         In these few months
         we like the place and the culture. As I moved a lot and experinced to see different schools but , from my bottom
