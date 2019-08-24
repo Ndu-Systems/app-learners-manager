@@ -4,6 +4,21 @@
   </h1>
 
   <div class="cards">
+      <div class="card" (click)="navigateToPage('learners')">
+          <div>
+            <img src="../../../../assets/images/dashboard/student/students-icon.svg" alt="">
+          </div>
+    
+          <div>
+            <h1>
+              Learners
+              <span>
+                {{countLearners}}
+              </span>
+            </h1>
+          </div>
+        </div>
+
     <div class="card" (click)="navigateToPage('parents')">
       <div>
         <img src="assets/images/parents.svg" alt="">
@@ -18,20 +33,22 @@
         </h1>
       </div>
     </div>
-    <div class="card" (click)="navigateToPage('learners')">
-      <div>
-        <img src="../../../../assets/images/dashboard/student/students-icon.svg" alt="">
-      </div>
 
-      <div>
-        <h1>
-          Learners
-          <span>
-            {{countLearners}}
-          </span>
-        </h1>
+    <div class="card" (click)="navigateToPage('asserts')">
+        <div>
+          <img src="assets/images/dashboard/student/message-sent.svg" alt="">
+        </div>
+  
+        <div>
+          <h1>
+              Messages Sent
+            <span>
+              {{countMessageSent}}
+            </span>
+          </h1>
+        </div>
       </div>
-    </div>
+  
     <div class="card" (click)="navigateToPage('asserts')">
       <div>
         <img src="assets/images/asserts.svg" alt="">

@@ -17,6 +17,7 @@ export class DashboardHomeComponent implements OnInit {
   countParents = 0;
   countLearners = 0;
   countMessages = 0;
+  countMessageSent = 'N/A';
   parents = 'parents';
   learners = 'learners';
   constructor(
