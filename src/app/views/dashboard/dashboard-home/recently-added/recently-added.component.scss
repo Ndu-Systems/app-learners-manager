@@ -1,14 +1,15 @@
 .data {
-    height: 30vh;
+    height: 45vh;
     overflow-y: hidden;
   h1 {
-    font-weight: 500;
-    font-size: 1.1rem;
     box-shadow: -2px 6px 47px 3px rgba(214, 214, 214, 1);
     background: #ffffff;
     text-align-last: left;
     padding: 1rem;
+    font-weight: 400;
+    font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
+    text-align: right;
 
 
     span {
@@ -22,15 +23,24 @@
       width: 100%;
       table-layout: fixed;
     tr {
+        border: none;
+
         th{
             text-align: left;
             font-size: 0.9rem;
+            padding:  .8rem .2rem;
+            border-bottom: 1px solid #D5D6D9;
+
+
 
         }
       td {
         text-align: left;
         width: 20%;
         font-size: 0.8rem;
+        padding: 1rem;
+        border-bottom: 1px solid #D5D6D9;
+
 
         span {
           display: block;
