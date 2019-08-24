@@ -1,0 +1,42 @@
+.data {
+    height: 30vh;
+    overflow-y: hidden;
+  h1 {
+    font-weight: 500;
+    font-size: 1.1rem;
+    box-shadow: -2px 6px 47px 3px rgba(214, 214, 214, 1);
+    background: #ffffff;
+    text-align-last: left;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+
+
+    span {
+      font-weight: 700;
+      display: block;
+    }
+  }
+
+  table {
+      margin: 1rem;
+      width: 100%;
+      table-layout: fixed;
+    tr {
+        th{
+            text-align: left;
+            font-size: 0.9rem;
+
+        }
+      td {
+        text-align: left;
+        width: 20%;
+        font-size: 0.8rem;
+
+        span {
+          display: block;
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+}

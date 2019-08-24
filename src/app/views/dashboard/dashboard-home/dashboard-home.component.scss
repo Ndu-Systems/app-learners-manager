@@ -21,6 +21,8 @@
     h1 {
       font-weight: 400;
       font-size: 1.2rem;
+      font-family: 'Roboto', sans-serif;
+
       span {
         font-weight: 700;
         display: block;
@@ -29,10 +31,11 @@
   }
 }
 
-.cols-2{
+.cols-2 {
   grid-template-columns: repeat(2, 43.6%);
-.cols-1{
-  grid-template-columns: 100%;
-
-}
+  .cols-1 {
+    grid-template-columns: 100%;
+    padding: 0;
+    background: #ffffff;
+  }
 }
