@@ -23,6 +23,9 @@ img.icon {
 
     h1 {
       font-weight: 500;
+      font-weight: 400;
+      font-size: 1.2rem;
+      font-family: 'Roboto', sans-serif;
     }
   }
 
@@ -46,6 +49,7 @@ img.icon {
         &.title {
           h1 {
             font-weight: 800;
+            font-family: 'Roboto', sans-serif;
           }
         }
       }

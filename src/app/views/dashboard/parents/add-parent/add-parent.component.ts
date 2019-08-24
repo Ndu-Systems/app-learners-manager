@@ -42,6 +42,7 @@ export class AddParentComponent implements OnInit {
 
   save(model) {
     this.parentService.addParent(model);
+    this.toParents();
   }
 
   toParents() {
