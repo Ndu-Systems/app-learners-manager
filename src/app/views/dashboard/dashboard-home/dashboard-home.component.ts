@@ -17,6 +17,8 @@ export class DashboardHomeComponent implements OnInit {
   countParents = 0;
   countLearners = 0;
   countMessages = 0;
+  parents = 'parents';
+  learners = 'learners';
   constructor(
     private routTo: Router,
     private assertService: AssertService,

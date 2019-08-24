@@ -28,3 +28,11 @@
     }
   }
 }
+
+.cols-2{
+  grid-template-columns: repeat(2, 43.6%);
+.cols-1{
+  grid-template-columns: 100%;
+
+}
+}

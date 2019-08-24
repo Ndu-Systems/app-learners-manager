@@ -1,5 +1,4 @@
 .main {
-  height: 80vh;
   border-radius: 0.8rem;
 
   .header {
@@ -28,6 +27,8 @@
         grid-template-columns: 8% auto;
         img {
           cursor: pointer;
+          width: 1.2rem;
+          margin-right: 5rem;
         }
         a {
           color: #f5f6fa;
