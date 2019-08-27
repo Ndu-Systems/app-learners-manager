@@ -14,9 +14,10 @@
     justify-content: center;
     position: relative;
     height: 30vh;
+
     .slide-btn {
       color: white;
-      width: 10rem;
+      width: 1.5rem;
       top: 45%;
       cursor: pointer;
     }
@@ -27,6 +28,7 @@
     .right {
       position: absolute;
       right: 0;
+      margin-right: 4rem;
     }
     .card {
       text-align: center;

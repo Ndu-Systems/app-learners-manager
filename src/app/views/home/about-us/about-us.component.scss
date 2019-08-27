@@ -2,50 +2,16 @@
 .section{
     height: 5rem;;
 }
-
-// .cards {
-//     width: 100%;
-//     margin: auto;
-//     justify-content: center;
-//     box-sizing: border-box;
-//     margin-bottom: 4.5rem;
-//     margin-top: 2rem;
-//     display: grid;
-//     grid-template-columns: repeat(4, 20%);
-//     grid-gap: 2rem;
-
-//     @media only screen and (max-width: 600px) {
-//         grid-template-columns: 100%;
-//     }
-
-//     .card {
-//         justify-content: center;
-//         width: 100%;
-//         box-sizing: border-box;
-//         text-align: center;
-//         padding-bottom: 2rem;
-//         border-radius: .3rem;
-//         -webkit-box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 1);
-//         -moz-box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 1);
-//         box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 1);
-
-//         h2,
-//         p {
-//             font-size: 1rem;
-//             justify-content: center;
-//             padding: 1rem;
-//             padding-top: 0%;
-//             font-size: large;
-
-//         }
-
-//         img {
-//             width: 20%;
-//             margin: auto;
-//             justify-content: center;
-//             align-items: center;
-//             justify-content: center;
-//             display: flex;
-//         }
-//     }
-// }
+.stars {
+    display: flex;
+    width: 10%;
+    list-style-type: none;
+    margin-left: 5rem;
+    text-align: center;
+    margin: auto;
+   justify-content: center;
+   margin-bottom: 5rem;
+    img {
+      width: 1rem;
+    }
+  }
