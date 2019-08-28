@@ -41,4 +41,19 @@
     cursor: pointer;
   }
 }
-
+.section{
+  height: 5rem;;
+}
+.stars {
+  display: flex;
+  width: 10%;
+  list-style-type: none;
+  margin-left: 5rem;
+  text-align: center;
+  margin: auto;
+ justify-content: center;
+ margin-bottom: 5rem;
+  img {
+    width: 1rem;
+  }
+}
