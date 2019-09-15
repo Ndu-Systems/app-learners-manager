@@ -88,7 +88,7 @@
             <div class="controls">
                 <label for="Section" class="form-label">section</label><br />
                 <select formControlName="Section" class="input-field">
-                  <option value="">Select Gender</option>
+                  <!-- <option value="">Select Gender</option> -->
                   <option *ngFor="let section of sections" [ngValue]="section.description" (change)="changeSection($event)">
                     {{section.description}}</option>
                 </select>
