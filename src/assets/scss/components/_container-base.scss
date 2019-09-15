@@ -3,8 +3,8 @@
   background: #fff;
   padding: 2rem;
   padding-bottom: 4rem;
-  margin: 2rem 0;
-  height: 70vh;
+  margin: 0.5rem 0;
+  height: 78vh;
   overflow-y: scroll;
   position: relative;
 
@@ -19,7 +19,7 @@
   }
 
   &.content {
-    padding: 2rem 0;
+    padding: 0.5rem 0;
     width: 35vw;
 
     .header {
@@ -33,9 +33,7 @@
     }
 
     .container-body {
-      padding: 2rem;
-      padding-top: 1rem;
-
+      height: 40rem;
       &.col-1-of-2 {
         grid-template-columns: 30% auto;
         margin-bottom: 0;
@@ -44,19 +42,18 @@
       .details {
         &.col-1-of-2 {
           grid-template-columns: 30% auto;
-          grid-gap: 1rem;
+          grid-gap: 0;
+          margin-bottom: 0rem;
         }
 
-        div {
+        h1 {
+          font-weight: 700;
+          padding-bottom: 0;
           &.title {
-            h1 {
-              font-weight: 700;
-            }
+
           }
           &.value {
-            h1 {
-              font-weight: 400;
-            }
+            font-weight: 400;
           }
         }
       }
@@ -72,6 +69,7 @@
       background: $primary;
       color: $white-color;
       border: none;
+      cursor: pointer;
     }
   }
 }

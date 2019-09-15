@@ -20,28 +20,28 @@
             <div class="controls">
               <label for="FirstName" class="form-label">first name(s)</label><br />
               <input type="text" class="input-field" formControlName="FirstName">
-              <div class="alert" *ngIf="!rForm.controls['FirstName'].valid">
+              <div class="alert" *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">
                 name of a learner is required
               </div>
             </div>
             <div class="controls">
               <label for="LastName" class="form-label">surname</label><br />
               <input type="text" class="input-field" formControlName="LastName">
-              <div class="alert" *ngIf="!rForm.controls['LastName'].valid">
+              <div class="alert" *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">
                 surname of a learner is required
               </div>
             </div>
             <div class="controls">
               <label for="DateOfBirth" class="form-label">date of birth</label><br />
               <input type="date" class="input-field" formControlName="DateOfBirth">
-              <div class="alert" *ngIf="!rForm.controls['DateOfBirth'].valid">
+              <div class="alert" *ngIf="!rForm.controls['DateOfBirth'].valid && rForm.controls['DateOfBirth'].touched">
                 date of birth of a learner is required
               </div>
             </div>
             <div class="controls">
               <label for="IDNumber" class="form-label">identification number</label><br />
               <input type="number" class="input-field" formControlName="IDNumber">
-              <div class="alert" *ngIf="!rForm.controls['IDNumber'].valid">
+              <div class="alert" *ngIf="!rForm.controls['IDNumber'].valid && rForm.controls['IDNumber'].touched">
                 identification number of a learner is required
               </div>
             </div>
@@ -52,7 +52,7 @@
                 <option *ngFor="let gender of genders" [ngValue]="gender.description" (change)="changeGender($event)">
                   {{gender.description}}</option>
               </select>
-              <div class="alert" *ngIf="!rForm.controls['Gender'].valid">
+              <div class="alert" *ngIf="!rForm.controls['Gender'].valid && rForm.controls['Gender'].touched">
                 gender of a learner is required
               </div>
             </div>
@@ -63,14 +63,14 @@
                 <option *ngFor="let race of races" [ngValue]="race.description" (change)="changeRace($event)">
                   {{race.description}}</option>
               </select>
-              <div class="alert" *ngIf="!rForm.controls['Race'].valid">
+              <div class="alert" *ngIf="!rForm.controls['Race'].valid && rForm.controls['Race'].touched">
                 the race of a learner is required
               </div>
             </div>
             <div class="controls">
               <label for="SchoolName" class="form-label">school name</label><br />
               <input type="text" class="input-field" formControlName="SchoolName">
-              <div class="alert" *ngIf="!rForm.controls['SchoolName'].valid">
+              <div class="alert" *ngIf="!rForm.controls['SchoolName'].valid && rForm.controls['SchoolName'].touched">
                 school name of a learner is required
               </div>
             </div>
@@ -81,7 +81,7 @@
                   <option *ngFor="let grade of grades" [ngValue]="grade.description" (change)="changeGrade($event)">
                     {{grade.description}}</option>
                 </select>
-                <div class="alert" *ngIf="!rForm.controls['Grade'].valid">
+                <div class="alert" *ngIf="!rForm.controls['Grade'].valid && rForm.controls['Grade'].touched">
                   learner's grade is required
                 </div>
               </div>
@@ -92,7 +92,7 @@
                   <option *ngFor="let section of sections" [ngValue]="section.description" (change)="changeSection($event)">
                     {{section.description}}</option>
                 </select>
-                <div class="alert" *ngIf="!rForm.controls['Section'].valid">
+                <div class="alert" *ngIf="!rForm.controls['Section'].valid && rForm.controls['Section'].touched">
                   learner's grade section is required
                 </div>
               </div>

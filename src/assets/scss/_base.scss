@@ -38,7 +38,7 @@ h1 {
 a {
   &.cta {
     font-weight: 700;
-    color: $sky-blue;
+    color: $blue-color;
     text-transform: capitalize;
     cursor: pointer;
 
@@ -49,8 +49,8 @@ a {
 }
 
 .main-section {
-  padding: 2rem;
-  height: 90vh;
+  padding: 0 2rem;
+  height: 85vh;
 }
 
 
