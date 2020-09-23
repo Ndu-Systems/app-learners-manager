@@ -1,77 +1,24 @@
-<div class="main-section">
-  <h1>
-    Dashboard Admin
-  </h1>
-
-  <div class="cards">
-      <div class="card" (click)="navigateToPage('learners')">
-          <div>
-            <img src="../../../../assets/images/dashboard/student/students-icon.svg" alt="">
-          </div>
-    
-          <div>
-            <h1>
-              Learners
-              <span>
-                {{countLearners}}
-              </span>
-            </h1>
-          </div>
-        </div>
-
-    <div class="card" (click)="navigateToPage('parents')">
-      <div>
-        <img src="assets/images/parents.svg" alt="">
-      </div>
-
-      <div>
-        <h1>
-          Parents
-          <span>
-            {{countParents}}
-          </span>
-        </h1>
-      </div>
+<div class="headers">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+  <app-header-banner [headerBanner]="headerBanner" (showModalEventEmitter)="add()"></app-header-banner>
+</div>
+<div class="over-view" *ngIf="statistics">
+  <h1 class="title">Overview</h1>
+  <hr>
+  <app-stat-card [statistics]="statistics"></app-stat-card>
+</div>
+<div class="data-card-table">
+  <h1 class="title">Learners with pending payments</h1>
+  <mat-card>
+    <div class="header-row">
+      <h1 class="ht">Name</h1>
+      <h1 class="ht">Contact #</h1>
+      <h1 class="ht">Email</h1>
     </div>
-
-    <div class="card disabled" (click)="navigateToPage('')">
-        <div>
-          <img src="assets/images/dashboard/student/message-sent.svg" alt="">
-        </div>
-  
-        <div>
-          <h1>
-              Messages Sent
-            <span>
-              {{countMessageSent}}
-            </span>
-          </h1>
-        </div>
-      </div>
-  
-    <div class="card" (click)="navigateToPage('asserts')">
-      <div>
-        <img src="assets/images/asserts.svg" alt="">
-      </div>
-
-      <div>
-        <h1>
-          Asserts
-          <span>
-            {{countAsserts}}
-          </span>
-        </h1>
-      </div>
+    <div class="data-row" *ngFor="let item of leaners">
+      <h1 class="td header">{{item.Name}} {{item.Surname}}</h1>
+      <h1 class="td">{{item.PhoneNumber}}</h1>
+      <h1 class="td">{{item.Email}}</h1>
     </div>
-  </div>
-
-  <div class="cards cols-2">
-    <div class="card cols-1" >
-      <app-recently-added [listType]="learners"></app-recently-added>
-
-    </div>
-    <div class="card cols-1" >
-      <app-recently-added [listType]="parents"></app-recently-added>
-    </div>
-  </div>
+  </mat-card>
 </div>

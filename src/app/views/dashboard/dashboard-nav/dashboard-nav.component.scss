@@ -1,0 +1,169 @@
+@import '../../../../assets/scss/color';
+
+.nav {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: $darker-grey;
+
+  .logo {
+    text-align: center;
+
+    img {
+      width: 5.125rem;
+    }
+  }
+
+  .user-profile {
+    text-align: center;
+    padding: 2rem 0;
+    padding-bottom: 0;
+    margin-top: 4rem;
+    border-top: solid 1px $grey;
+
+    h1 {
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    img {
+      width: 4.5rem;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 2rem;
+
+    li {
+
+      margin-top: 3rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 12px;
+      color: $darker-grey;
+      font-weight: 700;
+
+      .nav-item {
+        // padding: 0.5rem 1rem;
+        width: 11rem;
+        text-align: center;
+        display: grid;
+        grid-template-columns: 0% auto;
+
+        img {
+          position: relative;
+          left: 1rem;
+
+          &.hl-on {
+            display: none;
+          }
+
+          &.hl-off {
+            display: inline-block;
+          }
+        }
+      }
+
+      &.active-link {
+        font-weight: 800;
+        color: $primary;
+
+        .nav-item {
+          border-radius: 3.125rem;
+
+          img {
+            position: relative;
+            left: 1rem;
+
+            &.hl-on {
+              display: inline-block;
+            }
+
+            &.hl-off {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &.logout {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: $grey;
+        text-align: center;
+      }
+
+
+    }
+
+  }
+
+  &.mobile {
+    display: none;
+    background: $white;
+
+    .modal {
+      h1 {
+        color: $black;
+      }
+
+      bottom: 0;
+      top:unset;
+      left: 0;
+      right: 0;
+      width: 100%;
+      position: fixed;
+      ul {
+        padding: 1rem;
+      }
+      .nav-item {
+        img {
+          position: relative;
+          left: 1rem;
+
+          &.hl-on {
+            display: inline-block;
+          }
+
+          &.hl-off {
+            display: none;
+          }
+        }
+      }
+      .logout {
+        padding: 2rem;
+      }
+
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    &.desktop {
+      display: none;
+    }
+
+    padding: 1rem;
+
+    &.mobile {
+      display: block;
+
+      .col-1-of-3 {
+        grid-template-columns: 15% auto 15%;
+
+        img {
+          margin: 1rem;
+        }
+      }
+
+    }
+  }
+
+}

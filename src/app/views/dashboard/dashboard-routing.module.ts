@@ -1,57 +1,56 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { SideNavComponent } from './side-nav';
-import { DashboardHomeComponent, RecentlyAddedComponent } from './dashboard-home';
-import { CommunicationComponent } from './communication';
-import { AssertsComponent, AddAssertComponent } from './asserts';
-import { ParentsComponent, AddParentComponent, ParentDetailsComponent , ParentLearnerComponent} from './parents';
-import { LearnersComponent, AddLearnerComponent, LearnerDetailsComponent, LearnerParentsComponent } from './learners';
-import { LinkLearnerToParentComponent } from './parents/link-learner-to-parent/link-learner-to-parent.component';
-import { LinkParentToLearnerComponent } from './learners/link-parent-to-learner/link-parent-to-learner.component';
+import { DashboardNavComponent } from './dashboard-nav/dashboard-nav.component';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { GradesComponent } from './grades/grades/grades.component';
+import { GradeComponent } from './grades/grade/grade.component';
+import { SubjectsComponent } from './subject/subjects/subjects.component';
+import { SubjectComponent } from './subject/subject/subject.component';
+import { TopicComponent } from './subject/topic/topic.component';
+import { TestsComponent } from './tests/tests/tests.component';
+import { TestComponent } from './tests/test/test.component';
+import { HeaderBannerComponent, BreadcrumbComponent, StatCardComponent } from './shared';
+import { LearnersComponent } from './learners/learners/learners.component';
+import { StudentsubjectsPipe } from 'src/app/_pipes/studentsubjects.pipe';
+
 
 const routes: Routes = [
   {
-    path: '', component: DashboardComponent, children: [
+    path: '', component: DashboardComponent,
+    children: [
       { path: '', component: DashboardHomeComponent },
-      { path: 'messaging', component: CommunicationComponent },
-      { path: 'asserts', component: AssertsComponent },
-      { path: 'add-assert', component: AddAssertComponent },
-      { path: 'parents', component: ParentsComponent },
-      { path: 'parents/:id', component: ParentDetailsComponent },
-      { path: 'link-learner-to-parent/:id', component: LinkLearnerToParentComponent },
-      { path: 'add-parent', component: AddParentComponent },
+      { path: 'grades', component: GradesComponent },
+      { path: 'grade', component: GradeComponent },
+      { path: 'subjects/:id', component: SubjectsComponent },
+      { path: 'subject/:id', component: SubjectComponent },
+      { path: 'topic/:id', component: TopicComponent },
+      { path: 'tests/:id', component: TestsComponent },
+      { path: 'test/:id', component: TestComponent },
       { path: 'learners', component: LearnersComponent },
-      { path: 'learners/:id', component: LearnerDetailsComponent },
-      { path: 'add-learner', component: AddLearnerComponent },
-      { path: 'link-parent-to-learner/:id', component: LinkParentToLearnerComponent },
-
     ]
-  },
+  }
 ];
 export const declarations: Array<any> = [
   DashboardComponent,
-  SideNavComponent,
-  DashboardHomeComponent,
-  RecentlyAddedComponent,
-  CommunicationComponent,
-  AssertsComponent,
-  AddAssertComponent,
-  ParentsComponent,
-  AddParentComponent,
-  ParentDetailsComponent,
-  ParentLearnerComponent,
-  LinkLearnerToParentComponent,
+  DashboardNavComponent,
+  DashboardHomeComponent, 
+  GradeComponent, 
+  GradesComponent,
+  SubjectsComponent,
+  SubjectComponent,
+  TopicComponent,
+  TestsComponent,
+  TestComponent,
+  HeaderBannerComponent,
+  BreadcrumbComponent,
+  StatCardComponent,
   LearnersComponent,
-  LearnerDetailsComponent,
-  LearnerParentsComponent,
-  AddLearnerComponent,
-  LearnerDetailsComponent,
-  LinkParentToLearnerComponent
-
+  StudentsubjectsPipe
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class DashboardRoutingModule { }
+

@@ -1,0 +1,60 @@
+.account {
+    padding: 2rem;
+
+    form {
+        width: 60%;
+        margin: 0 auto;
+
+        .form-group {
+            margin: 0.5rem 0;
+        }
+
+        .alert,
+        .error {
+            color: $danger;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        .cta {
+            margin: .5rem 0;
+            display: flex;
+            h1 {
+                font-size: 1rem;
+                color: $grey;
+                font-weight: 500;
+                color: $black;
+            }
+            a {
+                text-decoration: none;
+                font-weight: 500;
+                margin-left: .45rem;
+                color: $primary;
+            }
+        }
+    }
+
+
+    .side-image {
+        img {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            img {
+                display: none;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        padding: 1rem;
+
+        form {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+}

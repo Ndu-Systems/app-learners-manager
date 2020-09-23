@@ -1,0 +1,92 @@
+<div class="main">
+  <div class="arrow-back" (click)="backClicked()">
+    <div class="img">
+      <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
+    </div>
+
+    <div class="heading">
+      {{content?.Tittle}}
+    </div>
+  </div>
+<div class="viewer">
+  <div [innerHtml]="htmlPreview"></div>
+</div>
+  <div class="finish">
+    <button mat-button color="primary" (click)="finishReading()">
+      I understand this topic
+    </button>
+  </div>
+
+  <div class="comment" *ngIf="user">
+    <div class="user">
+      <div class="dp">
+        {{user.Name[0]}}{{user.Surname[0]}}
+      </div>
+    </div>
+    <div class="text">
+      <textarea [(ngModel)]="comment" placeholder="What do you think of this topic?"></textarea>
+
+      <button mat-button color="primary" class="secondary post-btn" (click)="postComment()">
+        Post comment or Ask question
+      </button>
+    </div>
+  </div>
+
+
+
+  <div class="comments" *ngIf="content">
+    <div class="comment wider" *ngFor="let comment of content.Comments  ; let i = index">
+      <span *ngIf="!comment.ParentId">
+        <div class="user-dp">
+          <div class="dp">
+            {{comment.User.Name[0]}}{{comment.User.Surname[0]}}
+          </div>
+
+          <p>
+            {{comment.User.Name}} {{comment.User.Surname}}
+          </p>
+        </div>
+
+        <div class="comment-text">
+          {{comment.Name}}
+          <div class="replies">
+            <div class="comment wider" *ngFor="let rep of comment.Replies  ; let i = index">
+              <div class="user-dp">
+                <div class="dp">
+                  {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
+                </div>
+
+                <p>
+                  {{rep.User.Name}} {{rep.User.Surname}}
+                </p>
+              </div>
+
+              <div class="comment-text">
+                {{rep.Name}}
+              </div>
+            </div>
+          </div>
+
+          <div class="reply">
+            <a (click)="reply(comment)" *ngIf="!comment.ShowReply">
+              <span class="material-icons">
+                reply
+              </span>
+              Reply
+            </a>
+
+            <div class="reply-input" *ngIf="comment.ShowReply">
+              <input type="text" [(ngModel)]="comment.Reply" placeholder="Type reply message here...">
+              <button (click)="postReplyComment(comment)">
+                <span class="material-icons">
+                  send
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+
+</div>

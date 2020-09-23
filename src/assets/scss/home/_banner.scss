@@ -1,0 +1,49 @@
+.home {
+    .banner {
+        text-align: center;
+        padding: 5rem;
+        padding-bottom: 2rem;
+
+        h1 {
+            margin: 1rem auto;
+        }
+
+        .sub-header {
+            width: 32.688rem;
+        }
+
+        button {
+            &.mat-primary {
+                width: 11.063rem;
+                height: 3.625rem;
+                margin: 2rem;
+            }
+        }
+
+        // iphoneX
+        @media only screen and (max-width: 600px) {
+            padding: 0 2.25rem;
+            margin-top: 10rem;
+            .sub-header {
+                width: 100%;
+            }
+
+            button {
+                &.mat-primary {
+                    width: 100%;
+                    margin: 2rem 0;
+
+                }
+            }
+        }
+    }
+
+    .image {
+        text-align: center;
+        @media only screen and (max-width: 600px) {
+            img {
+                width: 19rem;
+            }
+        }
+    }
+}

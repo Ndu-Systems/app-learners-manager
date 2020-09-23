@@ -1,0 +1,32 @@
+@import '../../../../../assets/scss/color';
+
+.main {
+    padding: 5rem 1rem;
+    text-align: center;
+
+    .viewer {
+        img {
+            width: 100%;
+        }
+    }
+
+}
+
+
+
+.reply-input {
+
+
+    input {
+        height: 3rem;
+        width: 100%;
+    }
+
+    button {
+        height: 3rem;
+        background: $primary;
+        color: $black;
+        width: 100%;
+        border: none;
+    }
+}

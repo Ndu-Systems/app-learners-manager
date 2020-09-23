@@ -1,87 +1,96 @@
-<div class="main">
-  <div class="banner">
-    <h1>
-      Contact Us
-    </h1>
-  </div>
-</div>
+<div class="contact-us">
+  <h1 class="main">
+    Contact us now with any query, about our platform.
+  </h1>
+  <div class="col-1-of-2">
+    <form class="form"
+          [formGroup]="rForm">
+      <div class="form-group">
+        <label>FullName</label>
+        <input type="text"
+               id="FullName"
+               formControlName="FullName"
+               name="Email"
+               placeholder="Your full name..">
 
-<div class="google-maps">
-  <h1>Location</h1>
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3475.4777553847666!2d31.05463595059154!3d-29.41482998202807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7235fd3fbbe73%3A0x6eabcb503fbfd9fa!2sSiphiwe+Secondary+School!5e0!3m2!1sen!2sza!4v1566512428691!5m2!1sen!2sza"
-    width="600" height="450" frameborder="0" style="border:0" allowfullscreen>
-  </iframe>
-</div>
-<div class="contacts">
-  <div class="container">
-    <form action="action_page.php">
-      <h1>Contact Form</h1>
+      </div>
+      <div class="form-group">
+        <label>Contact Number*</label>
+        <input type="number"
+               id="ContactNumber"
+               formControlName="ContactNumber"
+               name="ContactNumber"
+               placeholder="Your contact number..">
+        <mat-error *ngIf="!rForm.controls['ContactNumber'].valid && rForm.controls['ContactNumber'].touched">a contact
+          number is
+          required</mat-error>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email"
+               id="Email"
+               formControlName="Email"
+               name="Email"
+               placeholder="Your email..">
+        <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email is
+          required</mat-error>
+      </div>
+      <div class="form-group">
+        <label>Write a message Message</label>
+        <textarea type="text"
+                  id="Message"
+                  formControlName="Message"
+                  name="Message"
+                  placeholder="Your Message.."></textarea>
+        <mat-error *ngIf="!rForm.controls['Message'].valid && rForm.controls['Message'].touched">a Message is
+          required</mat-error>
+      </div>
 
-      <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-
-      <input type="text" id="subject" name="subject" placeholder="Subject..">
-
-      <input type="phonenumber" id="email" name="email" placeholder="Phone Number..">
-
-      <input type="text" id="email" name="email" placeholder="Email address..">
-
-      <textarea id="message" name="message" placeholder="message.." style="height:200px"></textarea>
-
-      <input type="submit" value="Submit">
+      <div class="col-1-of-1">
+        <button mat-flat-button
+                color="primary"
+                (click)="onSubmit(rForm.value)"
+                [disabled]="!rForm.valid">
+          Submit now
+        </button>
+        <button mat-flat-button
+                class="transparent"
+                (click)="clearForm()">clear form</button>
+      </div>
+      <div class="error"
+           *ngIf="error">
+        <h1>{{error}}</h1>
+      </div>
     </form>
-  </div>
-  <div class="address">
-    <h1>Contact Info</h1>
-    <li>Tongaat,Mthombisa Area</li>
-    <li>Ndwedwe Municipality</li>
-    <li>KwaZulu-Natal</li>
-    <li>0113146670</li>
+    <div class="contact-details">
+      <img src="assets/images/home/contact-us.svg"
+           alt="pricing">
+      <div class="details"
+           *ngIf="model">
+        <h1 class="main">
+          Our Contact details
+        </h1>
+        <span *ngFor="let item of model">
+          <h1 class="sub-main">Online Thalente Courses</h1>
+          <h1 class="text">
+            <span class="title">Cell:&nbsp;</span>
+            {{item.Phone}}
+          </h1>
+          <h1 class="text">
+            <span class="title">Email:&nbsp;</span>
+            {{item.Email}}
+          </h1>
+          <h1 class="text address">
+            <span class="title">Physical address:&nbsp;</span>
+            {{item.AdressLine1}}
+            {{item.AdressLine2}}
+            {{item.AdressLine3}}
+          </h1>
+        </span>
+
+      </div>
+    </div>
+
   </div>
 </div>
-
-
-
-
-
-
-<!-- <div class="main">
-
-  <div class="banner">
-    <h1>
-     Contact Us
-    </h1>
-  </div>
-  <div class="body">
-    <form class="form" [formGroup]="rForm" (ngSubmit)="login()">
-      <div class="controls">
-        <label for="">email <span>*</span></label> <br />
-        <input type="text" class="input-field" formControlName="Email" />
-        <div class="alert" *ngIf="!rForm.controls['Email'].valid">
-          A valid email address is a required field.
-        </div>
-      </div>
-
-      <div class="controls">
-        <label for="">password <span>*</span></label> <br />
-        <input type="password" class="input-field" formControlName="Password" />
-        <div class="alert" *ngIf="!rForm.controls['Password'].valid">
-          Password is not provided.
-        </div>
-      </div>
-
-      <div class="controls">
-        <input type="submit" value="sign in" class="action-button" [disabled]="!rForm.valid" />
-      </div>
-      <!-- <div class="controls">
-        <img *ngIf="loading"  class="pl-2 loading"
-          src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-      </div> -->
-<!-- <div class="controls">
-          <div *ngIf="loading"  class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div>
-      <div *ngIf="error" class="error">{{error}}</div>
-    </form>
-  </div>
-</div> --> -->

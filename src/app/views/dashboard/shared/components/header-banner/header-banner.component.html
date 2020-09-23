@@ -1,0 +1,15 @@
+<div class="headerBanner" *ngIf="headerBanner">
+    <div class="header">
+        <h1>
+            {{headerBanner.Header}}
+            <span class="sub-title">
+                {{headerBanner.SubHeader}}
+            </span>
+        </h1>
+    </div>
+    <div class="cta" (click)="showModal()">
+        <a mat-button>
+            {{headerBanner.ctaLabel}}
+        </a>
+    </div>
+</div>

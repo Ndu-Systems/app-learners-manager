@@ -1,0 +1,19 @@
+.home {
+    .tools {
+        padding: 5rem;
+        padding-bottom: 1rem;
+        text-align: center;
+
+        .tool-section {
+            .tool {
+                h1.text {
+                    width: 15.063rem;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            padding:  2.25rem;
+        }
+    }
+}

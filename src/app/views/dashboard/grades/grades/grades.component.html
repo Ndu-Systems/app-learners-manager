@@ -1,0 +1,106 @@
+<div class="headers">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+  <app-header-banner [headerBanner]="headerBanner"
+                     (showModalEventEmitter)="add()"></app-header-banner>
+</div>
+<div class="main-list" *ngIf="grades">
+  <div class="items">
+    <div class="item" *ngFor="let item of grades">
+      {{item.Name}}
+      <div class="details">
+        <div class="icon">
+          <img src="assets/images/dashboard/grade-icon.svg" alt="">
+        </div>
+        <div class="data cta" (click)="open(item.GradeId)">
+          <h1>
+            Subjects
+            <span>{{item.Subjects?.length}}</span>
+          </h1>
+        </div>
+        <div class="data">
+          <div class="action" (click)="options(item)">
+            <img src="assets/images/dashboard/action-dots.svg" alt="">
+          </div>
+        </div>
+        <div class="viewing"
+             *ngIf="item.Viewing" (click)="options(item)">
+          <ul>
+            <li (click)="open(item.GradeId)">
+              <span class="material-icons">
+                list
+              </span>View Subjects</li>
+            <li (click)="edit(item)">
+              <span class="material-icons">
+                edit
+              </span>Edit</li>
+            <li (click)="delete(item)" class="delete"><span class="material-icons">
+                delete_outline
+              </span>Delete</li>
+              <hr>
+              <li (click)="delete(item.GradeId)"
+                class="delete"><span class="material-icons">
+                not_interested
+              </span>Collapse</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal && !isDelete">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+  <div class="form">
+    <div class="form-group">
+      <label for="">Select Institution Type*</label>
+       <select name=""
+              id=""
+              [(ngModel)]="institutionTypeId">
+        <option *ngFor="let item of institutionTypes"
+                [value]="item.InstitutionTypeId">{{item.Name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">Grade name*</label>
+      <input type="text"
+             [(ngModel)]="name">
+    </div>
+    <div class="form-group">
+      <label for="">Grade description</label>
+      <input type="text"
+             [(ngModel)]="description">
+    </div>
+    <button mat-button
+            color="primary"
+            (click)="save()"> Save grade </button>
+    <div class="error" *ngFor="let error of errors">
+       {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal"
+     *ngIf="isDelete">
+  <div class="delete-modal">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+    <button mat-button
+            color="primary"
+            class="danger"
+            (click)="update()"> Yes, delete</button>
+    <button mat-button
+            color="primary"
+            class="secondary"
+            (click)="closeModal()"> Cancel</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>

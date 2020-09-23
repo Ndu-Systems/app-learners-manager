@@ -1,0 +1,39 @@
+.home {
+    .get-started {
+        padding: 5rem;
+        padding-bottom: 1rem;
+
+        &.col-1-of-2 {
+            grid-template-columns: 35% auto;
+        }
+
+        button {
+            &.mat-primary {
+                width: 11.063rem;
+                height: 3.625rem;
+                margin: 2rem 0;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            padding: 2.25rem;
+
+            &.col-1-of-2 {
+                grid-template-columns: 100%;
+            }
+
+            img {
+                width: 19rem;
+            }
+
+            button {
+                &.mat-primary {
+                    width: 100%;
+                    margin: 2rem 0;
+
+                }
+            }
+
+        }
+    }
+}

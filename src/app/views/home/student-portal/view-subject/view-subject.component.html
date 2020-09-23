@@ -1,0 +1,47 @@
+<div class="main">
+
+  <div class="main-list" *ngIf="studentsubject">
+
+    <div class="heading">
+      <div class="">
+        <h1>
+          Topics for <span> {{studentsubject.Subject.Name}} </span>
+        </h1>
+
+      </div>
+      <!-- <div class="">
+      <button mat-button color="primary" (click)="add()"> Add topic </button>
+    </div> -->
+    </div>
+    <div class="items" *ngIf="studentsubject.Subject.Topics.length; else nodata">
+      <div class="item" *ngFor="let item of studentsubject.Subject.Topics">
+        {{item.Name}}
+        <div class="details">
+
+          <div class="data">
+            <div class="topics" *ngFor="let topic of item.TopicContent; let i = index">
+              <div class="topic pointer" (click)="readTopic(topic)">
+                {{i+1}}. {{topic.Tittle}}
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <ng-template #nodata>
+      <div class="nodata">
+        <h1>
+          No topics found for {{studentsubject.Subject?.Name}}
+          <span (click)="add()">
+            Add topic
+          </span>
+        </h1>
+      </div>
+    </ng-template>
+
+
+  </div>
+</div>

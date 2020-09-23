@@ -1,0 +1,21 @@
+@import '../../../../../assets/scss/color';
+ 
+.subjects{
+    padding-top: .6rem;
+    .subject{
+        background: $black;
+        float: left;
+        margin: .3rem;
+        padding: .2rem .5rem;
+        border: 1px solid $black;
+        color: $black;
+        background: $white;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: .7rem;
+    }
+    .active{
+        background: $black;
+        color: $white;
+    }
+}

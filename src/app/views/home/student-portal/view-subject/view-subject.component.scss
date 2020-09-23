@@ -1,0 +1,16 @@
+.main {
+    .topics {
+        .topic {
+            font-weight: 400;
+            font-size: 1rem;
+            margin: .5rem 1rem;
+        }
+    }
+
+    .items {
+        .details {
+            display: grid;
+            grid-template-columns: 80% auto;
+        }
+    }
+}

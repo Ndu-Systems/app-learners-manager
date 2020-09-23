@@ -1,0 +1,117 @@
+.home {
+    .contact-us {
+        padding: 2rem;
+        padding-bottom: 1rem;
+
+        h1 {
+
+            &.main {
+                width: 31rem;
+                padding: 0 1rem;
+            }
+
+            &.sub-main,
+            &.text {
+                padding: 0 1rem;
+
+                .title {
+                    font-weight: 700;
+                }
+
+                &.address {
+                    width: 50%;
+
+                    .title {
+                        display: block;
+                    }
+                }
+            }
+
+            &.sub-main {
+                padding: 0 1rem;
+
+            }
+        }
+
+
+        img {
+            margin: 2rem 0;
+            margin-bottom: 0;
+        }
+
+        .contact-details {
+            .details {
+                h1 {
+                    &.main {
+                        font-size: 1.563rem;
+                    }
+                }
+            }
+        }
+
+        form {
+            width: 60%;
+            margin: 0 auto;
+
+            .form-group {
+                margin: 0.5rem 0;
+            }
+
+            .alert,
+            .error {
+                color: $danger;
+                font-size: 0.85rem;
+                font-weight: 400;
+            }
+
+            .cta {
+                margin: .5rem 0;
+                display: flex;
+
+                h1 {
+                    font-size: 1rem;
+                    color: $grey;
+                    font-weight: 500;
+                    color: $black;
+                }
+
+                a {
+                    text-decoration: none;
+                    font-weight: 500;
+                    margin-left: .45rem;
+                    color: $primary;
+                }
+            }
+        }
+
+
+        @media only screen and (max-width: 600px) {
+            padding: 0 2.25rem;
+
+            h1.main {
+                width: 100%;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .contact-details {
+                .details {
+                    h1 {
+                        &.main {
+                            font-size: 1.563rem;
+                        }
+                    }
+                }
+            }
+
+            form {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,12 @@
+.item {
+    .details {
+        grid-template-columns: 15% 70% auto;
+    }
+
+    @media only screen and (max-width: 600px) {      
+
+        .details {
+            grid-template-columns: 100%;
+        }
+      }
+}

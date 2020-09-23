@@ -1,0 +1,170 @@
+@import '../../../../../assets/scss/color';
+
+.questions {
+    p {
+        font-weight: 400;
+    }
+
+    .answers {
+        .heads {
+            display: grid;
+            grid-template-columns: 75% 15% auto;
+
+            @media only screen and (max-width: 600px) {
+                grid-template-columns: 60% 15% auto;
+            }
+
+            .head {
+                background: $grey;
+                padding: .6rem;
+
+            }
+        }
+
+        .answer {
+            display: grid;
+            grid-template-columns: 75% 15% auto;
+
+            @media only screen and (max-width: 600px) {
+                grid-template-columns: 60% 15% auto;
+            }
+
+            .col {
+                border-bottom: .3px solid $grey;
+                padding: .2rem 1rem;
+            }
+
+            input {
+                padding: .5rem;
+                margin: .4rem;
+                border: none;
+                background: $white;
+                width: 100%;
+            }
+
+            button {
+                padding: .1rem;
+                margin: .1rem;
+            }
+
+            .btn-remove {
+                width: 2rem;
+                font-size: .4rem;
+                background: $danger;
+                color: $white !important;
+                min-width: 1rem;
+
+                .material-icons {
+                    font-size: 1rem;
+
+                }
+            }
+        }
+
+
+    }
+
+    .add {
+        padding: 1rem .5rem;
+
+        button {
+            background: $primary;
+            border: none;
+            border-radius: .5rem;
+            padding: .3rem 1rem;
+            cursor: pointer;
+            margin-right: 1rem;
+            font-weight: 500;
+            border: 2px solid $primary;
+        }
+
+        .secondary {
+            color: $black;
+            background: $white;
+            border: 2px solid $black;
+        }
+    }
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: $black;
+
+
+    &:checked {
+        background: red;
+    }
+}
+
+mat-checkbox {
+    top: .6rem;
+    position: relative;
+}
+
+.uploadedImage {
+    width: 10rem;
+}
+
+
+
+.breadcrumb {
+    width: 70%;
+}
+
+::ng-deep {
+
+    .mat-checkbox-ripple .mat-ripple-element,
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background-color: $primary !important;
+    }
+}
+
+.students {
+    padding: 3rem 2rem;
+    min-width: 10rem;
+
+    @media only screen and (max-width: 600px) {
+        padding: 1rem 0;
+    }
+
+    .student {
+        border-bottom: 1px solid $grey;
+        cursor: pointer;
+    }
+
+    .user-dp {
+        grid-template-columns: 4% 40% auto;
+        margin: 1.5rem 0;
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 19% 67% auto;
+        }
+    }
+}
+
+
+.modal {
+    p {
+        padding: .2rem;
+    }
+}
+
+.student-answer {
+    border-bottom: 1px solid $grey;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.correct {
+    background: $primary-05;
+}
+
+.wrong {
+    background: $danger-05;
+}
+
+.simple-option{
+    color: $darker-grey;
+    position: relative;
+    left: 3rem;
+    top: .5rem;
+    cursor: pointer;
+}

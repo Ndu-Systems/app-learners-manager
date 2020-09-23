@@ -1,0 +1,100 @@
+<div class="main">
+  <div class="arrow-back" (click)="backClicked()">
+    <div class="img">
+      <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
+    </div>
+
+    <div class="heading">
+      {{test?.Name}}
+    </div>
+  </div>
+  <div class="items" *ngIf="test.Sections.length">
+    <div class="item" *ngFor="let item of test.Sections">
+      <b>
+        <u> {{item.Name}} </u>
+      </b>
+
+      <div class="questions">
+        <div class="item" *ngFor="let question of item.Questions  ; let i = index">
+          <div class="question">
+            <div class="ask">
+              <p>
+                <span class="number">
+                  {{i+1}}
+                </span>
+                <b>
+                  {{question.Question}}
+                </b>
+
+              </p>
+              <div class="answers">
+
+                <div *ngFor="let answer of question.Answers">
+
+                  <div class="answer" *ngIf="answer.StatusId === '1'">
+
+                    <div class="col is-correct">
+                      <mat-checkbox [(ngModel)]="answer.StudentAnswer"></mat-checkbox>
+                    </div>
+                    <div class="col value pointer" (click)="select(answer)">
+                      <p class="answer-line">
+                        {{answer.Answer}}
+                      </p>
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="finish">
+    <button mat-button color="primary" (click)="backClicked()">
+      Submit test
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="overlay" *ngIf="showModal || showError || showResults"></div>
+<div class="modal" *ngIf="showModal">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+
+  <div class="showError" *ngIf="showError">
+    <p>
+      Please answer <b>all</b> the questions before clicking <i> <u> submit test</u></i> button. </p>
+
+    <button mat-button color="primary" class="primary" (click)="closeModal()"> Continue answering all question</button>
+  </div>
+
+
+  <div class="showError" *ngIf="showResults">
+    <p>
+      Your score: <b>
+        {{yourScore}} %
+      </b>
+
+    </p>
+
+    <button mat-button color="primary" class="secondary" (click)="goHome()"> Finish</button>
+    <button mat-button color="primary" class="primary" (click)="takeTestAgain()"> Take test again</button>
+  </div>
+
+
+</div>

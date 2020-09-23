@@ -1,0 +1,5 @@
+<div class="breadcrumbs">
+  <ul class="breadcrumb" *ngIf="crumbs">
+    <li *ngFor="let item of crumbs"><a [routerLink]="item.Link">{{item.Label}}</a></li>     
+  </ul>  
+</div>

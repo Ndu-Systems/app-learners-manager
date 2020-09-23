@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:5000/'
+  API_URL: 'http://localhost:8200/otc-api',
+  BASE_URL: 'http://localhost:4200',
+  ACCOUNT_TEST_EMAIL: 'admin@www.onlinethalente.co.za',
+  ACCOUNT_TEST_PASSWORD: 'Harder01!',
+  TEST_EMAIL_ACCOUNT: 'ndu@mail.com'
 };
 
 /*

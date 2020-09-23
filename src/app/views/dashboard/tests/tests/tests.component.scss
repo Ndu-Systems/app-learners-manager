@@ -1,0 +1,17 @@
+@import '../../../../../assets/scss/color';
+
+.test-time,
+.test-date {
+    background: $info-05;
+    color: $black !important;
+    display: block;
+    margin: .2rem;
+    font-size: .8rem;
+    padding: .2rem .5rem;
+    border-radius: .2rem;
+}
+
+.breadcrumb {
+    grid-template-columns: repeat(4, 25%);
+    width: 50%;
+}

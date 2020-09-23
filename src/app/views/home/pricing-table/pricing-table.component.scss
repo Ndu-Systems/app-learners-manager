@@ -1,0 +1,101 @@
+@import '../../../../assets/scss/color';
+
+.card {
+    max-width: 13rem;
+
+    &.mat-card {
+        padding: 1rem;
+        background-color: $white;
+        text-align: center;
+
+        .mat-card-header {
+            color: $black;
+            display: inherit;
+
+            h1 {
+                margin: .5rem;
+
+                &.card-title {
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .mat-card-image {
+            width: 4.5rem;
+        }
+
+        .mat-card-content {
+            color: $black;
+
+            h1 {
+                &.price-tag {
+                    font-weight: 900;
+                    font-size: 1.563rem;
+                    margin: 0;
+
+                    .small {
+                        font-weight: 400;
+                        font-size: .75rem;
+                    }
+                }
+
+                &.validity {
+                    color: $grey;
+                    font-size: 0.938rem;
+                    margin-bottom: 2rem;
+                }
+            }
+
+            .offerings {
+                margin: 2rem 0;
+
+                h1 {
+                    margin: 0;
+
+                    &.price-tag {
+                        font-weight: 900;
+                        font-size: 0.938rem;
+
+                        .small {
+                            font-weight: 400;
+                            font-size: 0.625rem;
+                        }
+                    }
+
+                    &.validity {
+                        color: $grey;
+                        font-size: 0.938rem;
+                    }
+                }
+
+            }
+        }
+
+
+        button {
+            &.mat-primary {
+                width: 100%;
+            }         
+        }
+
+        @media only screen and (max-width: 600px) {
+            margin-bottom: 2rem;
+            max-width: 100%;
+            button {
+                &.mat-primary {
+                    width: 100%;
+                }         
+            }
+    
+        }
+
+    }
+
+}
+
+.card-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}

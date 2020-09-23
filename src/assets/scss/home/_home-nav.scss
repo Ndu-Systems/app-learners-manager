@@ -1,0 +1,49 @@
+.mat-toolbar {
+    background: $white;
+    color: $black;
+ 
+    .mat-toolbar-row {
+        margin-top: 2rem;
+        padding: 0;
+    }
+
+    .logo {
+        img {
+            height: 5.125rem;
+        }
+    }
+
+    .mat-button {
+        font-size: 1.125rem;
+        font-weight: 700;
+
+    }
+
+    .main-tabs {
+        margin-left: 20rem;
+    }
+
+    .account {
+        margin-left: 30rem;
+
+        .signUp {
+            background: $primary;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+    
+        .mat-toolbar-row {
+            margin-top: 0rem; 
+            padding: 3rem 2.25rem;           
+        }
+        .account {
+            margin-left:0rem;
+    
+            .signUp {
+                background: $primary;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,45 @@
+<div class="pricing-table">
+  <h1 class="main">
+    {{model.Heading}}
+  </h1>
+  <h1 class="sub-header">
+    {{model.SubHeading}}
+  </h1>
+  <div class="col-1-of-2">
+    <div class="pricing col-1-of-3"
+         *ngIf="model.prices">
+      <mat-card class="card"
+                *ngFor="let item of model.prices">
+        <mat-card-header>
+          <h1 class="card-title">{{item.cardHeader}}</h1>
+        </mat-card-header>
+        <img mat-card-image
+             [src]="item.imageUrl"
+             alt="Bus photo">
+        <mat-card-content>
+          <h1 class="price-tag">
+            {{item.price}} <span class="small">{{item.frequency}}</span>
+          </h1>
+          <h1 class="validity">
+            {{item.validity}}
+          </h1>
+          <div class="offerings"
+               *ngFor="let offer of item.offeringPrices">
+            <h1 class="price-tag">
+              {{offer.price}} <span class="small">{{offer.frequency}}</span>
+            </h1>
+            <h1 class="validity">
+              {{offer.validity}}
+            </h1>
+          </div>
+        </mat-card-content>
+        <button mat-button
+                color="primary">
+          Get started
+        </button>
+      </mat-card>
+    </div>
+    <img src="assets/images/home/pricing-image.svg" alt="pricing">
+  </div>
+
+</div>

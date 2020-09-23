@@ -1,0 +1,227 @@
+<div class="headers">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+  <app-header-banner [headerBanner]="headerBanner" (showModalEventEmitter)="add()"></app-header-banner>
+</div>
+<div class="main-list" *ngIf="topic">
+  <div class="items" *ngIf="topicContentList.length; else nodata">
+    <div class="item" *ngFor="let item of topicContentList" (click)="open(item.TopicId)">
+      {{item.Tittle}}
+      <div class="details">
+        <div class="icon">
+          <img src="assets/images/dashboard/subject-icon.svg" *ngIf="!item.ContentType  || item.ContentType === 'File'"
+            alt="">
+          <img src="assets/images/dashboard/video-icon.svg" *ngIf="item.ContentType === 'Video'" alt="">
+          <img src="assets/images/dashboard/subject-icon.svg" *ngIf="item.ContentType === 'Blog'" alt="">
+        </div>
+        <div class="data" *ngIf="!item.ContentType">
+          <i>No content</i>
+        </div>
+        <div class="data" *ngIf="item.ContentType === 'Video'">
+
+          <iframe width="560" height="315" [src]="item.ContentBody" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="data" *ngIf="item.ContentType === 'File'">
+          <h1>
+            <span>
+              <a [href]="item.ContentBody" target="_blank">
+                Open file
+              </a>
+            </span>
+          </h1>
+        </div>
+        <div class="data" *ngIf="item.ContentType === 'Blog'">
+          <button mat-button  (click)="preview(item)"> 
+            <a>
+              <span class="material-icons">remove_red_eye</span> Preview
+            </a>
+          </button>
+
+          <button mat-button (click)="edit(item)">
+            <a >
+              <span class="material-icons">edit</span> Edit
+            </a>
+          </button>
+        </div>
+        <div class="data">
+
+        </div>
+        <div class="data">
+          <div class="action" (click)="options(item)">
+            <img src="assets/images/dashboard/action-dots.svg" alt="">
+          </div>
+        </div>
+        <div class="viewing" *ngIf="item.Viewing">
+          <ul>
+            <li (click)="edit(item)"><span class="material-icons">edit</span>Edit</li>
+            <li (click)="delete(item)" class="delete"><span class="material-icons">delete_outline</span>Delete</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #nodata>
+    <div class="nodata">
+      <h1>
+        No content found for {{topic?.Name}}
+        <span (click)="add()">
+          Add content
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+
+
+</div>
+
+<div class="overlay" *ngIf="showModal || showDelete || showPreview" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="form">
+    <label for="">Content tittle**</label>
+    <input type="text" [(ngModel)]="tittle">
+
+    <label for="">Content Type**</label>
+    <select [(ngModel)]="contentType">
+      <option value="Blog">Blog</option>
+      <option value="Video">Video</option>
+      <option value="File">File</option>
+    </select>
+
+
+    <span *ngIf="contentType === 'Video'">
+      <label for="">Add youtube ambeded video </label>
+      <textarea [(ngModel)]="contentBody"></textarea>
+    </span>
+
+    <span *ngIf="contentType === 'File'">
+      <label for="">Uplaod the file </label>
+      <input type="file" multiple (change)="imageChanged($event)">
+    </span>
+
+    <span *ngIf="contentType === 'Blog'">
+      <label for=""> Create your content here </label>
+      <quill-editor [styles]="editorStyle" (onContentChanged)="changed($event)" [(ngModel)]="contentBody">
+
+      </quill-editor>
+    </span>
+    <button mat-button color="primary" (click)="formatBody()"> Save content</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="showDelete">
+  <div class="delete-modal">
+    <div class="close" (click)="closeModal()">
+      <span class="material-icons">
+        west
+      </span> {{modalHeading}}
+    </div>
+
+    <button mat-button color="primary" class="danger" (click)="formatBody()"> Yes, delete</button>
+    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="showPreview && current">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+  <div class="html-view">
+    <div [innerHtml]="htmlPreview"></div>
+
+  </div>
+  <mat-tab-group>
+    <mat-tab label="Comments && Questions">
+
+      <div class="comments" *ngIf="current">
+        <div class="comment wider" *ngFor="let comment of current.Comments  ; let i = index">
+          <span *ngIf="!comment.ParentId">
+            <div class="user-dp">
+              <div class="dp">
+                {{comment.User.Name[0]}}{{comment.User.Surname[0]}}
+              </div>
+
+              <p>
+                {{comment.User.Name}} {{comment.User.Surname}}
+              </p>
+            </div>
+
+            <div class="comment-text">
+              {{comment.Name}}
+
+              <div class="replies">
+                <div class="comment wider" *ngFor="let rep of comment.Replies  ; let i = index">
+                  <div class="user-dp">
+                    <div class="dp">
+                      {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
+                    </div>
+
+                    <p>
+                      {{rep.User.Name}} {{rep.User.Surname}}
+                    </p>
+                  </div>
+
+                  <div class="comment-text">
+                    {{rep.Name}}
+                  </div>
+                </div>
+              </div>
+              <div class="reply">
+                <a (click)="reply(comment)" *ngIf="!comment.ShowReply">
+                  <span class="material-icons">
+                    reply
+                  </span>
+                  Reply
+                </a>
+
+                <div class="reply-input" *ngIf="comment.ShowReply">
+                  <input type="text" placeholder="Type reply message here..." [(ngModel)]="comment.Reply">
+                  <button (click)="postComment(comment)">
+                    <span class="material-icons">
+                      send
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Read and understood">
+      <div class="students">
+        <div class="student" *ngFor="let student of current.Students  ; let i = index">
+          <div class="user-dp">
+            <div class="dp">
+              {{student.User.Name[0]}}{{student.User.Surname[0]}}
+            </div>
+
+            <p>
+              {{student.User.Name}} {{student.User.Surname}}
+              <span class="date">
+                {{student.CreateDate | date: 'medium'}}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

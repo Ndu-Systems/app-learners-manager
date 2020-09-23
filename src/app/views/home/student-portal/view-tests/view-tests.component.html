@@ -1,0 +1,49 @@
+<div class="main-list" *ngIf="tests">
+  <div class="items" *ngIf="tests.length; else nodata">
+    <div class="item" *ngFor="let item of tests">
+      Test tittle: <u class="pointer" > {{item.Name}} </u>
+      <div class="details">
+        <div class="icon">
+          <img src="assets/images/dashboard/subject-icon.svg" alt="">
+        </div>
+        <div class="data cta" >
+          <h1>
+            Sections
+            <span>{{item.Sections.length}}</span>
+          </h1>
+        </div>
+        <div class="data">
+          <h1>
+            <!-- Test time -->
+            <span class="test-date">{{item.TestDate  | date:'fullDate'}}</span>
+            <span class="test-time">{{item.TestTime}} - {{item.FinishTime}}</span>
+          </h1>
+        </div>
+
+        <div class="data">
+          <div class="action">
+            <img src="assets/images/dashboard/action-dots.svg" alt="">
+          </div>
+        </div>
+        <div class="viewing" *ngIf="item.Viewing">
+          <ul>
+            <li ><span class="material-icons">list</span>View Test</li>
+            <li><span class="material-icons">edit</span>Edit</li>
+            <li class="delete"><span class="material-icons">delete_outline</span>Delete</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #nodata>
+    <div class="nodata">
+      <h1>
+        No tests found for {{subject?.Name}}
+    
+      </h1>
+    </div>
+  </ng-template>
+
+
+</div>

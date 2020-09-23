@@ -1,0 +1,117 @@
+<div class="headers">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+  <app-header-banner [headerBanner]="headerBanner"
+                     (showModalEventEmitter)="add()"></app-header-banner>
+</div>
+
+<div class="main-list" *ngIf="subject">
+  <div class="items" *ngIf="tests.length; else nodata">
+    <div class="item" *ngFor="let item of tests">
+      Test tittle: <u class="pointer" (click)="open(item.TestId)"> {{item.Name}} </u>
+      <div class="details">
+        <div class="icon">
+          <img src="assets/images/dashboard/subject-icon.svg" alt="">
+        </div>
+        <div class="data cta" (click)="open(item.TestId)">
+          <h1>
+            Sections
+            <span>{{item.Sections.length}}</span>
+          </h1>
+        </div>
+        <div class="data">
+          <h1>
+            <!-- Test time -->
+            <span class="test-date">{{item.TestDate  | date:'fullDate'}}</span>
+            <span class="test-time">{{item.TestTime}} - {{item.FinishTime}}</span>
+          </h1>
+        </div>
+
+        <div class="data">
+          <div class="action" (click)="options(item)">
+            <img src="assets/images/dashboard/action-dots.svg" alt="">
+          </div>
+        </div>
+        <div class="viewing" *ngIf="item.Viewing">
+          <ul>
+            <li (click)="open(item.TestId)"><span class="material-icons">list</span>View Test</li>
+            <li (click)="edit(item)"><span class="material-icons">edit</span>Edit</li>
+            <li (click)="delete(item)" class="delete"><span class="material-icons">delete_outline</span>Delete</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #nodata>
+    <div class="nodata">
+      <h1>
+        No tests found for {{subject?.Name}}
+        <span (click)="add()">
+          Set a test
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+
+
+</div>
+
+<div class="overlay" *ngIf="showModal || isDelete" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <h1>
+    {{modalHeading}}
+  </h1>
+
+  <div class="form">
+    <label for="">Test title**</label>
+    <input type="text" [(ngModel)]="current.Name">
+
+    <label for="">Total marks**</label>
+    <input type="number" [(ngModel)]="current.Marks">
+
+
+    <!-- <label for="">Test duration</label>
+    <input type="number" [(ngModel)]="duration"> -->
+
+
+
+    <label for="">Test date</label>
+    <input type="date" [(ngModel)]="current.TestDate">
+
+    <div class="col-1-of-2">
+      <div class="">
+        <label for="">Start time</label>
+        <input type="time" [(ngModel)]="current.TestTime">
+      </div>
+      <div class="">
+        <label for="">Finish time</label>
+        <input type="time" [(ngModel)]="current.FinishTime">
+      </div>
+    </div>
+
+    <!-- <label for="">Show Result Same Time</label>
+    <input type="checkbox" [(ngModel)]="showResultSameTime"> -->
+
+
+    <button mat-button color="primary" (click)="save()"> Save Test</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="isDelete">
+  <div class="delete-modal">
+    <h1>
+      {{modalHeading}}
+    </h1>
+
+
+    <button mat-button color="primary" class="danger" (click)="save()"> Yes, delete</button>
+    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>

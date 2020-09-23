@@ -1,43 +1,6 @@
-<div class="navbar">
-    <div class="logo">
-       <h1 class="font-playfair"> Siphiwe 
-           <span>Secondary School</span>
-        </h1>
+<div class="container-fluid home">
+    <app-home-nav></app-home-nav>
+    <div class="home-container">
+        <router-outlet></router-outlet>
     </div>
-    <div class="navigation">
-        <ul>
-            <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
-            <li><a routerLink="/about-us"  routerLinkActive="active" >About Us</a></li>
-            <li><a routerLink="/contact-us"  routerLinkActive="active" >Contact Us</a></li>
-            <li><a routerLink="/login"  routerLinkActive="active" >Sign in</a></li>
-            <li><a routerLink="">
-                <img src="assets/images/betta/search-solid.svg" alt="">
-            </a></li>
-        </ul>
-    </div>
-
-</div>
-<router-outlet></router-outlet>
-
-
-<div class="footer">
-    <section>
-        <img src="../../../assets/images/home-page/footer img.png" alt="department logo">
-    </section>
-
-    <section>
-        <h1>Physical Address</h1>
-        <h5>Kwazulu-Natal Ndwedwe</h5>
-        <h5>support@ndusysems.co.za</h5>
-        <h5>0117855500</h5>
-    </section>
-    <section>
-        <h1>News</h1>
-        <h5>Education activists make submissions to<br> state capture commission</h5>
-    </section>
-    <section>
-        <h1>Subscribe Newsletter</h1>
-        <input type="text" class="input-field" placeholder="enter email..." />
-        <input type="submit" value="Subscribe" class="form-button" />
-    </section>
 </div>

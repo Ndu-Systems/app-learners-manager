@@ -1,0 +1,41 @@
+.headerBanner {
+    display: grid;
+    grid-template-columns: 50% auto;
+    margin-bottom: 1rem;
+
+    .header {
+        h1 {
+            margin: 0;
+            font-size: 1.625rem;
+
+            .sub-title {
+                font-size: 0.813rem;
+                display: block;
+                color: $darker-grey;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .cta {
+        a {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: $primary;
+            float: right;
+        }
+    }
+
+    
+    @media only screen and (max-width: 600px) {
+        .header {
+            h1 {
+                font-size: 1rem;    
+                .sub-title {
+                
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

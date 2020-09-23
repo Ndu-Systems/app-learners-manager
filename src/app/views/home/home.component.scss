@@ -1,83 +1,52 @@
-.navbar {
-  display: grid;
-  grid-template-columns: 20% auto;
-  padding: 0.5rem 3rem;
-  position: relative;
-  .logo {
-    position: relative;
-    top: 0.5rem;
-    h1 {
-      font-size: 1.5rem;
-      color: #08275d;
-      span {
-        font-size: 0.75555rem;
+@import '../../../assets/scss/color';
+
+
+
+.mat-drawer-container {
+    background-color: $white;
+    color: $black;
+}
+
+.mat-drawer.mat-sidenav {
+    background: $white;
+    width: 70%;
+    padding: 1rem;
+    top: 0 !important;
+
+    a {
+
+        font-weight: 200;
+        font-size: 25px;
+        color: $black;
+
+        .img {
+            display: block;
+        }
+    }
+
+    .col-1-of-3 {
+        padding: 2rem 0;
+    }
+}
+
+.mobile {
+    display: none;
+
+    @media only screen and (max-width: 600px) {
         display: block;
-        color: #3498dbc7;
-        font-family: "Roboto", sans-serif;
-        text-transform: uppercase;
-      }
-    }
-  }
 
-  .navigation {
-    position: absolute;
-    top: 2rem;
-    text-align: right;
-    ul {
-      list-style: none;
-      li {
-        display: inline;
-        padding: 0.2rem 2rem;
-        a {
-          text-transform: uppercase;
-          color: #000;
-          font-weight: 700;
-          font-size: .78rem;
+        .logo {
+            img {
+                position: absolute;
+                right: 2rem;
+                top: 0;
+            }
 
-          img{
-              width: 1rem;
-          }
         }
-        a.active{
-            color: #d1ab6a;
-            border-bottom: 2px solid #d1ab6a;;
-        }
-      }
     }
-  }
 }
 
 
-
-.footer {
-  background: #130f40;
-  color: #d1ab6a;
-  padding: 5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  line-height: 3rem;
-}
-h5 {
-  color: #ffffff;
-  font-weight: 400;
-}
-.footer img {
-  width: 40%;
-}
-.input-field {
-  padding: 1rem;
-  border: none;
-  color: #130f40;
-  background: #f5f6fa;
-}
-.form-button {
-  background: #d1ab6a;
-  color: #fff;
-  width: 33%;
-  float: right;
-  padding: 1rem 0.5rem;
-  border: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 1rem;
+.mat-drawer-content{
+    overflow: hidden;
 }

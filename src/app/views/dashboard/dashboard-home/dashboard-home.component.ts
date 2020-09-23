@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AssertService } from 'src/app/_services/dashboard/assert.service';
+import { BreadCrumbModel, HeaderBannerModel, GetQueryModel, StatisticModel } from 'src/app/_models';
+import { StatisticsService, ApiService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Assert } from 'src/app/_models';
-import { ParentService, LearnerService, SmsService } from 'src/app/_services';
-import { Router } from '@angular/router';
-import { CommunicationComponent } from '../communication';
+import { GETS_STAT_URL, GET_STUDENTS_URL } from 'src/app/_services/_shared';
+import { User } from 'src/app/_models/user.model';
+import { StateService } from 'src/app/_services/state.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -12,38 +12,49 @@ import { CommunicationComponent } from '../communication';
   styleUrls: ['./dashboard-home.component.scss']
 })
 export class DashboardHomeComponent implements OnInit {
-  asserts: Observable<Assert[]>;
-  countAsserts = 0;
-  countParents = 0;
-  countLearners = 0;
-  countMessages = 0;
-  countMessageSent = 'N/A';
-  parents = 'parents';
-  learners = 'learners';
+  statistics: StatisticModel[] = [
+    { Title: 'Leaners who needs to pay', Value: 0, Description: 'Pending payments' },
+    { Title: 'Paid and have access', Value: 0, Description: 'Active leaners' },
+    { Title: 'Needs to confirm email', Value: 0, Description: 'Pending Email Verification' },
+    { Title: 'grades we we covering', Value: 0, Description: 'Active grades' }
+  ];
+  crumbs: BreadCrumbModel[] = [
+    {
+      Label: 'dashboard',
+      Link: '/dashboard'
+    }
+  ];
+
+  headerBanner: HeaderBannerModel = {
+    Header: 'Dashboard',
+    SubHeader: 'All your system statistics.'
+  };
+  stat: any;
+  leaners: User[];
   constructor(
-    private routTo: Router,
-    private assertService: AssertService,
-    private parentService: ParentService,
-    private learnerService: LearnerService,
-    private smsService: SmsService,
+    private apiServices: ApiService,
+    private stateService: StateService,
   ) { }
 
   ngOnInit() {
-    this.asserts = this.assertService.asserts;
-    this.assertService.getAssertsDataStore();
+    this.apiServices.get(GETS_STAT_URL).subscribe(data => {
+      if (data && data.PendingPayments) {
+        this.stat = data;
+        this.statistics[0].Value = data.PendingPayments;
+        this.statistics[1].Value = data.ActiveUsers;
+        this.statistics[2].Value = data.PendingEmailVerification;
+        this.statistics[3].Value = data.activeGrades;
+      }
+    });
 
-    this.assertService.asserts.subscribe(data => {
-      this.countAsserts = data.length;
+    this.apiServices.get(GET_STUDENTS_URL).subscribe(data => {
+      if (data && data.length) {
+        this.stateService.updateLearnersState(data);
+        this.leaners = data;
+        this.leaners = this.leaners.filter(x => Number(x.StatusId) === 5);
+
+      }
     });
-    this.parentService.parents.subscribe(data => {
-      this.countParents = data.length;
-    });
-    this.learnerService.learners.subscribe(data => {
-      this.countLearners = data.length;
-    });
-    this.learnerService.getAll();
   }
-  navigateToPage(url: string) {
-    this.routTo.navigate([`dashboard/${url}`]);
-  }
+  add() { }
 }

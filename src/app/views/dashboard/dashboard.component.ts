@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ParentService } from 'src/app/_services';
-import { MessageService } from 'primeng/api';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +7,22 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-    private parentService: ParentService, private messageService: MessageService
-  ) { }
+  mobileQuery: MediaQueryList;
+  fillerNav = Array.from({ length: 50 }, (_, i) => `Nav Item ${i + 1}`);
+
+  private _mobileQueryListener: () => void;
+  
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
 
   ngOnInit() {
-    this.parentService.getParents();
   }
-  TestMessage() {
-    this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
 
-  }
 }

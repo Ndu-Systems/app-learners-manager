@@ -1,0 +1,57 @@
+.data-card-table {
+
+    h1.title {
+        font-weight: 400;
+        font-size: 1.563rem;
+    }
+
+    .header-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px $grey;
+        padding: 0 1rem;
+
+        h1.ht {
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: $darker-grey;
+        }
+    }
+
+    .data-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px $grey;
+        margin: 2rem 0;
+
+        h1.td {
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            color: $darker-grey;
+
+            &.header {
+                font-weight: 600;
+                color: $black;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .header-row {
+
+            h1.ht {
+                font-size: .75rem;
+            }
+        }
+        .data-row {
+            h1.td {
+                font-size: .75rem;
+            }
+        }
+
+    }
+
+}

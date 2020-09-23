@@ -1,0 +1,92 @@
+<div class="headers">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+  <app-header-banner [headerBanner]="headerBanner"
+                     (showModalEventEmitter)="add()"></app-header-banner>
+</div>
+<div class="main-list" *ngIf="subject">
+  <div class="items" *ngIf="topics.length; else nodata">
+    <div class="item" *ngFor="let item of topics">
+      {{item.Name}}
+      <div class="details">
+        <div class="icon">
+          <img src="assets/images/dashboard/subject-icon.svg" alt="">
+        </div>
+        <div class="data cta"  (click)="open(item.TopicId)">
+          <h1>
+            Topic Content
+            <span>{{item.TopicContent.length}}</span>
+          </h1>
+        </div>
+        <div class="data">
+          <h1>
+            <!-- Topics -->
+            <!-- <span>{{item.Topics.length}}</span> -->
+          </h1>
+        </div>
+        <div class="data">
+          <div class="action" (click)="options(item)">
+            <img src="assets/images/dashboard/action-dots.svg"  alt="">
+          </div>
+        </div>
+        <div class="viewing" *ngIf="item.Viewing">
+          <ul>
+            <li (click)="open(item.TopicId)"><span class="material-icons">list</span>View Content</li>
+            <li (click)="edit(item)"><span class="material-icons">edit</span>Edit</li>
+            <li (click)="delete(item)" class="delete"><span class="material-icons">delete_outline</span>Delete</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #nodata>
+    <div class="nodata">
+      <h1>
+        No topics found for {{subject?.Name}} 
+        <span  (click)="add()">
+          Add topic
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+
+
+</div>
+
+<div class="overlay" *ngIf="showModal || isDelete" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="form">
+    <label for="">Topic name**</label>
+    <input type="text" [(ngModel)]="name">
+
+  
+    <label for="">Topic description</label>
+    <textarea  [(ngModel)]="description"></textarea>
+    <button mat-button color="primary"  (click)="save()"> Save topic</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="isDelete">
+  <div class="delete-modal">
+    <h1>
+      {{modalHeading}}
+    </h1>
+
+
+    <button mat-button color="primary" class="danger" (click)="save()"> Yes, delete</button>
+    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>

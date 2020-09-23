@@ -1,0 +1,240 @@
+<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+<app-header-banner [headerBanner]="headerBanner" (showModalEventEmitter)="add()"></app-header-banner>
+
+<mat-tab-group *ngIf="test">
+  <mat-tab label="Test details">
+
+    <div class="main-list" *ngIf="test">
+      <h4>
+        <u>{{test.Name}}</u>
+      </h4>
+      <div class="items" *ngIf="test.Sections.length; else nodata">
+        <div class="item" *ngFor="let item of test.Sections">
+          <i (click)="edit(item)" class="pointer"> {{item.Name}} ({{item.Questions.length}} questions) </i>
+          <span class="material-icons simple-option" (click)="options(item)">
+            more_horiz
+          </span>
+          <div class="details">
+      
+
+            <!-- <div class="data">
+              <div class="action" (click)="options(item)">
+                <img src="assets/images/dashboard/action-dots.svg" alt="">
+              </div>
+            </div> -->
+            <div class="viewing" *ngIf="item.Viewing">
+              <ul>
+                <li (click)="addQuestion(item)">
+                  <span class="material-icons">
+                    add
+                  </span>
+                  Add a question
+                </li>
+                <li (click)="edit(item)"><span class="material-icons">
+                    edit
+                  </span>Edit section
+                </li>
+                <li (click)="delete(item)" class="delete">
+                  <span class="material-icons">
+                    delete_outline
+                  </span>
+                  Delete section
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="questions">
+            <div class="item" *ngFor="let question of item.Questions">
+              <div class="question">
+                <div class="ask">
+                  <p>
+                    {{question.Question}}
+
+                  </p>
+                  <div class="answers">
+                    <div class="heads">
+                      <div class="head">
+                        Answer
+                      </div>
+                      <div class="head">
+                        Is Correct
+                      </div>
+                      <div class="head">
+                        Actions
+                      </div>
+                    </div>
+                    <div *ngFor="let answer of question.Answers">
+
+                      <div class="answer" *ngIf="answer.StatusId === '1'">
+                        <div class="col value">
+                          <input type="text" [(ngModel)]="answer.Answer">
+                        </div>
+
+                        <div class="col is-correct">
+                          <mat-checkbox [(ngModel)]="answer.IsCoorect"></mat-checkbox>
+                        </div>
+
+                        <div class="col value">
+                          <button mat-button color="primary" class="btn btn-remove" (click)="deleteAnswer(answer)">
+                            <span class="material-icons">
+                              delete_outline
+                            </span>
+                          </button>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="add">
+                    <button class="secondary" (click)="addAnswer(question)">Add answer</button>
+                    <button (click)="saveAnswers(question.Answers)">Save answers</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #nodata>
+        <div class="nodata">
+          <h1>
+            No sections found for {{test?.Name}}
+            <span (click)="add()">
+              Add section
+            </span>
+          </h1>
+        </div>
+      </ng-template>
+
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Test Results">
+    <div class="heading">
+      <div class="">
+        <h4>
+          Results for <b>{{test.Name}} </b>
+        </h4>
+      </div>
+    </div>
+
+    <div class="students main-list">
+      <div class="student" *ngFor="let student of test.Students  ; let i = index" (click)="viewTestAnswers(student)">
+        <div class="user-dp">
+          <div class="dp">
+            {{student.User.Name[0]}}{{student.User.Surname[0]}}
+          </div>
+
+          <p>
+            {{student.User.Name}} {{student.User.Surname}}
+            <span class="date">
+              {{student.CreateDate | date: 'medium'}}
+            </span>
+          </p>
+
+          <p>
+            {{student.Score}}%
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+  </mat-tab>
+</mat-tab-group>
+
+<div class="overlay" *ngIf="showModal || isDelete || addingQuestion || showStudentAnswers" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+  <div class="form">
+    <label for="">Section name**</label>
+    <input type="text" [(ngModel)]="name">
+
+
+    <button mat-button color="primary" (click)="saveSection()"> Save Section</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="isDelete">
+  <div class="delete-modal">
+    <div class="close" (click)="closeModal()">
+      <span class="material-icons">
+        west
+      </span> {{modalHeading}}
+    </div>
+
+
+    <button mat-button color="primary" class="danger" (click)="saveSection()"> Yes, delete</button>
+    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="addingQuestion">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="form">
+    <label for="">Question**</label>
+    <textarea name="" [(ngModel)]="question"></textarea>
+
+    <label for="">Score</label>
+    <input type="text" [(ngModel)]="score">
+
+    <span *ngIf="!contentBody">
+      <label for="">Uplaod the image </label>
+      <input type="file" multiple (change)="imageChanged($event)">
+    </span>
+
+    <span *ngIf="contentBody">
+      <img class="uploadedImage" [src]="contentBody" alt="">
+    </span>
+
+
+    <button mat-button color="primary" (click)="saveQuestion()"> Save question</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+<div class="modal" *ngIf="showStudentAnswers">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div>
+    <div *ngFor="let answer of studentAnswers  ; let i = index" [ngClass]="answer.Class">
+      <p>
+        {{ answer.Question.Question}}
+      </p>
+      <p>
+        Student Answer: <b> {{ answer.Question.StudentAnswer}}</b>
+      </p>
+      <p>
+        Correct Answer: <b>{{ answer.Question.CorrectAnswer}}</b>
+      </p>
+    </div>
+  </div>
+
+</div>

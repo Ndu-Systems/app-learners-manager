@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <g id="asserts" transform="translate(-1429 -231)">
-    <circle id="Ellipse_219" data-name="Ellipse 219" cx="32" cy="32" r="32" transform="translate(1429 231)" fill="#042954" opacity="0.1"/>
-    <path id="box-solid" d="M28.536,10.339,25.7,1.837A2.681,2.681,0,0,0,23.153,0H15.234V10.753H28.6A2.558,2.558,0,0,0,28.536,10.339ZM13.442,0H5.522A2.681,2.681,0,0,0,2.974,1.837L.14,10.339a2.558,2.558,0,0,0-.067.414H13.442ZM0,12.546V25.987a2.689,2.689,0,0,0,2.688,2.688h23.3a2.689,2.689,0,0,0,2.688-2.688V12.546Z" transform="translate(1446 249)" fill="#042954"/>
-  </g>
-</svg>

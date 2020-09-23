@@ -1,0 +1,167 @@
+<div class="main">
+
+  <div class="welcome">
+    <div class="col-1-of-2">
+      <div class="hello">
+        <h1 class="user">
+          Hi {{user.Name}},
+          <span>
+            What would you like to do today
+          </span>
+        </h1>
+      </div>
+      <!-- <pre>
+  {{user | json}}
+</pre> -->
+
+      <div class="profile tar">
+        <div class="user-dp">
+          <div class="dp pc-only">{{user.Name[0]}}{{user.Surname[0]}}</div>
+          <p class="pc-only">
+
+            {{user.Name}} {{user.Surname}}
+            <span class="status grade">{{user.Grade.Name}}</span>
+          </p>
+
+          <div class="sign-out">
+            <img src="assets/images/common/off.svg" alt="log-off logo">
+            <a mat-button (click)="signOut()">
+              sign-out
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="recent topic">
+    <h1>
+      My Subjects
+    </h1>
+ 
+
+    <mat-tab-group>
+      <mat-tab *ngFor="let studentsubject of studentsubjects ; let i = index" [label]="studentsubject.Subject.Name"
+        (click)="selectSubject(i)">
+        <!-- <div>
+          <pre>
+            {{studentsubject| json }}
+          </pre>
+        </div> -->
+        <div class="recent topic" *ngIf="studentsubject.Subject.Topics && studentsubject.Subject.Topics.length ; else nodata">
+          <h1>
+            {{studentsubject.Name}} topics to read
+          </h1>
+          <div class="topics">
+
+            <div *ngFor="let item of studentsubject.Subject.Topics">
+              <div class="card">
+                <p class="tag">
+                  {{item.Name}}
+                </p>
+                <div *ngFor="let topic of item.TopicContent; let i = index" class="topic">
+                  <div class="line pointer" (click)="readTopic(topic)">
+                    <div class="text">
+                      {{i+1}}. {{topic.Tittle}}
+                    </div>
+
+                    <div class="action">
+                      <a>
+                        <span class="material-icons">
+                          arrow_forward
+                        </span>
+                      </a>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <ng-template #nodata>
+          <div class="nodata">
+            <h1>
+              No content found for this subject!
+            </h1>
+          </div>
+        </ng-template>
+
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+
+
+
+
+
+  <div class="recent topic" *ngIf="tests && tests.length">
+    <h1>
+      {{subject.Name}} practice tests
+    </h1>
+    <div class="topics">
+
+      <div *ngFor="let item of tests">
+        <span *ngIf="item.Sections.length">
+          <div class="card">
+            <p class="tag">
+              {{item.Name}}
+            </p>
+
+            <p class="marks">
+              {{item.Marks}} Marks
+            </p>
+
+            <div class="action">
+              <button (click)="takeTest(item)">Take a test</button>
+            </div>
+
+          </div>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="overlay" *ngIf="showModal"></div>
+
+<div class="modal" *ngIf="showLocked">
+
+
+  <div class="form">
+    <p>
+      <span class="important">Hi {{user.Name}}</span>, your account is temporarily locked due to pending payment of
+      <strong> {{user.Billing[0].AmountDue | currency:'R'}} </strong>
+    </p>
+
+    <div class="file" *ngIf="!user.Billing[0].PayProof">
+      <p>
+        If you already paid , please upload the proof of payment
+      </p>
+      <input type="file" accept="image/*" (change)="imageChanged($event)">
+
+    </div>
+
+    <p *ngIf="user.Billing[0].PayProof">
+      We are busy verifying your payment we will send you the email as soon as your account is activated.
+    </p>
+    <div class="actions">
+
+      <div class="sign-out">
+        <img src="assets/images/common/off.svg" alt="log-off logo">
+        <a mat-button (click)="signOut()">
+          sign-out
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

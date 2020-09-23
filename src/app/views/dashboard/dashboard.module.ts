@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule, declarations } from './dashboard-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import {AutoCompleteModule} from 'primeng/autocomplete';
+import { MaterialModule } from 'src/app/material';
+import { PrimeNgModule } from 'src/app/primeng';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -13,10 +13,11 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule,
-    AutoCompleteModule
+    MaterialModule,
+    PrimeNgModule,
+    QuillModule.forRoot()
+
   ],
-  declarations: [...declarations],
-  providers: [MessageService],
+  declarations: [...declarations]
 })
 export class DashboardModule { }

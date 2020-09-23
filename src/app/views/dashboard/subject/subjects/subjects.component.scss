@@ -1,0 +1,13 @@
+.items {
+    .details {
+        display: grid;
+        grid-template-columns: 10% 18% 18% 18% auto;
+    }
+
+    @media only screen and (max-width: 600px) {      
+
+        .details {
+            grid-template-columns: 100%;
+        }
+      }
+}

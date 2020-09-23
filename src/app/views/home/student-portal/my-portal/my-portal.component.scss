@@ -1,0 +1,202 @@
+@import '../../../../../assets/scss/color';
+
+.main {
+    padding: 2rem 0;
+
+    @media only screen and (max-width: 600px) {
+        padding: 5rem 0;
+    }
+
+
+    .top-tab {
+        // display: grid;
+        // grid-template-columns: repeat(5, 20%);
+        margin: 1rem 0;
+        display: flex;
+        width: 100%;
+        overflow-x: scroll;
+
+        @media only screen and (max-width: 600px) {
+            width: 90%;
+            margin: 1rem auto;
+        }
+
+        .tab {
+            border-bottom: 3px solid $grey;
+            text-align: center;
+            padding: .2rem 3rem;
+            cursor: pointer;
+
+            // float: left;
+            @media only screen and (max-width: 600px) {
+                padding: .1rem 1rem;
+            }
+        }
+
+        .active {
+            font-weight: 700;
+            border-bottom: 3px solid $primary;
+            color: $primary
+        }
+    }
+
+    .recent {
+        padding: 1rem 3rem;
+
+        @media only screen and (max-width: 600px) {
+            padding: 1rem 0;
+        }
+
+        .topics {
+            display: flex;
+            background: $cloud;
+            padding: 1rem;
+            overflow-x: scroll;
+
+            @media only screen and (max-width: 600px) {
+                padding: .5rem;
+            }
+
+            .card {
+                background: $white;
+                padding: 1rem;
+                margin: 1rem;
+                width: 20rem;
+                position: relative;
+
+                @media only screen and (max-width: 600px) {
+                    width: 15rem;
+                }
+
+                .tag {
+                    // background: $cloud;
+                    padding: .4rem;
+                    font-weight: 700;
+                    font-size: 1rem;
+                }
+
+                .marks {
+                    color: $darker-grey;
+                }
+
+                .line {
+                    position: relative;
+                    display: grid;
+                    grid-template-columns: 90% auto;
+                    padding: .4rem;
+
+                }
+            }
+        }
+    }
+
+}
+
+.action {
+    button {
+        border: none;
+        background: $cloud;
+        font-weight: 600;
+        color: $primary;
+        padding: .7rem 2rem;
+        cursor: pointer;
+
+        span {
+            position: relative;
+            top: .4rem
+        }
+    }
+
+
+    a {
+        color: $primary;
+        background: $cloud;
+        padding: .5rem .3rem;
+        font-size: .5rem;
+        border-radius: .3rem;
+
+        &:hover {
+            background: $city-ligth;
+        }
+
+        .material-icons {
+            position: relative;
+            top: .4rem;
+            font-size: 18px;
+        }
+    }
+}
+
+h1 {
+    @media only screen and (max-width: 600px) {
+        padding: .5rem 1rem;
+    }
+}
+
+.welcome {
+    padding: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $cloud;
+
+    .col-1-of-2 {
+        grid-template-columns: 60% auto;
+
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 100%;
+        }
+    }
+
+    h1.user {
+        margin: 0;
+
+        span {
+            display: block;
+            font-weight: 100;
+            font-size: 1rem;
+            padding: .8rem 0;
+        }
+    }
+
+    .user-dp {
+        display: grid;
+        grid-template-columns: 11% 50% auto;
+        width: 100%;
+   
+
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 36% 50% auto;
+
+        }
+
+        p {
+            padding: .5rem .1rem;
+
+            .status {
+                top: .2rem;
+                padding: .2rem;
+                border-radius: .3rem;
+                text-align: center;
+            }
+        }
+    }
+}
+.sign-out{
+   img {
+        position: relative;
+        top: .5rem;
+        left: 1rem;
+    }
+}
+
+.modal {
+    p{
+        padding: .1rem;
+    }
+    img{
+        margin: .1rem 1rem;
+    }
+    .sign-out{
+        width: 12rem;
+        background:$cloud;
+    }
+}

@@ -1,0 +1,7 @@
+.container-fluid {
+  padding: 0 20rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0rem;
+  }
+}

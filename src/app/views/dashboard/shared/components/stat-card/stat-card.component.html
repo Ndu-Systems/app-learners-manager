@@ -1,0 +1,7 @@
+<div class="stats" *ngIf="statistics">
+  <mat-card *ngFor="let item of statistics">
+    <h1 class="description">{{item.Description}}</h1>
+    <h1 class="value">{{item.Value}}</h1>
+    <h1 class="title">{{item.Title}}</h1>
+  </mat-card>
+</div>

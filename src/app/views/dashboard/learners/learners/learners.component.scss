@@ -1,0 +1,36 @@
+@import '../../../../../assets/scss/color';
+.items .details {
+    grid-template-columns: 5% 20% 20% 20% 25% auto;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+        grid-gap: .8rem;
+    }
+}
+
+.status{
+    border: 2px solid $black;
+    font-weight: 600;
+}
+
+.modal{
+    img{
+        width: 60%;
+        margin: 1rem auto;
+        height: auto;
+    }
+}
+
+.btn-pp{
+    display: block;
+    font-size: .7rem;
+    font-weight: 600;
+    width: 8rem;
+    margin: .8rem auto;
+    color: $info;
+    padding: .2rem;
+    text-align: center;
+    position: relative;
+    left: -.5rem;
+    cursor: pointer;
+}

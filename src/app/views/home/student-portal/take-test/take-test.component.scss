@@ -1,0 +1,134 @@
+@import '../../../../../assets/scss/color';
+
+.main {
+    padding: 3rem 0;
+
+    @media only screen and (max-width: 600px) {
+        padding: 5rem .5rem;
+    }
+
+    .items {
+        padding: 3rem 0;
+
+        .questions {
+            padding: 1rem;
+            margin: 1rem;
+            margin-bottom: 3rem;
+
+            p {
+                font-weight: 400;
+            }
+
+            .answers {
+
+                margin-bottom: 4rem;
+
+                .answer {
+                    display: grid;
+                    grid-template-columns: 3% 75% auto;
+
+                    .col {
+                        border-bottom: .3px solid $grey;
+                        padding: .2rem 1rem;
+                    }
+
+                    .answer-line {
+                        padding: .5rem;
+                        margin: .4rem;
+                        border: none;
+                        width: 100%;
+                    }
+
+                    button {
+                        padding: .1rem;
+                        margin: .1rem;
+                    }
+
+                    .btn-remove {
+                        width: 2rem;
+                        font-size: .4rem;
+                        background: $danger;
+                        color: $white !important;
+                        min-width: 1rem;
+
+                        .material-icons {
+                            font-size: 1rem;
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+
+        ::ng-deep .mat-checkbox .mat-checkbox-frame {
+            border-color: $black;
+
+
+            &:checked {
+                background: red;
+            }
+        }
+
+        mat-checkbox {
+            top: .6rem;
+            position: relative;
+        }
+
+        .uploadedImage {
+            width: 10rem;
+        }
+
+
+
+        .breadcrumb {
+            width: 70%;
+        }
+    }
+
+    .mat-checkbox-ripple .mat-ripple-element,
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background-color: $primary !important;
+    }
+}
+
+.finish {
+    text-align: center;
+}
+
+
+::ng-deep {
+
+    .mat-checkbox-ripple .mat-ripple-element,
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background-color: $primary !important;
+    }
+}
+
+$size : .7rem;
+
+.number {
+    background: $white;
+    border: 2px solid $black;
+    width: $size;
+    height: $size;
+    border-radius: $size;
+    display: inline-block;
+    padding: .2rem;
+    text-align: center;
+    font-size: .7rem;
+    font-weight: 600;
+    margin-right: 2rem;
+
+    @media only screen and (max-width: 600px) {
+        margin-right: .8rem;
+    }
+
+}
+
+.showError {
+    padding: 2rem;
+}

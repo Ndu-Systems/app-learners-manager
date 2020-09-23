@@ -1,0 +1,32 @@
+.stats {
+
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 1rem;
+    padding: 1rem 3rem;
+    padding-left: 0;
+
+    .mat-card {
+        h1 {
+            font-size: 1.563rem;
+            font-weight: 500;
+
+            &.description {
+                text-transform: uppercase;
+                color: $darker-grey;
+                font-size: 1rem;
+            }
+
+            &.title {
+                text-transform: capitalize;
+                color: $darker-grey;
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) { 
+
+        grid-template-columns: 50% 50%;
+    }
+}
