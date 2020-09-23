@@ -29,6 +29,7 @@ export interface Subject {
 
 export interface Grade {
     GradeId?: string;
+    CompanyId : string;
     Name?: string;
     Description?: string;
     InstituteTypeId?: number;

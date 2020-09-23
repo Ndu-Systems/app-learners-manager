@@ -13,6 +13,9 @@ import { TestComponent } from './tests/test/test.component';
 import { HeaderBannerComponent, BreadcrumbComponent, StatCardComponent } from './shared';
 import { LearnersComponent } from './learners/learners/learners.component';
 import { StudentsubjectsPipe } from 'src/app/_pipes/studentsubjects.pipe';
+import { AddLearnerComponent } from './learners/add-learner/add-learner.component';
+import { DashLoaderComponent } from './shared/components/dash-loader/dash-loader.component';
+import { ViewLearnerComponent } from './learners/view-learner/view-learner.component';
 
 
 const routes: Routes = [
@@ -27,6 +30,7 @@ const routes: Routes = [
       { path: 'topic/:id', component: TopicComponent },
       { path: 'tests/:id', component: TestsComponent },
       { path: 'test/:id', component: TestComponent },
+      { path: 'view-learner/:id', component: ViewLearnerComponent },
       { path: 'learners', component: LearnersComponent },
     ]
   }
@@ -34,8 +38,8 @@ const routes: Routes = [
 export const declarations: Array<any> = [
   DashboardComponent,
   DashboardNavComponent,
-  DashboardHomeComponent, 
-  GradeComponent, 
+  DashboardHomeComponent,
+  GradeComponent,
   GradesComponent,
   SubjectsComponent,
   SubjectComponent,
@@ -46,7 +50,10 @@ export const declarations: Array<any> = [
   BreadcrumbComponent,
   StatCardComponent,
   LearnersComponent,
-  StudentsubjectsPipe
+  StudentsubjectsPipe,
+  AddLearnerComponent,
+  DashLoaderComponent,
+  ViewLearnerComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

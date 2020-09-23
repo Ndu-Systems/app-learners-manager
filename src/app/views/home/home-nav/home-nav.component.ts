@@ -20,9 +20,9 @@ export class HomeNavComponent implements OnInit {
     Title: 'Login',
   }
   navItems: NavModel[] = [
-    { key: 'Home', label: 'home', routerLink: '' },
-    { key: 'Pricing', label: 'pricing', routerLink: '/pricing' },
-    { key: 'Contact', label: 'contact', routerLink: '/contact-us' }
+    // { key: 'Home', label: 'home', routerLink: '' },
+    // { key: 'Pricing', label: 'pricing', routerLink: '/pricing' },
+    // { key: 'Contact', label: 'contact', routerLink: '/contact-us' }
   ];
 
   accountNavItems: NavModel[] = [

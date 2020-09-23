@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class LearnersComponent implements OnInit {
 
-  users: User[];
+  users: User[] = [];
   showModal: boolean;
   name: any;
   user: User;
@@ -37,14 +37,14 @@ export class LearnersComponent implements OnInit {
   headerBanner: HeaderBannerModel = {
     Header: 'Learners',
     SubHeader: 'A collection of learners in the system.',
-    ctaLabel: ''
-    // ctaLabel: '+ Add learner'
+    ctaLabel: '+ Add learner'
   };
   showConfirm: boolean;
   modalBody: string;
   modalCTA: string;
   proofOfPayment: string;
   showLoader: boolean;
+  showAddLearner: boolean;
 
   constructor(
     private apiServices: ApiService,
@@ -64,12 +64,14 @@ export class LearnersComponent implements OnInit {
   }
   add() {
     this.showModal = true;
+    this.showAddLearner = true;
     this.isUpdate = false;
     this.name = undefined;
     this.modalHeading = 'Add learners';
   }
   closeModal() {
     this.showModal = false;
+    this.showAddLearner = false;
     this.showConfirm = false;
     this.proofOfPayment = undefined;
   }
@@ -170,4 +172,14 @@ export class LearnersComponent implements OnInit {
       });
   }
 
+  doneAdding(student: User) {
+    if (student && student.UserId) {
+      this.users.push(student);
+      this.closeModal();
+    }
+  }
+view(user:User){
+  this.router.navigate(['dashboard/view-learner', user.UserId]);
+
+}
 }

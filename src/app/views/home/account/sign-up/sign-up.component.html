@@ -8,6 +8,18 @@
         </h1>
 
         <div class="form-group">
+          <label for="exampleInputName">Company or School Name</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="CompanyName"
+                 id="exampleInputFirstName"
+                 placeholder="Enter Company or School">
+          <div class="alert"
+               *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
+            Name is required
+          </div>
+        </div>
+        <div class="form-group">
           <label for="exampleInputName">Name</label>
           <input type="text"
                  class="form-control"
@@ -33,62 +45,6 @@
           </div>
         </div>
 
-
-        <div class="form-group">
-          <label for="exampleInputEmail">Select your institution of learning</label>
-          <select name=""
-                  id=""
-                  (change)="institutionTypeSelected($event.target.value)"> 
-            <option *ngFor="let item of institutionTypes"
-                    [value]="item.InstitutionTypeId">{{item.Name}}</option>
-          </select>
-        </div>
-
-        <div class="form-group"
-             *ngIf="grades">
-          <label for="exampleInputEmail">Select your grade</label>
-          <select name=""
-                  id=""
-                  formControlName="GradeId"
-                  (change)="gradeSelected($event.target.value)">
-            <option *ngFor="let grade of grades"
-                    [value]="grade.GradeId">{{grade.Name}}</option>
-          </select>
-          <div class="alert"
-               *ngIf="!rForm.controls['GradeId'].valid  && rForm.controls['GradeId'].touched ">
-            Grade is required
-          </div>
-        </div>
-
-        <div class="form-group"
-             *ngIf="subjects && subjects.length > 0">
-          <label for="exampleInputEmail">Select subjects</label>
-          <div class="subjects">
-            <div *ngFor="let subject of subjects; let i = index"
-                 [ngClass]="subject.Class"
-                 (click)="selectSubject(subject)">
-              {{subject.Name}}
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group"
-             *ngIf="paymentTypes && paymentTypes.length > 0">
-          <label id="example-radio-group-label">Pick your payment option</label>
-          <mat-radio-group aria-labelledby="example-radio-group-label"
-                           class="example-radio-group"
-                           [(ngModel)]="paymentOption"
-                           [ngModelOptions]="{standalone: true}">
-            <mat-radio-button class="example-radio-button"
-                              *ngFor="let item of paymentTypes"
-                              [value]="item.Name">
-              {{item.Name}}
-            </mat-radio-button>
-          </mat-radio-group>
-          <div>Your payment option is: {{paymentOption}}</div>
-
-        </div>
-
         <div class="form-group">
           <label for="exampleInputPhoneNumber">Contact number</label>
           <input type="email"
@@ -101,6 +57,7 @@
             PhoneNumber is required
           </div>
         </div>
+
         <div class="form-group">
           <label for="exampleInputEmail">Email address</label>
           <input type="email"

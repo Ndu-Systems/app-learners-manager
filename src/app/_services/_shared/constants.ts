@@ -34,5 +34,6 @@ export const SAVE_COMMENT_URL = `api/comment/add-comment.php`;
 export const GETS_STAT_URL = `api/stat/get-stat.php`;
 export const UPDATE_USER_URL = `api/user/update-user.php`;
 export const UPDATE_BILLING_URL = `api/billing/update-billing.php`;
+export const ADD_LEARNER_URL = `api/user/add-learner.php`;
 
 

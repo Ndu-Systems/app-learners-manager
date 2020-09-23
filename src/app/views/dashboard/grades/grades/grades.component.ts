@@ -14,7 +14,7 @@ import { GET_INSTITUTION_TYPES_API } from 'src/app/_services/_shared';
   styleUrls: ['./grades.component.scss']
 })
 export class GradesComponent implements OnInit {
-  grades: Grade[];
+  grades: Grade[] = [];
   showModal: boolean;
   name: any;
   institutionTypeId: any;
@@ -53,7 +53,7 @@ export class GradesComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.apiServices.get(GET_GRADES_URL).subscribe(data => {
+    this.apiServices.get(`${GET_GRADES_URL}?CompanyId=${this.user.CompanyId}`).subscribe(data => {
       if (data) {
         this.grades = data;
       }
@@ -111,6 +111,7 @@ export class GradesComponent implements OnInit {
       return false;
     }
     const data: Grade = {
+      CompanyId: this.user.CompanyId,
       Name: this.name,
       Description: this.description || '',
       InstituteTypeId: this.institutionTypeId,

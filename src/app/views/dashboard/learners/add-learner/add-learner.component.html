@@ -1,0 +1,70 @@
+<form class="form" [formGroup]="rForm">
+
+
+  <div class="form-group">
+    <label for="exampleInputName">Name</label>
+    <input type="text" class="form-control" formControlName="Name" id="exampleInputFirstName"
+      placeholder="Enter First Name">
+    <div class="alert" *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
+      Name is required
+    </div>
+  </div>
+  <div class="form-group" *ngIf="grades">
+    <label for="exampleInputName">Grade</label>
+    <select formControlName="GradeId" #thisSelect class="status" (change)="gradeChanged(thisSelect.value)">
+      <option *ngFor="let item of grades" [value]="item.GradeId">{{item?.Name}}</option>
+    </select>
+    <div class="alert" *ngIf="!rForm.controls['GradeId'].valid  && rForm.controls['GradeId'].touched ">
+      Grade is required
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <label for="exampleInputName">Subjects</label>
+    <div class="subjects">
+      <div class="subject" ngFor="let subject of subjects">
+        <!-- <input  type="checkbox">  -->
+        {{subject?.Name}}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputSurname">Enter Surname</label>
+    <input type="text" class="form-control" formControlName="Surname" id="exampleInputSurname"
+      placeholder="Enter Surname">
+    <div class="alert" *ngIf="!rForm.controls['Surname'].valid  && rForm.controls['Surname'].touched ">
+      Surname is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPhoneNumber">Contact number</label>
+    <input type="email" class="form-control" formControlName="PhoneNumber" id="exampleInputPhoneNumber"
+      placeholder="Enter Contact Number">
+    <div class="alert" *ngIf="!rForm.controls['PhoneNumber'].valid  && rForm.controls['PhoneNumber'].touched ">
+      PhoneNumber is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail">Email address</label>
+    <input type="email" class="form-control" formControlName="Email" id="exampleInputEmail" placeholder="Enter email">
+    <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+      Email is required
+    </div>
+  </div>
+
+
+  <div class="action">
+    <button mat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+      Add learner
+    </button>
+    <h5 class="error">{{error}}</h5>
+  </div>
+</form>
+
+<app-dash-loader *ngIf="showLoader"></app-dash-loader>

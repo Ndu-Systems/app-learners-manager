@@ -4,7 +4,7 @@
 </div>
 <div class="main-list" *ngIf="users">
   <div class="items">
-    <div class="item" *ngFor="let item of users">
+    <div class="item pointer" *ngFor="let item of users" (click)="view(item)">
       <div class="details">
         <div class="icon">
           <div class="user-dp">
@@ -101,4 +101,13 @@
 
     <img [src]="proofOfPayment" alt="">
   </div>
+</div>
+<div class="modal" *ngIf="showAddLearner">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+<app-add-learner (doneAdding)="doneAdding($event)"></app-add-learner>
 </div>

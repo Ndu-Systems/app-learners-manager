@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService, ApiService, EmailService, NavigationService } from 'src/app/_services';
-import { SYSTEM, IS_DELETED_FALSE, AWAITING_ACTIVATION, LEARNER, DEFAULT_PASSWORD, ACTIVE } from 'src/app/_shared';
+import { SYSTEM, IS_DELETED_FALSE, AWAITING_ACTIVATION, LEARNER, DEFAULT_PASSWORD, ACTIVE, ADMIN } from 'src/app/_shared';
 import { UserModel } from 'src/app/_models/user.model';
 import { first } from 'rxjs/operators';
 import { Grade, Subject } from 'src/app/_models/grade.model';
@@ -47,37 +47,28 @@ export class SignUpComponent implements OnInit {
       Password: [null, Validators.required],
       PhoneNumber: [null, Validators.required],
       Name: [null, Validators.required],
+      CompanyName: [null, Validators.required],
       Surname: [null, Validators.required],
-      GradeId: [null],
-      Studentsubjects: [[{ SubjectId: '1111' }]],
-      AccessType: ['6 Months'],
-      AccessStatus: ['Active'],
-      AccessStartDate: [DEFAULT_DATE],
-      AccessEndDate: [DEFAULT_DATE],
-      ImageUrl: [''],
-      UserType: 'Learner',
+      GradeId: ['n/a'],
+      UserType: ADMIN,
       CreateUserId: [SYSTEM],
       ModifyUserId: [SYSTEM],
       IsDeleted: [IS_DELETED_FALSE],
       StatusId: [AWAITING_ACTIVATION]
     });
 
-    this.getInstitutionTypes();
     console.log(this.grades);
   }
 
   onSubmit(model: UserModel) {
     model.Roles = [];
-    model.Roles.push({ Name: LEARNER });
-    model.Studentsubjects = this.selectedSubjects;
-    model.AccessType = this.paymentOption;
+    model.Roles.push({ Name: ADMIN });
     this.showLoader = true;
 
     this.accountService.register(model).subscribe(data => {
       // send email logic here.
       if (data.Email) {
         this.sendEmail(data);
-        this.sendSendBillingEmail(data);
       } else {
         alert(data);
         return;
@@ -85,42 +76,6 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  getInstitutionTypes() {
-    const query: GenericQueryModel = { StatusId: 1 };
-    this.apiServices.getWithQuery(GET_INSTITUTION_TYPES_API, query).subscribe(data => {
-      const institutions = data as InstitutionTypeModel[];
-      if (institutions != null &&
-        institutions != undefined &&
-        institutions.length > 0) {
-        this.institutionTypes = institutions;
-        this.getGradesForInstitution(this.institutionTypes[1].InstitutionTypeId);
-      }
-      const first = this.institutionTypes[0];
-      this.getGradesForInstitution(first.InstitutionTypeId);
-    })
-  }
-
-  institutionTypeSelected(institutionTypeId: any) {
-    this.getGradesForInstitution(institutionTypeId);
-  }
-
-  getGradesForInstitution(institutionTypeId: any) {
-    const institution = this.institutionTypes.find(x => x.InstitutionTypeId === institutionTypeId);
-    this.grades = [];
-    this.paymentTypes = [];
-    if (institution.Grades) {
-      this.grades = institution.Grades;
-    }
-    if (this.paymentTypes.length < 1) {
-      this.paymentTypes.push({
-        Name: '6 Months',
-        Value: institution.OnceOffPrice
-      }, {
-        Name: 'Monthly',
-        Value: institution.MonthlyPrice
-      });
-    }
-  }
   getGrades() {
     this.apiServices.get(GET_GRADES_URL).subscribe(data => {
       if (data) {
@@ -193,21 +148,21 @@ export class SignUpComponent implements OnInit {
             this.showLoader = false;
             console.log('Billing sent, Good Job');
             this.navigateHome();
-           }, 1000);
+          }, 1000);
         } else {
         }
       });
   }
 
-navigateHome(){
-  this.navigationModel = {
-    IsHome: true,
-    NavUrl: '',
-    Title: 'Home'
-  };
-  this.navigationService.updateNavigationState(this.navigationModel);
-  this.routeTo.navigate(['']);
+  navigateHome() {
+    this.navigationModel = {
+      IsHome: true,
+      NavUrl: '',
+      Title: 'Home'
+    };
+    this.navigationService.updateNavigationState(this.navigationModel);
+    this.routeTo.navigate(['']);
 
-}
+  }
 
 }
