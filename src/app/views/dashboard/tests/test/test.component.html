@@ -1,102 +1,69 @@
-<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-<app-header-banner [headerBanner]="headerBanner" (showModalEventEmitter)="add()"></app-header-banner>
-
 <mat-tab-group *ngIf="test">
-  <mat-tab label="Test details">
+  <mat-tab label="Questions">
 
     <div class="main-list" *ngIf="test">
-      <h4>
-        <u>{{test.Name}}</u>
-      </h4>
-      <div class="items" *ngIf="test.Sections.length; else nodata">
-        <div class="item" *ngFor="let item of test.Sections">
-          <i (click)="edit(item)" class="pointer"> {{item.Name}} ({{item.Questions.length}} questions) </i>
-          <span class="material-icons simple-option" (click)="options(item)">
-            more_horiz
-          </span>
-          <div class="details">
-      
 
-            <!-- <div class="data">
-              <div class="action" (click)="options(item)">
-                <img src="assets/images/dashboard/action-dots.svg" alt="">
+      <div class="" *ngIf="test.Questions">
+        <div class="questions" *ngIf="test.Questions.length; else nodata">
+          <div class="question" *ngFor="let question of test.Questions" (click)="preview(question)">
+            <p>
+              <span class="tittle">
+                <span class="material-icons">
+                  description
+                </span>
+                {{question.Question}}</span>
+              <span class="stat"> 5 people read this</span>
+            </p>
+            <div class="answers">
+              <div *ngFor="let answer of question.Answers">
+
+                <div class="answer" *ngIf="answer.StatusId === '1'">
+                  <div class="col value">
+                    <input type="text" [(ngModel)]="answer.Answer">
+                  </div>
+
+                  <div class="col is-correct">
+                    <mat-checkbox [(ngModel)]="answer.IsCoorect"></mat-checkbox>
+                  </div>
+
+                  <div class="col value">
+                    <button mat-button color="primary" class="btn btn-remove" (click)="deleteAnswer(answer)">
+                      <span class="material-icons">
+                        delete_outline
+                      </span>
+                    </button>
+                  </div>
+
+                </div>
+
               </div>
-            </div> -->
-            <div class="viewing" *ngIf="item.Viewing">
-              <ul>
-                <li (click)="addQuestion(item)">
-                  <span class="material-icons">
-                    add
-                  </span>
-                  Add a question
-                </li>
-                <li (click)="edit(item)"><span class="material-icons">
-                    edit
-                  </span>Edit section
-                </li>
-                <li (click)="delete(item)" class="delete">
-                  <span class="material-icons">
-                    delete_outline
-                  </span>
-                  Delete section
-                </li>
-              </ul>
+            </div>
+            <div class="add">
+              <button class="secondary" (click)="addAnswer(question)">Add answer</button>
+              <button (click)="saveAnswers(question.Answers)">Save answers</button>
             </div>
           </div>
-          <div class="questions">
-            <div class="item" *ngFor="let question of item.Questions">
-              <div class="question">
-                <div class="ask">
-                  <p>
-                    {{question.Question}}
 
-                  </p>
-                  <div class="answers">
-                    <div class="heads">
-                      <div class="head">
-                        Answer
-                      </div>
-                      <div class="head">
-                        Is Correct
-                      </div>
-                      <div class="head">
-                        Actions
-                      </div>
-                    </div>
-                    <div *ngFor="let answer of question.Answers">
-
-                      <div class="answer" *ngIf="answer.StatusId === '1'">
-                        <div class="col value">
-                          <input type="text" [(ngModel)]="answer.Answer">
-                        </div>
-
-                        <div class="col is-correct">
-                          <mat-checkbox [(ngModel)]="answer.IsCoorect"></mat-checkbox>
-                        </div>
-
-                        <div class="col value">
-                          <button mat-button color="primary" class="btn btn-remove" (click)="deleteAnswer(answer)">
-                            <span class="material-icons">
-                              delete_outline
-                            </span>
-                          </button>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="add">
-                    <button class="secondary" (click)="addAnswer(question)">Add answer</button>
-                    <button (click)="saveAnswers(question.Answers)">Save answers</button>
-                  </div>
-                </div>
-              </div>
+          <div class="question add-row">
+            <div class="add">
+              <button mat-button color="primary" (click)="addQuestion()"> Add new question</button>
             </div>
           </div>
         </div>
+
+        <ng-template #nodata>
+          <div class="nodata">
+            <h1>
+              You don't have any questions yet.
+              <span (click)="addQuestion()">
+                Add question
+              </span>
+            </h1>
+          </div>
+        </ng-template>
       </div>
+
+
 
       <ng-template #nodata>
         <div class="nodata">
@@ -112,7 +79,7 @@
 
     </div>
   </mat-tab>
-  <mat-tab label="Test Results">
+  <mat-tab label="Results">
     <div class="heading">
       <div class="">
         <h4>

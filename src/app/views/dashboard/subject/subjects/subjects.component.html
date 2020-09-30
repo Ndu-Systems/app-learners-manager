@@ -1,108 +1,72 @@
-<div class="headers">
-  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-  <app-header-banner [headerBanner]="headerBanner"
-                     (showModalEventEmitter)="add()"></app-header-banner>
-</div>
-<div class="main-list"
-     *ngIf="grade">
-  <div class="items"
-       *ngIf="grade.Subjects.length; else nodata">
-    <div class="item"
-         *ngFor="let item of subjects">
-      {{item.Name}}
-      <div class="details">
-        <div class="icon">
-          <img src="assets/images/dashboard/subject-icon.svg"
-               alt="">
-        </div>
-        <div class="data">
-          <h1>
-            Pass mark
-            <span>{{item.PassMark}}</span>
-          </h1>
-        </div>
-        <div class="data cta"
-             (click)="open(item.SubjectId)">
-          <h1>
-            Topics
-            <span>{{item.Topics.length}}</span>
-          </h1>
-        </div>
-        <div class="data cta"
-             (click)="openTest(item.SubjectId)">
-          <h1>
-            Tests
-            <span>{{item.Tests.length}}</span>
-          </h1>
-        </div>
-        <div class="data">
-          <div class="action"
-               (click)="options(item)">
-            <img src="assets/images/dashboard/action-dots.svg"
-                 alt="">
-          </div>
-        </div>
-        <div class="viewing"
-             *ngIf="item.Viewing">
-          <ul>
-            <li (click)="open(item.SubjectId)"><span class="material-icons">list</span>View Topics</li>
-            <li (click)="openTest(item.SubjectId)"><span class="material-icons">
-                grading
-              </span>View Tests</li>
-            <li (click)="edit(item)"><span class="material-icons">
-                edit
-              </span>Edit</li>
-            <li (click)="delete(item)"
-                class="delete"><span class="material-icons">delete_outline</span>Delete</li>
-          </ul>
-        </div>
+<div class="tab">
+  <p>Subjects for <b>{{grade.Name}}</b></p>
+
+  <span *ngIf="grade">
+    <div class="subjects" *ngIf="grade.Subjects.length; else nosubjects">
+      <div class="subject" *ngFor="let item of grade.Subjects" (click)="openSubject(item)">
+        <p>
+          <span class="name">
+            {{item.Name}}
+          </span>
+          <span class="lessions">
+            {{item.lessions?.length || 0}} Lessions
+          </span>
+        </p>
       </div>
     </div>
-  </div>
 
-  <ng-template #nodata>
-    <div class="nodata">
-      <h1>
-        No subjects found for {{grade.Grade?.Name}}
-        <span (click)="add()">
-          Add subject
-        </span>
-      </h1>
-    </div>
-  </ng-template>
-
-
+    <ng-template #nosubjects>
+      <div class="nodata">
+        <h1>
+          No subjects found for {{grade.Name}}
+          <span (click)="add()">
+            Add subject
+          </span>
+        </h1>
+      </div>
+    </ng-template>
+  </span>
 </div>
 
-<div class="overlay"
-     *ngIf="showModal || isDelete"
-     (click)="closeModal()"></div>
-<div class="modal"
-     *ngIf="showModal">
-     <div class="close" (click)="closeModal()">
-      <span class="material-icons">
-        west
-      </span> {{modalHeading}}
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overlay" *ngIf="showModal || isDelete" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
 
   <div class="form">
     <label for="">Subject name**</label>
-    <input type="text"
-           [(ngModel)]="name">
+    <input type="text" [(ngModel)]="name">
 
     <label for="">Subject code</label>
-    <input type="text"
-           [(ngModel)]="code">
+    <input type="text" [(ngModel)]="code">
 
     <label for="">Pass mark</label>
-    <input type="text"
-           [(ngModel)]="passMark">
+    <input type="text" [(ngModel)]="passMark">
 
     <label for="">Subject description</label>
     <textarea [(ngModel)]="description"></textarea>
-    <button mat-button
-            color="primary"
-            (click)="save()"> Save subject </button>
+    <button mat-button color="primary" (click)="save()"> Save subject </button>
     <div class="error">
       {{error}}
     </div>
@@ -110,20 +74,13 @@
 </div>
 
 
-<div class="modal"
-     *ngIf="isDelete">
+<div class="modal" *ngIf="isDelete">
   <div class="delete-modal">
     <h1>
       {{modalHeading}}
     </h1>
-    <button mat-button
-            color="primary"
-            class="danger"
-            (click)="save()"> Yes, delete</button>
-    <button mat-button
-            color="primary"
-            class="secondary"
-            (click)="closeModal()"> Cancel</button>
+    <button mat-button color="primary" class="danger" (click)="save()"> Yes, delete</button>
+    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
     <div class="error">
       {{error}}
     </div>

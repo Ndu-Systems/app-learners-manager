@@ -16,6 +16,7 @@ import { StudentsubjectsPipe } from 'src/app/_pipes/studentsubjects.pipe';
 import { AddLearnerComponent } from './learners/add-learner/add-learner.component';
 import { DashLoaderComponent } from './shared/components/dash-loader/dash-loader.component';
 import { ViewLearnerComponent } from './learners/view-learner/view-learner.component';
+import { ListLessonsComponent } from './subject/list-lessons/list-lessons.component';
 
 
 const routes: Routes = [
@@ -53,7 +54,8 @@ export const declarations: Array<any> = [
   StudentsubjectsPipe,
   AddLearnerComponent,
   DashLoaderComponent,
-  ViewLearnerComponent
+  ViewLearnerComponent,
+  ListLessonsComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

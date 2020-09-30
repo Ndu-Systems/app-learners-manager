@@ -1,5 +1,21 @@
-@media only screen and (max-width: 600px) {      
+@media only screen and (max-width: 600px) {
     .details {
         grid-template-columns: 100%;
     }
-  }
+}
+
+.head {
+    display: grid;
+    grid-template-columns: 3% auto;
+    margin: 1.5rem 0;
+
+    h1 {
+        padding: 0;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    span {
+        cursor: pointer;
+    }
+}

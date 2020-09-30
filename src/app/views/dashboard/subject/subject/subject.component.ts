@@ -3,7 +3,7 @@ import { User } from 'src/app/_models/user.model';
 import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
-import { GET_SUBJECTS_FOR_A_GRADE_URL, ADD_SUBJECT_URL, GET_SUBJECT_URL, ADD_TOPIC_URL, STATUS_DELETED, UPDATE_TOPIC_URL } from 'src/app/_services/_shared/constants';
+import { GET_SUBJECTS_FOR_A_GRADE_URL, ADD_SUBJECT_URL, GET_SUBJECT_URL, ADD_TOPIC_URL, STATUS_DELETED, UPDATE_TOPIC_URL, GET_TOPIC_URL } from 'src/app/_services/_shared/constants';
 import { Subject } from 'src/app/_models/grade.model';
 import { Topic } from 'src/app/_models/topic.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
@@ -33,6 +33,8 @@ export class SubjectComponent implements OnInit {
     SubHeader: 'A collection of topics in the system.',
     ctaLabel: '+ Add a topic'
   };
+  topic: any;
+  topicContentList: any;
   constructor(
     private apiServices: ApiService,
     private activatedRoute: ActivatedRoute,
@@ -50,7 +52,7 @@ export class SubjectComponent implements OnInit {
         this.subject = data;
         this.topics = this.subject.Topics;
         this.headerBanner.Header = `Topics for ${this.subject.Name}`
-        this.headerBanner.SubHeader= `A collection of ${this.subject.Name} topics in the system.,`
+        this.headerBanner.SubHeader = `A collection of ${this.subject.Name} topics in the system.,`
 
         this.crumbs = [
           {
@@ -81,7 +83,7 @@ export class SubjectComponent implements OnInit {
   add() {
     this.showModal = true;
     this.current = undefined;
-    this.modalHeading =  'Add new topic';
+    this.modalHeading = 'Add new topic';
     this.isDelete = false;
     this.isUpdate = false;
   }
@@ -109,7 +111,7 @@ export class SubjectComponent implements OnInit {
       return false;
     }
     const findTipic = this.subject.Topics.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
-    if (findTipic &&  !this.isDelete && !this.isUpdate) {
+    if (findTipic && !this.isDelete && !this.isUpdate) {
       this.error = `⚠️  ${this.name} already exist.`;
       return false;
     }
@@ -155,5 +157,20 @@ export class SubjectComponent implements OnInit {
     this.current = item;
     this.modalHeading = 'Update subject.'
     this.topics.map(x => x.Viewing = false);
+  }
+  back() {
+    this.router.navigate([`dashboard/grades`])
+
+  }
+
+  loadLeasons() {
+    this.apiServices.get(`${GET_TOPIC_URL}?SubjectId=${this.subject.SubjectId}`).subscribe(data => {
+      if (data) {
+        this.topic = data;
+        this.topicContentList = this.topic.TopicContent;
+        this.headerBanner.Header = `${this.topic.Name} content `
+        this.headerBanner.SubHeader = `A collection of ${this.topic.Name} content in the system.,`
+      }
+    });
   }
 }

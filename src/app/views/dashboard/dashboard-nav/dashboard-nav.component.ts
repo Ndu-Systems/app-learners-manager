@@ -13,15 +13,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardNavComponent implements OnInit {
   navItems: NavModel[] = [
-    {
-      key: 'Dashboard',
-      label: 'Dashboard',
-      routerLink: '/dashboard',
-      imgActive: 'assets/images/dashboard/nav/dashboard.svg',
-      imgDisabled: 'assets/images/dashboard/nav/dashboard-disabled.svg',
-      imgMobile: 'assets/images/dashboard/nav/home-mobile.svg',
-      imgMobileDisabled: 'assets/images/dashboard/nav/home-mobile-disabled.svg'
-    },
+
     {
       key: 'Grades',
       label: 'Grades',
@@ -39,6 +31,16 @@ export class DashboardNavComponent implements OnInit {
       imgMobile: 'assets/images/dashboard/nav/learners-mobile.svg',
       imgMobileDisabled: 'assets/images/dashboard/nav/learners-mobile-disabled.svg'
     },
+
+    {
+      key: 'Insights',
+      label: 'Insights',
+      routerLink: '/dashboard',
+      imgActive: 'assets/images/dashboard/nav/dashboard.svg',
+      imgDisabled: 'assets/images/dashboard/nav/dashboard-disabled.svg',
+      imgMobile: 'assets/images/dashboard/nav/home-mobile.svg',
+      imgMobileDisabled: 'assets/images/dashboard/nav/home-mobile-disabled.svg'
+    }
     // {
     //   label: 'Admin portal',
     //   routerLink: '/admin', 
@@ -73,7 +75,7 @@ export class DashboardNavComponent implements OnInit {
 
     this.navigationService.updateNavigationState(this.navigationModel);
     this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
-   }
+  }
   logout() {
     this.accountService.logout();
   }
@@ -99,6 +101,6 @@ export class DashboardNavComponent implements OnInit {
     }
     this.navigationService.updateNavigationState(this.navigationModel);
     this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
- 
+
   }
 }

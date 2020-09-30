@@ -85,7 +85,7 @@ export class SignInComponent implements OnInit {
         this.showLoader = false;
         if (userRoles) {
           if (user.Roles.find(x => x.RoleName === ADMIN)) {
-            this.routeTo.navigate(['dashboard']);
+            this.routeTo.navigate(['dashboard/grades']);
           }
 
           if (user.Roles.find(x => x.RoleName === LEARNER)) {

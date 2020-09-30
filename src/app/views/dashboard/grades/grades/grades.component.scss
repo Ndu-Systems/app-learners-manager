@@ -1,12 +1,13 @@
-.item {
-    .details {
-        grid-template-columns: 15% 70% auto;
-    }
+@import '../../../../../assets/scss/color';
 
-    @media only screen and (max-width: 600px) {      
+.tab {
+    padding: 2rem 1rem;
+}
 
-        .details {
-            grid-template-columns: 100%;
-        }
-      }
+
+.form {
+    background: $white;
+    width: 30%;
+    padding: 1rem;
+    margin: 1rem;
 }

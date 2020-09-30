@@ -70,7 +70,7 @@ export class AddLearnerComponent implements OnInit {
     model.Roles = [];
     model.Roles.push({ Name: LEARNER });
     this.showLoader = true;
-
+    model.Studentsubjects = this.subjects.filter(x => x.IsSelected);
     this.apiService.add(`${ADD_LEARNER_URL}`, model).subscribe(data => {
       // send email logic here.
       if (data.Email) {
@@ -102,6 +102,7 @@ export class AddLearnerComponent implements OnInit {
       if (data) {
         this.grade = data;
         this.subjects = this.grade.Subjects;
+        this.subjects.map(x => x.IsSelected = true);
       }
     });
 

@@ -19,6 +19,7 @@ export interface Topic {
 export interface TopicContent {
    
     TopicId: string;
+    SubjectId?: string;
     TopicContentId?: string;
     Tittle: string;
     ContentType: string;

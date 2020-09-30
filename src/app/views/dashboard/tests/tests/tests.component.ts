@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Topic } from 'src/app/_models/topic.model';
 import { User } from 'src/app/_models/user.model';
 import { ApiService, AccountService } from 'src/app/_services';
@@ -7,6 +7,7 @@ import { STATUS_DELETED, GET_TESTS_URL, UPDATE_TEST_URL, ADD_TEST_URL } from 'sr
 import { Subject } from 'src/app/_models/grade.model';
 import { Tests } from 'src/app/_models/tests.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-tests',
@@ -15,9 +16,9 @@ import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
 })
 export class TestsComponent implements OnInit {
 
+  @Input() SubjectId: string;
+  @Input() tests: Tests[];
   showModal: boolean;
-  SubjectId: string;
-  tests: Tests[];
   user: User;
   error: string;
   modalHeading = 'Set a new test';
@@ -32,11 +33,13 @@ export class TestsComponent implements OnInit {
     SubHeader: 'A collection of tests in the system.',
     ctaLabel: '+ Add test'
   };
+  showPreview: boolean;
   constructor(
     private apiServices: ApiService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
+    private _snackBar: MatSnackBar
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.SubjectId = r.id;
@@ -50,7 +53,7 @@ export class TestsComponent implements OnInit {
         this.subject = data.Subject;
         this.tests = data.Tests;
         this.headerBanner.Header = `Tests for ${this.subject.Name}`
-        this.headerBanner.SubHeader= `A collection of ${this.subject.Name} tests in the system.,`
+        this.headerBanner.SubHeader = `A collection of ${this.subject.Name} tests in the system.,`
 
         this.crumbs = [
           {
@@ -101,6 +104,7 @@ export class TestsComponent implements OnInit {
   closeModal() {
     this.showModal = false;
     this.isDelete = false;
+    this.showPreview = false;
   }
   open(id) {
     this.router.navigate(['dashboard/test', id]);
@@ -121,12 +125,13 @@ export class TestsComponent implements OnInit {
     if (this.isDelete || this.isUpdate) {
       this.apiServices.add(UPDATE_TEST_URL, this.current).subscribe(res => {
         this.showModal = false;
-        this.ngOnInit();
+        this.openSnackBar('Test updated.', 'Success!');
       })
     } else {
       this.apiServices.add(ADD_TEST_URL, this.current).subscribe(res => {
         this.showModal = false;
-        this.ngOnInit();
+        this.openSnackBar('Test created.', 'Success!');
+        this.tests.push(res);
       })
     }
   }
@@ -154,4 +159,17 @@ export class TestsComponent implements OnInit {
     this.isUpdate = true;
     this.tests.map(x => x.Viewing = false);
   }
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
+  }
+
+  preview(item: Tests) {
+    this.showPreview = true;
+    this.current = item;
+    this.modalHeading = item.Name;
+  }
+
 }

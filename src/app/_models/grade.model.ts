@@ -6,6 +6,7 @@ import { Tests } from './tests.model';
 
 
 export interface Subject {
+    IsSelected: boolean;
     SubjectId: string;
     GradeId: string;
     Name: string;

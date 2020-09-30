@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { ADD_SUBJECT_URL, UPDATE_SUBJECT_URL, STATUS_DELETED, GET__GRADE_DETAILS_URL } from 'src/app/_services/_shared/constants';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,10 +15,12 @@ import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
 })
 export class SubjectsComponent implements OnInit {
 
+  @Input() grade: Grade;
+
   showModal: boolean;
   name: string;
   GradeId: any;
-  grade: Grade;
+  // grade: Grade;
   subjects?: Subject[];
   code = '';
   user: User;
@@ -50,27 +52,6 @@ export class SubjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiServices.get(`${GET__GRADE_DETAILS_URL}?GradeId=${this.GradeId}`).subscribe(data => {
-      if (data) {
-        this.grade = data;
-        this.subjects = this.grade.Subjects;
-        this.crumbs = [
-          {
-            Label: 'dashboard',
-            Link: '/dashboard'
-          },
-          {
-            Label: 'All Grades',
-            Link: '/dashboard/grades'
-          },
-          {
-            Label: ` Subjects for ${this.grade.Name} `
-          },
-        ];
-        this.headerBanner.Header =  `Subjects for ${this.grade.Name}`;
-        this.headerBanner.SubHeader =  `A collection of ${this.grade.Name} subjects in the system.`;
-      }
-    });
     this.user = this.accountService.currentUserValue;
   }
   add() {
@@ -80,16 +61,18 @@ export class SubjectsComponent implements OnInit {
     this.showModal = false;
     this.isDelete = false;
   }
-  open(id) {
-    this.router.navigate(['dashboard/subject', id]);
-  }
+
   openTest(id) {
     this.router.navigate(['dashboard/tests', id]);
   }
 
+  openSubject(subject: Subject) {
+    this.router.navigate(['dashboard/subject', subject.SubjectId]);
+  }
+
   save() {
     const data = {
-      GradeId: this.GradeId,
+      GradeId: this.grade.GradeId,
       Name: this.name,
       ImageUrl: "",
       Description: this.description,
@@ -120,7 +103,10 @@ export class SubjectsComponent implements OnInit {
         this.name = '';
         this.description = '';
         this.isDelete = false;
-        this.ngOnInit();
+        if (!this.grade.Subjects) {
+          this.grade.Subjects = [];
+        }
+        this.grade.Subjects.push(res);
       })
     } else {
       this.apiServices.add(ADD_SUBJECT_URL, data).subscribe(res => {

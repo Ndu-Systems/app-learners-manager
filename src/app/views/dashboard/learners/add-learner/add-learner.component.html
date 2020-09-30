@@ -24,9 +24,13 @@
   <div class="form-group">
     <label for="exampleInputName">Subjects</label>
     <div class="subjects">
-      <div class="subject" ngFor="let subject of subjects">
-        <!-- <input  type="checkbox">  -->
-        {{subject?.Name}}
+      <div class="subject" *ngFor="let subject of subjects">
+        <!-- <input  type="checkbox"> 
+        {{subject?.Name}} -->
+
+        <section class="example-section">
+          <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox>
+        </section>
       </div>
     </div>
 

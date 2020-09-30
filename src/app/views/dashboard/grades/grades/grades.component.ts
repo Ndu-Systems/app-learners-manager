@@ -61,6 +61,8 @@ export class GradesComponent implements OnInit {
 
     this.getInstitutionTypes();
   }
+
+ 
   getInstitutionTypes() {
     const query: GenericQueryModel = { StatusId: 1 };
     this.apiServices.getWithQuery(GET_INSTITUTION_TYPES_API, query).subscribe(data => {

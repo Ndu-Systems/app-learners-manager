@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService, DocumentsService } from 'src/app/_services';
@@ -8,6 +8,7 @@ import { User } from 'src/app/_models/user.model';
 import { environment } from 'src/environments/environment';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
 import { StudentTest, StudentAnswer } from 'src/app/_models/student.test';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-test',
@@ -16,7 +17,7 @@ import { StudentTest, StudentAnswer } from 'src/app/_models/student.test';
 })
 export class TestComponent implements OnInit {
   TestId: any;
-  test: Tests;
+  @Input() test: Tests;
   user: User;
   sections: Section[];
   modalHeading: string;
@@ -45,6 +46,8 @@ export class TestComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private documentsService: DocumentsService,
+    private _snackBar: MatSnackBar
+
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.TestId = r.id;
@@ -53,37 +56,7 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiServices.get(`${GET_TEST_URL}?TestId=${this.TestId}`).subscribe(data => {
-      if (data) {
-        this.test = data;
-        this.sections = this.test.Sections;
-        this.crumbs = [
-          {
-            Label: 'dashboard',
-            Link: '/dashboard'
-          },
-          {
-            Label: 'All Grades',
-            Link: '/dashboard/grades'
-          },
-          {
-            Label: `${this.test.Subject.Grade.Name}`,
-            Link: `/dashboard/subjects/${this.test.Subject.Grade.GradeId}`
-          },
-          {
-            Label: `${this.test.Subject.Name}`,
-            Link: `/dashboard/subject/${this.test.Subject.SubjectId}`
-          },
-          {
-            Label: `Tests for ${this.test.Subject.Name}`,
-            Link: `/dashboard/tests/${this.test.Subject.SubjectId}`
-          },
-          {
-            Label: `${this.test.Name} `
-          },
-        ];
-      }
-    });
+
     this.user = this.accountService.currentUserValue;
   }
   goto(url) {
@@ -101,14 +74,12 @@ export class TestComponent implements OnInit {
     this.modalHeading = `${item.Name}  will be deleted, continue?`
     this.sections.map(x => x.Viewing = false);
   }
-  addQuestion(item: Section) {
+  addQuestion() {
     this.addingQuestion = true;
     this.question = '';
     this.score = 0;
     this.contentBody = undefined;
-    this.current = item;
-    this.modalHeading = `Add a question for ${item.Name}`;
-    this.sections.map(x => x.Viewing = false);
+    this.modalHeading = `Add a question`;
   }
   edit(item: Section) {
     this.showModal = true;
@@ -179,7 +150,7 @@ export class TestComponent implements OnInit {
   saveQuestion() {
     const data = {
       TestId: this.test.TestId,
-      SectionId: this.current.SectionId,
+      SectionId: '',
       Question: this.question || '',
       ImageUrl: this.contentBody || '',
       Score: this.score || 1,
@@ -193,7 +164,13 @@ export class TestComponent implements OnInit {
       this.addingQuestion = false;
       this.question = '';
       this.contentBody = '';
-      this.ngOnInit();
+      if (!this.test.Questions) {
+        this.test.Questions = [];
+      }
+      res.Answers = [];
+      this.test.Questions.push(res);
+      this.openSnackBar('Question  created.', 'Success!');
+
     })
   }
 
@@ -239,7 +216,8 @@ export class TestComponent implements OnInit {
       this.addingQuestion = false;
       this.question = '';
       this.contentBody = '';
-      this.ngOnInit();
+      this.openSnackBar('Answers saved.', 'Success!');
+
     })
   }
 
@@ -249,8 +227,8 @@ export class TestComponent implements OnInit {
       studentTest.Answers.map(studentAnswer => {
         studentAnswer.Question.CorrectAnswer = studentAnswer.Question.Answers.find(a => a.IsCoorect).Answer;
         studentAnswer.Question.StudentAnswer = studentAnswer.Question.Answers.find(a => a.AnswerId === studentAnswer.AnswerId).Answer;
-        studentAnswer.Question.StudentAnswer == studentAnswer.Question.CorrectAnswer ? 
-        studentAnswer.Class = ['correct', 'student-answer'] :studentAnswer.Class = ['wrong', 'student-answer'] ;
+        studentAnswer.Question.StudentAnswer == studentAnswer.Question.CorrectAnswer ?
+          studentAnswer.Class = ['correct', 'student-answer'] : studentAnswer.Class = ['wrong', 'student-answer'];
         return studentAnswer;
       });
     this.showStudentAnswers = true;
@@ -269,5 +247,10 @@ export class TestComponent implements OnInit {
     // });
     return correctAnswer;
   }
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
 
+  }
 }

@@ -23,6 +23,7 @@ export class LearnersComponent implements OnInit {
   modalHeading = 'Add Learner';
   isUpdate: boolean;
   current: User;
+  showLoader: boolean;
   crumbs: BreadCrumbModel[] = [
     {
       Label: 'dashboard',
@@ -43,7 +44,6 @@ export class LearnersComponent implements OnInit {
   modalBody: string;
   modalCTA: string;
   proofOfPayment: string;
-  showLoader: boolean;
   showAddLearner: boolean;
 
   constructor(
@@ -56,9 +56,11 @@ export class LearnersComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.apiServices.get(GET_STUDENTS_URL).subscribe(data => {
+    this.showLoader = true;
+    this.apiServices.get(`${GET_STUDENTS_URL}?CompanyId=${this.user.CompanyId}`).subscribe(data => {
       if (data) {
         this.users = data;
+        this.showLoader = false;
       }
     });
   }
@@ -176,10 +178,10 @@ export class LearnersComponent implements OnInit {
     if (student && student.UserId) {
       this.users.push(student);
       this.closeModal();
+      this.ngOnInit();
     }
   }
-view(user:User){
-  this.router.navigate(['dashboard/view-learner', user.UserId]);
-
-}
+  view(user: User) {
+    this.router.navigate(['dashboard/view-learner', user.UserId]);
+  }
 }

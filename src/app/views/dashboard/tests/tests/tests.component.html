@@ -1,43 +1,19 @@
-<div class="headers">
-  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-  <app-header-banner [headerBanner]="headerBanner"
-                     (showModalEventEmitter)="add()"></app-header-banner>
-</div>
+<div class="" *ngIf="tests">
+  <div class="tests" *ngIf="tests.length; else nodata">
+    <div class="test" *ngFor="let test of tests" (click)="preview(test)">
+      <p>
+        <span class="tittle">
+          <span class="material-icons">
+            playlist_add_check
+          </span>
+          {{test.Name}}</span>
+        <span class="stat"> 5 took this test</span>
+      </p>
+    </div>
 
-<div class="main-list" *ngIf="subject">
-  <div class="items" *ngIf="tests.length; else nodata">
-    <div class="item" *ngFor="let item of tests">
-      Test tittle: <u class="pointer" (click)="open(item.TestId)"> {{item.Name}} </u>
-      <div class="details">
-        <div class="icon">
-          <img src="assets/images/dashboard/subject-icon.svg" alt="">
-        </div>
-        <div class="data cta" (click)="open(item.TestId)">
-          <h1>
-            Sections
-            <span>{{item.Sections.length}}</span>
-          </h1>
-        </div>
-        <div class="data">
-          <h1>
-            <!-- Test time -->
-            <span class="test-date">{{item.TestDate  | date:'fullDate'}}</span>
-            <span class="test-time">{{item.TestTime}} - {{item.FinishTime}}</span>
-          </h1>
-        </div>
-
-        <div class="data">
-          <div class="action" (click)="options(item)">
-            <img src="assets/images/dashboard/action-dots.svg" alt="">
-          </div>
-        </div>
-        <div class="viewing" *ngIf="item.Viewing">
-          <ul>
-            <li (click)="open(item.TestId)"><span class="material-icons">list</span>View Test</li>
-            <li (click)="edit(item)"><span class="material-icons">edit</span>Edit</li>
-            <li (click)="delete(item)" class="delete"><span class="material-icons">delete_outline</span>Delete</li>
-          </ul>
-        </div>
+    <div class="test add-row">
+      <div class="add">
+        <button mat-button color="primary" (click)="add()"> Set a test</button>
       </div>
     </div>
   </div>
@@ -45,18 +21,16 @@
   <ng-template #nodata>
     <div class="nodata">
       <h1>
-        No tests found for {{subject?.Name}}
+        You don't have any tests yet.
         <span (click)="add()">
-          Set a test
+          Add test
         </span>
       </h1>
     </div>
   </ng-template>
-
-
 </div>
 
-<div class="overlay" *ngIf="showModal || isDelete" (click)="closeModal()"></div>
+<div class="overlay" *ngIf="showModal || isDelete || showPreview" (click)="closeModal()"></div>
 <div class="modal" *ngIf="showModal">
   <h1>
     {{modalHeading}}
@@ -113,5 +87,19 @@
     <div class="error">
       {{error}}
     </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="showPreview && current">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}} <button mat-button (click)="edit()" style="float: right; width: 7rem;">
+      Edit
+    </button>
+  </div>
+  <div class="body">
+    <app-test [test]="current"></app-test>
   </div>
 </div>
