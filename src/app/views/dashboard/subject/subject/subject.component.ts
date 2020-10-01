@@ -14,7 +14,7 @@ import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
   styleUrls: ['./subject.component.scss']
 })
 export class SubjectComponent implements OnInit {
-
+  contentBody;
   showModal: boolean;
   name: string;
   SubjectId: string;
@@ -27,7 +27,16 @@ export class SubjectComponent implements OnInit {
   current: Topic;
   isDelete: boolean;
   isUpdate: boolean;
+  contentType;
+  showDelete;
+  tittle;
+  htmlPreview;
+  showPreview;
   crumbs: BreadCrumbModel[] = [];
+  editorStyle = {
+    height: '320px',
+    marginBottom: '30px',
+  }
   headerBanner: HeaderBannerModel = {
     Header: 'Subject Topics',
     SubHeader: 'A collection of topics in the system.',
@@ -87,14 +96,18 @@ export class SubjectComponent implements OnInit {
     this.isDelete = false;
     this.isUpdate = false;
   }
+  reply(comment){
+
+  }
   closeModal() {
     this.showModal = false;
     this.isDelete = false;
   }
+  formatBody(){}
   open(id) {
     this.router.navigate(['dashboard/topic', id]);
   }
-
+  postComment(val){}
   save() {
     const data = {
       SubjectId: this.SubjectId,

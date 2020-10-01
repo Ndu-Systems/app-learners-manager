@@ -12,6 +12,9 @@ import { ViewTestsComponent } from './student-portal/view-tests/view-tests.compo
 import { ReadTopicComponent } from './student-portal/read-topic/read-topic.component';
 import { TakeTestComponent } from './student-portal/take-test/take-test.component';
 import { LoaderComponent } from './_shared';
+import { ReadComponent } from './read/read.component';
+import { OnlineQuizComponent } from './online-quiz/online-quiz.component';
+import { LoginModalComponent } from './account/login-modal/login-modal.component';
 
 const routes: Routes = [
   {
@@ -30,6 +33,8 @@ const routes: Routes = [
       { path: 'read-topic', component: ReadTopicComponent },
       { path: 'forgot-password',component: ForgotPasswordComponent},
       { path: 'reset-password',component: ResetPasswordComponent},
+      { path: 'read/:id',component: ReadComponent},
+      { path: 'online-quiz/:id',component: OnlineQuizComponent},
     ]
 
   }
@@ -50,7 +55,10 @@ export const declarations = [
   TakeTestComponent,
   ForgotPasswordComponent,
   ResetPasswordComponent,
-  LoaderComponent
+  LoaderComponent,
+  ReadComponent,
+  OnlineQuizComponent,
+  LoginModalComponent
 ];
 
 @NgModule({

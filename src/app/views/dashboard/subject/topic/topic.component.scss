@@ -27,37 +27,7 @@
 }
 
 
-.comments {
-    padding: 3rem 2rem;
-    min-width: 10rem;
 
-    @media only screen and (max-width: 600px) {
-        padding: 2rem .5rem;
-    }
-
-    .comment {
-        .user-dp {
-            grid-template-columns: 10% auto;
-
-            @media only screen and (max-width: 600px) {
-                grid-template-columns: 16% auto;
-            }
-        }
-    }
-}
-
-.students {
-    padding: 3rem 2rem;
-    min-width: 10rem;
-
-    .user-dp {
-        grid-template-columns: 10% auto;
-        margin: 1.5rem 0;
-        @media only screen and (max-width: 600px) {
-            grid-template-columns: 18% auto;
-        }
-    }
-}
 
 .html-view {
     padding: 1rem;

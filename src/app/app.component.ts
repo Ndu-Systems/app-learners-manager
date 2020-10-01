@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       }
 
       if (user.Roles.find(x => x.RoleName === LEARNER)) {
-        this.routeTo.navigate(['/my-portal']);
+        // this.routeTo.navigate(['/my-portal']);
       }
     }
   }

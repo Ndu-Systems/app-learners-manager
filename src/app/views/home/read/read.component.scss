@@ -1,0 +1,30 @@
+@import '../../../../assets/scss/color';
+
+.main {
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    background: $cloud;
+    margin-top: 2rem;
+    border-radius: .5rem;
+
+    @media only screen and (max-width: 600px) {
+
+        padding: .5rem;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        overflow-y: scroll;
+        z-index: 100000;
+        margin-top: 0;
+    }
+}
+
+
+
+
+
+
+

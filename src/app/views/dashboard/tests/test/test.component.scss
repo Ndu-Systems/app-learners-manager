@@ -1,6 +1,17 @@
 @import '../../../../../assets/scss/color';
 
 .questions {
+    background: $cloud;
+    padding: 1rem;
+    .question{
+        background: $white;
+        margin: 3rem 1rem;
+        padding: 1rem;
+        border-radius: .5rem;
+        .tittle{
+            font-weight: 500;
+        }
+    }
     p {
         font-weight: 400;
     }
@@ -121,6 +132,7 @@ mat-checkbox {
 .students {
     padding: 3rem 2rem;
     min-width: 10rem;
+    background: $white;
 
     @media only screen and (max-width: 600px) {
         padding: 1rem 0;
@@ -167,4 +179,22 @@ mat-checkbox {
     left: 3rem;
     top: .5rem;
     cursor: pointer;
+}
+
+.students {
+    padding: 3rem 2rem;
+    min-width: 10rem;
+
+    .user-dp {
+        grid-template-columns: 10%  70% auto;
+        margin: 1.5rem 0;
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 18% auto;
+        }
+    }
+}
+
+.share{
+    background: $white;
+    margin: 1rem 2rem;
 }

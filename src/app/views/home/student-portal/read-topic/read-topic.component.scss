@@ -3,6 +3,7 @@
 .main {
     padding: 5rem 1rem;
     text-align: center;
+    background: $cloud;
 
     .viewer {
         img {
@@ -29,4 +30,18 @@
         width: 100%;
         border: none;
     }
+}
+
+.finish, .new-comment{
+    padding: 2rem 0;
+    background: $white;
+    box-sizing: border-box;
+    padding: 2rem;
+    margin: 1.5rem 0;
+
+    @media only screen and (max-width: 600px) {
+       padding: 2rem .5rem;
+    }
+
+
 }

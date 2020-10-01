@@ -1,44 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { PortalService } from 'src/app/_services/portal.service';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { Tests, Answer } from 'src/app/_models/tests.model';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentTest } from 'src/app/_models/student.test';
-import { User } from 'src/app/_models/user.model';
+import { Answer } from 'src/app/_models/tests.model';
 import { AccountService, ApiService } from 'src/app/_services';
-import { SAVE_STUDENT_TEST_URL } from 'src/app/_services/_shared/constants';
+import { GET_QUIZZ_URL, SAVE_STUDENT_TEST_URL } from 'src/app/_services/_shared';
 
 @Component({
-  selector: 'app-take-test',
-  templateUrl: './take-test.component.html',
-  styleUrls: ['./take-test.component.scss']
+  selector: 'app-online-quiz',
+  templateUrl: './online-quiz.component.html',
+  styleUrls: ['./online-quiz.component.scss']
 })
-export class TakeTestComponent implements OnInit {
-
-  htmlPreview: any;
-  test: Tests;
-  user: User;
-  modalHeading = 'Please answer all questions⛔️ ';
+export class OnlineQuizComponent implements OnInit {
+  TestId: any;
+  test: any;
+  user: any;
   showModal: boolean;
   showError: boolean;
-  showResults: boolean;
   yourScore: number;
-  constructor(
-    private portalService: PortalService,
-    private router: Router,
-    private _location: Location,
-    private accountService: AccountService,
-    private apiServices: ApiService,
+  showResults: boolean;
+  modalHeading: string;
+  _location: any;
+  showLogin: boolean;
 
-  ) { }
+  constructor(
+    private apiServices: ApiService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private accountService: AccountService,
+
+  ) {
+    this.activatedRoute.params.subscribe(r => {
+      this.TestId = r.id;
+    });
+  }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.test = this.portalService.getCurrentTest;
 
-
+    this.apiServices.get(`${GET_QUIZZ_URL}?TestId=${this.TestId}`).subscribe(data => {
+      if (data) {
+        this.test = data;
+      }
+    });
   }
+
   backClicked() {
+    if (!this.user) {
+      this.showLogin = true;
+      return false;
+    }
     let studentTest: StudentTest = {
       StudentTestId: '',
       UserId: this.user.UserId,
@@ -118,11 +130,20 @@ export class TakeTestComponent implements OnInit {
   }
 
   goHome() {
-    this._location.back();
+    this.showResults = false;
+    this.takeTestAgain();
   }
 
   takeTestAgain() {
     this.test.Questions.map(x => x.Answers.map(xa => xa.StudentAnswer = undefined));
     this.closeModal();
+  }
+  userDoneLoginIn(user) {
+    this.user = user;
+    this.showLogin = false;
+    this.backClicked();
+  }
+  back() {
+    this.router.navigate(['']);
   }
 }

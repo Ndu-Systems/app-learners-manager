@@ -56,12 +56,12 @@
 
     <span *ngIf="contentType === 'File'">
       <label for="">Uplaod the file </label>
-      <input type="file" multiple (change)="imageChanged($event)">
+      <input type="file" multiple>
     </span>
 
     <span *ngIf="contentType === 'Blog'">
       <label for=""> Create your content here </label>
-      <quill-editor [styles]="editorStyle" (onContentChanged)="changed($event)" [(ngModel)]="contentBody">
+      <quill-editor [styles]="editorStyle" [(ngModel)]="contentBody">
 
       </quill-editor>
     </span>

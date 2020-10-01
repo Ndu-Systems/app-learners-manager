@@ -48,32 +48,6 @@ export class TestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiServices.get(`${GET_TESTS_URL}?SubjectId=${this.SubjectId}`).subscribe(data => {
-      if (data) {
-        this.subject = data.Subject;
-        this.tests = data.Tests;
-        this.headerBanner.Header = `Tests for ${this.subject.Name}`
-        this.headerBanner.SubHeader = `A collection of ${this.subject.Name} tests in the system.,`
-
-        this.crumbs = [
-          {
-            Label: 'dashboard',
-            Link: '/dashboard'
-          },
-          {
-            Label: 'All Grades',
-            Link: '/dashboard/grades'
-          },
-          {
-            Label: `${this.subject.Grade.Name}`,
-            Link: `/dashboard/subjects/${this.subject.Grade.GradeId}`
-          },
-          {
-            Label: ` Tests for ${this.subject.Name} `
-          },
-        ];
-      }
-    });
     this.user = this.accountService.currentUserValue;
     this.showModal = false;
     this.current = undefined;

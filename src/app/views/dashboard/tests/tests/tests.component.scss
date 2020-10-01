@@ -1,6 +1,5 @@
 @import '../../../../../assets/scss/color';
 
-@import '../../../../../assets/scss/color';
 
 .tests {
     margin: 2rem 0;
@@ -14,7 +13,7 @@
             .tittle {
                 display: block;
                 font-weight: 500;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
 
                 .material-icons {
                     font-size: 2.5rem;
@@ -28,17 +27,18 @@
             .stat {
                 font-weight: 300;
                 color: $darker-grey;
-                font-size: 1.2rem;
+                font-size: .9rem;
                 margin-top: .2rem;
                 margin-left: 4rem;
             }
         }
     }
 
-    .add-row{
+    .add-row {
         margin-top: 4rem;
-        .add{
-            button{
+
+        .add {
+            button {
                 width: 10rem;
                 color: $white !important;
             }
@@ -46,7 +46,15 @@
     }
 }
 
-iframe{
+iframe {
     width: 100%;
     height: 20rem;
+}
+
+.test-modal {
+background: $cloud;
+
+    .body {
+       
+    }
 }

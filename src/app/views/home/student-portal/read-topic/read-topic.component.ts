@@ -123,4 +123,9 @@ export class ReadTopicComponent implements OnInit {
 
   }
 
+  
+  toggleReplies(comment) {
+    comment.ShowReplies = !comment.ShowReplies;
+  }
+
 }

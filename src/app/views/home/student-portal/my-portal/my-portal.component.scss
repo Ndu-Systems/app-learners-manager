@@ -48,7 +48,7 @@
         }
 
         .topics {
-            display: flex;
+            // display: flex;
             background: $cloud;
             padding: 1rem;
             overflow-x: scroll;
@@ -57,35 +57,20 @@
                 padding: .5rem;
             }
 
-            .card {
-                background: $white;
-                padding: 1rem;
-                margin: 1rem;
-                width: 20rem;
+            .line {
                 position: relative;
+                display: grid;
+                grid-template-columns: 90% auto;
+                padding: .4rem;
+                background: $white;
+                padding: 2rem;
+                border-radius: .5rem;
+
 
                 @media only screen and (max-width: 600px) {
-                    width: 15rem;
+                    // width: 15rem;
                 }
 
-                .tag {
-                    // background: $cloud;
-                    padding: .4rem;
-                    font-weight: 700;
-                    font-size: 1rem;
-                }
-
-                .marks {
-                    color: $darker-grey;
-                }
-
-                .line {
-                    position: relative;
-                    display: grid;
-                    grid-template-columns: 90% auto;
-                    padding: .4rem;
-
-                }
             }
         }
     }
@@ -161,7 +146,7 @@ h1 {
         display: grid;
         grid-template-columns: 11% 50% auto;
         width: 100%;
-   
+
 
         @media only screen and (max-width: 600px) {
             grid-template-columns: 36% 50% auto;
@@ -180,8 +165,9 @@ h1 {
         }
     }
 }
-.sign-out{
-   img {
+
+.sign-out {
+    img {
         position: relative;
         top: .5rem;
         left: 1rem;
@@ -189,14 +175,20 @@ h1 {
 }
 
 .modal {
-    p{
+    p {
         padding: .1rem;
     }
-    img{
+
+    img {
         margin: .1rem 1rem;
     }
-    .sign-out{
+
+    .sign-out {
         width: 12rem;
-        background:$cloud;
+        background: $cloud;
     }
+}
+
+.lessons-heading {
+    font-weight: 300;
 }

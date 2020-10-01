@@ -43,6 +43,7 @@ export class GradesComponent implements OnInit {
     ctaLabel: '+ Add grade'
   };
   isDelete: boolean;
+  $status: HTMLElement;
 
   constructor(
     private apiServices: ApiService,
@@ -58,11 +59,12 @@ export class GradesComponent implements OnInit {
         this.grades = data;
       }
     });
-
+    // this.requestPermission();
+    // this.nonPersistentNotification();
     this.getInstitutionTypes();
   }
 
- 
+
   getInstitutionTypes() {
     const query: GenericQueryModel = { StatusId: 1 };
     this.apiServices.getWithQuery(GET_INSTITUTION_TYPES_API, query).subscribe(data => {
@@ -185,5 +187,31 @@ export class GradesComponent implements OnInit {
     this.current = item;
     this.modalHeading = 'Update grade.'
     this.grades.map(x => x.Viewing = false);
+  }
+
+
+  requestPermission() {
+    if (!('Notification' in window)) {
+      alert('Notification API not supported!');
+      return;
+    }
+
+    Notification.requestPermission(function (result) {
+      // this.$status.innerText = result;
+      // alert(result);
+    });
+  }
+
+  nonPersistentNotification() {
+    if (!('Notification' in window)) {
+      alert('Notification API not supported!');
+      return;
+    }
+
+    try {
+      var notification = new Notification("Hi there - non-persistent!");
+    } catch (err) {
+      alert('Notification API error: ' + err);
+    }
   }
 }

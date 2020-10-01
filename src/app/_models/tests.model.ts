@@ -25,7 +25,7 @@ export interface Question {
     CreateUserId: string;
     ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
     Answers: Answer[];
 
     CorrectAnswer?: string;

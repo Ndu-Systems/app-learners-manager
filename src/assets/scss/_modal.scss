@@ -1,0 +1,158 @@
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.514);
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  position: fixed;
+  background: #fff;
+  z-index: 1001;
+  left: 0;
+  width: 100%;
+  top: 0;
+  overflow-y: scroll;
+  max-height: 100vh;
+  height: 100%;
+  padding: 8rem 16rem;
+  box-sizing: border-box;
+
+  ::-webkit-scrollbar-thumb {
+    background: #009CD7;
+    width: 1px;
+  }
+
+  form{
+    width: 40%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    // height: 100vh;
+    max-height: 100vh;
+  }
+
+  .main-list {
+    background: none;
+  }
+
+  .close {
+    text-align: left;
+    cursor: pointer;
+    padding: 1rem 16rem;
+    font-weight: 800;
+    border-bottom: 1px solid $grey;
+    position: fixed;
+    background: $white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    @media only screen and (max-width: 600px) {
+      padding: 1rem;
+
+    }
+
+
+    .material-icons {
+      font-size: 1.4rem;
+      position: relative;
+      top: .2rem;
+      margin-right: 2rem;
+    }
+
+    .edit {
+      position: relative;
+      left: 57rem;
+      background: $grey;
+
+      .material-icons {
+        margin: .2rem;
+        top: 0;
+      }
+
+    }
+
+    .share {
+      position: relative;
+      left: 60rem;
+      background: $grey;
+
+      .material-icons {
+        margin: .2rem;
+        top: 0;
+      }
+    }
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  p {
+    padding: 2rem;
+  }
+
+  label,
+  input,
+  textarea,
+  select {
+    display: block;
+    margin: .5 0rem;
+  }
+
+  label {
+    font-weight: 600;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 1rem;
+    width: 93%;
+    margin: 1rem 0;
+    margin-top: 0;
+  }
+
+  button {
+    @media only screen and (max-width: 600px) {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      width: 92% !important;
+      z-index: 10000;
+    }
+  }
+
+  .secondary {
+    @media only screen and (max-width: 600px) {
+      bottom: 6rem;
+    }
+  }
+
+  .col-1-of-2 {
+
+    input,
+    textarea,
+    select {
+      width: 80%;
+    }
+  }
+
+  select {
+    width: 99%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+  }
+}

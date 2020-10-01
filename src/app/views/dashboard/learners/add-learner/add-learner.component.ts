@@ -19,6 +19,7 @@ export class AddLearnerComponent implements OnInit {
   rForm: FormGroup;
   showLoader: boolean;
   grades: Grade[] = [];
+  error = '';
 
   subjects: Subject[] = [];
   grade: Grade;

@@ -1,40 +1,14 @@
-<div class="main">
-  <div class="arrow-back" (click)="backClicked()">
-    <div class="img">
-      <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
-    </div>
-
-    <div class="heading">
-      {{content?.Tittle}}
-    </div>
-  </div>
-  <div class="viewer">
+<div class="main" *ngIf="lesson">
+  <div class="html-view">
     <div [innerHtml]="htmlPreview"></div>
-  </div>
-  <div class="finish">
-    <button mat-button color="primary" (click)="finishReading()">
-      I understand this topic
-    </button>
-  </div>
+    <div class="edit">
 
-  <div class="new-comment">
-    <div class="text">
-      <textarea [(ngModel)]="comment" class="comment-box" placeholder="What do you think of this topic?"></textarea>
-
-      <button mat-button color="primary" class="post-btn" (click)="postComment()">
-        <span class="material-icons">
-          send
-        </span>
-      </button>
     </div>
   </div>
 
-
-
-  <div class="comments" *ngIf="content">
+  <div class="comments">
     <h1>Discussion</h1>
-
-    <div class="comment wider" *ngFor="let comment of content.Comments  ; let i = index">
+    <div class="comment wider" *ngFor="let comment of lesson.Comments  ; let i = index">
       <span *ngIf="!comment.ParentId">
         <div class="user-dp">
           <div class="dp">
@@ -46,7 +20,6 @@
             <span class="messaage">
               {{comment.Name}}
             </span>
-
             <span class="messaage">
               <div class="reply">
                 <a (click)="reply(comment)" *ngIf="!comment.ShowReply">
@@ -58,7 +31,7 @@
 
                 <div class="reply-input" *ngIf="comment.ShowReply">
                   <input type="text" placeholder="Type reply message here..." [(ngModel)]="comment.Reply">
-                  <button (click)="postReplyComment(comment)">
+                  <button (click)="postComment(comment)">
                     <span class="material-icons">
                       send
                     </span>
@@ -66,8 +39,6 @@
                 </div>
               </div>
             </span>
-
-
             <span class="messaage">
               <div class="btn-show-replies" *ngIf="!comment.ShowReplies && comment.Replies.length > 0"
                 (click)="toggleReplies(comment)">
@@ -78,8 +49,6 @@
                 <a>-- Hide replies</a>
               </div>
             </span>
-
-
           </p>
         </div>
 
@@ -105,6 +74,25 @@
         </div>
       </span>
     </div>
-  </div>
 
+    <div class="new-comment">
+        <div class="text">
+          <textarea [(ngModel)]="comment" class="comment-box" placeholder="What do you think of this topic?"></textarea>
+    
+          <button mat-button color="primary" class="post-btn" (click)="postNewComment()">
+            <span class="material-icons">
+              send
+              </span>
+          </button>
+        </div>
+    </div>
+  </div>
 </div>
+
+<div class="back">
+  <button (click)="back()">
+    Back
+  </button>
+</div>
+
+<app-login-modal *ngIf="showLogin"  (userDoneLoginIn)="userDoneLoginIn($event)"></app-login-modal>

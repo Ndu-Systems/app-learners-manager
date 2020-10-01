@@ -75,7 +75,7 @@
 </div>
 
 
-<div class="modal" *ngIf="isDelete">
+<div class="modal " *ngIf="isDelete">
   <div class="delete-modal">
     <h1>
       {{modalHeading}}
@@ -91,13 +91,14 @@
 </div>
 
 
-<div class="modal" *ngIf="showPreview && current">
+<div class="modal test-modal" *ngIf="showPreview && current">
   <div class="close" (click)="closeModal()">
     <span class="material-icons">
       west
-    </span> {{modalHeading}} <button mat-button (click)="edit()" style="float: right; width: 7rem;">
+    </span> {{modalHeading}} 
+    <!-- <button mat-button (click)="edit()" style="float: right; width: 7rem;">
       Edit
-    </button>
+    </button> -->
   </div>
   <div class="body">
     <app-test [test]="current"></app-test>

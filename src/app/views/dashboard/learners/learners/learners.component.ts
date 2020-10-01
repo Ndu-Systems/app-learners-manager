@@ -182,6 +182,6 @@ export class LearnersComponent implements OnInit {
     }
   }
   view(user: User) {
-    this.router.navigate(['dashboard/view-learner', user.UserId]);
+    // this.router.navigate(['dashboard/view-learner', user.UserId]);
   }
 }

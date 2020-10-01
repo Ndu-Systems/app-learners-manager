@@ -8,7 +8,7 @@ button {
       padding: .75rem;
       font-weight: 800;
       font-size: 1.125rem;
-      color: $black !important;
+      color: $white !important;
     }
   
     &.mat-flat-button.mat-primary[disabled] {
@@ -27,3 +27,16 @@ button {
     }
   }
   
+
+  button {
+    &.mat-primary {
+       color: $white;
+    }
+}
+
+button.secondary {
+  background: $white;
+  border: 1.5px solid $black !important;
+  margin: .3rem 0;
+  color: $black !important;
+}

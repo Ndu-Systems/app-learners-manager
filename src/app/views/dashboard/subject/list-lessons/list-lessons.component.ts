@@ -32,6 +32,10 @@ export class ListLessonsComponent implements OnInit {
   description: string;
   current: TopicContent;
   htmlPreview: any;
+  editorStyle = {
+    height: '400px',
+    marginBottom: '30px',
+  }
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -74,9 +78,14 @@ export class ListLessonsComponent implements OnInit {
     this.content.ContentType = this.contentType;
     let parser = new DOMParser();
     let parsedHtml = parser.parseFromString(this.content.ContentBody, 'text/html');
-
     const srcs = [];
-    debugger;
+
+    for (let i = 0; i < parsedHtml.getElementsByTagName("iframe").length; i++) {
+      parsedHtml.getElementsByTagName("iframe")[i].style.width = '100%';
+      parsedHtml.getElementsByTagName("iframe")[i].style.height = '35rem';
+      parsedHtml.getElementsByTagName("iframe")[i].src = parsedHtml.getElementsByTagName("iframe")[0].src + '?rel=0';
+    }
+
     for (let i = 0; i < parsedHtml.images.length; i++) {
       let src = parsedHtml.images[i].src;
       if (parsedHtml.images[i].src.includes("data:"))
@@ -190,6 +199,32 @@ export class ListLessonsComponent implements OnInit {
       duration: 3000
     });
 
+  }
+
+  imageChanged(event) {
+    const files = event.target.files;
+    console.log(files);
+
+  }
+
+  copyText() {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = `${environment.BASE_URL}/#/read/${this.current.TopicContentId}`;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this.openSnackBar('Link copied to clipboard!', 'Ready to paste & share');
+
+  }
+
+  toggleReplies(comment) {
+    comment.ShowReplies = !comment.ShowReplies;
   }
 
 }

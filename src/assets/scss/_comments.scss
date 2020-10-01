@@ -1,0 +1,85 @@
+.new-comment{
+  position: relative;
+  .comment-box {
+      margin-top: 2rem;
+      width: 97%;
+      background: $cloud;
+      border: none;
+      border-radius: 0;
+      padding: 1rem;
+      margin: 0rem auto;
+      height: 6rem;
+      @media only screen and (max-width: 600px) {
+          width: 84%;
+      }
+  }
+
+  .post-btn {
+      background: $primary;
+      padding: .5rem 1.5rem;
+      border: none;
+      border-radius: 2rem;
+      font-weight: 400;
+      position: absolute;
+      right: 3rem;
+      bottom: 3rem;
+      width: 3rem;
+  }
+}
+
+.comments {
+  padding: 3rem 2rem;
+  min-width: 10rem;
+  background: $white;
+  border-radius: .5rem;
+
+  h1 {
+      text-align: left;
+      padding: 1rem;
+
+      @media only screen and (max-width: 600px) {
+          font-size: 1.2rem;
+      }
+  }
+
+  @media only screen and (max-width: 600px) {
+      width: 21rem;
+      margin: 1rem auto;
+      padding: .5rem;
+  }
+
+  .comment {
+      @media only screen and (max-width: 600px) {
+          width: 100%;
+          margin: 1rem auto;
+      }
+
+      .user-dp {
+          grid-template-columns: 10% auto;
+
+          @media only screen and (max-width: 600px) {
+              grid-template-columns: 16% auto;
+          }
+      }
+  }
+
+  .replies {
+      width: 86%;
+      background: $cloud;
+      padding: .5rem;
+      border-radius: .5rem;
+      margin: 1rem auto;
+  }
+
+  .reply {
+      margin: 1rem 0;
+  }
+}
+
+
+
+.messaage{
+    font-weight: 400;
+    margin-top: .5rem;
+    font-size: .9rem;
+}

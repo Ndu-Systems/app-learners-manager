@@ -23,6 +23,7 @@ export const UPDATE_CONTENT_URL = `api/topiccontent/update-topiccontent.php`;
 export const ADD_TEST_URL = `api/test/add-test.php`;
 export const UPDATE_TEST_URL = `api/test/update-test.php`;
 export const ADD_QUESTION_URL = `api/question/add-question.php`;
+export const UPDATE_QUESTION_URL = `api/question/update-question.php`;
 export const ADD_SECTION_URL = `api/test-section/add-test-section.php`;
 export const UPDATE_SECTION_URL = `api/test-section/update-test-section.php`;
 export const ADD_OR_UPDARE_ANSWERS_RANGE_URL = `api/answer/add-answer-range.php`;
@@ -36,6 +37,8 @@ export const UPDATE_USER_URL = `api/user/update-user.php`;
 export const UPDATE_BILLING_URL = `api/billing/update-billing.php`;
 export const ADD_LEARNER_URL = `api/user/add-learner.php`;
 export const GET_LESSONS_URL = `api/topiccontent/get-lessons.php`;
+export const GET_LESSON_URL = `api/topiccontent/get-lesson.php`;
+export const GET_QUIZZ_URL = `api/test/get-online-quiz.php`;
 
 
 

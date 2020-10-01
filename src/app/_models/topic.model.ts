@@ -14,6 +14,8 @@ export interface Topic {
     Viewing?: boolean;
     TopicContent?: TopicContent[];
     Subject?: Subject;
+    Comments?:any;
+    Students?:any;
 }
 
 export interface TopicContent {

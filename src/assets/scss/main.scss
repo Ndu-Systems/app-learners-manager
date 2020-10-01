@@ -6,6 +6,8 @@
 @import '../scss/home/home';
 @import '../scss/button';
 @import '../scss/form';
+@import '../scss/modal';
+@import '../scss/comments';
 
 @import '../scss/dashboard/index';
 
@@ -142,131 +144,6 @@ body {
 
     @media only screen and (max-width: 600px) {
         padding: 0;
-    }
-}
-
-.overlay {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.514);
-    width: 100%;
-    height: 100%;
-}
-
-.modal {
-    position: fixed;
-    background: #fff;
-    z-index: 1001;
-    left: 30%;
-    width: 45%;
-    top: 5%;
-    overflow-y: scroll;
-    max-height: 75vh;
-    padding: 4rem 0;
-
-    ::-webkit-scrollbar-thumb {
-        background: #01EF7D;
-        width: 1px;
-    }
-
-    @media only screen and (max-width: 600px) {
-        // height: 100vh;
-        max-height: 100vh;
-    }
-
-    .close {
-        text-align: left;
-        cursor: pointer;
-        padding: 1rem;
-        font-weight: 800;
-        border-bottom: 1px solid $grey;
-        position: fixed;
-        background: $white;
-        left: 30%;
-        width: 43.3%;
-        top: 5%;
-        z-index: 1000;
-
-        @media only screen and (max-width: 600px) {
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-
-        .material-icons {
-            font-size: 1.4rem;
-            position: relative;
-            top: .2rem;
-            margin-right: 2rem;
-        }
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 1.6rem;
-    }
-
-    p {
-        padding: 2rem;
-    }
-
-    label,
-    input,
-    textarea,
-    select {
-        display: block;
-        margin: .5 0rem;
-    }
-
-    label {
-        font-weight: 600;
-    }
-
-    input,
-    textarea,
-    select {
-        padding: 1rem;
-        width: 93%;
-        margin: 1rem 0;
-        margin-top: 0;
-    }
-
-    button {
-        @media only screen and (max-width: 600px) {
-            position: fixed;
-            left: 1rem;
-            bottom: 1rem;
-            width: 92% !important;
-            z-index: 10000;
-        }
-    }
-    .secondary {
-        @media only screen and (max-width: 600px) {
-            bottom: 6rem;
-        } 
-    }
-
-    .col-1-of-2 {
-
-        input,
-        textarea,
-        select {
-            width: 80%;
-        }
-    }
-
-    select {
-        width: 99%;
-    }
-
-    @media only screen and (max-width: 600px) {
-        position: fixed;
-        left: 0;
-        width: 100%;
-        bottom: 0;
-        top: 0;
     }
 }
 
@@ -445,11 +322,7 @@ button.danger {
     background: $danger;
 }
 
-button.secondary {
-    background: $white;
-    border: 1px solid $black;
-    margin: .3rem 0;
-}
+
 
 .delete-modal {
     padding: 1rem;
@@ -471,7 +344,13 @@ button.secondary {
         margin: 0;
         padding: 0;
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: 500;
+
+        @media only screen and (max-width: 600px) {
+            position: relative;
+            top: -.4rem;
+            font-size: .85rem;
+        }
 
         .status {
             display: block;
@@ -484,6 +363,10 @@ button.secondary {
             position: relative;
             top: -.8rem;
             font-weight: 500;
+        }
+
+        .messaage {
+            display: block;
         }
 
     }
@@ -501,6 +384,13 @@ button.secondary {
     text-align: center;
     box-sizing: border-box;
     font-weight: 200;
+
+    @media only screen and (max-width: 600px) {
+        width: 2rem;
+        height: 2rem;
+        font-size: .8rem;
+        padding: .5rem .3rem;
+    }
 }
 
 .arrow-back {
@@ -559,6 +449,7 @@ button.secondary {
 
         p {
             padding-top: .5rem;
+            font-weight: 600;
         }
     }
 }
@@ -569,11 +460,11 @@ button.secondary {
     margin: 0;
     padding: 1rem 0;
 
-    .comment-text {
-        position: relative;
-        left: 4rem;
-        top: -1rem;
-    }
+    // .comment-text {
+    //     position: relative;
+    //     left: 4rem;
+    //     top: -1rem;
+    // }
 }
 
 .reply {
@@ -692,5 +583,32 @@ span.date {
 
     .heading {
         font-weight: 600;
+    }
+}
+
+.btn-show-replies {
+    color: $darker-grey;
+    cursor: pointer;
+}
+
+
+
+
+.back {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 200000;
+    // display: none;
+
+    @media only screen and (max-width: 600px) {
+        display: block;
+    }
+
+    button {
+        background: $danger;
+        padding: .5rem 1.5rem;
+        border: none;
+        border-radius: 1rem;
     }
 }

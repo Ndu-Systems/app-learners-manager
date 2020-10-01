@@ -1,19 +1,30 @@
 <mat-tab-group *ngIf="test">
+
   <mat-tab label="Questions">
 
     <div class="main-list" *ngIf="test">
 
+      <button class="share" mat-button (click)="copyText()">
+        <span class="material-icons">
+          share
+        </span> Share
+      </button>
+
       <div class="" *ngIf="test.Questions">
         <div class="questions" *ngIf="test.Questions.length; else nodata">
-          <div class="question" *ngFor="let question of test.Questions" (click)="preview(question)">
+          <div class="question" *ngFor="let question of test.Questions; let i = index" (click)="preview(question)">
             <p>
               <span class="tittle">
-                <span class="material-icons">
-                  description
+                <span class="material-icons pointer"  (click)="deleteQuestion(question, i)">
+                  delete
                 </span>
-                {{question.Question}}</span>
-              <span class="stat"> 5 people read this</span>
+                {{question.Question}}
+              </span>
             </p>
+
+            <div class="image" *ngIf="question.ImageUrl">
+              <img [src]="question.ImageUrl" alt="">
+            </div>
             <div class="answers">
               <div *ngFor="let answer of question.Answers">
 
@@ -80,14 +91,6 @@
     </div>
   </mat-tab>
   <mat-tab label="Results">
-    <div class="heading">
-      <div class="">
-        <h4>
-          Results for <b>{{test.Name}} </b>
-        </h4>
-      </div>
-    </div>
-
     <div class="students main-list">
       <div class="student" *ngFor="let student of test.Students  ; let i = index" (click)="viewTestAnswers(student)">
         <div class="user-dp">

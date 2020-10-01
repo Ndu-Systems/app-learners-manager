@@ -1,5 +1,5 @@
-<div class="main">
-  <div class="arrow-back" (click)="goHome()">
+<div class="main" *ngIf="test">
+  <!-- <div class="arrow-back" (click)="goHome()">
     <div class="img">
       <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
     </div>
@@ -7,7 +7,7 @@
     <div class="heading">
       {{test?.Name}}
     </div>
-  </div>
+  </div> -->
   <div class="questions">
     <div class="item" *ngFor="let question of test.Questions  ; let i = index">
       <div class="question">
@@ -96,3 +96,11 @@
 
 
 </div>
+
+<div class="back">
+  <button (click)="back()">
+    Back
+  </button>
+</div>
+
+<app-login-modal *ngIf="showLogin"  (userDoneLoginIn)="userDoneLoginIn($event)"></app-login-modal>

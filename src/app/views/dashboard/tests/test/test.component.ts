@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService, DocumentsService } from 'src/app/_services';
-import { GET_TEST_URL, STATUS_DELETED, ADD_QUESTION_URL, ADD_SECTION_URL, UPDATE_SECTION_URL, ADD_OR_UPDARE_ANSWERS_RANGE_URL } from 'src/app/_services/_shared';
+import { GET_TEST_URL, STATUS_DELETED, ADD_QUESTION_URL, ADD_SECTION_URL, UPDATE_SECTION_URL, ADD_OR_UPDARE_ANSWERS_RANGE_URL, UPDATE_QUESTION_URL } from 'src/app/_services/_shared';
 import { Tests, Question, Answer, Section } from 'src/app/_models/tests.model';
 import { User } from 'src/app/_models/user.model';
 import { environment } from 'src/environments/environment';
@@ -225,6 +225,10 @@ export class TestComponent implements OnInit {
     console.log(studentTest.Answers);
     this.studentAnswers =
       studentTest.Answers.map(studentAnswer => {
+        if (!studentAnswer.Question.Answers.find(a => a.IsCoorect)) {
+          alert("Error, some please check that " + studentAnswer.Question.Question + " have the configured correct answer!");
+          return null;
+        }
         studentAnswer.Question.CorrectAnswer = studentAnswer.Question.Answers.find(a => a.IsCoorect).Answer;
         studentAnswer.Question.StudentAnswer = studentAnswer.Question.Answers.find(a => a.AnswerId === studentAnswer.AnswerId).Answer;
         studentAnswer.Question.StudentAnswer == studentAnswer.Question.CorrectAnswer ?
@@ -252,5 +256,35 @@ export class TestComponent implements OnInit {
       duration: 3000
     });
 
+  }
+  preview(val) { }
+  copyText() {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = `${environment.BASE_URL}/#/online-quiz/${this.test.TestId}`;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this.openSnackBar('Link copied to clipboard!', 'Ready to paste & share');
+
+  }
+  deleteQuestion(question: Question, index) {
+    question.StatusId = STATUS_DELETED;
+    this.apiServices.add(UPDATE_QUESTION_URL, question).subscribe(res => {
+      this.question = '';
+      this.contentBody = '';
+      if (!this.test.Questions) {
+        this.test.Questions = [];
+      }
+      res.Answers = [];
+      this.test.Questions.splice(index, 1);
+      this.openSnackBar('Question  removed.', 'Success!');
+
+    })
   }
 }

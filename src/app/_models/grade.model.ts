@@ -1,4 +1,4 @@
-import { Topic } from './topic.model';
+import { Topic, TopicContent } from './topic.model';
 import { Tests } from './tests.model';
 
 
@@ -24,6 +24,7 @@ export interface Subject {
     Viewing?: boolean;
     Grade?: Grade;
     Class?: string[];
+    Lessons? : TopicContent[];
 }
 
 

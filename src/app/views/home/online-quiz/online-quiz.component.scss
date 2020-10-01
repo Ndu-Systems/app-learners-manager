@@ -1,4 +1,4 @@
-@import '../../../../../assets/scss/color';
+@import '../../../../assets/scss/color';
 
 .main {
     padding: 3rem 0;
@@ -6,18 +6,22 @@
     @media only screen and (max-width: 600px) {
         padding: 5rem .5rem;
     }
+
     .questions {
         background: $cloud;
         padding: 1rem;
-        .question{
+
+        .question {
             background: $white;
             margin: 3rem 1rem;
             padding: 1rem;
             border-radius: .5rem;
-            .tittle{
+
+            .tittle {
                 font-weight: 500;
             }
         }
+
         p {
             font-weight: 400;
         }
@@ -111,6 +115,7 @@ $size : .7rem;
 .showError {
     padding: 2rem;
 }
+
 .image {
     text-align: left;
 
