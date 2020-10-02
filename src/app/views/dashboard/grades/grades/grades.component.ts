@@ -7,6 +7,8 @@ import { AccountService } from 'src/app/_services/account.service';
 import { Grade } from 'src/app/_models/grade.model';
 import { BreadCrumbModel, HeaderBannerModel, InstitutionTypeModel, GenericQueryModel } from 'src/app/_models';
 import { GET_INSTITUTION_TYPES_API } from 'src/app/_services/_shared';
+import { GradeService } from 'src/app/_services/grade.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grades',
@@ -14,7 +16,7 @@ import { GET_INSTITUTION_TYPES_API } from 'src/app/_services/_shared';
   styleUrls: ['./grades.component.scss']
 })
 export class GradesComponent implements OnInit {
-  grades: Grade[] = [];
+  allGrades: Grade[] = [];
   showModal: boolean;
   name: any;
   institutionTypeId: any;
@@ -26,22 +28,7 @@ export class GradesComponent implements OnInit {
   current: Grade;
   error = '';
   institutionTypes: InstitutionTypeModel[] = [];
-  crumbs: BreadCrumbModel[] = [
-    {
-      Label: 'dashboard',
-      Link: '/dashboard'
-    },
-    {
-      Label: 'All Grades',
-      Link: '/dashboard/grades'
-    },
-  ];
-
-  headerBanner: HeaderBannerModel = {
-    Header: 'Grades',
-    SubHeader: 'A collection of grades in the system.',
-    ctaLabel: '+ Add grade'
-  };
+  grades$ : Observable<Grade[]>;
   isDelete: boolean;
   $status: HTMLElement;
 
@@ -49,16 +36,20 @@ export class GradesComponent implements OnInit {
     private apiServices: ApiService,
     private router: Router,
     private accountService: AccountService,
+    private gradeService: GradeService,
 
   ) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.apiServices.get(`${GET_GRADES_URL}?CompanyId=${this.user.CompanyId}`).subscribe(data => {
+    this.grades$ = this.gradeService.gardesObservable;
+    this.gradeService.getGrades(this.user.CompanyId);
+    this.gradeService.gardesObservable.subscribe(data => {
       if (data) {
-        this.grades = data;
+        this.allGrades = data;
       }
     });
+
     // this.requestPermission();
     // this.nonPersistentNotification();
     this.getInstitutionTypes();
@@ -105,7 +96,7 @@ export class GradesComponent implements OnInit {
     //   this.errors.push(`⚠️ Enter description`);
     // }
     if (!this.isUpdate) {
-      const findGrade = this.grades.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
+      const findGrade = this.allGrades.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
       if (findGrade) {
         this.errors.push(`⚠️  ${this.name} already exist.`);
       }
@@ -163,11 +154,11 @@ export class GradesComponent implements OnInit {
   }
 
   options(item: Grade) {
-    this.grades.map(x => x.Viewing = false);
+    this.allGrades.map(x => x.Viewing = false);
     item.Viewing = true;
   }
   closeOptions() {
-    this.grades.map(x => x.Viewing = false);
+    this.allGrades.map(x => x.Viewing = false);
   }
 
   delete(item: Grade) {
@@ -177,7 +168,7 @@ export class GradesComponent implements OnInit {
     this.isDelete = true;
     this.isUpdate = true;
     this.modalHeading = 'Delete grade.'
-    this.grades.map(x => x.Viewing = false);
+    this.allGrades.map(x => x.Viewing = false);
   }
   edit(item: Grade) {
     this.showModal = true;
@@ -186,7 +177,7 @@ export class GradesComponent implements OnInit {
     this.institutionTypeId = item.InstituteTypeId;
     this.current = item;
     this.modalHeading = 'Update grade.'
-    this.grades.map(x => x.Viewing = false);
+    this.allGrades.map(x => x.Viewing = false);
   }
 
 

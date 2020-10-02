@@ -9,10 +9,14 @@
             {{item.Name}}
           </span>
           <span class="lessions">
-            {{item.lessions?.length || 0}} Lessions
+            {{item.Lessons?.length || 0}} Lessons
           </span>
         </p>
       </div>
+
+     <div class="add-new">
+      <button mat-button color="primary" (click)="add()"> Add new subject</button>
+     </div>
     </div>
 
     <ng-template #nosubjects>

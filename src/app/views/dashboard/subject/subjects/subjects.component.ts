@@ -6,6 +6,7 @@ import { User } from 'src/app/_models/user.model';
 import { AccountService } from 'src/app/_services/account.service';
 import { Grade, Subject } from 'src/app/_models/grade.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class SubjectsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
+    private _snackBar: MatSnackBar
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.GradeId = r.id;
@@ -114,7 +116,15 @@ export class SubjectsComponent implements OnInit {
         this.code = '';
         this.name = '';
         this.description = '';
-        this.ngOnInit();
+        if (!this.grade.Subjects) {
+          this.grade.Subjects = [];
+        }
+        if (res) {
+          let sub: Subject = res;
+          sub.Lessons = [];
+          this.grade.Subjects.push(sub);
+          this.openSnackBar('Subject created.', 'Success!');
+        }
       })
     }
   }
@@ -145,5 +155,12 @@ export class SubjectsComponent implements OnInit {
     this.current = item;
     this.modalHeading = 'Update subject.'
     this.subjects.map(x => x.Viewing = false);
+  }
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
   }
 }

@@ -1,4 +1,5 @@
 @import '../../../../../assets/scss/color';
+
 .subjects {
     display: grid;
     grid-template-columns: repeat(2, 20%);
@@ -28,5 +29,17 @@
                 font-size: .8rem;
             }
         }
+    }
+}
+
+
+.add-new {
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
+
+    @media only screen and (max-width: 600px) {
+        right: 2.5rem;
+        bottom: 2rem;
     }
 }
