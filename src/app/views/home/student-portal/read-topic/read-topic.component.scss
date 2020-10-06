@@ -1,9 +1,10 @@
 @import '../../../../../assets/scss/color';
 
 .main {
-    padding: 5rem 1rem;
-    text-align: center;
+    padding:2rem;
     background: $cloud;
+    margin-top: 5rem;
+    border-radius: .5rem;
 
     .viewer {
         img {

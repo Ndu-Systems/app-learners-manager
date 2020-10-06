@@ -17,6 +17,8 @@ import { AddLearnerComponent } from './learners/add-learner/add-learner.componen
 import { DashLoaderComponent } from './shared/components/dash-loader/dash-loader.component';
 import { ViewLearnerComponent } from './learners/view-learner/view-learner.component';
 import { ListLessonsComponent } from './subject/list-lessons/list-lessons.component';
+import { TeachersComponent } from './teachers/teachers.component';
+import { AddTeacherComponent } from './teachers/add-teacher/add-teacher.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,7 @@ const routes: Routes = [
       { path: 'test/:id', component: TestComponent },
       { path: 'view-learner/:id', component: ViewLearnerComponent },
       { path: 'learners', component: LearnersComponent },
+      { path: 'teachers', component: TeachersComponent },
     ]
   }
 ];
@@ -55,7 +58,9 @@ export const declarations: Array<any> = [
   AddLearnerComponent,
   DashLoaderComponent,
   ViewLearnerComponent,
-  ListLessonsComponent
+  ListLessonsComponent,
+  TeachersComponent,
+  AddTeacherComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

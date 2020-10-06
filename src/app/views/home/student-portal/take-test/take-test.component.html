@@ -31,7 +31,7 @@
               <div class="answer" *ngIf="answer.StatusId === '1'">
 
                 <div class="col is-correct">
-                  <mat-checkbox [(ngModel)]="answer.StudentAnswer"></mat-checkbox>
+                  <mat-checkbox [(ngModel)]="answer.StudentAnswer" class="checks"></mat-checkbox>
                 </div>
                 <div class="col value pointer" (click)="select(answer)">
                   <p class="answer-line">

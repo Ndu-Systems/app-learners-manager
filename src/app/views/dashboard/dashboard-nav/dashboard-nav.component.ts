@@ -31,6 +31,14 @@ export class DashboardNavComponent implements OnInit {
       imgMobile: 'assets/images/dashboard/nav/learners-mobile.svg',
       imgMobileDisabled: 'assets/images/dashboard/nav/learners-mobile-disabled.svg'
     },
+    {
+      label: 'Teachers',
+      routerLink: '/dashboard/teachers',
+      imgActive: 'assets/images/dashboard/nav/learners.svg',
+      imgDisabled: 'assets/images/dashboard/nav/learners-disabled.svg',
+      imgMobile: 'assets/images/dashboard/nav/learners-mobile.svg',
+      imgMobileDisabled: 'assets/images/dashboard/nav/learners-mobile-disabled.svg'
+    },
 
     {
       key: 'Insights',

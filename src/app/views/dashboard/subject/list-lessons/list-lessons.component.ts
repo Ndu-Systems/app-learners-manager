@@ -83,7 +83,7 @@ export class ListLessonsComponent implements OnInit {
     for (let i = 0; i < parsedHtml.getElementsByTagName("iframe").length; i++) {
       parsedHtml.getElementsByTagName("iframe")[i].style.width = '100%';
       parsedHtml.getElementsByTagName("iframe")[i].style.height = '35rem';
-      parsedHtml.getElementsByTagName("iframe")[i].src = parsedHtml.getElementsByTagName("iframe")[0].src + '?rel=0';
+      parsedHtml.getElementsByTagName("iframe")[i].src = parsedHtml.getElementsByTagName("iframe")[i].src + '?rel=0';
     }
 
     for (let i = 0; i < parsedHtml.images.length; i++) {

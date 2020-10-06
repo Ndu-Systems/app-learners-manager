@@ -1,89 +1,18 @@
-<span  *ngIf="!(user$  | async)">
-  <div *ngIf="navigationSubject.IsHome">
-    <mat-toolbar class="desktop" *ngIf="!(user$  | async)">
-      <mat-toolbar-row>
-        <div class="logo">
-          <img src="assets/images/common/logo-home.png" alt="logo-image-src">
-        </div>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
-        <ul>
-          <li *ngFor="let item of navItems"><a [routerLink]="item.routerLink" (click)="updateNavigation(item);"
-              [ngClass]="item.class">{{item.label}}</a></li>
-        </ul>
-      </mat-toolbar-row>
-
-      <mat-toolbar-row>
-        <ul class="account">
-          <li *ngFor="let item of accountNavItems"> <a mat-button [routerLink]="item.routerLink" [ngClass]="item?.class"
-              (click)="updateNavigation(item);">
-              {{item.label}}
-            </a></li>
-        </ul>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  </div>
-  <div class="" *ngIf="!navigationSubject.IsHome">
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <div class="arrow" (click)="goBack()">
-          <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  </div>
-
-
-
-  <mat-toolbar class="mobile">
-    <div class="head col-1-of-2" *ngIf="navigationSubject.IsHome">
-      <div class="menu">
-        <img src="assets/images/common/burger-menu.svg" alt="icon-image-src" (click)="toggleMenu()">
-      </div>
-
-      <img src="assets/images/common/logo.png" class="logo" alt="logo-image-src">
-
+<div class="nav">
+  <div class="items">
+    <div class="item logo">
+      <img src="assets/images/common/logo-home.png" alt="" (click)="goto('')">
     </div>
 
-    <!-- <div class="" *ngIf="!navigationSubject.IsHome"> -->
-    <div class="" *ngIf="!navigationSubject.IsHome">
-      <mat-toolbar>
-        <mat-toolbar-row>
-          <div class="arrow" (click)="goBack()">
-            <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
-          </div>
-        </mat-toolbar-row>
-      </mat-toolbar>
+    <div class="item">
+      <button mat-button color="primary" (click)="goto('sign-up')">
+        Create institution account.
+      </button>
     </div>
-  </mat-toolbar>
-
-  <!-- modal here -->
-  <div class="nav mobile" *ngIf="showModal">
-    <div class="overlay">
-      <div class="modal">
-        <div class="col-1-of-3">
-          <img src="assets/images/common/arrow.svg" alt="feed" class="hl-off" (click)="toggleMenu()">
-          <p>Menu options</p>
-        </div>
-        <ul>
-          <li *ngFor="let item of navItems">
-            <a [routerLink]="item.routerLink" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"
-              (click)="updateNavigation(item);toggleMenu()">
-              <div class="nav-item">
-                {{item.label}}
-              </div>
-            </a>
-          </li>
-        </ul>
-        <mat-toolbar-row>
-          <ul class="account">
-            <li *ngFor="let item of accountNavItems"> <a mat-button [routerLink]="item.routerLink"
-                [ngClass]="item?.class" (click)="updateNavigation(item);toggleMenu()">
-                {{item.label}}
-              </a></li>
-          </ul>
-        </mat-toolbar-row>
-      </div>
+    <div class="item">
+      <button mat-button class="login" color="primary" (click)="goto('sign-in')">
+        Login
+      </button>
     </div>
   </div>
-</span>
+</div>
