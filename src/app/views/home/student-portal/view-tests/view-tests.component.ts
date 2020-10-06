@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Tests } from 'src/app/_models/tests.model';
 import { Studentsubject } from 'src/app/_models/studentsubject.model';
-import { PortalService } from 'src/app/_services/portal.service';
 import { Router } from '@angular/router';
-import { TopicContent } from 'src/app/_models/topic.model';
 import { Subject } from 'src/app/_models/grade.model';
 import { ApiService } from 'src/app/_services';
 import { GET_TESTS_URL } from 'src/app/_services/_shared';
+import { StudentPortalService } from 'src/app/_services/student.portal.service';
 
 @Component({
   selector: 'app-view-tests',
@@ -21,7 +20,7 @@ export class ViewTestsComponent implements OnInit {
   studentsubject: Studentsubject;
 
   constructor(
-    private portalService: PortalService,
+    private portalService: StudentPortalService,
     private router: Router,
     private apiServices: ApiService,
   ) { }

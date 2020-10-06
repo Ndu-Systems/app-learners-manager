@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PortalService } from 'src/app/_services/portal.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Tests, Answer } from 'src/app/_models/tests.model';
@@ -7,6 +6,7 @@ import { StudentTest } from 'src/app/_models/student.test';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, ApiService } from 'src/app/_services';
 import { SAVE_STUDENT_TEST_URL } from 'src/app/_services/_shared/constants';
+import { StudentPortalService } from 'src/app/_services/student.portal.service';
 
 @Component({
   selector: 'app-take-test',
@@ -24,7 +24,7 @@ export class TakeTestComponent implements OnInit {
   showResults: boolean;
   yourScore: number;
   constructor(
-    private portalService: PortalService,
+    private portalService: StudentPortalService,
     private router: Router,
     private _location: Location,
     private accountService: AccountService,

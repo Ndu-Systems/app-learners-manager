@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { GET_SUBJECTS_FOR_A_GRADE_URL, GET_STUDENT_SUBJECTS_URL, GET_TESTS_URL, STATUS_PENDING_PAYMENTS, UPDATE_BILLING_URL } from 'src/app/_services/_shared';
+import {  GET_TESTS_URL, STATUS_PENDING_PAYMENTS, UPDATE_BILLING_URL } from 'src/app/_services/_shared';
 import { ApiService, AccountService, NavigationService, DocumentsService } from 'src/app/_services';
 import { User } from 'src/app/_models/user.model';
 import { Subject } from 'src/app/_models/grade.model';
 import { Studentsubject } from 'src/app/_models/studentsubject.model';
 import { Router } from '@angular/router';
-import { PortalService } from 'src/app/_services/portal.service';
 import { Topic, TopicContent } from 'src/app/_models/topic.model';
 import { Tests } from 'src/app/_models/tests.model';
 import { NavigationModel } from 'src/app/_models';
 import { NAVIGATION } from 'src/app/_shared';
 import { environment } from 'src/environments/environment';
+import { StudentPortalService } from 'src/app/_services/student.portal.service';
 
 @Component({
   selector: 'app-my-portal',
@@ -39,7 +39,7 @@ export class MyPortalComponent implements OnInit {
     private apiServices: ApiService,
     private accountService: AccountService,
     private router: Router,
-    private portalService: PortalService,
+    private studentPortalService: StudentPortalService,
     private navigationService: NavigationService,
     private documentsService: DocumentsService,
 
@@ -47,18 +47,8 @@ export class MyPortalComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.apiServices.get(`${GET_STUDENT_SUBJECTS_URL}?UserId=${this.user.UserId}`).subscribe(data => {
-      if (data) {
-        this.studentsubjects = data;
-        this.studentsubjects.map(x => x.Subject.Class = ['tab']);
-        this.studentsubjects[this.selectedIndex].Subject.Class = ['tab', 'active'];
-        this.topics = this.studentsubjects[this.selectedIndex].Subject.Topics;
-        this.studentsubject = this.studentsubjects[this.selectedIndex];
-        this.subject = this.studentsubjects[this.selectedIndex].Subject;
-        this.loadTests(this.studentsubjects[this.selectedIndex].Subject.SubjectId);
-      }
-    });
-
+    this.studentsubjects = this.studentPortalService.currentStudentSubjectListValue;
+    this.studentPortalService.getStudentSubjectList(this.user.UserId)
     this.checkUserStatus();
   }
 
@@ -78,17 +68,17 @@ export class MyPortalComponent implements OnInit {
   }
 
   viewSubject() {
-    this.portalService.updateStudentubjectState(this.studentsubject)
+    this.studentPortalService.updateStudentubjectState(this.studentsubject)
     this.router.navigate(['view-subject']);
   }
   openTests(studentsubject: Studentsubject) {
-    this.portalService.updateStudentubjectState(studentsubject)
+    this.studentPortalService.updateStudentubjectState(studentsubject)
     this.router.navigate(['view-tests']);
   }
 
 
   readTopic(content: TopicContent) {
-    this.portalService.updateTopicContentState(content);
+    this.studentPortalService.updateTopicContentState(content);
     this.router.navigate(['read-topic']);
   }
 
@@ -103,7 +93,7 @@ export class MyPortalComponent implements OnInit {
   }
 
   takeTest(test: Tests) {
-    this.portalService.updateTestState(test);
+    this.studentPortalService.updateTestState(test);
     this.router.navigate(['take-test']);
 
   }

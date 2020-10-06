@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { SplashService } from './splash.service';
-import { User, UserModel } from '../_models/user.model';
-import { COMMON_CONN_ERR_MSG, GET_GRADES_URL } from './_shared/constants';
+import { UserModel } from '../_models/user.model';
+import { GET_GRADES_URL } from './_shared/constants';
 import { map } from 'rxjs/operators';
-import { TokenModel, EmailGetRequestModel, ChangePasswordModel } from '../_models';
 import { Grade } from '../_models/grade.model';
 
 

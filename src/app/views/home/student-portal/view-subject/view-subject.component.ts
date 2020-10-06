@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PortalService } from 'src/app/_services/portal.service';
 import { Studentsubject } from 'src/app/_models/studentsubject.model';
 import { Router } from '@angular/router';
 import { Topic, TopicContent } from 'src/app/_models/topic.model';
+import { StudentPortalService } from 'src/app/_services/student.portal.service';
 
 @Component({
   selector: 'app-view-subject',
@@ -13,7 +13,7 @@ export class ViewSubjectComponent implements OnInit {
   studentsubject: Studentsubject;
 
   constructor(
-    private portalService: PortalService,
+    private portalService: StudentPortalService,
     private router: Router,
   ) { }
 

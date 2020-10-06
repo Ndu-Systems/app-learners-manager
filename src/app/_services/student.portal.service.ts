@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { LOC_STUDENT_SUBJECTS_DATA, LOC_STUDENT_SUBJECT_DATA, LOC_TOPIC_CONTENT, LOC_CURRENT_TEST } from './_shared';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { UserModel } from '../_models/user.model';
+import { map } from 'rxjs/operators';
 import { Studentsubject } from '../_models/studentsubject.model';
-import { TopicContent } from '../_models/topic.model';
+import { GET_STUDENT_SUBJECTS_URL } from './_shared/constants';
 import { Tests } from '../_models/tests.model';
+import { TopicContent } from '../_models/topic.model';
+import { LOC_STUDENT_SUBJECTS_DATA, LOC_STUDENT_SUBJECT_DATA, LOC_TOPIC_CONTENT, LOC_CURRENT_TEST } from './_shared';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class PortalService {
-  private studentsubjectListBehaviorSubject: BehaviorSubject<Studentsubject[]>;
-  public studentsubjectListObservable: Observable<Studentsubject[]>;
+export class StudentPortalService {
 
+
+  private studentSubjectListBehaviorSubject: BehaviorSubject< Studentsubject[]>;
+  public studentSubjectListObservable: Observable< Studentsubject[]>;
+
+  
   private studentsubjectBehaviorSubject: BehaviorSubject<Studentsubject>;
   public studentsubjectObservable: Observable<Studentsubject>;
 
@@ -23,26 +30,23 @@ export class PortalService {
 
   private testBehaviorSubject: BehaviorSubject<Tests>;
   public testObservable: Observable<Tests>;
-
   url: string;
 
   constructor(
-    private http: HttpClient,
+    private http: HttpClient
   ) {
-    this.studentsubjectListBehaviorSubject = new BehaviorSubject<Studentsubject[]>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECTS_DATA)));
+    this.studentSubjectListBehaviorSubject = new BehaviorSubject< Studentsubject[]>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECTS_DATA)) || []);
+    this.studentSubjectListObservable = this.studentSubjectListBehaviorSubject.asObservable();
+
     this.studentsubjectBehaviorSubject = new BehaviorSubject<Studentsubject>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECT_DATA)));
     this.topicContentBehaviorSubject = new BehaviorSubject<TopicContent>(JSON.parse(localStorage.getItem(LOC_TOPIC_CONTENT)));
     this.testBehaviorSubject = new BehaviorSubject<Tests>(JSON.parse(localStorage.getItem(LOC_CURRENT_TEST)));
 
-    this.studentsubjectListObservable = this.studentsubjectListBehaviorSubject.asObservable();
-    this.studentsubjectObservable = this.studentsubjectBehaviorSubject.asObservable();
-    this.topicContentObservable = this.topicContentBehaviorSubject.asObservable();
-    this.testObservable = this.testBehaviorSubject.asObservable();
     this.url = environment.API_URL;
   }
 
-  public get getCurrentStudentsubjects(): Studentsubject[] { 
-    return this.studentsubjectListBehaviorSubject.value; 
+  public get currentStudentSubjectListValue():  Studentsubject[] {
+    return this.studentSubjectListBehaviorSubject.value;
   }
 
   public get getCurrentStudentsubject(): Studentsubject { 
@@ -54,11 +58,6 @@ export class PortalService {
   }
   public get getCurrentTest(): Tests { 
     return this.testBehaviorSubject.value; 
-  }
-
-  updateStudentsubjectListState(studentsubjects: Studentsubject[]) {
-    this.studentsubjectListBehaviorSubject.next(studentsubjects);
-    localStorage.setItem(LOC_STUDENT_SUBJECTS_DATA, JSON.stringify(studentsubjects));
   }
 
   updateStudentubjectState(studentsubject: Studentsubject) {
@@ -75,6 +74,19 @@ export class PortalService {
   updateTestState(test: Tests) {
     this.testBehaviorSubject.next(test);
     localStorage.setItem(LOC_CURRENT_TEST, JSON.stringify(test));
+  }
+
+  updateStudentSubjectListState(studentSubjectList:  Studentsubject[]) {
+    this.studentSubjectListBehaviorSubject.next(studentSubjectList);
+    localStorage.setItem(LOC_STUDENT_SUBJECTS_DATA, JSON.stringify(studentSubjectList));
+  }
+
+  getStudentSubjectList(userId: string) {
+    this.http.get< Studentsubject[]>(`${this.url}/${GET_STUDENT_SUBJECTS_URL}?UserId=${userId}`).subscribe(data => {
+      if (data) {
+        this.updateStudentSubjectListState(data);
+      }
+    });
   }
 
 

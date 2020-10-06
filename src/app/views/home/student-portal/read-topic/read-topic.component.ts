@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { PortalService } from 'src/app/_services/portal.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AccountService, ApiService } from 'src/app/_services';
 import { User } from 'src/app/_models/user.model';
 import { TopicContent } from 'src/app/_models/topic.model';
 import { SAVE_STUDENT_CONTENT_URL, SAVE_COMMENT_URL } from 'src/app/_services/_shared';
+import { StudentPortalService } from 'src/app/_services/student.portal.service';
 
 @Component({
   selector: 'app-read-topic',
@@ -21,7 +21,7 @@ export class ReadTopicComponent implements OnInit {
   parentId = '';
   constructor(
     private sanitizer: DomSanitizer,
-    private portalService: PortalService,
+    private portalService: StudentPortalService,
     private router: Router,
     private _location: Location,
     private accountService: AccountService,
