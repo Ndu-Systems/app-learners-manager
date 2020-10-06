@@ -29,13 +29,4 @@ export class StatisticsService {
     localStorage.setItem(STATISTICS, JSON.stringify(model));
   }
 
-  getStatistics(model: GetQueryModel) {
-    this.http.post<StatisticModel[]>(`${this.url}/api/statistic/list-statistics.php`, model)
-      .subscribe(data => {
-        this.dataStore.statistics = data;
-        this.statisticsBehaviorSubject.next(Object.assign({}, this.dataStore).statistics);
-        this.updateState(data);
-      }, error => console.log('Could not load statistics.'));
-  }
-
 }

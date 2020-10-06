@@ -57,7 +57,6 @@ export class SignUpComponent implements OnInit {
       StatusId: [AWAITING_ACTIVATION]
     });
 
-    console.log(this.grades);
   }
 
   onSubmit(model: UserModel) {
@@ -146,7 +145,6 @@ export class SignUpComponent implements OnInit {
         if (response > 0) {
           setTimeout(() => {
             this.showLoader = false;
-            console.log('Billing sent, Good Job');
             this.navigateHome();
           }, 1000);
         } else {

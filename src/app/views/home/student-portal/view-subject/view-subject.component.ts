@@ -19,12 +19,9 @@ export class ViewSubjectComponent implements OnInit {
 
   ngOnInit() {
     this.studentsubject = this.portalService.getCurrentStudentsubject;
-    console.log(this.studentsubject);
-
   }
 
   readTopic(content: TopicContent) {
-    console.log(content);
     this.portalService.updateTopicContentState(content);
     this.router.navigate(['read-topic']);
   }

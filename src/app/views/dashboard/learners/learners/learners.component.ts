@@ -102,7 +102,6 @@ export class LearnersComponent implements OnInit {
   }
 
   learnerStatusChanged(user: User) {
-    console.log(user);
     this.current = user;
     this.showModal = true;
     this.showConfirm = true;
@@ -122,7 +121,6 @@ export class LearnersComponent implements OnInit {
     this.current.Grade = null;
     this.showLoader = true;
     this.apiServices.add(UPDATE_USER_URL, this.current).subscribe(res => {
-      console.log(res);
       if (Number(this.current.StatusId) === STATUS_PENDING_PAYMENTS) {
         this.modalBody = `The student access will be locked`;
         this.modalCTA = `Lock student access`;

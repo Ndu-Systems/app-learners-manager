@@ -82,7 +82,6 @@ export class LoginModalComponent implements OnInit {
       if (user && user.UserId) {
         this.error = '';
         this.accountService.updateUserState(user);
-        console.log('User: ', user);
         let userRoles = user.Roles;
         this.showLoader = false;
         if (userRoles) {

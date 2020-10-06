@@ -68,8 +68,6 @@ export class ReadComponent implements OnInit {
     if (!comment) {
       return false;
     }
-    console.log(comment);
-
     const data = {
       OtherId: comment.OtherId,
       ParentId: comment.CommentId,
@@ -80,7 +78,6 @@ export class ReadComponent implements OnInit {
     }
     this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
-        console.log('comment', response);
         if (!comment.Replies) {
           comment.Replies = [];
         }
@@ -117,7 +114,6 @@ export class ReadComponent implements OnInit {
     }
     this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
-        console.log('comment', response);
         if (!this.lesson.Comments) {
           this.lesson.Comments = [];
         }

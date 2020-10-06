@@ -88,7 +88,6 @@ export class MyPortalComponent implements OnInit {
 
 
   readTopic(content: TopicContent) {
-    console.log(content);
     this.portalService.updateTopicContentState(content);
     this.router.navigate(['read-topic']);
   }
@@ -104,7 +103,6 @@ export class MyPortalComponent implements OnInit {
   }
 
   takeTest(test: Tests) {
-    console.log(test);
     this.portalService.updateTestState(test);
     this.router.navigate(['take-test']);
 
@@ -127,9 +125,7 @@ export class MyPortalComponent implements OnInit {
 
   imageChanged(event) {
     const files = event.target.files;
-    console.log(files);
     this.uplaodFile(files);
-
   }
 
 
@@ -148,7 +144,6 @@ export class MyPortalComponent implements OnInit {
         this.apiServices.add(UPDATE_BILLING_URL, this.user.Billing[0]).subscribe(billing => {
           this.user.Billing[0] = billing;
         })
-        console.log(pp);
       });
 
     });

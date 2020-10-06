@@ -92,7 +92,6 @@ export class ListLessonsComponent implements OnInit {
         srcs.push(src);
     }
     this.apiServices.add("api/upload/upload-base-64.php", { images: srcs }).subscribe(data => {
-      console.log(data);
       if (data) {
         data.forEach(link => {
           parsedHtml.images[this.index].src = `${environment.API_URL}/api/upload/${link}`;
@@ -117,7 +116,6 @@ export class ListLessonsComponent implements OnInit {
     if (!comment) {
       return false;
     }
-    console.log(comment);
 
     const data = {
       OtherId: comment.OtherId,
@@ -129,7 +127,6 @@ export class ListLessonsComponent implements OnInit {
     }
     this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
-        console.log('comment', response);
         if (!comment.Replies) {
           comment.Replies = [];
         }
@@ -203,8 +200,6 @@ export class ListLessonsComponent implements OnInit {
 
   imageChanged(event) {
     const files = event.target.files;
-    console.log(files);
-
   }
 
   copyText() {

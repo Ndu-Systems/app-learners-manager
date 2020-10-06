@@ -69,7 +69,7 @@
 
 
             <span class="messaage">
-              <div class="btn-show-replies" *ngIf="!comment.ShowReplies && comment.Replies.length > 0"
+              <div class="btn-show-replies" *ngIf="!comment.ShowReplies && comment.Replies && comment.Replies.length > 0"
                 (click)="toggleReplies(comment)">
                 <a>-- View replies ({{comment.Replies.length}})</a>
               </div>

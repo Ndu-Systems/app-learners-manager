@@ -102,7 +102,6 @@ export class TestComponent implements OnInit {
     this.modalHeading = 'Add Test Section';
   }
   addAnswer(question: Question) {
-    console.log(question);
     question.Answers.push({
       AnswerId: '',
       QuestionId: question.QuestionId,
@@ -124,7 +123,6 @@ export class TestComponent implements OnInit {
 
   imageChanged(event) {
     const files = event.target.files;
-    console.log(files);
     this.uplaodFile(files);
 
   }
@@ -222,7 +220,6 @@ export class TestComponent implements OnInit {
   }
 
   viewTestAnswers(studentTest: StudentTest) {
-    console.log(studentTest.Answers);
     this.studentAnswers =
       studentTest.Answers.map(studentAnswer => {
         if (!studentAnswer.Question.Answers.find(a => a.IsCoorect)) {
@@ -241,15 +238,7 @@ export class TestComponent implements OnInit {
 
   }
   getCorrectAnswer(answer: any) {
-    let correctAnswer = '';
-    console.log(answer);
     return answer.Question.Answers.find(a => a.IsCoorect).Answer;
-
-    // studentTest.Answers.forEach(answer => {
-    //   console.log(answer);
-    //   correctAnswer = answer.Question.Answers.find(a => a.IsCoorect).Answer;
-    // });
-    return correctAnswer;
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {

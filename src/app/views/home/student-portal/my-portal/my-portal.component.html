@@ -74,7 +74,7 @@
 
 
         <div class="recent topic"
-          *ngIf="studentsubject.Subject.Tests && studentsubject.Subject.Tests.length ; else nodata">
+          *ngIf="studentsubject.Subject.Tests && studentsubject.Subject.Tests.length">
           <h1>
             {{studentsubject.Subject.Name}} <span class="lessons-heading">Tests</span>
           </h1>
@@ -114,38 +114,6 @@
   </div>
 
 
-
-
-
-
-  <div class="recent topic" *ngIf="tests && tests.length">
-    <h1>
-      {{subject.Name}} practice tests
-    </h1>
-    <div class="topics">
-
-      <div *ngFor="let item of tests">
-        <span *ngIf="item.Sections.length">
-          <div class="card">
-            <p class="tag">
-              {{item.Name}}
-            </p>
-
-            <p class="marks">
-              {{item.Marks}} Marks
-            </p>
-
-            <div class="action">
-              <button (click)="takeTest(item)">Take a test</button>
-            </div>
-
-          </div>
-        </span>
-      </div>
-    </div>
-
-  </div>
-
 </div>
 
 
@@ -157,7 +125,7 @@
   <div class="form">
     <p>
       <span class="important">Hi {{user.Name}}</span>, your account is temporarily locked due to pending payment of
-      <strong> {{user.Billing[0].AmountDue | currency:'R'}} </strong>
+      <strong *ngIf="user.Billing && user.Billing.length && user.Billing[0]"> {{user.Billing[0].AmountDue | currency:'R'}} </strong>
     </p>
 
     <div class="file" *ngIf="!user.Billing[0].PayProof">

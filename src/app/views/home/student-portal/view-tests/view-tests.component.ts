@@ -36,7 +36,6 @@ export class ViewTestsComponent implements OnInit {
         }
       });
     }
-    console.log(this.studentsubject);
 
   }
 

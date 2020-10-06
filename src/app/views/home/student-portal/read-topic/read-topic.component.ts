@@ -51,7 +51,6 @@ export class ReadTopicComponent implements OnInit {
     }
 
     this.apiServices.add(SAVE_STUDENT_CONTENT_URL, data).subscribe(response => {
-      console.log(response);
       this.backClicked();
 
     });
@@ -77,7 +76,6 @@ export class ReadTopicComponent implements OnInit {
     }
     this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
-        console.log('comment', response);
         if (!this.content.Comments) {
           this.content.Comments = [];
         }
@@ -96,7 +94,6 @@ export class ReadTopicComponent implements OnInit {
     if (!comment) {
       return false;
     }
-    console.log(comment);
 
     const data = {
       OtherId: comment.OtherId,
@@ -108,7 +105,6 @@ export class ReadTopicComponent implements OnInit {
     }
     this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
-        console.log('comment', response);
         if (!comment.Replies) {
           comment.Replies = [];
         }
