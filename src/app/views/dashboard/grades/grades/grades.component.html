@@ -1,37 +1,52 @@
-
-
-<div class="main"  *ngIf="grades$ | async as grades">
-  <mat-tab-group>
-    <mat-tab *ngFor="let grade of grades ; let i = index" [label]="grade.Name">
-  
-      <div class="tab">
-        <app-subjects [grade]="grade"></app-subjects>
-      </div>
-    </mat-tab>
-    <mat-tab label="Add new grade">
-      <div class="form">
-        <div class="form-group">
-          <label for="">Select Institution Type*</label>
-          <select name="" id="" [(ngModel)]="institutionTypeId">
-            <option *ngFor="let item of institutionTypes" [value]="item.InstitutionTypeId">{{item.Name}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Grade name*</label>
-          <input type="text" [(ngModel)]="name">
-        </div>
-        <div class="form-group">
-          <label for="">Grade description</label>
-          <input type="text" [(ngModel)]="description">
-        </div>
-        <button mat-button color="primary" (click)="save()"> Save grade </button>
-        <div class="error" *ngFor="let error of errors">
-          {{error}}
-        </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+<div class="head">
+  <div>
+    <h1>
+      Hi, {{user?.Name}}
+    </h1>
+  </div>
 </div>
+
+
+<div  class="main-list">
+  <div class="main"  *ngIf="grades$ | async as grades">
+    <mat-tab-group>
+      <mat-tab *ngFor="let grade of grades ; let i = index" [label]="grade.Grade.Name">
+  
+        <div class="tab">
+          <app-subjects [subjects]="grade.Subjects"></app-subjects>
+        </div>
+      </mat-tab>
+      <mat-tab label="Add new grade" *ngIf="isAdmin">
+        <div class="form">
+          <div class="form-group">
+            <label for="">Select Institution Type*</label>
+            <select name="" id="" [(ngModel)]="institutionTypeId">
+              <option *ngFor="let item of institutionTypes" [value]="item.InstitutionTypeId">{{item.Name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Grade name*</label>
+            <input type="text" [(ngModel)]="name">
+          </div>
+          <div class="form-group">
+            <label for="">Grade description</label>
+            <input type="text" [(ngModel)]="description">
+          </div>
+          <button mat-button color="primary" (click)="save()"> Save grade </button>
+          <div class="error" *ngFor="let error of errors">
+            {{error}}
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+
+
+
+
+
 <ng-template #nodata>
   <div class="nodata">
     <h1>

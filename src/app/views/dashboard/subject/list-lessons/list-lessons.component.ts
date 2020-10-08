@@ -36,6 +36,7 @@ export class ListLessonsComponent implements OnInit {
     height: '400px',
     marginBottom: '30px',
   }
+  showLoader: boolean;
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -148,6 +149,7 @@ export class ListLessonsComponent implements OnInit {
       this.error = `⚠️ Enter  content tittle`;
       return false;
     }
+    this.showLoader = true;
     if (this.isUpdate || this.showDelete) {
 
       this.apiServices.add(UPDATE_CONTENT_URL, this.content).subscribe(res => {
@@ -157,6 +159,7 @@ export class ListLessonsComponent implements OnInit {
         this.content = null;
         this.showDelete = false;
         this.isUpdate = false;
+        this.showLoader = false;
         this.openSnackBar('Lesson updated.', 'Success!');
       })
     } else {
@@ -165,6 +168,7 @@ export class ListLessonsComponent implements OnInit {
         this.tittle = '';
         this.description = '';
         this.lessons.push(res);
+        this.showLoader = false;
         this.openSnackBar('Lesson created.', 'Success!');
       })
     }

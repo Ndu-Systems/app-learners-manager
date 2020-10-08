@@ -5,7 +5,7 @@ import { Grade, Subject } from 'src/app/_models/grade.model';
 import { User, UserModel } from 'src/app/_models/user.model';
 import { AccountService, EmailService, ApiService } from 'src/app/_services';
 import { GET_GRADES_URL, ADD_LEARNER_URL, GET__GRADE_DETAILS_URL } from 'src/app/_services/_shared';
-import { LEARNER, IS_DELETED_FALSE, AWAITING_ACTIVATION } from 'src/app/_shared';
+import { LEARNER, IS_DELETED_FALSE, AWAITING_ACTIVATION, TEACHER } from 'src/app/_shared';
 
 @Component({
   selector: 'app-add-teacher',
@@ -55,8 +55,8 @@ export class AddTeacherComponent implements OnInit {
         Name: [null, Validators.required],
         CompanyId: [this.user.CompanyId, Validators.required],
         Surname: [null, Validators.required],
-        GradeId: [null],
-        UserType: LEARNER,
+        GradeId: [''],
+        UserType: TEACHER,
         CreateUserId: [this.user.UserId],
         ModifyUserId: [this.user.UserId],
         IsDeleted: [IS_DELETED_FALSE],
@@ -69,9 +69,10 @@ export class AddTeacherComponent implements OnInit {
 
   onSubmit(model: UserModel) {
     model.Roles = [];
-    model.Roles.push({ Name: LEARNER });
+    model.Roles.push({ Name: TEACHER });
     this.showLoader = true;
-    model.Studentsubjects = this.subjects.filter(x => x.IsSelected);
+    model.Studentsubjects = [];
+    
     this.apiService.add(`${ADD_LEARNER_URL}`, model).subscribe(data => {
       // send email logic here.
       if (data.Email) {

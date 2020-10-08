@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { BreadCrumbModel, HeaderBannerModel, Email } from 'src/app/_models';
 import { User } from 'src/app/_models/user.model';
 import { ApiService, AccountService, EmailService } from 'src/app/_services';
-import { GET_STUDENTS_URL, STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
+import { UserService } from 'src/app/_services/user.service';
+import { STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
+import { TEACHER } from 'src/app/_shared';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -49,25 +51,23 @@ export class TeachersComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private emailService: EmailService,
+    private userService: UserService,
 
   ) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.showLoader = true;
-    this.apiServices.get(`${GET_STUDENTS_URL}?CompanyId=${this.user.CompanyId}`).subscribe(data => {
-      if (data) {
-        this.users = data;
-        this.showLoader = false;
-      }
+    this.userService.userListObservable.subscribe(data=>{
+      this.users = data;
     });
+    this.userService.getUsers(this.user.CompanyId, TEACHER);
   }
   add() {
     this.showModal = true;
     this.showAddLearner = true;
     this.isUpdate = false;
     this.name = undefined;
-    this.modalHeading = 'Add learners';
+    this.modalHeading = 'Add teacher';
   }
   closeModal() {
     this.showModal = false;
@@ -99,20 +99,7 @@ export class TeachersComponent implements OnInit {
     this.users.map(x => x.Viewing = false);
   }
 
-  learnerStatusChanged(user: User) {
-    this.current = user;
-    this.showModal = true;
-    this.showConfirm = true;
-    this.modalHeading = 'Update student access'
-    if (Number(user.StatusId) === STATUS_PENDING_PAYMENTS) {
-      this.modalBody = `The student access will be locked`;
-      this.modalCTA = `Lock student access`;
-    }
-    if (Number(user.StatusId) === STATUS_ACTIVE) {
-      this.modalBody = `The student access will activated!`;
-      this.modalCTA = `Grant student access`;
-    }
-  }
+
 
   updateStatus() {
     this.current.Studentsubject = [];
@@ -178,6 +165,6 @@ export class TeachersComponent implements OnInit {
     }
   }
   view(user: User) {
-    // this.router.navigate(['dashboard/view-learner', user.UserId]);
+    this.router.navigate(['dashboard/view-teacher', user.UserId]);
   }
 }

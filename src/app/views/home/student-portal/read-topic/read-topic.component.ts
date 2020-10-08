@@ -82,6 +82,7 @@ export class ReadTopicComponent implements OnInit {
         response.User = this.user;
         this.content.Comments.push(response);
         this.comment = undefined;
+        this.portalService.updateTopicContentState(this.content);
         this.parentId = '';
       }
 

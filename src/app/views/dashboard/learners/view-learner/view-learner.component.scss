@@ -1,0 +1,50 @@
+@import '.././../../../../assets/scss/color';
+
+h3 {
+    span {
+        position: relative;
+        top: .4rem;
+        margin-right: 2rem;
+        cursor: pointer;
+    }
+}
+
+.more {
+    padding: 1rem 4rem;
+}
+
+.subject {
+    background: $cloud;
+    padding: .5rem 1rem;
+    margin: 1rem 0;
+    border-radius: .5rem;
+
+    h1 {
+        font-weight: 600;
+        display: block;
+        letter-spacing: .1rem;
+        font-size: 1.4rem;
+        margin-bottom: .5rem;
+
+        span {
+            margin: .5rem 0;
+            font-size: 1.1rem;
+            display: block;
+        }
+    }
+}
+
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 10px;
+  }

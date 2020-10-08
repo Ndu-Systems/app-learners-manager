@@ -1,29 +1,44 @@
 <div class="tab">
-  <p>Subjects for <b>{{grade.Name}}</b></p>
+  <!-- <p>Subjects for <b>{{grade.Name}}</b></p> -->
 
-  <span *ngIf="grade">
-    <div class="subjects" *ngIf="grade.Subjects.length; else nosubjects">
-      <div class="subject" *ngFor="let item of grade.Subjects" (click)="openSubject(item)">
+  <span *ngIf="subjects">
+    <div class="subjects" *ngIf="subjects.length; else nosubjects">
+      <div class="subject" *ngFor="let item of subjects" (click)="openSubject(item.Subject)">
         <p>
           <span class="name">
-            {{item.Name}}
+            {{item.Subject.Name}}
           </span>
           <span class="lessions">
-            {{item.Lessons?.length || 0}} Lessons
+            <span class="material-icons">
+              article
+            </span>
+            Lessons ({{item.Subject.Lessons?.length || 0}})
+          </span>
+          <span class="lessions">
+            <span class="material-icons">
+              assignment_turned_in
+            </span>
+            Tests ({{item.Subject.Tests?.length || 0}})
+          </span>
+          <span class="lessions">
+            <span class="material-icons">
+              people_alt
+            </span>
+            Students enrolled ({{item.Subject.Tests?.length || 0}})
           </span>
         </p>
       </div>
 
-     <div class="add-new">
-      <button mat-button color="primary" (click)="add()"> Add new subject</button>
-     </div>
+      <div class="add-new">
+        <button mat-button color="primary" *ngIf="isAdmin" (click)="add()"> Add new subject</button>
+      </div>
     </div>
 
     <ng-template #nosubjects>
       <div class="nodata">
         <h1>
-          No subjects found for {{grade.Name}}
-          <span (click)="add()">
+          No subjects found.
+          <span *ngIf="isAdmin" (click)="add()">
             Add subject
           </span>
         </h1>

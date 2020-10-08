@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
-import { ADMIN, LEARNER } from 'src/app/_shared';
+import { ADMIN, LEARNER, TEACHER } from 'src/app/_shared';
 import { LocationStrategy } from '@angular/common';
 import { TokenModel } from 'src/app/_models';
 
@@ -83,7 +83,7 @@ export class SignInComponent implements OnInit {
         let userRoles = user.Roles;
         this.showLoader = false;
         if (userRoles) {
-          if (user.Roles.find(x => x.RoleName === ADMIN)) {
+          if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
             this.routeTo.navigate(['dashboard/grades']);
           }
 

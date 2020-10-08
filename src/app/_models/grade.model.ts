@@ -42,5 +42,18 @@ export interface Grade {
     StatusId?: any;
     Subjects?: Subject[];
     Viewing?: boolean;
+    Class?: string[];
     Grade?: any;
+}
+
+export interface Teachersubject {
+    Id?: string;
+    UserId : string;
+    SubjectId: string;
+    GradeId: string;
+    CreateDate?: string;
+    CreateUserId?: string;
+    ModifyDate?: string;
+    ModifyUserId?: string;
+    StatusId?: any;
 }

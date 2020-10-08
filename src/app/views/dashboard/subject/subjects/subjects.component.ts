@@ -7,6 +7,7 @@ import { AccountService } from 'src/app/_services/account.service';
 import { Grade, Subject } from 'src/app/_models/grade.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
+import { ADMIN } from 'src/app/_shared';
 
 
 @Component({
@@ -16,13 +17,13 @@ import { MatSnackBar } from '@angular/material';
 })
 export class SubjectsComponent implements OnInit {
 
-  @Input() grade: Grade;
+  @Input()  subjects: Subject[];
 
   showModal: boolean;
   name: string;
   GradeId: any;
   // grade: Grade;
-  subjects?: Subject[];
+ 
   code = '';
   user: User;
   description = '';
@@ -40,6 +41,8 @@ export class SubjectsComponent implements OnInit {
     SubHeader: 'A collection of subjects for grade in the system.',
     ctaLabel: '+ Add subject'
   };
+  gradeId: any;
+  isAdmin: boolean;
 
   constructor(
     private apiServices: ApiService,
@@ -55,6 +58,9 @@ export class SubjectsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
+    if (this.user.UserType === ADMIN) {
+      this.isAdmin = true;;
+    }
   }
   add() {
     this.showModal = true;
@@ -74,7 +80,7 @@ export class SubjectsComponent implements OnInit {
 
   save() {
     const data = {
-      GradeId: this.grade.GradeId,
+      GradeId: this.gradeId,
       Name: this.name,
       ImageUrl: "",
       Description: this.description,
@@ -89,7 +95,7 @@ export class SubjectsComponent implements OnInit {
       this.error = `⚠️ Enter subjects name`;
       return false;
     }
-    const findGrade = this.grade.Subjects.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
+    const findGrade = this.subjects.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
     if (findGrade && !this.isUpdate && !this.isDelete) {
       this.error = `⚠️  ${this.name} already exist.`;
       return false;
@@ -105,10 +111,10 @@ export class SubjectsComponent implements OnInit {
         this.name = '';
         this.description = '';
         this.isDelete = false;
-        if (!this.grade.Subjects) {
-          this.grade.Subjects = [];
+        if (!this.subjects) {
+          this.subjects = [];
         }
-        this.grade.Subjects.push(res);
+        this.subjects.push(res);
       })
     } else {
       this.apiServices.add(ADD_SUBJECT_URL, data).subscribe(res => {
@@ -116,13 +122,13 @@ export class SubjectsComponent implements OnInit {
         this.code = '';
         this.name = '';
         this.description = '';
-        if (!this.grade.Subjects) {
-          this.grade.Subjects = [];
+        if (!this.subjects) {
+          this.subjects = [];
         }
         if (res) {
           let sub: Subject = res;
           sub.Lessons = [];
-          this.grade.Subjects.push(sub);
+          this.subjects.push(sub);
           this.openSnackBar('Subject created.', 'Success!');
         }
       })

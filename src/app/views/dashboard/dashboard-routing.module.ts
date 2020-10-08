@@ -19,6 +19,8 @@ import { ViewLearnerComponent } from './learners/view-learner/view-learner.compo
 import { ListLessonsComponent } from './subject/list-lessons/list-lessons.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { AddTeacherComponent } from './teachers/add-teacher/add-teacher.component';
+import { UserProfileComponent } from 'src/app/_shared/components/user-profile/user-profile.component';
+import { ViewTeachersComponent } from './teachers/view-teachers/view-teachers.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
       { path: 'tests/:id', component: TestsComponent },
       { path: 'test/:id', component: TestComponent },
       { path: 'view-learner/:id', component: ViewLearnerComponent },
+      { path: 'view-teacher/:id', component: ViewTeachersComponent },
       { path: 'learners', component: LearnersComponent },
       { path: 'teachers', component: TeachersComponent },
     ]
@@ -60,7 +63,9 @@ export const declarations: Array<any> = [
   ViewLearnerComponent,
   ListLessonsComponent,
   TeachersComponent,
-  AddTeacherComponent
+  AddTeacherComponent,
+  UserProfileComponent,
+  ViewTeachersComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

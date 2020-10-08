@@ -1,34 +1,5 @@
 <form class="form" [formGroup]="rForm">
 
-
-
-  <div class="form-group" *ngIf="grades">
-    <label for="exampleInputName">Grade</label>
-    <select formControlName="GradeId" #thisSelect class="status" (change)="gradeChanged(thisSelect.value)">
-      <option *ngFor="let item of grades" [value]="item.GradeId">{{item?.Name}}</option>
-    </select>
-    <div class="alert" *ngIf="!rForm.controls['GradeId'].valid  && rForm.controls['GradeId'].touched ">
-      Grade is required
-    </div>
-  </div>
-
-
-
-  <div class="form-group">
-    <label for="exampleInputName">Subjects</label>
-    <div class="subjects">
-      <div class="subject" *ngFor="let subject of subjects">
-        <!-- <input  type="checkbox"> 
-        {{subject?.Name}} -->
-
-        <section class="example-section">
-          <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox>
-        </section>
-      </div>
-    </div>
-
-  </div>
-
   <div class="form-group">
     <label for="exampleInputName">Name</label>
     <input type="text" class="form-control" formControlName="Name" id="exampleInputFirstName"

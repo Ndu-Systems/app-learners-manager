@@ -9,6 +9,8 @@ import { BreadCrumbModel, HeaderBannerModel, InstitutionTypeModel, GenericQueryM
 import { GET_INSTITUTION_TYPES_API } from 'src/app/_services/_shared';
 import { GradeService } from 'src/app/_services/grade.service';
 import { Observable } from 'rxjs';
+import { TeacherSubject } from 'src/app/_models/teacher.grade.subject ';
+import { ADMIN } from 'src/app/_shared';
 
 @Component({
   selector: 'app-grades',
@@ -28,9 +30,10 @@ export class GradesComponent implements OnInit {
   current: Grade;
   error = '';
   institutionTypes: InstitutionTypeModel[] = [];
-  grades$ : Observable<Grade[]>;
+  grades$: Observable<TeacherSubject[]>;
   isDelete: boolean;
   $status: HTMLElement;
+  isAdmin: boolean;
 
   constructor(
     private apiServices: ApiService,
@@ -42,8 +45,9 @@ export class GradesComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.grades$ = this.gradeService.gardesObservable;
-    this.gradeService.getGrades(this.user.CompanyId);
+    this.grades$ = this.gradeService.teacherSubjectListObservable;
+    // this.gradeService.getGrades(this.user.CompanyId);
+    this.gradeService.getTeacherGradesSubjects(this.user.UserId, this.user.UserType, this.user.CompanyId);
     this.gradeService.gardesObservable.subscribe(data => {
       if (data) {
         this.allGrades = data;
@@ -53,6 +57,9 @@ export class GradesComponent implements OnInit {
     // this.requestPermission();
     // this.nonPersistentNotification();
     this.getInstitutionTypes();
+    if (this.user.UserType === ADMIN) {
+      this.isAdmin = true;;
+    }
   }
 
 

@@ -62,25 +62,6 @@ export class SubjectComponent implements OnInit {
         this.topics = this.subject.Topics;
         this.headerBanner.Header = `Topics for ${this.subject.Name}`
         this.headerBanner.SubHeader = `A collection of ${this.subject.Name} topics in the system.,`
-
-        this.crumbs = [
-          {
-            Label: 'dashboard',
-            Link: '/dashboard'
-          },
-          {
-            Label: 'All Grades',
-            Link: '/dashboard/grades'
-          },
-          {
-            Label: `${this.subject.Grade.Name}`,
-            Link: `/dashboard/subjects/${this.subject.Grade.GradeId}`
-          },
-          {
-            Label: ` Topics for ${this.subject.Name} `
-          },
-        ];
-
       }
     });
     this.user = this.accountService.currentUserValue;

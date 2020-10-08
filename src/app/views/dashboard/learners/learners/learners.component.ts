@@ -4,8 +4,10 @@ import { User } from 'src/app/_models/user.model';
 import { BreadCrumbModel, HeaderBannerModel, Email } from 'src/app/_models';
 import { ApiService, AccountService, EmailService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { GET_STUDENTS_URL, STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
+import {  STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
 import { environment } from 'src/environments/environment';
+import { UserService } from 'src/app/_services/user.service';
+import { LEARNER } from 'src/app/_shared';
 
 @Component({
   selector: 'app-learners',
@@ -51,18 +53,16 @@ export class LearnersComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private emailService: EmailService,
+    private userService: UserService,
 
   ) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.showLoader = true;
-    this.apiServices.get(`${GET_STUDENTS_URL}?CompanyId=${this.user.CompanyId}`).subscribe(data => {
-      if (data) {
-        this.users = data;
-        this.showLoader = false;
-      }
+    this.userService.userListObservable.subscribe(data=>{
+      this.users = data;
     });
+    this.userService.getUsers(this.user.CompanyId, LEARNER);
   }
   add() {
     this.showModal = true;
@@ -180,6 +180,6 @@ export class LearnersComponent implements OnInit {
     }
   }
   view(user: User) {
-    // this.router.navigate(['dashboard/view-learner', user.UserId]);
+    this.router.navigate(['dashboard/view-learner', user.UserId]);
   }
 }

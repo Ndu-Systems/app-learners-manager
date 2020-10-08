@@ -45,12 +45,11 @@
     <label for="">Content tittle**</label>
     <input type="text" [(ngModel)]="tittle">
 
-    <label for="">Content Type**</label>
+    <!-- <label for="">Content Type**</label>
     <select [(ngModel)]="contentType">
       <option value="Blog">Blog</option>
-      <option value="Video">Video</option>
       <option value="File">File</option>
-    </select>
+    </select> -->
 
 
     <span *ngIf="contentType === 'Video'">
@@ -232,7 +231,7 @@
       </div>
     </mat-tab>
     <mat-tab label="Read and understood">
-      <div class="students">
+      <div class="students-likes">
         <div class="student" *ngFor="let student of current.Students  ; let i = index">
           <div class="user-dp">
             <div class="dp">
@@ -252,3 +251,5 @@
   </mat-tab-group>
 
 </div>
+
+<app-dash-loader *ngIf="showLoader"></app-dash-loader>

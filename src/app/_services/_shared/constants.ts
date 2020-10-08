@@ -6,6 +6,8 @@ export const STATUS_PENDING_EMAIL_VERIFICATION = 4;
 export const DEFAULT_DATE = '0000-00-00 00:00:00';
 
 export const GET_GRADES_URL = `api/grade/get-grades.php`;
+export const GET_TEACHER_GRADES_SUBJECTS_URL = `api/teachersubject/get-teacher-subject.php`;
+export const GET_GRADES_AND_SUBJECTS_ONLY_URL = `api/grade/get-grades-and-subjects-only.php`;
 export const ADD_GRADE_URL = `api/grade/add-grade.php`;
 export const UPDATE_GRADE_URL = `api/grade/update-grade.php`;
 export const GET_SUBJECTS_FOR_A_GRADE_URL = `api/subject/get-subjects.php`;
@@ -28,7 +30,8 @@ export const ADD_SECTION_URL = `api/test-section/add-test-section.php`;
 export const UPDATE_SECTION_URL = `api/test-section/update-test-section.php`;
 export const ADD_OR_UPDARE_ANSWERS_RANGE_URL = `api/answer/add-answer-range.php`;
 export const GET_STUDENT_SUBJECTS_URL = `api/studentsubject/get-student-subjects.php`;
-export const GET_STUDENTS_URL = `api/user/get-students.php`;
+export const GET_USERS_URL = `api/user/get-users.php`;
+export const GET_STUDENT_URL = `api/user/get-user.php`;
 export const SAVE_STUDENT_TEST_URL = `api/student-test/add-student-test.php`;
 export const SAVE_STUDENT_CONTENT_URL = `api/student-content/add-student-content.php`;
 export const SAVE_COMMENT_URL = `api/comment/add-comment.php`;
@@ -39,6 +42,7 @@ export const ADD_LEARNER_URL = `api/user/add-learner.php`;
 export const GET_LESSONS_URL = `api/topiccontent/get-lessons.php`;
 export const GET_LESSON_URL = `api/topiccontent/get-lesson.php`;
 export const GET_QUIZZ_URL = `api/test/get-online-quiz.php`;
+export const ADD_TEACHER_SUBJECTS_URL = `api/teachersubject/add-teacher-subject.php`;
 
 
 

@@ -30,27 +30,12 @@
           </h1>
         </div>
         <div class="data">
-          <h1>
+          <!-- <h1>
             Subjects
             <span>{{item.Studentsubject | studentsubjects}}</span>
-          </h1>
+          </h1> -->
         </div>
-        <div class="data">
-          <h1>
-            Access Status
-            <span>
-              <select [(ngModel)]="item.StatusId" class="status" (change)="learnerStatusChanged(item)">
-                <option value="1">Active</option>
-                <option value="5">Pending payment</option>
-                <option value="4">Pending email verification</option>
-              </select>
-            </span>
-
-            <span class="pp" *ngIf="item.Billing && item.Billing[0].PayProof && item.StatusId == 5">
-              <span class="btn-pp" (click)="openPP(item.Billing[0].PayProof)">Proof of payment</span>
-            </span>
-          </h1>
-        </div>
+   
 
         <div class="viewing" *ngIf="item.Viewing">
           <ul>

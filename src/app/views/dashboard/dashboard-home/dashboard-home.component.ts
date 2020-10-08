@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadCrumbModel, HeaderBannerModel, GetQueryModel, StatisticModel } from 'src/app/_models';
-import { StatisticsService, ApiService } from 'src/app/_services';
-import { Observable } from 'rxjs';
-import { GETS_STAT_URL, GET_STUDENTS_URL } from 'src/app/_services/_shared';
+import {  ApiService } from 'src/app/_services';
+import { GETS_STAT_URL, GET_USERS_URL } from 'src/app/_services/_shared';
 import { User } from 'src/app/_models/user.model';
 import { StateService } from 'src/app/_services/state.service';
 
@@ -47,7 +46,7 @@ export class DashboardHomeComponent implements OnInit {
       }
     });
 
-    this.apiServices.get(GET_STUDENTS_URL).subscribe(data => {
+    this.apiServices.get(GET_USERS_URL).subscribe(data => {
       if (data && data.length) {
         this.stateService.updateLearnersState(data);
         this.leaners = data;

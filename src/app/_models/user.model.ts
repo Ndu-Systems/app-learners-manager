@@ -29,6 +29,7 @@ export interface User {
   Roles?: UserRole[];
   Viewing?: boolean;
   Studentsubject?: Studentsubject[];
+  Teachersubjects: any[];
   Grade?: Grade;
   Billing?: any[];
 }
@@ -51,6 +52,7 @@ export interface UserModel {
   UserToken?: any;
   Roles: Role[];
   Studentsubjects: any[];
+  Teachersubjects: any[];
   Billing: BillingModel
 }
 export interface Role {
