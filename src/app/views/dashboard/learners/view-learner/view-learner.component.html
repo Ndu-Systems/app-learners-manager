@@ -10,13 +10,16 @@
   <div class="more">
     <mat-tab-group>
       <mat-tab label="Subjects">
-        <div class="subject" *ngFor="let item of student.Studentsubjects">
-          <h1>
-            {{item?.Subject?.Name}}
-            <span>
-              <b> Enrolled:</b> {{item?.CreateDate | date: 'medium'}}
-            </span>
-          </h1>
+        <div *ngFor="let item of student.Studentsubjects">
+          <div class="subject-item" *ngIf="item.StatusId==1">
+            <h1>
+              {{item?.Subject?.Name}}
+              <span>
+                <b> Enrolled:</b> {{item?.CreateDate | date: 'medium'}}
+              </span>
+            </h1>
+          </div>
+         
         </div>
         <div class="save-all">
           <button mat-button color="primary" (click)="add()"> Assign subjects</button>
@@ -47,7 +50,7 @@
       <div class="form-group">
         <label for="exampleInputName"> {{student?.Grade?.Name}} Subjects</label>
         <div class="subjects">
-          <div class="subject" *ngFor="let subject of subjects" (click)="select(subject)">
+          <div class="subject-item pointer" *ngFor="let subject of subjects" (click)="select(subject)">
             <section class="example-section">
               <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox>
             </section>

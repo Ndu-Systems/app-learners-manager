@@ -21,6 +21,7 @@ import { TeachersComponent } from './teachers/teachers.component';
 import { AddTeacherComponent } from './teachers/add-teacher/add-teacher.component';
 import { UserProfileComponent } from 'src/app/_shared/components/user-profile/user-profile.component';
 import { ViewTeachersComponent } from './teachers/view-teachers/view-teachers.component';
+import { StatusToStringPipe } from 'src/app/_pipes/status.pipe';
 
 
 const routes: Routes = [
@@ -65,7 +66,8 @@ export const declarations: Array<any> = [
   TeachersComponent,
   AddTeacherComponent,
   UserProfileComponent,
-  ViewTeachersComponent
+  ViewTeachersComponent,
+  StatusToStringPipe
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

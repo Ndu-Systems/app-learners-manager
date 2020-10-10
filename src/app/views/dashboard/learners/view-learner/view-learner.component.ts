@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material';
+import { MatSnackBar, ThemePalette } from '@angular/material';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'src/app/_models/grade.model';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, ApiService } from 'src/app/_services';
 import { UserService } from 'src/app/_services/user.service';
-import { ADD_STUDENT_SUBJECTS_URL, GET__GRADE_DETAILS_URL } from 'src/app/_services/_shared';
+import { ADD_STUDENT_SUBJECTS_URL, GET__GRADE_DETAILS_URL, STATUS_ACTIVE, STATUS_DELETED } from 'src/app/_services/_shared';
 
 @Component({
   selector: 'app-view-learner',
@@ -27,6 +27,8 @@ export class ViewLearnerComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private accountService: AccountService,
+    private _snackBar: MatSnackBar
+
   ) {
     this.activatedRoute.params.subscribe(r => {
       this.userId = r.id;
@@ -58,7 +60,8 @@ export class ViewLearnerComponent implements OnInit {
       if (data && data.Subjects) {
         this.subjects = data.Subjects;
         this.subjects.map(subject => {
-          if (this.student.Studentsubjects.find(x => x.SubjectId === subject.SubjectId)) {
+          if (this.student.Studentsubjects.find(x => x.SubjectId === subject.SubjectId
+            && Number(x.StatusId) === STATUS_ACTIVE)) {
             subject.IsSelected = true;
           }
           return subject;
@@ -74,20 +77,41 @@ export class ViewLearnerComponent implements OnInit {
     console.log(this.subjects);
     const todatosave = [];
     this.subjects.forEach(sub => {
-      todatosave.push({
+      let studentSubject = {
+        Id: '',
         UserId: this.student.UserId,
         SubjectId: sub.SubjectId,
         CreateUserId: this.user.UserId,
         ModifyUserId: this.user.UserId,
-        StatusId: 1,
+        StatusId: STATUS_ACTIVE,
         IsSelected: sub.IsSelected
-      });
+      }
+      const existingStudentSubect = this.student.Studentsubjects.find(x => x.SubjectId === sub.SubjectId);
+      if (existingStudentSubect) {
+        studentSubject.Id = existingStudentSubect.Id;
+
+      }
+      if (!sub.IsSelected) {
+        studentSubject.StatusId = STATUS_DELETED;
+      }
+      todatosave.push(studentSubject);
     });
 
-    this.apiService.add(`${ADD_STUDENT_SUBJECTS_URL}`,todatosave).subscribe(data => {
+    this.apiService.add(`${ADD_STUDENT_SUBJECTS_URL}`, todatosave).subscribe(data => {
       if (data) {
-        console.log(data);
+        this.userService.getUser(this.userId);
+        this.closeModal();
+        this.openSnackBar(`Subjects assigned to ${this.student.Name}!`, 'Success!');
+
       }
     });
+  }
+
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
   }
 }

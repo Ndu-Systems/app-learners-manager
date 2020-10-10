@@ -4,7 +4,7 @@ import { User } from 'src/app/_models/user.model';
 import { BreadCrumbModel, HeaderBannerModel, Email } from 'src/app/_models';
 import { ApiService, AccountService, EmailService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import {  STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
+import { STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/_services/user.service';
 import { LEARNER } from 'src/app/_shared';
@@ -59,7 +59,7 @@ export class LearnersComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.userService.userListObservable.subscribe(data=>{
+    this.userService.userListObservable.subscribe(data => {
       this.users = data;
     });
     this.userService.getUsers(this.user.CompanyId, LEARNER);
@@ -180,6 +180,7 @@ export class LearnersComponent implements OnInit {
     }
   }
   view(user: User) {
+    this.userService.updateUserState(user);
     this.router.navigate(['dashboard/view-learner', user.UserId]);
   }
 }

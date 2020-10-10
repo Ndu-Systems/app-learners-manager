@@ -12,7 +12,7 @@
       <mat-tab label="Teacher Subjects">
         <div *ngIf="teacher.Teachersubjects">
           <div *ngIf="teacher.Teachersubjects.length; else nodata">
-            <div class="teacher-subject" *ngFor="let teachersubject of teacher.Teachersubjects">
+            <div class="subject-item" *ngFor="let teachersubject of teacher.Teachersubjects">
               <h1>
                 {{teachersubject.Grade.Name}}
                 <span>
