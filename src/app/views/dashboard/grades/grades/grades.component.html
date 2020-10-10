@@ -13,7 +13,7 @@
       <mat-tab *ngFor="let grade of grades ; let i = index" [label]="grade.Grade.Name">
   
         <div class="tab">
-          <app-subjects [subjects]="grade.Subjects"></app-subjects>
+          <app-subjects [subjects]="grade.Subjects" [gradeId]="grade.GradeId"></app-subjects>
         </div>
       </mat-tab>
       <mat-tab label="Add new grade" *ngIf="isAdmin">

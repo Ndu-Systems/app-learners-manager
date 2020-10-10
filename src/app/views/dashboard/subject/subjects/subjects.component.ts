@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
-import { ADD_SUBJECT_URL, UPDATE_SUBJECT_URL, STATUS_DELETED, GET__GRADE_DETAILS_URL } from 'src/app/_services/_shared/constants';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ADD_SUBJECT_URL, UPDATE_SUBJECT_URL, STATUS_DELETED } from 'src/app/_services/_shared/constants';
+import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
 import { AccountService } from 'src/app/_services/account.service';
-import { Grade, Subject } from 'src/app/_models/grade.model';
+import { Subject } from 'src/app/_models/grade.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
 import { ADMIN } from 'src/app/_shared';
@@ -17,13 +17,12 @@ import { ADMIN } from 'src/app/_shared';
 })
 export class SubjectsComponent implements OnInit {
 
-  @Input()  subjects: Subject[];
+  @Input() subjects: Subject[];
+  @Input() gradeId: string;
 
   showModal: boolean;
   name: string;
-  GradeId: any;
-  // grade: Grade;
- 
+
   code = '';
   user: User;
   description = '';
@@ -41,19 +40,14 @@ export class SubjectsComponent implements OnInit {
     SubHeader: 'A collection of subjects for grade in the system.',
     ctaLabel: '+ Add subject'
   };
-  gradeId: any;
   isAdmin: boolean;
 
   constructor(
     private apiServices: ApiService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
     private _snackBar: MatSnackBar
   ) {
-    this.activatedRoute.params.subscribe(r => {
-      this.GradeId = r.id;
-    });
   }
 
   ngOnInit() {
@@ -95,6 +89,7 @@ export class SubjectsComponent implements OnInit {
       this.error = `⚠️ Enter subjects name`;
       return false;
     }
+
     const findGrade = this.subjects.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
     if (findGrade && !this.isUpdate && !this.isDelete) {
       this.error = `⚠️  ${this.name} already exist.`;

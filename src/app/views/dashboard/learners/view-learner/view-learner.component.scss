@@ -14,10 +14,12 @@ h3 {
 }
 
 .subject {
-    background: $cloud;
+    background: $white;
     padding: .5rem 1rem;
     margin: 1rem 0;
     border-radius: .5rem;
+    cursor: pointer;
+    border-bottom: 1px solid $cloud;
 
     h1 {
         font-weight: 600;
@@ -48,3 +50,11 @@ h3 {
   .example-margin {
     margin: 10px;
   }
+
+  ::ng-deep {
+
+    .mat-checkbox-ripple .mat-ripple-element,
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background-color: $primary !important;
+    }
+}

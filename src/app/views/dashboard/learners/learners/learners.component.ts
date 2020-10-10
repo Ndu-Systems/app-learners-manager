@@ -117,7 +117,7 @@ export class LearnersComponent implements OnInit {
   }
 
   updateStatus() {
-    this.current.Studentsubject = [];
+    this.current.Studentsubjects = [];
     this.current.Grade = null;
     this.showLoader = true;
     this.apiServices.add(UPDATE_USER_URL, this.current).subscribe(res => {

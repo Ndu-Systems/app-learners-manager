@@ -28,7 +28,7 @@ export interface User {
   SecurityToken?: string;
   Roles?: UserRole[];
   Viewing?: boolean;
-  Studentsubject?: Studentsubject[];
+  Studentsubjects?: Studentsubject[];
   Teachersubjects: any[];
   Grade?: Grade;
   Billing?: any[];

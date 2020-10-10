@@ -97,14 +97,7 @@
     }
 }
 
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-    border-color: $black;
 
-
-    &:checked {
-        background: red;
-    }
-}
 
 mat-checkbox {
     top: .6rem;

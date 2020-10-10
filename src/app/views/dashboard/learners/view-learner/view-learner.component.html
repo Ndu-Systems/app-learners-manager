@@ -45,18 +45,11 @@
     <div class="grades">
 
       <div class="form-group">
-        <label for="exampleInputName">Subjects</label>
+        <label for="exampleInputName"> {{student?.Grade?.Name}} Subjects</label>
         <div class="subjects">
-          <div class="subject" *ngFor="let subject of subjects">
-            <!-- <section class="example-section">
-              <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox>
-            </section> -->
-
-
+          <div class="subject" *ngFor="let subject of subjects" (click)="select(subject)">
             <section class="example-section">
-              <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked">
-                {{subject.Name}}
-              </mat-slide-toggle>
+              <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox>
             </section>
           </div>
         </div>
@@ -65,7 +58,7 @@
     </div>
     <div class="action">
       <div class="save-all">
-        <button mat-button color="primary" (click)="saveAll()"> Save subjects</button>
+        <button mat-button color="primary" (click)="saveAll()"> Save changes</button>
       </div>
     </div>
   </div>

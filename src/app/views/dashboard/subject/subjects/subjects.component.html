@@ -6,25 +6,25 @@
       <div class="subject" *ngFor="let item of subjects" (click)="openSubject(item.Subject)">
         <p>
           <span class="name">
-            {{item.Subject.Name}}
+            {{item.Name}}
           </span>
           <span class="lessions">
             <span class="material-icons">
               article
             </span>
-            Lessons ({{item.Subject.Lessons?.length || 0}})
+            Lessons ({{item.Lessons?.length || 0}})
           </span>
           <span class="lessions">
             <span class="material-icons">
               assignment_turned_in
             </span>
-            Tests ({{item.Subject.Tests?.length || 0}})
+            Tests ({{item.Tests?.length || 0}})
           </span>
           <span class="lessions">
             <span class="material-icons">
               people_alt
             </span>
-            Students enrolled ({{item.Subject.Tests?.length || 0}})
+            Students enrolled ({{item.Tests?.length || 0}})
           </span>
         </p>
       </div>
@@ -46,22 +46,6 @@
     </ng-template>
   </span>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

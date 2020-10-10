@@ -43,6 +43,7 @@ export const GET_LESSONS_URL = `api/topiccontent/get-lessons.php`;
 export const GET_LESSON_URL = `api/topiccontent/get-lesson.php`;
 export const GET_QUIZZ_URL = `api/test/get-online-quiz.php`;
 export const ADD_TEACHER_SUBJECTS_URL = `api/teachersubject/add-teacher-subject.php`;
+export const ADD_STUDENT_SUBJECTS_URL = `api/studentsubject/add-update-student-subjects.php`;
 
 
 
