@@ -3,7 +3,10 @@
 
   <span *ngIf="subjects">
     <div class="subjects" *ngIf="subjects.length; else nosubjects">
-      <div class="subject" *ngFor="let item of subjects" (click)="openSubject(item.Subject)">
+     <!-- <pre>
+      {{subjects | json}}
+     </pre> -->
+      <div class="subject" *ngFor="let item of subjects" (click)="openSubject(item)">
         <p>
           <span class="name">
             {{item.Name}}
@@ -20,12 +23,12 @@
             </span>
             Tests ({{item.Tests?.length || 0}})
           </span>
-          <span class="lessions">
+          <!-- <span class="lessions">
             <span class="material-icons">
               people_alt
             </span>
             Students enrolled ({{item.Tests?.length || 0}})
-          </span>
+          </span> -->
         </p>
       </div>
 

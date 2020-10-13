@@ -10,7 +10,7 @@
 <div  class="main-list">
   <div class="main"  *ngIf="grades$ | async as grades">
     <mat-tab-group>
-      <mat-tab *ngFor="let grade of grades ; let i = index" [label]="grade.Grade.Name">
+      <mat-tab *ngFor="let grade of grades ; let i = index" [label]="grade.Name">
   
         <div class="tab">
           <app-subjects [subjects]="grade.Subjects" [gradeId]="grade.GradeId"></app-subjects>

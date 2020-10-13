@@ -11,6 +11,12 @@
       <span>{{user.Grade?.Name}}</span>
     </h1>
 
+    <p>
+      {{user.Email}}
+      <br>
+      {{user.PhoneNumber}}
+    </p>
+
     <div class="data">
         <span>
           <select [(ngModel)]="user.StatusId" class="status" (change)="learnerStatusChanged(user)">

@@ -5,11 +5,11 @@ export interface TeacherSubject {
     UserId: string;
     SubjectId: string;
     GradeId: string;
-    CreateDate: string;
+    CreateDate?: string;
     CreateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
-    Subjects: Subject[];
-    Grade: Grade;
+    StatusId: number;
+    Subjects?: Subject[];
+    Grade?: Grade;
 }

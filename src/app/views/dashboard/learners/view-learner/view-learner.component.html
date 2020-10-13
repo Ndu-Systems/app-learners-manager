@@ -19,7 +19,7 @@
               </span>
             </h1>
           </div>
-         
+
         </div>
         <div class="save-all">
           <button mat-button color="primary" (click)="add()"> Assign subjects</button>
@@ -50,10 +50,14 @@
       <div class="form-group">
         <label for="exampleInputName"> {{student?.Grade?.Name}} Subjects</label>
         <div class="subjects">
-          <div class="subject-item pointer" *ngFor="let subject of subjects" (click)="select(subject)">
-            <section class="example-section">
-              <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox>
-            </section>
+          <div class="subject-item grid pointer" *ngFor="let subject of subjects" (click)="select(subject)">
+
+            <div class="label">
+              <input type="checkbox" [checked]="subject.IsSelected">
+            </div>
+            <div class="label">
+              {{subject.Name}}
+            </div>
           </div>
         </div>
 

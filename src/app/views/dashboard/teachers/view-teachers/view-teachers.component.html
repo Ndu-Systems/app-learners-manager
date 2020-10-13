@@ -10,18 +10,21 @@
   <div class="more">
     <mat-tab-group>
       <mat-tab label="Teacher Subjects">
-        <div *ngIf="teacher.Teachersubjects">
-          <div *ngIf="teacher.Teachersubjects.length; else nodata">
-            <div class="subject-item" *ngFor="let teachersubject of teacher.Teachersubjects">
-              <h1>
-                {{teachersubject.Grade.Name}}
-                <span>
-                  {{teachersubject.Subject.Name}}
-                </span>
-              </h1>
+        <div *ngIf="teacher.Grades">
+          <div class="grades-item" *ngIf="teacher.Grades.length; else nodata">
+            <div  *ngFor="let grade of teacher.Grades; let i = index">
+             <div  class="grade-item"> {{grade.Name}}</div>
+              <div class="grade-details">
+                <div class="subject-item pointer" *ngFor="let subject of grade.Subjects">
+                  <section class="example-section"  (click)="selectSubject(subject)">
+                    <!-- <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox> -->
+                    <input  [checked]="subject.IsSelected" type="checkbox">{{subject.Name}}
+                  </section>
+                </div>
+              </div>
             </div>
             <div class="save-all">
-              <button mat-button color="primary" (click)="add()">  Assign subjects</button>
+              <button mat-button color="primary" (click)="saveAll()"> Save subjects</button>
             </div>
           </div>
           <ng-template #nodata>
@@ -43,31 +46,3 @@
   </div>
 </div>
 
-<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal">
-  <div class="close" (click)="closeModal()">
-    <span class="material-icons">
-      west
-    </span> {{modalHeading}}
-  </div>
-
-  <div class="assign">
-    <div class="grades">
-      <div *ngFor="let grade of grades" (click)="viewGrade(grade)" [ngClass]="grade.Class">
-        {{grade.Name}}
-
-        <div class="grade-details" *ngIf="grade.Viewing">
-          <div class="option" *ngFor="let subject of grade.Subjects" [ngClass]="subject.Class"
-            (click)="selectSubject(subject)">
-            {{subject.Name}}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="action">
-      <div class="save-all">
-        <button mat-button color="primary" (click)="saveAll()"> Save subjects</button>
-      </div>
-    </div>
-  </div>
-</div>

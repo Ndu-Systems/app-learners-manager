@@ -57,8 +57,7 @@ export class GradeService {
   }
 
   getTeacherGradesSubjects(userId: string, userType: string, companyId: string) {
-    this.http.get<TeacherSubject[]>(`${this.url}/${GET_TEACHER_GRADES_SUBJECTS_URL}?
-    UserId=${userId}&UserType=${userType}&CompanyId=${companyId}`).subscribe(data => {
+    this.http.get<TeacherSubject[]>(`${this.url}/${GET_TEACHER_GRADES_SUBJECTS_URL}?UserId=${userId}&UserType=${userType}&CompanyId=${companyId}`).subscribe(data => {
       if (data) {
         this.updateTeacherGradesStudentState(data);
       }

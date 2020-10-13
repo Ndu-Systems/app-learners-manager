@@ -165,6 +165,7 @@ export class TeachersComponent implements OnInit {
     }
   }
   view(user: User) {
+    user.Grades = [];
     this.router.navigate(['dashboard/view-teacher', user.UserId]);
   }
 }

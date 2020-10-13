@@ -1,6 +1,7 @@
 import { Studentsubject } from './studentsubject.model';
-import { Grade } from './grade.model';
+import { Grade, Subject } from './grade.model';
 import { BillingModel } from './billing.model';
+import { TeacherSubject } from './teacher.grade.subject ';
 
 export interface User {
   UserId?: string;
@@ -29,7 +30,8 @@ export interface User {
   Roles?: UserRole[];
   Viewing?: boolean;
   Studentsubjects?: Studentsubject[];
-  Teachersubjects: any[];
+  Teachersubjects: TeacherSubject[];
+  Grades?: Grade[];
   Grade?: Grade;
   Billing?: any[];
 }

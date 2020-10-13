@@ -35,3 +35,14 @@ h3 {
         background-color: $primary !important;
     }
 }
+
+
+
+.grid{
+  display: grid;
+  grid-template-columns: 5% auto;
+  input{
+   position: relative;
+   top: .3rem;
+  }
+}

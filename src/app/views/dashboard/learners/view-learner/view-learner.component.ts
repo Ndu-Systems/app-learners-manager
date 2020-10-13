@@ -74,7 +74,6 @@ export class ViewLearnerComponent implements OnInit {
     subject.IsSelected = !subject.IsSelected;
   }
   saveAll() {
-    console.log(this.subjects);
     const todatosave = [];
     this.subjects.forEach(sub => {
       let studentSubject = {
@@ -101,7 +100,7 @@ export class ViewLearnerComponent implements OnInit {
       if (data) {
         this.userService.getUser(this.userId);
         this.closeModal();
-        this.openSnackBar(`Subjects assigned to ${this.student.Name}!`, 'Success!');
+        this.openSnackBar(`Subjects assigned/unassigned to ${this.student.Name}!`, 'Success!');
 
       }
     });
