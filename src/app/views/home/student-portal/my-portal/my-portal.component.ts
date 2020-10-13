@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  GET_TESTS_URL, STATUS_PENDING_PAYMENTS, UPDATE_BILLING_URL } from 'src/app/_services/_shared';
+import { GET_TESTS_URL, STATUS_PENDING_PAYMENTS, UPDATE_BILLING_URL } from 'src/app/_services/_shared';
 import { ApiService, AccountService, NavigationService, DocumentsService } from 'src/app/_services';
 import { User } from 'src/app/_models/user.model';
 import { Subject } from 'src/app/_models/grade.model';
@@ -33,8 +33,17 @@ export class MyPortalComponent implements OnInit {
   navigationSubject: NavigationModel;
   showModal: boolean;
   showLocked: boolean;
+  modalHeading: any;
+  showAskQuestion: boolean;
+  error;
+  tittle;
+  contentBody;
+  formatBody;
 
-
+  editorStyle = {
+    height: '400px',
+    marginBottom: '30px',
+  }
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -139,5 +148,13 @@ export class MyPortalComponent implements OnInit {
     });
 
   }
-
+  askQuestion() {
+    this.showModal = true;
+    this.showAskQuestion = true;
+    this.modalHeading = 'Ask a public question';
+  }
+  closeModal() {
+    this.showModal = false;
+    this.showAskQuestion = false;
+  }
 }

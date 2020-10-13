@@ -40,6 +40,14 @@
       My Subjects
     </h1>
 
+    <div class="ask-question">
+      <button mat-button color="primary" class="post-btn" (click)="askQuestion()">
+        Ask question
+      </button>
+    </div>
+
+
+
 
     <mat-tab-group>
       <mat-tab *ngFor="let studentsubject of studentsubjects ; let i = index" [label]="studentsubject.Subject.Name"
@@ -73,15 +81,14 @@
 
 
 
-        <div class="recent topic"
-          *ngIf="studentsubject.Subject.Tests && studentsubject.Subject.Tests.length">
+        <div class="recent topic" *ngIf="studentsubject.Subject.Tests && studentsubject.Subject.Tests.length">
           <h1>
             {{studentsubject.Subject.Name}} <span class="lessons-heading">Tests</span>
           </h1>
           <div class="topics">
 
             <div *ngFor="let item of studentsubject.Subject.Tests" class="topics">
-              <div class="line pointer"(click)="takeTest(item)">
+              <div class="line pointer" (click)="takeTest(item)">
 
                 <div class="text">
                   {{i+1}}. {{item.Name}}
@@ -125,7 +132,8 @@
   <div class="form">
     <p>
       <span class="important">Hi {{user.Name}}</span>, your account is temporarily locked due to pending payment of
-      <strong *ngIf="user.Billing && user.Billing.length && user.Billing[0]"> {{user.Billing[0].AmountDue | currency:'R'}} </strong>
+      <strong *ngIf="user.Billing && user.Billing.length && user.Billing[0]">
+        {{user.Billing[0].AmountDue | currency:'R'}} </strong>
     </p>
 
     <div class="file" *ngIf="!user.Billing[0].PayProof">
@@ -149,4 +157,36 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="modal" *ngIf="showAskQuestion">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+
+
+
+  <div>
+    <div class="form">
+      <label for="">Content tittle**</label>
+      <input type="text" [(ngModel)]="tittle">
+
+        <label for=""> Create your content here </label>
+        <quill-editor [styles]="editorStyle" [(ngModel)]="contentBody">
+  
+        </quill-editor>
+        <br>
+      <button mat-button color="primary" (click)="formatBody()">  Review your question</button>
+      <div class="error">
+        {{error}}
+      </div>
+    </div>
+
+  </div>
+
+
 </div>

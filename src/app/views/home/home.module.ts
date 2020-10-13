@@ -5,6 +5,7 @@ import { HomeRoutingModule, declarations } from './home-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material';
 import { PrimeNgModule } from 'src/app/primeng';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -13,7 +14,9 @@ import { PrimeNgModule } from 'src/app/primeng';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    PrimeNgModule    
+    PrimeNgModule   ,
+    QuillModule.forRoot()
+ 
   ],
   declarations: [...declarations]
 })
