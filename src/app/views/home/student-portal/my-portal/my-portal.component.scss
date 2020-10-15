@@ -41,7 +41,7 @@
     }
 
     .recent {
-        padding: 1rem 3rem;
+        padding: 1rem 0;
 
         @media only screen and (max-width: 600px) {
             padding: 1rem 0;
@@ -198,5 +198,52 @@ h1 {
 
     button {
         width: 10rem;
+    }
+}
+
+.top-header {
+    background: $white;
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 12% 50% 30% 10%;
+    border-radius: .8rem;
+    box-sizing: border-box;
+
+    .col {
+        // border: 1px solid $cloud;
+    }
+
+    .logo {
+        img {
+            width: 100%;
+            position: relative;
+            top: .5rem;
+        }
+    }
+
+    .username {
+        display: grid;
+        grid-template-columns: 18% auto;
+
+        p {
+            margin: .3rem;
+
+            span {
+                display: block;
+                font-size: .85rem;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .logout {
+        position: relative;
+
+        img {
+            position: absolute;
+            right: 1rem;
+            top: .9rem;
+            cursor: pointer;
+        }
     }
 }

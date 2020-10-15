@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material';
 export class ListLessonsComponent implements OnInit {
   @Input() lessons: TopicComponent[];
   @Input() subjectId: string;
+  @Input() subjectName: string;
   showModal: boolean;
   isUpdate: boolean;
   modalHeading: string;
@@ -33,7 +34,7 @@ export class ListLessonsComponent implements OnInit {
   current: TopicContent;
   htmlPreview: any;
   editorStyle = {
-    height: '400px',
+    height: '1500px',
     marginBottom: '30px',
   }
   showLoader: boolean;
@@ -51,7 +52,7 @@ export class ListLessonsComponent implements OnInit {
   add() {
     this.showModal = true;
     this.isUpdate = false;
-    this.modalHeading = 'Add new content';
+    this.modalHeading = `Add Lesson | ${this.subjectName}`;
     this.tittle = undefined;
     this.contentBody = undefined;
     this.content = {
@@ -191,8 +192,7 @@ export class ListLessonsComponent implements OnInit {
     this.contentType = this.current.ContentType;
     this.contentBody = this.current.ContentBody;
     this.content = this.current;
-    this.modalHeading = 'Update topic.'
-    // this.topicContentList.map(x => x.Viewing = false);
+    this.modalHeading = 'Update Lesson.'
   }
 
   openSnackBar(message, heading) {

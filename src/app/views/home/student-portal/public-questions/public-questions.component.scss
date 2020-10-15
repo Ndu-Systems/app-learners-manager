@@ -1,0 +1,35 @@
+@import '../../../../../assets/scss/color';
+
+.public-questions {
+    background: $white;
+    margin: 5rem auto;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: .8rem;
+
+    .intro {
+        display: grid;
+        grid-template-columns: 80% auto;
+
+        img {
+            width: 100%;
+            position: relative;
+            top: 2rem;
+        }
+    }
+
+    ul {
+        li {
+            font-weight: 500;
+        }
+    }
+
+    .actions {
+        display: grid;
+        grid-template-columns: 20% auto;
+
+        button {
+            width: 12rem;
+        }
+    }
+}

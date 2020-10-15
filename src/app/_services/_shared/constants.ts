@@ -44,6 +44,8 @@ export const GET_LESSON_URL = `api/topiccontent/get-lesson.php`;
 export const GET_QUIZZ_URL = `api/test/get-online-quiz.php`;
 export const ADD_TEACHER_SUBJECTS_URL = `api/teachersubject/add-teacher-subject.php`;
 export const ADD_STUDENT_SUBJECTS_URL = `api/studentsubject/add-update-student-subjects.php`;
+export const ADD_PUBLIC_QUESTION_URL = `api/publicquestion/add-publicquestion.php`;
+export const GET_PUBLIC_QUESTIONS_URL = `api/publicquestion/get-publicquestions.php`;
 
 
 

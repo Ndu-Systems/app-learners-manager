@@ -15,6 +15,9 @@ import { LoaderComponent } from './_shared';
 import { ReadComponent } from './read/read.component';
 import { OnlineQuizComponent } from './online-quiz/online-quiz.component';
 import { LoginModalComponent } from './account/login-modal/login-modal.component';
+import { PublicQuestionsComponent } from './student-portal/public-questions/public-questions.component';
+import { ListQuestionsComponent } from './student-portal/public-questions/list-questions/list-questions.component';
+import { ViewQuestionComponent } from './student-portal/public-questions/view-question/view-question.component';
 
 const routes: Routes = [
   {
@@ -31,10 +34,12 @@ const routes: Routes = [
       { path: 'view-tests', component: ViewTestsComponent },
       { path: 'take-test', component: TakeTestComponent },
       { path: 'read-topic', component: ReadTopicComponent },
-      { path: 'forgot-password',component: ForgotPasswordComponent},
-      { path: 'reset-password',component: ResetPasswordComponent},
-      { path: 'read/:id',component: ReadComponent},
-      { path: 'online-quiz/:id',component: OnlineQuizComponent},
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'read/:id', component: ReadComponent },
+      { path: 'online-quiz/:id', component: OnlineQuizComponent },
+      { path: 'question/:id', component: ViewQuestionComponent },
+      { path: 'questions-hub', component: ListQuestionsComponent },
     ]
 
   }
@@ -58,7 +63,10 @@ export const declarations = [
   LoaderComponent,
   ReadComponent,
   OnlineQuizComponent,
-  LoginModalComponent
+  LoginModalComponent,
+  PublicQuestionsComponent,
+  ListQuestionsComponent,
+  ViewQuestionComponent
 ];
 
 @NgModule({

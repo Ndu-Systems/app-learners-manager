@@ -3,6 +3,7 @@
 .main-app {
     padding: 1rem 22rem;
     box-sizing: border-box;
+    background: $cloud;
 
     @media only screen and (max-width: 600px) {
         padding: 0;

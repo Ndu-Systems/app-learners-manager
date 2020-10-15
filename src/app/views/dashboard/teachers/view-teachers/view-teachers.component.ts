@@ -42,6 +42,7 @@ export class ViewTeachersComponent implements OnInit {
     this.teacher = this.userService.currentUserValue;
     this.userService.getUser(this.userId);
     this.userService.userObservable.subscribe(teacher => {
+     if(teacher){
       this.teacher = teacher;
       if (this.teacher.Grades && this.teacher.Grades.length > 0) {
         this.teacher.Grades.forEach(grade => {
@@ -61,6 +62,7 @@ export class ViewTeachersComponent implements OnInit {
           })
         });
       }
+     }
     });
   }
 

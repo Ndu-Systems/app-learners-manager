@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="arrow-back" (click)="backClicked()">
+    <div class="img">
+      <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
+    </div>
+
+    <div class="heading">
+      All questions
+    </div>
+  </div>
+
+  <div class="main-list" *ngIf="questions">
+    <div class="items">
+      <div class="item pointer" *ngFor="let item of questions" (click)="view(item)">
+        <div class="details">
+
+          <div class="data">
+            <h1>
+              {{item.Tittle}} 
+            </h1>
+          </div>
+          <div class="data">
+            <h1>
+              Asked date
+              <span>{{item.CreateDate| date: 'mediumDate'}}</span>
+            </h1>
+          </div>
+          <div class="data">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

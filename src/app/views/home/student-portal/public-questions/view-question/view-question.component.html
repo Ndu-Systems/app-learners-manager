@@ -1,0 +1,21 @@
+<div class="main" *ngIf="question">
+  <div class="arrow-back" (click)="backClicked()">
+    <div class="img">
+      <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
+    </div>
+
+    <div class="heading">
+      {{question?.Tittle}}
+    </div>
+  </div>
+  <div class="viewer">
+    <div [innerHtml]="question.QuestionBody"></div>
+  </div>
+  <div class="finish">
+    <button mat-button color="primary">
+      I understand this topic
+    </button>
+  </div>
+
+
+</div>

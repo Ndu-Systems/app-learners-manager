@@ -1,7 +1,11 @@
-<div class="main" *ngIf="lesson">
-  <h1>
+<div  *ngIf="lesson">
+  <div class="intro">
+
+  </div>
+  <h3>
     {{lesson.Tittle}}
-  </h1>
+  </h3>
+ <div class="main">
   <div class="html-view">
   
     <div [innerHtml]="htmlPreview"></div>
@@ -91,6 +95,7 @@
         </div>
     </div>
   </div>
+ </div>
 </div>
 
 <div class="back">

@@ -42,33 +42,22 @@
   </div>
 
   <div class="form">
-    <label for="">Content tittle**</label>
-    <input type="text" [(ngModel)]="tittle">
+    <label for="">Lesson tittle**</label>
+    <input type="text" placeholder="e.g. How to write a strong introduction." [(ngModel)]="tittle">
 
-    <!-- <label for="">Content Type**</label>
-    <select [(ngModel)]="contentType">
-      <option value="Blog">Blog</option>
-      <option value="File">File</option>
-    </select> -->
-
-
-    <span *ngIf="contentType === 'Video'">
-      <label for="">Add youtube ambeded video </label>
-      <textarea [(ngModel)]="contentBody"></textarea>
-    </span>
-
-    <span *ngIf="contentType === 'File'">
-      <label for="">Uplaod the file </label>
-      <input type="file" multiple (change)="imageChanged($event)">
-    </span>
 
     <span *ngIf="contentType === 'Blog'">
-      <label for=""> Create your content here </label>
-      <quill-editor [styles]="editorStyle" [(ngModel)]="contentBody">
+      <label for="">
+        Lesson Body**
+        <span>
+          Be more descriptive as you can use images and color highlighters to emphasize more.
+        </span>
+      </label>
+      <quill-editor placeholder="Start typing or click image icon to uplaod" class="editor" [styles]="editorStyle" [(ngModel)]="contentBody">
 
       </quill-editor>
     </span>
-    <button mat-button color="primary" (click)="formatBody()"> Save content</button>
+    <button mat-button color="primary" class="btn-float" (click)="formatBody()"> Save Lesson</button>
     <div class="error">
       {{error}}
     </div>
@@ -111,7 +100,7 @@
       </span>   Share
     </button>
   </div>
-  <div class="html-view">
+  <div class="html-view editor">
     <div [innerHtml]="htmlPreview"></div>
     <div class="edit">
 

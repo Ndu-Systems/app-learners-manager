@@ -1,0 +1,85 @@
+<div class="public-questions">
+  <div class="intro">
+    <div class="greetings">
+      <h1>
+        Class questions
+      </h1>
+
+      <ul>
+        <li>
+          Ask your classmates and teachers questions and get help anytime
+        </li>
+        <li>
+          See what your classmates are asking.
+        </li>
+      </ul>
+    </div>
+    <div class="svg">
+      <img src="assets/images/common/ask.svg" alt="">
+    </div>
+  </div>
+
+  <div class="actions">
+
+    <div class="ask-question">
+      <button mat-button color="primary" class="post-btn" (click)="askQuestion()">
+        Ask question
+      </button>
+    </div>
+    <div class="ask-question">
+      <button mat-button color="primary" class="secondary" (click)="gotToAllQuestions()">
+        Go to questions
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div class="overlay" *ngIf="showModal"></div>
+
+
+<div class="modal" *ngIf="showAskQuestion">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+
+
+
+  <div>
+    <div class="form">
+      <label for="">Which subject are you asking about?</label>
+      <select [(ngModel)]="subjectId">
+        <option value="" selected>Select subject</option>
+        <option *ngFor="let item of subjects" [value]="item.SubjectId">{{item?.Name}}</option>
+      </select>
+
+      <label for="">
+        Tittle
+        <span>Be specific and imagine you’re asking a question to another person</span>
+      </label>
+      <input type="text" [(ngModel)]="tittle">
+
+      <label for="">
+        Body
+        <span>
+          Include all the information someone would need to answer your question
+        </span>
+
+      </label>
+      <quill-editor class="editor" [styles]="editorStyle" [(ngModel)]="questionBody">
+
+      </quill-editor>
+      <br>
+      <button mat-button color="primary" class="btn-float" (click)="formatBody()"> Post your question</button>
+      <div class="error">
+        {{error}}
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

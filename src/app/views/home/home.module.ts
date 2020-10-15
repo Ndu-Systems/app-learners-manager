@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material';
 import { PrimeNgModule } from 'src/app/primeng';
 import { QuillModule } from 'ngx-quill';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -14,9 +15,11 @@ import { QuillModule } from 'ngx-quill';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    PrimeNgModule   ,
+    PrimeNgModule,
+    MatSnackBarModule,
+
     QuillModule.forRoot()
- 
+
   ],
   declarations: [...declarations]
 })

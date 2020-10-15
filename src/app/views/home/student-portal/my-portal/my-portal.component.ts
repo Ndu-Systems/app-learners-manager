@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GET_TESTS_URL, STATUS_PENDING_PAYMENTS, UPDATE_BILLING_URL } from 'src/app/_services/_shared';
+import { ADD_PUBLIC_QUESTION_URL, GET_TESTS_URL, STATUS_PENDING_PAYMENTS, UPDATE_BILLING_URL } from 'src/app/_services/_shared';
 import { ApiService, AccountService, NavigationService, DocumentsService } from 'src/app/_services';
 import { User } from 'src/app/_models/user.model';
 import { Subject } from 'src/app/_models/grade.model';
@@ -11,6 +11,9 @@ import { NavigationModel } from 'src/app/_models';
 import { NAVIGATION } from 'src/app/_shared';
 import { environment } from 'src/environments/environment';
 import { StudentPortalService } from 'src/app/_services/student.portal.service';
+import { PublicQuestion } from 'src/app/_models/public.question.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-my-portal',
@@ -34,16 +37,10 @@ export class MyPortalComponent implements OnInit {
   showModal: boolean;
   showLocked: boolean;
   modalHeading: any;
-  showAskQuestion: boolean;
   error;
-  tittle;
-  contentBody;
-  formatBody;
 
-  editorStyle = {
-    height: '400px',
-    marginBottom: '30px',
-  }
+  publicQuestion: PublicQuestion;
+  index: number;
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -51,13 +48,20 @@ export class MyPortalComponent implements OnInit {
     private studentPortalService: StudentPortalService,
     private navigationService: NavigationService,
     private documentsService: DocumentsService,
+    private _snackBar: MatSnackBar
+
 
   ) { }
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
     this.studentsubjects = this.studentPortalService.currentStudentSubjectListValue;
-    this.studentPortalService.getStudentSubjectList(this.user.UserId)
+    this.studentPortalService.getStudentSubjectList(this.user.UserId);
+    this.studentPortalService.studentSubjectListObservable.subscribe(data => {
+      if (data) {
+        this.studentsubjects = data;
+      }
+    });
     this.checkUserStatus();
   }
 
@@ -148,13 +152,15 @@ export class MyPortalComponent implements OnInit {
     });
 
   }
-  askQuestion() {
-    this.showModal = true;
-    this.showAskQuestion = true;
-    this.modalHeading = 'Ask a public question';
+
+
+
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
   }
-  closeModal() {
-    this.showModal = false;
-    this.showAskQuestion = false;
-  }
+
 }

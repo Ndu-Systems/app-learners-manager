@@ -1,0 +1,9 @@
+.main-list {
+    margin-top: 5rem;
+
+    .items {
+        .details {
+            grid-template-columns: 40% auto;
+        }
+    }
+}

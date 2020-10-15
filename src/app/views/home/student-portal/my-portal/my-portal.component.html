@@ -1,65 +1,51 @@
 <div class="main">
 
-  <div class="welcome">
-    <div class="col-1-of-2">
-      <div class="hello">
-        <h1 class="user">
-          Hi {{user.Name}},
-          <span>
-            What would you like to do today
-          </span>
-        </h1>
-      </div>
-      <!-- <pre>
-  {{user | json}}
-</pre> -->
-
-      <div class="profile tar">
-        <div class="user-dp">
-          <div class="dp pc-only">{{user.Name[0]}}{{user.Surname[0]}}</div>
-          <p class="pc-only">
-
-            {{user.Name}} {{user.Surname}}
-            <span class="status grade">{{user.Grade.Name}}</span>
-          </p>
-
-          <div class="sign-out">
-            <img src="assets/images/common/off.svg" alt="log-off logo">
-            <a mat-button (click)="signOut()">
-              sign-out
-            </a>
-          </div>
-        </div>
-
+  <div class="top-header">
+    <div class="logo col">
+      <img src="assets/images/common/logo-home.png" alt="">
+    </div>
+    <div class="col username">
+    </div>
+    <div class="col username">
+      <div class="dp pc-only">{{user.Name[0]}}{{user.Surname[0]}}</div>
+      <div class="name">
+        <p>
+          {{user.Name}} {{user.Surname}}
+          <span class="status grade">{{user.Grade.Name}}</span>
+        </p>
       </div>
     </div>
+    <div class="col logout">
+      <img src="assets/images/common/off.svg" (click)="signOut()" alt="log-off logo">
+    </div>
   </div>
+
+  <div class="public-questions">
+    <app-public-questions *ngIf="studentsubjects && user" [user]="user" [subjects]="studentsubjects"></app-public-questions>
+  </div>
+
+
 
   <div class="recent topic">
     <h1>
       My Subjects
     </h1>
 
-    <div class="ask-question">
-      <button mat-button color="primary" class="post-btn" (click)="askQuestion()">
-        Ask question
-      </button>
-    </div>
+   
 
 
 
 
     <mat-tab-group>
-      <mat-tab *ngFor="let studentsubject of studentsubjects ; let i = index" [label]="studentsubject.Subject.Name"
+      <mat-tab *ngFor="let studentsubject of studentsubjects ; let i = index" [label]="studentsubject.Name"
         (click)="selectSubject(i)">
-        <div class="recent topic"
-          *ngIf="studentsubject.Subject.Lessons && studentsubject.Subject.Lessons.length ; else nodata">
+        <div class="recent topic" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length ; else nodata">
           <h1>
-            {{studentsubject.Subject.Name}} <span class="lessons-heading">Lessons</span>
+            {{studentsubject.Name}} <span class="lessons-heading">Lessons</span>
           </h1>
           <div class="topics">
 
-            <div *ngFor="let item of studentsubject.Subject.Lessons" class="topics">
+            <div *ngFor="let item of studentsubject.Lessons" class="topics">
               <div class="line pointer" (click)="readTopic(item)">
 
                 <div class="text">
@@ -81,13 +67,13 @@
 
 
 
-        <div class="recent topic" *ngIf="studentsubject.Subject.Tests && studentsubject.Subject.Tests.length">
+        <div class="recent topic" *ngIf="studentsubject.Tests && studentsubject.Tests.length">
           <h1>
-            {{studentsubject.Subject.Name}} <span class="lessons-heading">Tests</span>
+            {{studentsubject.Name}} <span class="lessons-heading">Tests</span>
           </h1>
           <div class="topics">
 
-            <div *ngFor="let item of studentsubject.Subject.Tests" class="topics">
+            <div *ngFor="let item of studentsubject.Tests" class="topics">
               <div class="line pointer" (click)="takeTest(item)">
 
                 <div class="text">
@@ -160,33 +146,3 @@
 </div>
 
 
-<div class="modal" *ngIf="showAskQuestion">
-  <div class="close" (click)="closeModal()">
-    <span class="material-icons">
-      west
-    </span> {{modalHeading}}
-  </div>
-
-
-
-
-  <div>
-    <div class="form">
-      <label for="">Content tittle**</label>
-      <input type="text" [(ngModel)]="tittle">
-
-        <label for=""> Create your content here </label>
-        <quill-editor [styles]="editorStyle" [(ngModel)]="contentBody">
-  
-        </quill-editor>
-        <br>
-      <button mat-button color="primary" (click)="formatBody()">  Review your question</button>
-      <div class="error">
-        {{error}}
-      </div>
-    </div>
-
-  </div>
-
-
-</div>
