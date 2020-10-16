@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ListQuestionsComponent implements OnInit {
   user: User;
   questions: PublicQuestion[];
+  question: PublicQuestion;
   constructor(
     private _location: Location,
     private accountService: AccountService,
@@ -38,6 +39,9 @@ export class ListQuestionsComponent implements OnInit {
     this._location.back();
   }
   view(item: PublicQuestion) {
-    this.router.navigate(['question', item.PublicQuestionId]);
+    // this.router.navigate(['question', item.PublicQuestionId]);
+    this.questions.map(x=>x.Class=['details']);
+    this.question = item;
+    item.Class = ['details','active']
   }
 }

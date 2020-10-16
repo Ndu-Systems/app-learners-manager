@@ -22,6 +22,9 @@ import { AddTeacherComponent } from './teachers/add-teacher/add-teacher.componen
 import { UserProfileComponent } from 'src/app/_shared/components/user-profile/user-profile.component';
 import { ViewTeachersComponent } from './teachers/view-teachers/view-teachers.component';
 import { StatusToStringPipe } from 'src/app/_pipes/status.pipe';
+import { ListAssignmentsComponent } from './subject/list-assignments/list-assignments.component';
+import { AddAssignmentComponent } from './subject/add-assignment/add-assignment.component';
+import { ImagesComponent } from 'src/app/_shared/components/images/images.component';
 
 
 const routes: Routes = [
@@ -67,7 +70,10 @@ export const declarations: Array<any> = [
   AddTeacherComponent,
   UserProfileComponent,
   ViewTeachersComponent,
-  StatusToStringPipe
+  StatusToStringPipe,
+  ListAssignmentsComponent,
+  AddAssignmentComponent,
+  ImagesComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

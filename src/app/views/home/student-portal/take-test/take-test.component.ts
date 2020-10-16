@@ -109,7 +109,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   select(answer: Answer) {
-    answer.StudentAnswer = !answer.StudentAnswer;
+    answer.StudentAnswer = ! answer.StudentAnswer;    
   }
   closeModal() {
     this.showModal = false;

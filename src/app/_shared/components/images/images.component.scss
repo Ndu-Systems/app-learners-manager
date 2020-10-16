@@ -1,0 +1,15 @@
+@import '../../../../assets/scss/color';
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+
+  .image {
+    padding: 1rem;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+

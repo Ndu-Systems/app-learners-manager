@@ -10,23 +10,40 @@
   </div>
 
   <div class="main-list" *ngIf="questions">
-    <div class="items">
-      <div class="item pointer" *ngFor="let item of questions" (click)="view(item)">
-        <div class="details">
+    <div class="q-list">
+      <div class="items">
+        <div class="item pointer" *ngFor="let item of questions" (click)="view(item)">
+          <div class="details" [ngClass]="item.Class">
+            <div class="icon">
+              <div class="user-dp">
+                <div class="dp">{{item.Name[0]}}{{item.Surname[0]}}</div>
+              </div>
+            </div>
 
-          <div class="data">
-            <h1>
-              {{item.Tittle}} 
-            </h1>
+            <div class="data">
+              <h1>
+                <span class="name">{{item.Name}} {{item.Surname}}</span>
+                <span class="date">{{item.CreateDate| date: 'mediumDate'}}</span>
+                <span class="tittle"> {{item.Tittle}} </span>
+              </h1>
+            </div>
           </div>
-          <div class="data">
-            <h1>
-              Asked date
-              <span>{{item.CreateDate| date: 'mediumDate'}}</span>
-            </h1>
-          </div>
-          <div class="data">
-          </div>
+        </div>
+      </div>
+    </div>
+    <div class="q-details">
+      <div class="html-view" *ngIf="question">
+        <h3>
+          {{ question.Tittle}}
+        </h3>
+        <div [innerHtml]="question.QuestionBody"></div>
+        <app-home-comments [otherId]="question.PublicQuestionId" [comments]="question.Comments"></app-home-comments>
+      </div>
+      <div *ngIf="!question">
+        <div class="nodata">
+          <h1>
+            Please select a question to view.
+          </h1>
         </div>
       </div>
     </div>

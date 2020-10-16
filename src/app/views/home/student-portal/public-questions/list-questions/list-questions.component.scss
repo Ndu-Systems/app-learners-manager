@@ -1,9 +1,52 @@
+@import '../../../../../../assets/scss/color';
+
 .main-list {
     margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 40% auto;
 
     .items {
         .details {
-            grid-template-columns: 40% auto;
+            grid-template-columns: 20% auto;
+
+            .name {
+                font-weight: 500;
+                font-size: .9rem;
+            }
+
+            .date {
+                font-weight: 500;
+                font-size: .9rem;
+                margin: 0;
+                padding: .3rem;
+            }
+
+            .tittle {
+                color: $black;
+                font-weight: 500;
+                font-size: .9rem;
+            }
         }
+
+        .active {
+            border-bottom: 2px solid $primary;
+        }
+    }
+}
+
+.q-list {
+    border-right: 1px solid $grey;
+    min-height: 40rem;
+    overflow-y: scroll;
+}
+
+.q-details {
+    min-height: 40rem;
+    overflow-y: scroll;
+
+    h3 {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid $grey;
+        padding-bottom: 1rem;
     }
 }

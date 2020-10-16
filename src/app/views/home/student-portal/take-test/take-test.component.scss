@@ -6,18 +6,22 @@
     @media only screen and (max-width: 600px) {
         padding: 5rem .5rem;
     }
+
     .questions {
         background: $cloud;
         padding: 1rem;
-        .question{
+
+        .question {
             background: $white;
             margin: 3rem 1rem;
             padding: 1rem;
             border-radius: .5rem;
-            .tittle{
+
+            .tittle {
                 font-weight: 500;
             }
         }
+
         p {
             font-weight: 400;
         }
@@ -106,18 +110,25 @@ $size : .7rem;
 .showError {
     padding: 2rem;
 }
+
 .image {
     text-align: left;
 
     img {
         width: 50%;
+
         @media only screen and (max-width: 600px) {
             width: 100%;
         }
     }
 }
 
-.checks{
+.checks {
     position: relative;
-    top:.8rem;
+    top: .8rem;
+}
+
+.radio-button {
+    position: relative;
+    top: .8rem;
 }

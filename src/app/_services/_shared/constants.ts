@@ -46,6 +46,7 @@ export const ADD_TEACHER_SUBJECTS_URL = `api/teachersubject/add-teacher-subject.
 export const ADD_STUDENT_SUBJECTS_URL = `api/studentsubject/add-update-student-subjects.php`;
 export const ADD_PUBLIC_QUESTION_URL = `api/publicquestion/add-publicquestion.php`;
 export const GET_PUBLIC_QUESTIONS_URL = `api/publicquestion/get-publicquestions.php`;
-
+export const ADD_ASSIGNMENT_URL = `api/assignment/add-assignment.php`;
+export const GET_ASSIGNMENT_URL = `api/assignment/get-assignment.php`;
 
 

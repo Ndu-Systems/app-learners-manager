@@ -18,6 +18,7 @@ import { LoginModalComponent } from './account/login-modal/login-modal.component
 import { PublicQuestionsComponent } from './student-portal/public-questions/public-questions.component';
 import { ListQuestionsComponent } from './student-portal/public-questions/list-questions/list-questions.component';
 import { ViewQuestionComponent } from './student-portal/public-questions/view-question/view-question.component';
+import { HomeCommentsComponent } from './student-portal/my-portal/home-comments/home-comments.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,8 @@ export const declarations = [
   LoginModalComponent,
   PublicQuestionsComponent,
   ListQuestionsComponent,
-  ViewQuestionComponent
+  ViewQuestionComponent,
+  HomeCommentsComponent
 ];
 
 @NgModule({

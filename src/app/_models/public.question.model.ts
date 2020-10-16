@@ -9,4 +9,5 @@ export interface PublicQuestion {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: number;
+    Class?: string[];
 }

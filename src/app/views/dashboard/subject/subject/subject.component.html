@@ -7,7 +7,7 @@
 
   <div>
     <h1>
-      {{subject.Name}}
+      {{subject.Name}} | Grade 12
     </h1>
   </div>
 </div>
@@ -15,14 +15,16 @@
 <div class="main-list" *ngIf="subject">
   <mat-tab-group>
     <mat-tab label="Lessons">
-      <app-list-lessons
-       [lessons]="subject.Lessons" 
-       [subjectId]="subject.SubjectId"
-       [subjectName]="subject.Name"
-       ></app-list-lessons>
+      <app-list-lessons [lessons]="subject.Lessons" [subjectId]="subject.SubjectId" [subjectName]="subject.Name">
+      </app-list-lessons>
     </mat-tab>
-    <mat-tab label="Tests">
-      <app-tests [tests]="subject.Tests" [SubjectId] ="subject.SubjectId"></app-tests>
+    <mat-tab label="Quiz tests">
+      <app-tests [tests]="subject.Tests" [SubjectId]="subject.SubjectId"></app-tests>
+    </mat-tab>
+    <mat-tab label="Assignments">
+      <app-list-assignments [assignments]="subject.Assignments" 
+      [subjectId]="subject.SubjectId" [gradeId] ="subject.GradeId"
+      ></app-list-assignments>
     </mat-tab>
 
   </mat-tab-group>
@@ -101,7 +103,6 @@
   </div>
   <div class="html-view">
     <div [innerHtml]="htmlPreview"></div>
-
   </div>
   <mat-tab-group>
     <mat-tab label="Comments && Questions">

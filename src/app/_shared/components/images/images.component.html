@@ -1,0 +1,18 @@
+<div class="images">
+  <div class="image" *ngFor="let image of images; let i = index">
+    <img [src]="image.Url" alt="">
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:15px;">
+  <div class="col-md-3">
+    <input type="file" #file placeholder="Choose file" accept="image/*" multiple (change)="uploadFile(file.files)"
+      style="display:none;">
+    <button mat-button class="btn-success" (click)="file.click()">
+      <span class="material-icons">
+        attach_file
+      </span>
+      Upload experience images
+    </button>
+  </div>
+</div>

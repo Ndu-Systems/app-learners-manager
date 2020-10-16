@@ -1,0 +1,241 @@
+<div class="" *ngIf="assignments">
+  <div class="lessons" *ngIf="assignments.length; else nodata">
+    <div class="lesson" *ngFor="let lesson of assignments" (click)="preview(lesson)">
+      <p>
+        <span class="tittle">
+          <span class="material-icons">
+            description
+          </span>
+          {{lesson.Tittle}}</span>
+        <span class="stat"> 5 people read this</span>
+      </p>
+    </div>
+
+    <div class="lesson add-row">
+      <div class="add">
+        <button mat-button color="primary" (click)="add()"> Add new assignment</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #nodata>
+    <div class="nodata">
+      <h1>
+        You don't have any assignments yet.
+        <span (click)="add()">
+          Add assignment
+        </span>
+      </h1>
+    </div>
+  </ng-template>
+</div>
+
+<!-- 
+<app-images [images]="assignment.Images" [otherId]="assignment.AssignmentId"
+(onUploadFinished)="uploadFinished($event)"></app-images> -->
+
+<div class="overlay" *ngIf="showModal || showDelete || showPreview" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal && assignment">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="form">
+    <label for="">Assignment tittle**</label>
+    <input type="text" placeholder="e.g. How to write a strong introduction." [(ngModel)]="assignment.Tittle">
+
+    <label for="">Assignment Instructions</label>
+
+    <textarea  [(ngModel)]="assignment.Instructions" placeholder="e.g. How to write a strong introduction.">
+
+    </textarea>
+
+
+
+    <button mat-button color="primary" class="btn-float" (click)="save()"> Save Assignment</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="showDelete">
+  <div class="delete-modal">
+    <div class="close" (click)="closeModal()">
+      <span class="material-icons">
+        west
+      </span> {{modalHeading}}
+    </div>
+
+    <button mat-button color="primary" class="danger" (click)="formatBody()"> Yes, delete</button>
+    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <div class="error">
+      {{error}}
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="showPreview && current">
+  <div class="close">
+    <span class="material-icons" (click)="closeModal()">
+      west
+    </span>
+    {{modalHeading}}
+    <button class="edit" mat-button (click)="edit()">
+      <span class="material-icons">
+        edit
+      </span>
+      Edit
+    </button>
+    <button class="share" mat-button (click)="copyText()">
+      <span class="material-icons">
+        share
+      </span> Share
+    </button>
+  </div>
+  <div class="html-view editor">
+    <div [innerHtml]="htmlPreview"></div>
+    <div class="edit">
+
+    </div>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="Comments && Questions">
+
+      <div class="comments" *ngIf="current">
+        <h1>Discussion</h1>
+
+        <div class="comment wider" *ngFor="let comment of current.Comments  ; let i = index">
+          <span *ngIf="!comment.ParentId">
+            <div class="user-dp">
+              <div class="dp">
+                {{comment.User.Name[0]}}{{comment.User.Surname[0]}}
+              </div>
+
+              <p>
+                {{comment.User.Name}} {{comment.User.Surname}}
+                <span class="messaage">
+                  {{comment.Name}}
+                </span>
+                <span class="messaage">
+                  <div class="reply">
+                    <a (click)="reply(comment)" *ngIf="!comment.ShowReply">
+                      <span class="material-icons">
+                        reply
+                      </span>
+                      Reply
+                    </a>
+
+                    <div class="reply-input" *ngIf="comment.ShowReply">
+                      <input type="text" placeholder="Type reply message here..." [(ngModel)]="comment.Reply">
+                      <button (click)="postComment(comment)">
+                        <span class="material-icons">
+                          send
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </span>
+                <span class="messaage">
+                  <div class="btn-show-replies" *ngIf="!comment.ShowReplies && comment.Replies.length > 0"
+                    (click)="toggleReplies(comment)">
+                    <a>-- View replies ({{comment.Replies.length}})</a>
+                  </div>
+                  <div class="btn-show-replies" *ngIf="comment.ShowReplies && comment.Replies.length > 0"
+                    (click)="toggleReplies(comment)">
+                    <a>-- Hide replies</a>
+                  </div>
+                </span>
+              </p>
+            </div>
+
+            <!-- <div class="comment-text">
+              {{comment.Name}}
+
+              <div class="replies">
+                <div class="comment wider" *ngFor="let rep of comment.Replies  ; let i = index">
+                  <div class="user-dp">
+                    <div class="dp">
+                      {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
+                    </div>
+
+                    <p>
+                      {{rep.User.Name}} {{rep.User.Surname}}
+                    </p>
+                  </div>
+
+                  <div class="comment-text">
+                    {{rep.Name}}
+                  </div>
+                </div>
+              </div>
+              <div class="reply">
+                <a (click)="reply(comment)" *ngIf="!comment.ShowReply">
+                  <span class="material-icons">
+                    reply
+                  </span>
+                  Reply
+                </a>
+
+                <div class="reply-input" *ngIf="comment.ShowReply">
+                  <input type="text" placeholder="Type reply message here..." [(ngModel)]="comment.Reply">
+                  <button (click)="postComment(comment)">
+                    <span class="material-icons">
+                      send
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="comment-text" *ngIf="comment.ShowReplies">
+
+              <div class="replies">
+                <div class="comment wider" *ngFor="let rep of comment.Replies  ; let i = index">
+                  <div class="user-dp">
+                    <div class="dp">
+                      {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
+                    </div>
+
+                    <p>
+                      {{rep.User.Name}} {{rep.User.Surname}}
+                      <span class="messaage">
+                        {{rep.Name}}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </span>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Read and understood">
+      <div class="students-likes">
+        <div class="student" *ngFor="let student of current.Students  ; let i = index">
+          <div class="user-dp">
+            <div class="dp">
+              {{student.User.Name[0]}}{{student.User.Surname[0]}}
+            </div>
+
+            <p>
+              {{student.User.Name}} {{student.User.Surname}}
+              <span class="date">
+                {{student.CreateDate | date: 'medium'}}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+<app-dash-loader *ngIf="showLoader"></app-dash-loader>

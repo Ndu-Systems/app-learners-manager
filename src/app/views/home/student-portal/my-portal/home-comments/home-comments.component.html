@@ -1,40 +1,20 @@
-<div class="main">
-  <div class="arrow-back" (click)="backClicked()">
-    <div class="img">
-      <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
-    </div>
+<div class="new-comment">
+  <div class="text">
+    <textarea [(ngModel)]="comment" class="comment-box" placeholder="What do you think of this question?"></textarea>
 
-    <div class="heading">
-      {{content?.Tittle}}
-    </div>
-  </div>
-  <div class="html-view">
-    <div [innerHtml]="htmlPreview"></div>
-  </div>
-  <div class="finish">
-    <button mat-button color="primary" (click)="finishReading()">
-      I understand this topic
+    <button mat-button color="primary" class="post-btn" (click)="postComment()">
+      <span class="material-icons">
+        send
+      </span>
     </button>
   </div>
+</div>
 
-  <div class="new-comment">
-    <div class="text">
-      <textarea [(ngModel)]="comment" class="comment-box" placeholder="What do you think of this topic?"></textarea>
-
-      <button mat-button color="primary" class="post-btn" (click)="postComment()">
-        <span class="material-icons">
-          send
-        </span>
-      </button>
-    </div>
-  </div>
-
-
-
-  <div class="comments" *ngIf="content">
+  
+  <div class="comments" *ngIf="comments">
     <h1>Discussion</h1>
 
-    <div class="comment wider" *ngFor="let comment of content.Comments  ; let i = index">
+    <div class="comment wider" *ngFor="let comment of comments  ; let i = index">
       <span *ngIf="!comment.ParentId">
         <div class="user-dp">
           <div class="dp">
@@ -106,5 +86,3 @@
       </span>
     </div>
   </div>
-
-</div>

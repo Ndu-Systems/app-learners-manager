@@ -1,0 +1,78 @@
+
+.lessons {
+    margin: 2rem 0;
+
+    .lesson {
+        padding: 1rem;
+        border-bottom: 1px solid $cloud;
+        cursor: pointer;
+
+        p {
+            .tittle {
+                display: block;
+                font-weight: 500;
+                font-size: 1.2rem;
+
+                .material-icons {
+                    font-size: 2.5rem;
+                    position: relative;
+                    top: 1rem;
+                    margin-right: 1rem;
+                    color: $primary;
+                }
+            }
+
+            .stat {
+                font-weight: 300;
+                color: $darker-grey;
+                font-size: .9rem;
+                margin-top: .2rem;
+                margin-left: 4rem;
+            }
+        }
+    }
+
+    .add-row {
+        margin-top: 4rem;
+
+        .add {
+            button {
+                width: 10rem;
+                color: $white !important;
+            }
+        }
+    }
+}
+
+iframe {
+    width: 100%;
+    height: 20rem;
+}
+
+
+.comments {
+    padding: 3rem 2rem;
+    min-width: 10rem;
+
+    @media only screen and (max-width: 600px) {
+        padding: 2rem .5rem;
+    }
+
+    .comment {
+        .user-dp {
+            grid-template-columns: 10% auto;
+
+            @media only screen and (max-width: 600px) {
+                grid-template-columns: 16% auto;
+            }
+        }
+    }
+}
+
+.students-likes {
+    padding: 2rem .5rem;
+
+    .user-dp {
+        grid-template-columns: 7% auto;
+    }
+}

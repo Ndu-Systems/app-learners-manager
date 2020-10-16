@@ -31,7 +31,12 @@
               <div class="answer" *ngIf="answer.StatusId === '1'">
 
                 <div class="col is-correct">
-                  <mat-checkbox [(ngModel)]="answer.StudentAnswer" class="checks"></mat-checkbox>
+                  <!-- <mat-checkbox [(ngModel)]="answer.StudentAnswer" class="checks"></mat-checkbox> -->
+                  <input type="radio" class="radio-button"
+                   [name]="question.QuestionId" [value]="answer.AnswerId"
+                   [checked]="answer.StudentAnswer"
+                   >
+
                 </div>
                 <div class="col value pointer" (click)="select(answer)">
                   <p class="answer-line">
@@ -70,7 +75,7 @@
   </div>
 
 
-  <div class="showError" *ngIf="showError">
+  <div class="showError form" *ngIf="showError">
     <p>
       Please answer <b>all</b> the questions before clicking <i> <u> submit test</u></i> button. </p>
 
@@ -78,7 +83,7 @@
   </div>
 
 
-  <div class="showError" *ngIf="showResults">
+  <div class="showError form" *ngIf="showResults">
     <p>
       Your score: <b>
         {{yourScore}} %
