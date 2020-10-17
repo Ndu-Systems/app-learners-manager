@@ -1,0 +1,76 @@
+@import '../../../../../../assets/scss/color';
+
+
+.student-subjects {
+    background: $white;
+    padding: 2rem;
+    border-radius: $border-radius;
+
+
+
+    .header {
+        display: grid;
+        grid-template-columns: 60% auto;
+        box-sizing: border-box;
+        border-bottom: 1px solid $cloud;
+        margin-bottom: 4rem;
+
+        .name {
+            padding: 1rem .5rem;
+            font-weight: 600;
+            position: relative;
+            top: .5rem
+        }
+
+        .switch {
+            display: grid;
+            grid-template-columns: 30% auto;
+
+            span {
+                display: block;
+                position: relative;
+                top: 1.4rem;
+                font-weight: 600;
+                font-size: .7rem;
+                color: $primary;
+            }
+        }
+    }
+}
+
+.recent {
+    padding: 2rem 0;
+}
+
+.topics {
+    // display: flex;
+    background: $cloud;
+    padding: 1rem;
+    overflow-x: scroll;
+
+    @media only screen and (max-width: 600px) {
+        padding: .5rem;
+    }
+
+    .line {
+        position: relative;
+        display: grid;
+        grid-template-columns: 90% auto;
+        padding: .4rem;
+        background: $white;
+        padding: 2rem;
+        border-radius: .5rem;
+
+
+        @media only screen and (max-width: 600px) {
+            // width: 15rem;
+        }
+
+    }
+}
+
+.stat{
+    display: block;
+    font-size: .8rem;
+    color: $darker-grey;
+}

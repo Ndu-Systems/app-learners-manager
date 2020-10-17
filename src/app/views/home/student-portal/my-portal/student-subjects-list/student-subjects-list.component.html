@@ -1,0 +1,101 @@
+<div class="student-subjects" *ngIf="studentsubject">
+  <div class="header">
+    <div class="name">
+      {{studentsubject.Name}}
+    </div>
+    <div class="switch">
+      <div class="label">
+        <span>Switch subject</span>
+      </div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="subjectId">
+          <mat-option *ngFor="let item of subjects; let i = index" [value]="item.SubjectId"
+            (click)="subjectChanged(item)">{{item.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <mat-tab-group (selectedTabChange)="onTabChanged($event)" [selectedIndex]="selectedIndex">
+    <mat-tab label="Lessons">
+      <div class="recent topic" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length ; else nodata">
+        <div class="topics">
+
+          <div *ngFor="let item of studentsubject.Lessons" class="topics">
+            <div class="line pointer" (click)="readTopic(item)">
+
+              <div class="text">
+                {{item.Tittle}}
+              </div>
+
+              <div class="action">
+                <a>
+                  <span class="material-icons">
+                    arrow_forward
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-tab>
+    <mat-tab label="Quiz tests" *ngIf="studentsubject.Tests && studentsubject.Tests.length">
+      <div class="recent topic">
+        <h1>
+          {{studentsubject.Name}} <span class="lessons-heading">Tests</span>
+        </h1>
+        <div class="topics">
+
+          <div *ngFor="let item of studentsubject.Tests" class="topics">
+            <div class="line pointer" (click)="takeTest(item)">
+
+              <div class="text">
+                {{item.Name}}
+              </div>
+
+              <div class="action">
+                <a>
+                  <span class="material-icons">
+                    arrow_forward
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="studentsubject.Assignments && studentsubject.Assignments.length" label="Assignments">
+      <div class="recent topic">
+        <div class="topics">
+
+          <div *ngFor="let item of studentsubject.Assignments" class="topics">
+            <div class="line pointer" (click)="viewAssignments(item)">
+
+              <div class="text">
+                {{item.Tittle}}
+                <span class="stat">
+                  {{item.Points}} Points | Due: {{item.DueDate | date: 'mediumDate'}}
+                </span>
+              </div>
+
+              <div class="action">
+                <a>
+                  <span class="material-icons">
+                    arrow_forward
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

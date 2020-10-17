@@ -21,89 +21,12 @@
   </div>
 
   <div class="public-questions">
-    <app-public-questions *ngIf="studentsubjects && user" [user]="user" [subjects]="studentsubjects"></app-public-questions>
+    <app-public-questions *ngIf="studentsubjects && user" [user]="user" [subjects]="studentsubjects">
+    </app-public-questions>
   </div>
 
-
-
-  <div class="recent topic">
-    <h1>
-      My Subjects
-    </h1>
-
-   
-
-
-
-
-    <mat-tab-group>
-      <mat-tab *ngFor="let studentsubject of studentsubjects ; let i = index" [label]="studentsubject.Name"
-        (click)="selectSubject(i)">
-        <div class="recent topic" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length ; else nodata">
-          <h1>
-            {{studentsubject.Name}} <span class="lessons-heading">Lessons</span>
-          </h1>
-          <div class="topics">
-
-            <div *ngFor="let item of studentsubject.Lessons" class="topics">
-              <div class="line pointer" (click)="readTopic(item)">
-
-                <div class="text">
-                  {{i+1}}. {{item.Tittle}}
-                </div>
-
-                <div class="action">
-                  <a>
-                    <span class="material-icons">
-                      arrow_forward
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-
-        <div class="recent topic" *ngIf="studentsubject.Tests && studentsubject.Tests.length">
-          <h1>
-            {{studentsubject.Name}} <span class="lessons-heading">Tests</span>
-          </h1>
-          <div class="topics">
-
-            <div *ngFor="let item of studentsubject.Tests" class="topics">
-              <div class="line pointer" (click)="takeTest(item)">
-
-                <div class="text">
-                  {{i+1}}. {{item.Name}}
-                </div>
-
-                <div class="action">
-                  <a>
-                    <span class="material-icons">
-                      arrow_forward
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-        <ng-template #nodata>
-          <div class="nodata">
-            <h1>
-              No content found for this subject!
-            </h1>
-          </div>
-        </ng-template>
-
-      </mat-tab>
-    </mat-tab-group>
+  <div class="student-subjects">
+    <app-student-subjects-list  *ngIf="studentsubjects && user" [subjects]="studentsubjects"></app-student-subjects-list>
   </div>
 
 
@@ -144,5 +67,3 @@
     </div>
   </div>
 </div>
-
-

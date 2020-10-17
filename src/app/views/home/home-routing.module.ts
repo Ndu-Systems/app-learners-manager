@@ -19,6 +19,9 @@ import { PublicQuestionsComponent } from './student-portal/public-questions/publ
 import { ListQuestionsComponent } from './student-portal/public-questions/list-questions/list-questions.component';
 import { ViewQuestionComponent } from './student-portal/public-questions/view-question/view-question.component';
 import { HomeCommentsComponent } from './student-portal/my-portal/home-comments/home-comments.component';
+import { StudentSubjectsListComponent } from './student-portal/my-portal/student-subjects-list/student-subjects-list.component';
+import { StudentAssignmentComponent } from './student-portal/my-portal/student-assignment/student-assignment.component';
+import { FeaturesComponent } from './features/features.component';
 
 const routes: Routes = [
   {
@@ -41,6 +44,8 @@ const routes: Routes = [
       { path: 'online-quiz/:id', component: OnlineQuizComponent },
       { path: 'question/:id', component: ViewQuestionComponent },
       { path: 'questions-hub', component: ListQuestionsComponent },
+      { path: 'student-assignment', component: StudentAssignmentComponent },
+      { path: 'features', component: FeaturesComponent },
     ]
 
   }
@@ -68,7 +73,10 @@ export const declarations = [
   PublicQuestionsComponent,
   ListQuestionsComponent,
   ViewQuestionComponent,
-  HomeCommentsComponent
+  HomeCommentsComponent,
+  StudentSubjectsListComponent,
+  StudentAssignmentComponent,
+  FeaturesComponent
 ];
 
 @NgModule({

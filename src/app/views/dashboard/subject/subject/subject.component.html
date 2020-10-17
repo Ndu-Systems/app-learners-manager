@@ -13,7 +13,7 @@
 </div>
 
 <div class="main-list" *ngIf="subject">
-  <mat-tab-group>
+  <mat-tab-group (selectedTabChange)="onTabChanged($event)" [selectedIndex]="selectedIndex">
     <mat-tab label="Lessons">
       <app-list-lessons [lessons]="subject.Lessons" [subjectId]="subject.SubjectId" [subjectName]="subject.Name">
       </app-list-lessons>
@@ -23,7 +23,9 @@
     </mat-tab>
     <mat-tab label="Assignments">
       <app-list-assignments [assignments]="subject.Assignments" 
-      [subjectId]="subject.SubjectId" [gradeId] ="subject.GradeId"
+      [subjectId]="subject.SubjectId" 
+      [gradeId] ="subject.GradeId"
+      [subjectName] ="subject.Name"
       ></app-list-assignments>
     </mat-tab>
 

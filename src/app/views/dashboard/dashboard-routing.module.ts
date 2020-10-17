@@ -25,6 +25,7 @@ import { StatusToStringPipe } from 'src/app/_pipes/status.pipe';
 import { ListAssignmentsComponent } from './subject/list-assignments/list-assignments.component';
 import { AddAssignmentComponent } from './subject/add-assignment/add-assignment.component';
 import { ImagesComponent } from 'src/app/_shared/components/images/images.component';
+import { TeacherGradesComponent } from './grades/teacher-grades/teacher-grades.component';
 
 
 const routes: Routes = [
@@ -73,7 +74,8 @@ export const declarations: Array<any> = [
   StatusToStringPipe,
   ListAssignmentsComponent,
   AddAssignmentComponent,
-  ImagesComponent
+  ImagesComponent,
+  TeacherGradesComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

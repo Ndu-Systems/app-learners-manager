@@ -7,6 +7,7 @@ import { GET_SUBJECTS_FOR_A_GRADE_URL, ADD_SUBJECT_URL, GET_SUBJECT_URL, ADD_TOP
 import { Subject } from 'src/app/_models/grade.model';
 import { Topic } from 'src/app/_models/topic.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'app-subject',
@@ -33,6 +34,7 @@ export class SubjectComponent implements OnInit {
   htmlPreview;
   showPreview;
   crumbs: BreadCrumbModel[] = [];
+  selectedIndex = 2;
   editorStyle = {
     height: '320px',
     marginBottom: '30px',
@@ -77,18 +79,18 @@ export class SubjectComponent implements OnInit {
     this.isDelete = false;
     this.isUpdate = false;
   }
-  reply(comment){
+  reply(comment) {
 
   }
   closeModal() {
     this.showModal = false;
     this.isDelete = false;
   }
-  formatBody(){}
+  formatBody() { }
   open(id) {
     this.router.navigate(['dashboard/topic', id]);
   }
-  postComment(val){}
+  postComment(val) { }
   save() {
     const data = {
       SubjectId: this.SubjectId,
@@ -166,5 +168,9 @@ export class SubjectComponent implements OnInit {
         this.headerBanner.SubHeader = `A collection of ${this.topic.Name} content in the system.,`
       }
     });
+  }
+  onTabChanged(event: MatTabChangeEvent) {
+    console.log(event.index);
+
   }
 }

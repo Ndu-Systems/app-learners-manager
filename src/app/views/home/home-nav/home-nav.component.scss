@@ -1,46 +1,74 @@
 @import '../../../../assets/scss/color';
 
 .nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 5rem;
-  width: 100%;
-  background: $white;
-  z-index: 1000;
-  border-top: 3px solid $primary;
-  box-shadow: $box-shadow;
-  padding: 1rem 20rem;
-  box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 5rem;
+    width: 100%;
+    background: $white;
+    z-index: 1000;
+    border-top: 3px solid $primary;
+    box-shadow: $box-shadow;
+    padding: 1rem 20rem;
+    box-sizing: border-box;
 
 
-  .items {
-      display: grid;
-      grid-template-columns: 50% 20% 20%;
+    .items {
+        display: grid;
+        grid-template-columns: 45% 15% 20% 15%;
+        
 
-     
+        .item {
+            text-align: center;
 
-      .item {
-          text-align: center;
-          button{
-              font-weight: 400;
-              padding: .5rem 1rem;
-              border-radius: .2rem;
-              width: 15rem;
-              margin: 0 1rem;
-              float: right;
-          }
-          .login{
-              color: $primary !important;
-              background: $white;
-              border: 2px solid $primary;
-          }
-      }
-      .logo {
-          text-align: left;
-          img {
-              width: 10rem;
-          }
-      }
-  }
+            button {
+                font-weight: 400;
+                padding: .5rem 1rem;
+                border-radius: .2rem;
+                width: 15rem;
+                margin: 0 1rem;
+                float: right;
+            }
+
+            .login {
+                color: $primary !important;
+                background: $white;
+                border: 2px solid $primary;
+            }
+        }
+
+        .logo {
+            text-align: left;
+
+            img {
+                width: 10rem;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+.sign-up {
+    background: $primary-purple;
+    color: $white;
+    border-radius: 2rem;
+    padding: .2rem 2rem;
+
+}
+
+.sign-in {
+    background: $primary;
+    color: $white;
+    border-radius: 2rem;
+    padding: .2rem 2rem;
+
+}
+
+.features {
+    background: $cloud;
+    color: $black;
+    border-radius: 2rem;
+    padding: .2rem 2rem;
 }

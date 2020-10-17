@@ -1,0 +1,12 @@
+@import '../../../../assets/scss/color';
+
+.features {
+    background: $white;
+    margin: 5rem 0;
+    padding: 2rem;
+    border-radius: $border-radius;
+
+    h1 {
+        font-size: 1.4rem;
+    }
+}

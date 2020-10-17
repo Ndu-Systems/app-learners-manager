@@ -8,6 +8,7 @@ export interface ImageModel {
   ModifyDate?: string;
   ModifyUserId?: string;
   StatusId?: number;
+  Ext?: string;
 
   // front-end parameters.
   About?: string;

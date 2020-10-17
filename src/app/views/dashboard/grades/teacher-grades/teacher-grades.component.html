@@ -1,0 +1,25 @@
+<div class="teacher-grades">
+  <div class="header">
+    <div class="name">
+      {{grade?.Name}}
+    </div>
+    <div class="switch">
+      <div class="label">
+        <span>Switch grade</span>
+      </div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="gradeId">
+          <mat-option *ngFor="let item of grades; let i = index" [value]="item.GradeId" (click)="gradeChanged(item)">
+            {{item.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="add-new" (click)="addGrade()">
+        <a>Add new grade</a>
+      </div>
+    </div>
+  </div>
+  <div class="tab">
+    <app-subjects [subjects]="grade.Subjects" [gradeId]="grade.GradeId"></app-subjects>
+  </div>
+</div>

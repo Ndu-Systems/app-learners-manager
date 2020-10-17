@@ -8,7 +8,8 @@ import { Studentsubject } from '../_models/studentsubject.model';
 import { GET_STUDENT_SUBJECTS_URL } from './_shared/constants';
 import { Tests } from '../_models/tests.model';
 import { TopicContent } from '../_models/topic.model';
-import { LOC_STUDENT_SUBJECTS_DATA, LOC_STUDENT_SUBJECT_DATA, LOC_TOPIC_CONTENT, LOC_CURRENT_TEST } from './_shared';
+import { LOC_STUDENT_SUBJECTS_DATA, LOC_STUDENT_SUBJECT_DATA, LOC_TOPIC_CONTENT, LOC_CURRENT_TEST, LOC_ASSIGNMENT_DATA } from './_shared';
+import { Assignment } from '../_models/assignment.model';
 
 
 @Injectable({
@@ -30,6 +31,9 @@ export class StudentPortalService {
 
   private testBehaviorSubject: BehaviorSubject<Tests>;
   public testObservable: Observable<Tests>;
+
+  private assignmentBehaviorSubject: BehaviorSubject<Assignment>;
+  public assignmentObservable: Observable<Assignment>;
   url: string;
 
   constructor(
@@ -37,10 +41,17 @@ export class StudentPortalService {
   ) {
     this.studentSubjectListBehaviorSubject = new BehaviorSubject< Studentsubject[]>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECTS_DATA)) || []);
     this.studentSubjectListObservable = this.studentSubjectListBehaviorSubject.asObservable();
+    
 
     this.studentsubjectBehaviorSubject = new BehaviorSubject<Studentsubject>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECT_DATA)));
     this.topicContentBehaviorSubject = new BehaviorSubject<TopicContent>(JSON.parse(localStorage.getItem(LOC_TOPIC_CONTENT)));
+    
     this.testBehaviorSubject = new BehaviorSubject<Tests>(JSON.parse(localStorage.getItem(LOC_CURRENT_TEST)));
+
+    this.assignmentBehaviorSubject = new BehaviorSubject<Assignment>(JSON.parse(localStorage.getItem(LOC_ASSIGNMENT_DATA)));
+    this.assignmentObservable = this.assignmentBehaviorSubject.asObservable();
+
+
 
     this.url = environment.API_URL;
   }
@@ -59,6 +70,9 @@ export class StudentPortalService {
   public get getCurrentTest(): Tests { 
     return this.testBehaviorSubject.value; 
   }
+  public get getCurrentAssignment(): Assignment { 
+    return this.assignmentBehaviorSubject.value; 
+  }
 
   updateStudentubjectState(studentsubject: Studentsubject) {
     this.studentsubjectBehaviorSubject.next(studentsubject);
@@ -74,6 +88,10 @@ export class StudentPortalService {
   updateTestState(test: Tests) {
     this.testBehaviorSubject.next(test);
     localStorage.setItem(LOC_CURRENT_TEST, JSON.stringify(test));
+  }
+  updateAssignmentState(assignment: Assignment) {
+    this.assignmentBehaviorSubject.next(assignment);
+    localStorage.setItem(LOC_ASSIGNMENT_DATA, JSON.stringify(assignment));
   }
 
   updateStudentSubjectListState(studentSubjectList:  Studentsubject[]) {

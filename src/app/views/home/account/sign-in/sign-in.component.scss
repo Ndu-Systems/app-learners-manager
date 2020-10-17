@@ -1,3 +1,31 @@
-.main{
+@import '../../../../../assets/scss/color';
+
+.main {
     padding: 8rem 0;
+}
+
+.form {
+    width: 40%;
+
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.cta {
+
+    a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        color: $primary;
+        position: relative;
+        top: 2.5rem;
+
+        span {
+            font-size: .8rem;
+            color: $black;
+        }
+    }
 }

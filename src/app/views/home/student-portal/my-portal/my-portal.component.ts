@@ -90,10 +90,6 @@ export class MyPortalComponent implements OnInit {
   }
 
 
-  readTopic(content: TopicContent) {
-    this.studentPortalService.updateTopicContentState(content);
-    this.router.navigate(['read-topic']);
-  }
 
   selectSubject(index) {
     this.selectedIndex = index;
@@ -103,12 +99,6 @@ export class MyPortalComponent implements OnInit {
     this.studentsubject = this.studentsubjects[this.selectedIndex];
     this.subject = this.studentsubjects[this.selectedIndex].Subject;
     this.loadTests(this.studentsubjects[this.selectedIndex].Subject.SubjectId);
-  }
-
-  takeTest(test: Tests) {
-    this.studentPortalService.updateTestState(test);
-    this.router.navigate(['take-test']);
-
   }
 
   signOut() {

@@ -1,118 +1,91 @@
 <app-home-nav></app-home-nav>
 
 <div class="main account">
-  <div class="col-1-of-2">
+  <div class="col-1-of-1">
     <div class="form-container">
-      <form class="form"
-            [formGroup]="rForm">
+      <form class="form" [formGroup]="rForm">
         <h1>
-          Welcome, please register your account.
+          Create organization account.
         </h1>
 
         <div class="form-group">
-          <label for="exampleInputName">Company or School Name</label>
-          <input type="text"
-                 class="form-control"
-                 formControlName="CompanyName"
-                 id="exampleInputFirstName"
-                 placeholder="Enter Company or School">
-          <div class="alert"
-               *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
-            Name is required
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputName">Name</label>
-          <input type="text"
-                 class="form-control"
-                 formControlName="Name"
-                 id="exampleInputFirstName"
-                 placeholder="Enter First Name">
-          <div class="alert"
-               *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
+          <label for="exampleInputName">Organization or School Name</label>
+          <input type="text" class="form-control" formControlName="CompanyName" id="exampleInputFirstName"
+            placeholder="Enter Organization or School">
+          <div class="alert" *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
             Name is required
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="exampleInputSurname">Enter Surname</label>
-          <input type="text"
-                 class="form-control"
-                 formControlName="Surname"
-                 id="exampleInputSurname"
-                 placeholder="Enter Surname">
-          <div class="alert"
-               *ngIf="!rForm.controls['Surname'].valid  && rForm.controls['Surname'].touched ">
-            Surname is required
+
+        <div class="col-1-of-2">
+          <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input type="text" class="form-control" formControlName="Name" id="exampleInputFirstName"
+              placeholder="Enter First Name">
+            <div class="alert" *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
+              Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputSurname">Enter Surname</label>
+            <input type="text" class="form-control" formControlName="Surname" id="exampleInputSurname"
+              placeholder="Enter Surname">
+            <div class="alert" *ngIf="!rForm.controls['Surname'].valid  && rForm.controls['Surname'].touched ">
+              Surname is required
+            </div>
           </div>
         </div>
+
+
 
         <div class="form-group">
           <label for="exampleInputPhoneNumber">Contact number</label>
-          <input type="email"
-                 class="form-control"
-                 formControlName="PhoneNumber"
-                 id="exampleInputPhoneNumber"
-                 placeholder="Enter Contact Number">
-          <div class="alert"
-               *ngIf="!rForm.controls['PhoneNumber'].valid  && rForm.controls['PhoneNumber'].touched ">
+          <input type="email" class="form-control" formControlName="PhoneNumber" id="exampleInputPhoneNumber"
+            placeholder="Enter Contact Number">
+          <div class="alert" *ngIf="!rForm.controls['PhoneNumber'].valid  && rForm.controls['PhoneNumber'].touched ">
             PhoneNumber is required
           </div>
         </div>
 
         <div class="form-group">
           <label for="exampleInputEmail">Email address</label>
-          <input type="email"
-                 class="form-control"
-                 formControlName="Email"
-                 id="exampleInputEmail"
-                 placeholder="Enter email">
-          <div class="alert"
-               *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+          <input type="email" class="form-control" formControlName="Email" id="exampleInputEmail"
+            placeholder="Enter email">
+          <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
             Email is required
           </div>
         </div>
 
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password"
-                 [type]="hidePassword? 'password': 'text'"
-                 class="form-control"
-                 formControlName="Password"
-                 id="exampleInputPassword1"
-                 placeholder="Password">
-          <div class="showPassword"
-               (click)="hidePassword = !hidePassword">
-            <div class="alert"
-                 *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+          <label for="exampleInputPassword1">
+            Password <mat-icon class="pointer" (click)="hidePassword = !hidePassword">
+              {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+            <!-- <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button> -->
+
+          </label>
+          <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control"
+            formControlName="Password" id="exampleInputPassword1" placeholder="Password">
+          <div class="showPassword" (click)="hidePassword = !hidePassword">
+            <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
               Password is required
             </div>
           </div>
         </div>
-        <button mat-icon-button
-                matSuffix
-                (click)="hidePassword = !hidePassword"
-                [attr.aria-label]="'Hide password'">
-          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+
         <div class="action">
-          <button mat-button
-                  color="primary"
-                  (click)="onSubmit(rForm.value)"
-                  [disabled]="!rForm.valid">
+          <button mat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
             Sign up
           </button>
-          <h5 class="error">{{error}}</h5>
+          <span class="error">{{error}}</span>
         </div>
         <div class="cta">
-          <h1>Already have an account?</h1>
-          <a routerLink="/sign-in">Sign in</a>
+          <a routerLink="/sign-in"> <span>or</span> Sign in</a>
         </div>
       </form>
-    </div>
-    <div class="side-image">
-      <img src="assets/images/home/undraw_unlock_24mb.svg"
-           alt="">
     </div>
   </div>
 </div>

@@ -5,14 +5,19 @@
     </div>
 
     <div class="item">
-      <button mat-button color="primary" (click)="goto('sign-up')">
-        Create institution account.
-      </button>
+      <a mat-button class="features" (click)="goto('features')">
+        Features
+      </a>
     </div>
     <div class="item">
-      <button mat-button class="login" color="primary" (click)="goto('sign-in')">
+      <a mat-button class="sign-up" (click)="goto('sign-up')">
+        Create organization account.
+      </a>
+    </div>
+    <div class="item">
+      <a mat-button class="sign-in" color="primary" (click)="goto('sign-in')">
         Login
-      </button>
+      </a>
     </div>
   </div>
 </div>

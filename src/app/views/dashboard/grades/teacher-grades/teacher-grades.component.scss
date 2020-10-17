@@ -1,0 +1,57 @@
+@import '../../../../../assets/scss/color';
+
+.teacher-grades {
+    background: $white;
+    padding: 2rem;
+    border-radius: $border-radius;
+
+
+
+    .header {
+        display: grid;
+        grid-template-columns: 60% auto;
+        box-sizing: border-box;
+        border-bottom: 1px solid $cloud;
+        margin-bottom: 4rem;
+
+        .name {
+            padding: 1rem .5rem;
+            font-weight: 600;
+            position: relative;
+            top: .5rem;
+            color: $primary;
+        }
+
+        .switch {
+            display: grid;
+            grid-template-columns: 30% 40% auto;
+
+            span {
+                display: block;
+                position: relative;
+                top: 1.4rem;
+                font-weight: 600;
+                font-size: .7rem;
+                color: $primary;
+            }
+        }
+    }
+}
+
+.add-new {
+    a {
+        display: block;
+        position: relative;
+        top: .6rem;
+        left: 2rem;
+        font-size: .8rem;
+        background: $primary-purple;
+        color: $white;
+        padding: .4rem 1rem;
+        width: 8rem;
+        text-align: center;
+        border-radius: .2rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}

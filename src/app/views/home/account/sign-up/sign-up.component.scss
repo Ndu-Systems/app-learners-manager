@@ -1,8 +1,9 @@
 @import '../../../../../assets/scss/color';
- 
-.subjects{
+
+.subjects {
     padding-top: .6rem;
-    .subject{
+
+    .subject {
         background: $black;
         float: left;
         margin: .3rem;
@@ -14,12 +15,43 @@
         font-weight: 600;
         font-size: .7rem;
     }
-    .active{
+
+    .active {
         background: $black;
         color: $white;
     }
 }
 
-.main{
+.main {
     padding: 6rem 0;
+}
+
+.form {
+    width: 40%;
+
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.action {
+    margin: 0;
+}
+
+.cta {
+
+    a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        color: $primary;
+        position: relative;
+        top: 2.5rem;
+
+        span {
+            font-size: .8rem;
+            color: $black;
+        }
+    }
 }
