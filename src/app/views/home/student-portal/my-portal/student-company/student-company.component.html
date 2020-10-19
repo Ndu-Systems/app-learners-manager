@@ -1,0 +1,21 @@
+<div class="company">
+  <div class="dp" *ngIf="!company.Dp" (click)="showUplaod()">
+    <span class="material-icons">
+      camera_alt
+    </span>
+  </div>
+  <div class="round-dp" *ngIf="company.Dp" (click)="showUplaod()">
+    <div class="image" *ngIf="company.Dp">
+      <img [src]="company.Dp" alt="">
+    </div>
+  </div>
+
+  <div class="details">
+    <h1>
+      {{company.Name}}
+      <span>
+        {{company.Description}}
+      </span>
+    </h1>
+  </div>
+</div>

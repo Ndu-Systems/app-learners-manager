@@ -18,10 +18,10 @@ import { Assignment } from '../_models/assignment.model';
 export class StudentPortalService {
 
 
-  private studentSubjectListBehaviorSubject: BehaviorSubject< Studentsubject[]>;
-  public studentSubjectListObservable: Observable< Studentsubject[]>;
+  private studentSubjectListBehaviorSubject: BehaviorSubject<Studentsubject[]>;
+  public studentSubjectListObservable: Observable<Studentsubject[]>;
 
-  
+
   private studentsubjectBehaviorSubject: BehaviorSubject<Studentsubject>;
   public studentsubjectObservable: Observable<Studentsubject>;
 
@@ -34,49 +34,62 @@ export class StudentPortalService {
 
   private assignmentBehaviorSubject: BehaviorSubject<Assignment>;
   public assignmentObservable: Observable<Assignment>;
+
+  private studentSubjectSelectedBehaviorSubject: BehaviorSubject<Studentsubject>;
+  public studentsubjectSelectedObservable: Observable<Studentsubject>;
   url: string;
 
   constructor(
     private http: HttpClient
   ) {
-    this.studentSubjectListBehaviorSubject = new BehaviorSubject< Studentsubject[]>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECTS_DATA)) || []);
+    this.studentSubjectListBehaviorSubject = new BehaviorSubject<Studentsubject[]>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECTS_DATA)) || []);
     this.studentSubjectListObservable = this.studentSubjectListBehaviorSubject.asObservable();
-    
+
 
     this.studentsubjectBehaviorSubject = new BehaviorSubject<Studentsubject>(JSON.parse(localStorage.getItem(LOC_STUDENT_SUBJECT_DATA)));
     this.topicContentBehaviorSubject = new BehaviorSubject<TopicContent>(JSON.parse(localStorage.getItem(LOC_TOPIC_CONTENT)));
-    
+
     this.testBehaviorSubject = new BehaviorSubject<Tests>(JSON.parse(localStorage.getItem(LOC_CURRENT_TEST)));
 
     this.assignmentBehaviorSubject = new BehaviorSubject<Assignment>(JSON.parse(localStorage.getItem(LOC_ASSIGNMENT_DATA)));
     this.assignmentObservable = this.assignmentBehaviorSubject.asObservable();
+
+    this.studentSubjectSelectedBehaviorSubject = new BehaviorSubject<Studentsubject>(JSON.parse(localStorage.getItem('selectedSubject')));
+    this.studentsubjectSelectedObservable = this.studentSubjectSelectedBehaviorSubject.asObservable();
 
 
 
     this.url = environment.API_URL;
   }
 
-  public get currentStudentSubjectListValue():  Studentsubject[] {
+  public get currentStudentSubjectListValue(): Studentsubject[] {
     return this.studentSubjectListBehaviorSubject.value;
   }
 
-  public get getCurrentStudentsubject(): Studentsubject { 
-    return this.studentsubjectBehaviorSubject.value; 
+  public get getCurrentStudentsubject(): Studentsubject {
+    return this.studentsubjectBehaviorSubject.value;
   }
 
-  public get getCurrentTopicContent(): TopicContent { 
-    return this.topicContentBehaviorSubject.value; 
+  public get getCurrentTopicContent(): TopicContent {
+    return this.topicContentBehaviorSubject.value;
   }
-  public get getCurrentTest(): Tests { 
-    return this.testBehaviorSubject.value; 
+  public get getCurrentTest(): Tests {
+    return this.testBehaviorSubject.value;
   }
-  public get getCurrentAssignment(): Assignment { 
-    return this.assignmentBehaviorSubject.value; 
+  public get getCurrentAssignment(): Assignment {
+    return this.assignmentBehaviorSubject.value;
+  }
+  public get getCurrentSelectedStudentsubject(): Studentsubject {
+    return this.studentSubjectSelectedBehaviorSubject.value;
   }
 
   updateStudentubjectState(studentsubject: Studentsubject) {
     this.studentsubjectBehaviorSubject.next(studentsubject);
     localStorage.setItem(LOC_STUDENT_SUBJECT_DATA, JSON.stringify(studentsubject));
+  }
+  updateCurrentSelectedStudentsubject(studentsubject: Studentsubject) {
+    this.studentSubjectSelectedBehaviorSubject.next(studentsubject);
+    localStorage.setItem('selectedSubject', JSON.stringify(studentsubject));
   }
 
 
@@ -94,13 +107,13 @@ export class StudentPortalService {
     localStorage.setItem(LOC_ASSIGNMENT_DATA, JSON.stringify(assignment));
   }
 
-  updateStudentSubjectListState(studentSubjectList:  Studentsubject[]) {
+  updateStudentSubjectListState(studentSubjectList: Studentsubject[]) {
     this.studentSubjectListBehaviorSubject.next(studentSubjectList);
     localStorage.setItem(LOC_STUDENT_SUBJECTS_DATA, JSON.stringify(studentSubjectList));
   }
 
   getStudentSubjectList(userId: string) {
-    this.http.get< Studentsubject[]>(`${this.url}/${GET_STUDENT_SUBJECTS_URL}?UserId=${userId}`).subscribe(data => {
+    this.http.get<Studentsubject[]>(`${this.url}/${GET_STUDENT_SUBJECTS_URL}?UserId=${userId}`).subscribe(data => {
       if (data) {
         this.updateStudentSubjectListState(data);
       }

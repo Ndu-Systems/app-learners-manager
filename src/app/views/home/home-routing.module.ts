@@ -22,6 +22,7 @@ import { HomeCommentsComponent } from './student-portal/my-portal/home-comments/
 import { StudentSubjectsListComponent } from './student-portal/my-portal/student-subjects-list/student-subjects-list.component';
 import { StudentAssignmentComponent } from './student-portal/my-portal/student-assignment/student-assignment.component';
 import { FeaturesComponent } from './features/features.component';
+import { StudentCompanyComponent } from './student-portal/my-portal/student-company/student-company.component';
 
 const routes: Routes = [
   {
@@ -76,7 +77,8 @@ export const declarations = [
   HomeCommentsComponent,
   StudentSubjectsListComponent,
   StudentAssignmentComponent,
-  FeaturesComponent
+  FeaturesComponent,
+  StudentCompanyComponent
 ];
 
 @NgModule({

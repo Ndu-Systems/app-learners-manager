@@ -20,13 +20,17 @@
     </div>
   </div>
 
+  <div class="company" *ngIf="user">
+    <app-student-company [company]="user.Company"></app-student-company>
+  </div>
+
   <div class="public-questions">
     <app-public-questions *ngIf="studentsubjects && user" [user]="user" [subjects]="studentsubjects">
     </app-public-questions>
   </div>
 
   <div class="student-subjects">
-    <app-student-subjects-list  *ngIf="studentsubjects && user" [subjects]="studentsubjects"></app-student-subjects-list>
+    <app-student-subjects-list *ngIf="studentsubjects && user" [subjects]="studentsubjects"></app-student-subjects-list>
   </div>
 
 

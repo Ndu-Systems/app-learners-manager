@@ -23,14 +23,21 @@ export class StudentSubjectsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const currentSelectedSubject = this.studentPortalService.getCurrentSelectedStudentsubject;
     if (this.subjects && this.subjects.length) {
-      this.studentsubject = this.subjects[0];
+      if (currentSelectedSubject && currentSelectedSubject.Id) {
+        this.studentsubject = currentSelectedSubject;
+      } else {
+        this.studentsubject = this.subjects[0];
+      }
       this.subjectId = this.studentsubject.SubjectId;
+
     }
 
   }
   subjectChanged(subject: Studentsubject) {
     this.studentsubject = subject;
+    this.studentPortalService.updateCurrentSelectedStudentsubject(subject);
   }
 
 
@@ -38,14 +45,14 @@ export class StudentSubjectsListComponent implements OnInit {
     this.studentPortalService.updateTopicContentState(content);
     this.router.navigate(['read-topic']);
   }
-  
+
   takeTest(test: Tests) {
     this.studentPortalService.updateTestState(test);
     this.router.navigate(['take-test']);
 
   }
 
-  viewAssignments(assignment: Assignment){
+  viewAssignments(assignment: Assignment) {
     this.studentPortalService.updateAssignmentState(assignment);
     this.router.navigate(['student-assignment']);
   }
