@@ -74,74 +74,9 @@ export class GradesComponent implements OnInit {
       }
     })
   }
-  add() {
-    this.showModal = true;
-    this.isUpdate = false;
-    this.name = undefined;
-    this.modalHeading = 'Add grade';
-  }
-  closeModal() {
-    this.showModal = false;
-    this.isDelete = false;
-    this.isUpdate = false;
-  }
 
   open(id) {
     this.router.navigate(['dashboard/subjects', id]);
-  }
-
-  save() {
-
-    this.errors = [];
-    if (!this.institutionTypeId) {
-      this.errors.push(`⚠️ Institution type is required`);
-    }
-    if (!this.name) {
-      this.errors.push(`⚠️ Enter grade name`);
-    }
-    // if (!this.description) {
-    //   this.errors.push(`⚠️ Enter description`);
-    // }
-    if (!this.isUpdate) {
-      const findGrade = this.allGrades.find(x => x.Name.toLocaleLowerCase() === this.name.toLocaleLowerCase());
-      if (findGrade) {
-        this.errors.push(`⚠️  ${this.name} already exist.`);
-      }
-    }
-
-    if (this.errors.length > 0) {
-      return false;
-    }
-    const data: Grade = {
-      CompanyId: this.user.CompanyId,
-      Name: this.name,
-      Description: this.description || '',
-      InstituteTypeId: this.institutionTypeId,
-      CreateUserId: this.user.UserId,
-      ModifyUserId: this.user.UserId,
-      StatusId: 1
-    }
-    if (this.isUpdate) {
-      this.current.Name = this.name;
-      this.current.InstituteTypeId = this.institutionTypeId;
-      this.apiServices.add(UPDATE_GRADE_URL, this.current).subscribe(res => {
-        this.showModal = false;
-        this.name = '';
-        this.description = '';
-        this.institutionTypeId = undefined;
-        this.ngOnInit();
-        this.isUpdate = false;
-      })
-    } else {
-      this.apiServices.add(ADD_GRADE_URL, data).subscribe(res => {
-        this.showModal = false;
-        this.name = '';
-        this.description = '';
-        this.institutionTypeId = undefined;
-        this.ngOnInit();
-      })
-    }
-
   }
 
   update() {

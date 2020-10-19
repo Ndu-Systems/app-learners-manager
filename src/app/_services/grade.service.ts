@@ -18,6 +18,9 @@ export class GradeService {
   private gradesBehaviorSubject: BehaviorSubject<Grade[]>;
   public gardesObservable: Observable<Grade[]>;
 
+  private gradeBehaviorSubject: BehaviorSubject<Grade>;
+  public gardeObservable: Observable<Grade>;
+
   teacherSubjectListBehaviorSubject: BehaviorSubject<TeacherSubject[]>;
   public teacherSubjectListObservable: Observable<TeacherSubject[]>;
 
@@ -29,6 +32,9 @@ export class GradeService {
     this.gradesBehaviorSubject = new BehaviorSubject<Grade[]>(JSON.parse(localStorage.getItem('grades')) || []);
     this.gardesObservable = this.gradesBehaviorSubject.asObservable();
 
+    this.gradeBehaviorSubject = new BehaviorSubject<Grade>(JSON.parse(localStorage.getItem('grade')));
+    this.gardeObservable = this.gradeBehaviorSubject.asObservable();
+
     this.teacherSubjectListBehaviorSubject = new BehaviorSubject<TeacherSubject[]>(JSON.parse(localStorage.getItem('teacherSubjects')) || []);
     this.teacherSubjectListObservable = this.teacherSubjectListBehaviorSubject.asObservable();
 
@@ -38,6 +44,9 @@ export class GradeService {
   public get currentGradesValue(): Grade[] {
     return this.gradesBehaviorSubject.value;
   }
+  public get currentSelectedGradeValue(): Grade {
+    return this.gradeBehaviorSubject.value;
+  }
 
   updateUserState(grades: Grade[]) {
     this.gradesBehaviorSubject.next(grades);
@@ -46,6 +55,11 @@ export class GradeService {
   updateTeacherGradesStudentState(teacherSubjects: TeacherSubject[]) {
     this.teacherSubjectListBehaviorSubject.next(teacherSubjects);
     localStorage.setItem('teacherSubjects', JSON.stringify(teacherSubjects));
+  }
+
+  updateSelectedGradeState(grade: Grade) {
+    this.gradeBehaviorSubject.next(grade);
+    localStorage.setItem('grades', JSON.stringify(grade));
   }
 
   getGrades(companyId: string) {

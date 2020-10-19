@@ -1,7 +1,7 @@
 import { Grade } from './grade.model';
 
 export interface InstitutionTypeModel {
-    InstitutionTypeId: string;
+    InstituteTypeId: string;
     Name: string;
     OnceOffPrice?: string;
     MonthlyPrice?: string;

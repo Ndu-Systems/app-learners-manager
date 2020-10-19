@@ -49,5 +49,6 @@ export const GET_PUBLIC_QUESTIONS_URL = `api/publicquestion/get-publicquestions.
 export const ADD_ASSIGNMENT_URL = `api/assignment/add-assignment.php`;
 export const UPDATE_ASSIGNMENT_URL = `api/assignment/update-assignment.php`;
 export const GET_ASSIGNMENT_URL = `api/assignment/get-assignment.php`;
+export const UPDATE_COMPANY_URL = `api/company/update-company.php`;
 
 

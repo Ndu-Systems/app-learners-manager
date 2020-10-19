@@ -198,6 +198,9 @@
       <p>
         {{ answer.Question.Question}}
       </p>
+      <div class="image" *ngIf="answer.Question.ImageUrl">
+        <img class="qa-image" [src]="answer.Question.ImageUrl" alt="">
+      </div>
       <p>
         Student Answer: <b> {{ answer.Question.StudentAnswer}}</b>
       </p>

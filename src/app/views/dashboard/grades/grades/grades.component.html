@@ -1,15 +1,18 @@
 <span *ngIf="grades$ | async as grades">
-<div class="head">
-  <div>
-    <h1>
-      Hi, {{user?.Name}}
-    </h1>
-  </div>
-</div>
+  <!-- <div class="head">
+    <div>
+      <h1>
+        Hi, {{user?.Name}}
+      </h1>
+    </div>
+  </div> -->
 
-<div class="teacher-grades">
-  <app-teacher-grades [grades]="grades"></app-teacher-grades>
-</div>
+  <div class="teacher-grades" *ngIf="user">
+    <app-company-view [company]="user.Company" ></app-company-view>
+  </div>
+  <div class="teacher-grades" *ngIf="grades && institutionTypes">
+    <app-teacher-grades [grades]="grades" [institutionTypes]="institutionTypes"></app-teacher-grades>
+  </div>
 
 </span>
 

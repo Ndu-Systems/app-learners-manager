@@ -2,6 +2,10 @@
   <div class="header">
     <div class="name">
       {{grade?.Name}}
+
+      <span class="material-icons edit-grade" (click)="editGrade(grade)">
+        create
+        </span>
     </div>
     <div class="switch">
       <div class="label">
@@ -20,6 +24,68 @@
     </div>
   </div>
   <div class="tab">
-    <app-subjects [subjects]="grade.Subjects" [gradeId]="grade.GradeId"></app-subjects>
+    <app-subjects *ngIf="grade" [subjects]="grade.Subjects" [gradeId]="grade.GradeId"></app-subjects>
   </div>
+</div>
+
+
+<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
+<div class="modal" *ngIf="showModal && gradeToAdd">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="form">
+    <div class="form-group">
+      <label for="">Select Institution Type*</label>
+      <select [(ngModel)]="gradeToAdd.InstituteTypeId"> {{InstituteTypeId}}
+        <option *ngFor="let item of institutionTypes" [value]="item.InstituteTypeId">{{item.Name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">Grade name*</label>
+      <input type="text" [(ngModel)]="gradeToAdd.Name">
+    </div>
+    <div class="form-group">
+      <label for="">Grade description</label>
+      <input type="text" [(ngModel)]="gradeToAdd.Description">
+    </div>
+    <button mat-button color="primary" (click)="save()"> Save grade </button>
+    <div class="error" *ngFor="let error of errors">
+      {{error}}
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" *ngIf="showModal && isUpdate">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="form">
+    <div class="form-group">
+      <label for="">Select Institution Type*</label>
+      <select [(ngModel)]="grade.InstituteTypeId"> {{InstituteTypeId}}
+        <option *ngFor="let item of institutionTypes" [value]="item.InstitutionTypeId">{{item.Name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">Grade name*</label>
+      <input type="text" [(ngModel)]="grade.Name">
+    </div>
+    <div class="form-group">
+      <label for="">Grade description</label>
+      <input type="text" [(ngModel)]="grade.Description">
+    </div>
+    <button mat-button color="primary" (click)="update()"> Save changes </button>
+    <div class="error" *ngFor="let error of errors">
+      {{error}}
+    </div>
+  </div>
+
 </div>

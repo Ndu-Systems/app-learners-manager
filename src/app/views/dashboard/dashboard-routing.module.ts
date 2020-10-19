@@ -26,6 +26,7 @@ import { ListAssignmentsComponent } from './subject/list-assignments/list-assign
 import { AddAssignmentComponent } from './subject/add-assignment/add-assignment.component';
 import { ImagesComponent } from 'src/app/_shared/components/images/images.component';
 import { TeacherGradesComponent } from './grades/teacher-grades/teacher-grades.component';
+import { CompanyViewComponent } from './company-view/company-view.component';
 
 
 const routes: Routes = [
@@ -75,7 +76,8 @@ export const declarations: Array<any> = [
   ListAssignmentsComponent,
   AddAssignmentComponent,
   ImagesComponent,
-  TeacherGradesComponent
+  TeacherGradesComponent,
+  CompanyViewComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
