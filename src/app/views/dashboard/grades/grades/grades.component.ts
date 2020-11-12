@@ -147,4 +147,6 @@ export class GradesComponent implements OnInit {
       alert('Notification API error: ' + err);
     }
   }
+
+  closeModal(){}
 }

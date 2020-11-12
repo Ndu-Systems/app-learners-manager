@@ -10,4 +10,8 @@ export interface Studentsubject {
     ModifyUserId: string;
     StatusId: string;
     Subject: Subject;
+    Lessons?: any[];
+    Tests?: any[];
+    Assignments?: any[];
+    Name?: string;
 }

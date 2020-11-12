@@ -25,6 +25,7 @@ export interface Subject {
     Grade?: Grade;
     Class?: string[];
     Lessons? : TopicContent[];
+    Assignments: any[];
 }
 
 

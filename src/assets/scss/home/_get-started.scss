@@ -1,7 +1,10 @@
 .home {
     .get-started {
-        padding: 5rem;
         padding-bottom: 1rem;
+
+        &.desktop {
+            display: block;
+        }
 
         &.col-1-of-2 {
             grid-template-columns: 35% auto;
@@ -15,8 +18,24 @@
             }
         }
 
+        &.mobile {
+            display: none;
+        }
+
         @media only screen and (max-width: 600px) {
-            padding: 2.25rem;
+            &.mobile {
+                padding: .5rem;
+                position: fixed;
+                z-index: 99999;
+                bottom: 1rem;
+                width: 95%;
+                left: 0.625rem;
+                display: block;
+            }
+
+            &.desktop {
+                display: none;
+            }
 
             &.col-1-of-2 {
                 grid-template-columns: 100%;
@@ -30,7 +49,6 @@
                 &.mat-primary {
                     width: 100%;
                     margin: 2rem 0;
-
                 }
             }
 

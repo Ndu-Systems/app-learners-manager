@@ -15,7 +15,11 @@ import { UploadService } from 'src/app/_services/upload.service';
 })
 export class StudentAssignmentComponent implements OnInit {
   assignment: Assignment;
-
+  yourScore: any;
+  modalHeading: any;
+  showError: boolean;
+  showModal: boolean;
+  showResults: boolean;
   constructor(
     private portalService: StudentPortalService,
     private router: Router,
@@ -53,5 +57,7 @@ export class StudentAssignmentComponent implements OnInit {
 
 
   }
+
+  closeModal(){}
 
 }

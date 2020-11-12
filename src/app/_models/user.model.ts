@@ -35,6 +35,7 @@ export interface User {
   Grade?: Grade;
   Billing?: any[];
   PhoneNumber: any;
+  Company?: any;
 }
 
 

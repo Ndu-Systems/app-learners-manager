@@ -24,6 +24,7 @@ export class TeacherGradesComponent implements OnInit {
   errors: any[];
   gradeToAdd: Grade;
   user: User;
+  InstituteTypeId: any;
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,

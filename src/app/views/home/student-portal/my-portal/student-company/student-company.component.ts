@@ -7,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StudentCompanyComponent implements OnInit {
   @Input() company;
-  constructor() { }
+   constructor() { }
 
   ngOnInit() {
   }
-
+  showUplaod(){}
 }

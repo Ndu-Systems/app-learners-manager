@@ -16,6 +16,7 @@ export class StudentSubjectsListComponent implements OnInit {
   @Input() subjects: Studentsubject[];
   studentsubject: Studentsubject;
   subjectId: string;
+  selectedIndex: number;
   constructor(
     private router: Router,
     private studentPortalService: StudentPortalService,

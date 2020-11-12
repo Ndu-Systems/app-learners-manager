@@ -1,14 +1,11 @@
 @import '../../../../assets/scss/color';
 
 .home {
- 
     .intro {
         display: grid;
         grid-template-columns: 40% auto;
         margin-top: 10rem;
         box-sizing: border-box;
-
-
 
         .text {
             padding: 3rem;
@@ -51,6 +48,7 @@
         border-radius: 1rem;
         margin: 4rem 0;
         box-sizing: border-box;
+
         h1 {
             font-weight: 900;
         }
@@ -64,7 +62,8 @@
                 margin-bottom: 1rem;
                 color: $primary;
             }
-            video{
+
+            video {
                 width: 98%;
                 margin: 1rem auto;
                 border-radius: .5rem;
@@ -72,18 +71,48 @@
             }
         }
 
-        .cta{
+        .cta {
             width: 40%;
             border-top: 1px solid $primary;
             margin: 4rem 0;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .intro {
+            margin-top: 5rem;
+            grid-template-columns: 100%;
+            padding: 0 1rem;
+
+            h1 {
+                margin: 1rem auto;
+                font-weight: 700;
+                font-size: 1.85rem;
+
+                span {
+                    font-weight: 400;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .see-examples {
+            padding: 0 1rem;
+            .cta {
+                width: 100%;
+                h1 {
+                    font-size: 1.85rem;
+                    font-weight: 700;
+
+                }
+                button {
+                    display: none;
+                }
+            }
         }
     }
 }
 
 .home-image {
     width: 100%;
-
-    // position: relative;
-    // top: -6rem;
-    // left: 5rem;
 }

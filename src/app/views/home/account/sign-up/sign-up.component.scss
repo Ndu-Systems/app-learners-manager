@@ -55,3 +55,38 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .main {
+        padding: 0;
+        overflow-y: scroll;
+    }
+
+    .col-1-of-1 {
+        padding: 0 1rem;
+    }
+
+    .form {
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+        padding: 1rem;
+        left: 0;
+        margin-top: 4rem;
+
+        .action {
+            button.mat-button {
+                padding: .5rem;
+            }
+        }
+
+    }
+
+    .cta {
+        a {
+            top: 0;
+        }
+    }
+
+}

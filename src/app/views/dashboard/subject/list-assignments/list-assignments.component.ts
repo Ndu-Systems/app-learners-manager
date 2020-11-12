@@ -23,6 +23,7 @@ export class ListAssignmentsComponent implements OnInit {
   error: string;
   showLoader: boolean;
   showPreview: boolean;
+  showDelete: boolean;
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -118,5 +119,7 @@ export class ListAssignmentsComponent implements OnInit {
       });
     }
   }
+  formatBody() {
 
+  }
 }

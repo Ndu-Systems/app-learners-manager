@@ -1,23 +1,39 @@
 <div class="nav">
   <div class="items">
     <div class="item logo">
-      <img src="assets/images/common/logo-home.png" alt="" (click)="goto('')">
+      <img src="assets/images/common/logo-home.png"
+           alt=""
+           (click)="goto('')">
     </div>
-
     <div class="item">
-      <a mat-button class="features" (click)="goto('features')">
+      <!-- <a mat-button class="features" (click)="goto('features')">
         Features
-      </a>
+      </a> -->
     </div>
     <div class="item">
-      <a mat-button class="sign-up" (click)="goto('sign-up')">
+      <a mat-button
+         class="sign-up"
+         (click)="goto('sign-up')">
         Create organization account.
       </a>
     </div>
     <div class="item">
-      <a mat-button class="sign-in" color="primary" (click)="goto('sign-in')">
+      <a mat-button
+         class="sign-in"
+         color="primary"
+         (click)="goto('sign-in')">
         Login
       </a>
     </div>
-  </div>
+  </div> 
+</div>
+<div class="mobile-nav">
+  <div class="items">
+    <img src="assets/images/common/logo-home.png" class="logo"
+    alt=""
+    (click)="goto('')">
+    <!-- <img src="assets/images/common/burger-menu.svg"
+         alt="feed"
+         class="menu"> -->
+  </div> 
 </div>

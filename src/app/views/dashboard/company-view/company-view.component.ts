@@ -16,6 +16,7 @@ export class CompanyViewComponent implements OnInit {
   modalHeading: string;
   dpUrl: string;
   isUpdate: boolean;
+  error: string;
   constructor(
     private documentsService: DocumentsService,
     private apiServices: ApiService,

@@ -19,7 +19,7 @@
 
   <mat-tab-group (selectedTabChange)="onTabChanged($event)" [selectedIndex]="selectedIndex">
     <mat-tab label="Lessons">
-      <div class="recent topic" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length ; else nodata">
+      <div class="recent topic" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length">
         <div class="topics">
 
           <div *ngFor="let item of studentsubject.Lessons" class="topics">

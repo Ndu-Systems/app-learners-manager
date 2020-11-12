@@ -10,4 +10,5 @@ export interface PublicQuestion {
     ModifyUserId: string;
     StatusId: number;
     Class?: string[];
+    Comments?: any[];
 }

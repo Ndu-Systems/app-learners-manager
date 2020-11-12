@@ -1,6 +1,11 @@
 <div class="home">
   <app-home-nav></app-home-nav>
-
+  <button mat-button
+          class="get-started mobile"
+          color="primary"
+          (click)="getStarted()">
+    Get started
+  </button>
   <div class="intro">
     <div class="">
       <h1>
@@ -15,14 +20,17 @@
           Online assessments and same time results.
         </span>
       </h1>
-
-      <button mat-button color="primary" (click)="getStarted()">
+      <button mat-button
+              class="get-started desktop"
+              color="primary"
+              (click)="getStarted()">
         Get started
       </button>
     </div>
-
     <div class="showcase">
-      <img class="home-image" src="assets/images/common/main-home.png" alt="">
+      <img class="home-image"
+           src="assets/images/common/main-home.png"
+           alt="">
     </div>
   </div>
 
@@ -37,8 +45,9 @@
         Student online test example.
       </h1>
 
-      <video  controls>
-        <source src="assets/vids/test.mp4" type="video/mp4">
+      <video controls>
+        <source src="assets/vids/test.mp4"
+                type="video/mp4">
       </video>
     </div>
     <div class="example">
@@ -46,22 +55,25 @@
         Online lesson example.
       </h1>
 
-      <video  controls>
-        <source src="assets/vids/teach.mp4" type="video/mp4">
+      <video controls>
+        <source src="assets/vids/teach.mp4"
+                type="video/mp4">
       </video>
     </div>
   </div>
 
   <div class="see-examples">
-   <div class="cta">
-    <h1>
-      Do you think this will change the game in your institution?
-    </h1>
-    <button mat-button color="primary" (click)="getStarted()">
-      Create your institution account.
-    </button>
-   </div>
+    <div class="cta">
+      <h1>
+        Do you think this will change the game in your institution?
+      </h1>
+      <button mat-button
+              color="primary"
+              (click)="getStarted()">
+        Create your institution account.
+      </button>
     </div>
+  </div>
 </div>
 
 

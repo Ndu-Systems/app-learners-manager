@@ -13,11 +13,9 @@
     padding: 1rem 20rem;
     box-sizing: border-box;
 
-
     .items {
         display: grid;
         grid-template-columns: 45% 15% 20% 15%;
-        
 
         .item {
             text-align: center;
@@ -47,28 +45,61 @@
             }
         }
     }
+
+    .sign-up {
+        background: $primary-purple;
+        color: $white;
+        border-radius: 2rem;
+        padding: .2rem 2rem;
+
+    }
+
+    .sign-in {
+        background: $primary;
+        color: $white;
+        border-radius: 2rem;
+        padding: .2rem 2rem;
+
+    }
+
+    .features {
+        background: $cloud;
+        color: $black;
+        border-radius: 2rem;
+        padding: .2rem 2rem;
+    }
+
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 }
 
-
-.sign-up {
-    background: $primary-purple;
-    color: $white;
-    border-radius: 2rem;
-    padding: .2rem 2rem;
-
-}
-
-.sign-in {
-    background: $primary;
-    color: $white;
-    border-radius: 2rem;
-    padding: .2rem 2rem;
-
-}
-
-.features {
-    background: $cloud;
-    color: $black;
-    border-radius: 2rem;
-    padding: .2rem 2rem;
+.mobile-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 5rem;
+    width: 100%;
+    background: $white;
+    z-index: 1000;
+    box-shadow: $box-shadow;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: none;
+    .items {
+        display: grid;
+        grid-template-columns: 50% auto; 
+        img {
+            &.logo {
+                height: 2rem;
+            }
+            &.menu {
+                margin-left: 8rem;
+            }
+        }
+    }
+    @media screen and (max-width: 600px) {
+        display: block;
+    }
 }

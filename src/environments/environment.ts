@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   API_URL: 'http://localhost:8200/fundani-api',
   BASE_URL: 'http://localhost:4200',
-  ACCOUNT_TEST_EMAIL: 'admin@fundani.co.za',
-  ACCOUNT_TEST_PASSWORD: 'Harder01!',
+  ACCOUNT_TEST_EMAIL: 'ndumiso@fundani.co.za',
+  ACCOUNT_TEST_PASSWORD: 'ndumiso@fundani.co.za',
   TEST_EMAIL_ACCOUNT: 'admin@fundani.co.za'
 };
 
