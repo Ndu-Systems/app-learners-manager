@@ -36,6 +36,22 @@
             }
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        padding: 1rem;
+
+        .header {
+            grid-template-columns: 100%;
+
+            .switch {
+                .label {
+                    display: none;
+                }
+
+                grid-template-columns: 50% auto;
+            }
+        }
+    }
 }
 
 .add-new {
@@ -53,6 +69,15 @@
         border-radius: .2rem;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    @media only screen and (max-width: 600px) {
+        a {
+            left: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+
     }
 }
 

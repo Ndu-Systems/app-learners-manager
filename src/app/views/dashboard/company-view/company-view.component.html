@@ -1,12 +1,18 @@
 <div class="company">
-  <div class="dp" *ngIf="!company.Dp" (click)="showUplaod()">
+  <div class="dp"
+       *ngIf="!company.Dp"
+       (click)="showUplaod()">
     <span class="material-icons">
       camera_alt
     </span>
   </div>
-  <div class="round-dp" *ngIf="company.Dp" (click)="showUplaod()">
-    <div class="image" *ngIf="company.Dp">
-      <img [src]="company.Dp" alt="">
+  <div class="round-dp"
+       *ngIf="company.Dp"
+       (click)="showUplaod()">
+    <div class="image"
+         *ngIf="company.Dp">
+      <img [src]="company.Dp"
+           alt="">
     </div>
   </div>
 
@@ -16,62 +22,63 @@
       <span>
         {{company.Description}}
       </span>
-      <span class="link" (click)="showEditUplaod()">
+      <span class="link"
+            (click)="showEditUplaod()">
         Edit organization profile
       </span>
     </h1>
   </div>
 </div>
 
-<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
-
-
-
-<div class="modal" *ngIf="addDp">
-  <div class="close" (click)="closeModal()">
+<div class="overlay"
+     *ngIf="showModal"
+     (click)="closeModal()"></div>
+<div class="modal"
+     *ngIf="addDp">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
   </div>
-
   <div class="form">
-
-
     <label for="">Select image </label>
-    <input type="file" (change)="imageChanged($event)">
-
-    <div class="preview" *ngIf="dpUrl">
-      <img [src]="dpUrl" alt="">
+    <input type="file"
+           (change)="imageChanged($event)">
+    <div class="preview"
+         *ngIf="dpUrl">
+      <img [src]="dpUrl"
+           alt="">
     </div>
-
-
-    <button mat-button color="primary" (click)="update()"> Confirm</button>
+    <button mat-button
+            color="primary"
+            (click)="update()"> Confirm</button>
     <div class="error">
       {{error}}
     </div>
   </div>
 </div>
 
-
-
-<div class="modal" *ngIf="isUpdate">
-  <div class="close" (click)="closeModal()">
+<div class="modal"
+     *ngIf="isUpdate">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
   </div>
 
   <div class="form">
-
-
     <label for="">Name</label>
-    <input type="text" [(ngModel)]="company.Name">
+    <input type="text"
+           [(ngModel)]="company.Name">
 
     <label for="">Slogan</label>
-    <input type="text" [(ngModel)]="company.Description">
-
-
-    <button mat-button color="primary" (click)="update()"> Save changes</button>
+    <input type="text"
+           [(ngModel)]="company.Description">
+    <button mat-button
+            color="primary"
+            (click)="update()"> Save changes</button>
     <div class="error">
       {{error}}
     </div>

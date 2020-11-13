@@ -32,10 +32,11 @@
                 font-size: 1.1rem;
                 display: block;
             }
-            .material-icons{
+
+            .material-icons {
                 font-size: 1.5rem;
                 position: relative;
-                top:.4rem;
+                top: .4rem;
                 margin-right: .5rem;
             }
         }
@@ -43,13 +44,17 @@
 }
 
 
-.add-new {
+.mat-button.add-new {
     position: fixed;
     bottom: 4rem;
-    right: 4rem;
+    right: 2rem;
+    width: 10rem;
 
     @media only screen and (max-width: 600px) {
-        right: 2.5rem;
         bottom: 2rem;
+        width: 22.5rem;
+        padding: .5rem 1rem;
+        right: .5rem;
+        font-weight: 400;
     }
 }

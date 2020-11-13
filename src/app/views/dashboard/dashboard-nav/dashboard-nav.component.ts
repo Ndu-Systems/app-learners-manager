@@ -32,7 +32,7 @@ export class DashboardNavComponent implements OnInit {
     });
     this.navigationModel = {
       IsDashboard: true,
-      NavUrl: '',
+      NavUrl: 'dashboard',
       Title: 'Dashboard'
     };
 
@@ -53,7 +53,8 @@ export class DashboardNavComponent implements OnInit {
   }
 
   goBack() {
-    this.routerTo.navigate([this.navigationModel.NavUrl]);
+    this.navigationSubject.IsDashboard = true;
+    this.routerTo.navigate(['dashboard/grades']);
   }
 
   updateNavigation(model: NavModel) {
@@ -65,7 +66,7 @@ export class DashboardNavComponent implements OnInit {
       };
     } else {
       this.navigationModel.IsDashboard = true;
-      this.navigationModel.NavUrl = '',
+      this.navigationModel.NavUrl = 'dashboard/grades',
         this.navigationModel.Title = model.label;
     }
     this.navigationService.updateNavigationState(this.navigationModel);
