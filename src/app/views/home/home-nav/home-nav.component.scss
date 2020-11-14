@@ -10,7 +10,7 @@
     z-index: 1000;
     border-top: 3px solid $primary;
     box-shadow: $box-shadow;
-    padding: 1rem 20rem;
+    padding: 1rem 16rem;
     box-sizing: border-box;
 
     .items {
@@ -49,15 +49,15 @@
     .sign-up {
         background: $primary-purple;
         color: $white;
-        border-radius: 2rem;
-        padding: .2rem 2rem;
+        border-radius: 0.313rem;
+        padding: .2rem 1rem;
 
     }
 
     .sign-in {
         background: $primary;
         color: $white;
-        border-radius: 2rem;
+        border-radius: 0.313rem;
         padding: .2rem 2rem;
 
     }
@@ -87,18 +87,32 @@
     padding: 1rem;
     box-sizing: border-box;
     display: none;
+
     .items {
         display: grid;
-        grid-template-columns: 50% auto; 
+        grid-template-columns: 50% auto;
+
         img {
             &.logo {
                 height: 2rem;
             }
+
             &.menu {
                 margin-left: 8rem;
             }
         }
+
+        .sign-in {
+            background: $primary;
+            color: $white;
+            font-weight: 300;
+            border-radius: 0.313rem;
+            padding: .1rem 2rem;
+            margin-left: 5rem;
+
+        }
     }
+
     @media screen and (max-width: 600px) {
         display: block;
     }

@@ -9,12 +9,6 @@
          routerLinkActive="active-link"
          [routerLinkActiveOptions]="{exact: true}">
         <div class="nav-item">
-          <img [src]="item.imgActive"
-               alt="feed"
-               class="hl-on">
-          <img [src]="item.imgDisabled"
-               alt="feed"
-               class="hl-off">
           {{item.label}}
         </div>
       </a>
@@ -25,7 +19,6 @@
            alt="">
       <h1>{{user.Name}} {{user.Surname}}</h1>
     </div>
-
     <li>
       <a class="logout"
          (click)="logout()"
@@ -46,17 +39,30 @@
 </div>
 
 <div class="nav mobile">
-  <div class="col-1-of-3" *ngIf="navigationSubject">
+  <div class="col-1-of-3"
+       *ngIf="navigationSubject">
     <img src="assets/images/common/arrow.svg"
          alt="feed"
          class="hl-off"
-         *ngIf="!navigationSubject.IsDashboard" (click)="goBack()">
+         *ngIf="!navigationSubject.IsDashboard"
+         (click)="goBack()">
     <img src="assets/images/common/burger-menu.svg"
          alt="feed"
          class="hl-off"
-         *ngIf="navigationSubject.IsDashboard" (click)="toggleMenu()">
-    <!-- <p>{{navigationSubject.Title}}</p>
-    <p>mobile</p> -->
+         *ngIf="navigationSubject.IsDashboard"
+         (click)="toggleMenu()">
+
+    <div class=""
+         *ngIf="navigationSubject.IsDashboard"></div>
+    <div class="notification"
+         *ngIf="navigationSubject.IsDashboard">
+      <img class="bell"
+           src="assets/images/common/notification.svg"
+           alt="">
+      <div class="span">
+        <h1 class="h1">30</h1>
+      </div>
+    </div>
   </div>
   <div class="mobile-menu"
        *ngIf="showModal">
@@ -68,41 +74,39 @@
       <div class="col-1-of-3">
         <img src="assets/images/common/arrow.svg"
              alt="feed"
-             class="hl-off" (click)="toggleMenu()">
-        <p>Menu options</p>
-      </div>
-      <ul>
-        <li *ngFor="let item of navItems">
-          <a [routerLink]="item.routerLink"
-             routerLinkActive="active-link" 
-             [routerLinkActiveOptions]="{exact: true}" (click)="updateNavigation(item);toggleMenu()">
-            <div class="nav-item">
-              <img [src]="item.imgMobile"
-                   alt="feed"
-                   class="hl-on">
-              <img [src]="item.imgMobileDisabled"
-                   alt="feed"
-                   class="hl-off">
-              {{item.label}}
-            </div>
+             class="hl-off"
+             (click)="toggleMenu()">
+        <div>
+          <h1 class="h1 fundani">fundani.co.za</h1>
+        </div>
+        <div class="logout">
+          <a (click)="logout()"
+             routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{exact: true}">
+            <img src="assets/images/common/logout.svg"
+                 alt="feed"
+                 class="hl-on">
           </a>
-        </li>
-      </ul>
-      <div class="user-profile" *ngIf="user">
+        </div>
+      </div>
+      <div class="user-profile"
+           *ngIf="user">
         <img src="assets/images/common/user.svg"
              alt="">
         <h1>{{user.Name}} {{user.Surname}}</h1>
       </div>
-      <div class="logout">
-        <a (click)="logout()"
-           routerLinkActive="active-link"
-           [routerLinkActiveOptions]="{exact: true}">
-          <img src="assets/images/dashboard/nav/logout.svg"
-               alt="feed"
-               class="hl-on">
-          sign out
-        </a>
-      </div>
+      <ul>
+        <li *ngFor="let item of navItems">
+          <a [routerLink]="item.routerLink"
+             routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{exact: true}"
+             (click)="updateNavigation(item);toggleMenu()">
+            <div class="nav-item">
+              {{item.label}}
+            </div>
+          </a>
+        </li>
+      </ul> 
     </div>
   </div>
 </div>

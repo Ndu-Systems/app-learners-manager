@@ -26,8 +26,8 @@ export class TeachersComponent implements OnInit {
   showLoader: boolean;
   crumbs: BreadCrumbModel[] = [
     {
-      Label: 'dashboard',
-      Link: '/dashboard'
+      Label: 'grades',
+      Link: '/dashboard/grades'
     },
     {
       Label: 'All Teacher',

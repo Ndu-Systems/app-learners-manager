@@ -25,15 +25,28 @@
         Login
       </a>
     </div>
-  </div> 
+  </div>
 </div>
 <div class="mobile-nav">
-  <div class="items">
-    <img src="assets/images/common/logo-home.png" class="logo"
-    alt=""
-    (click)="goto('')">
+  <img src="assets/images/common/arrow.svg"
+  alt="feed"
+  class="hl-off"
+  *ngIf="!showNav" (click)="goto('')">
+  <div class="items" *ngIf="showNav">
+    <img src="assets/images/common/logo-home.png"
+         class="logo"
+         alt=""
+         (click)="goto('')">
     <!-- <img src="assets/images/common/burger-menu.svg"
          alt="feed"
          class="menu"> -->
-  </div> 
+    <div class="item">
+      <a mat-button
+         class="sign-in"
+         color="primary"
+         (click)="goto('sign-in')">
+        Login
+      </a>
+    </div>
+  </div>
 </div>

@@ -4,10 +4,9 @@
   border-radius: 10px;
   padding: 20px;
   background: $white;
-  padding: 3rem;
+  padding: 1rem;
 
   @media only screen and (max-width: 600px) {
-
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -28,10 +27,14 @@
     }
   }
 
+  .col-1-of-2 {
+    grid-gap: 0;
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
+    margin: .5rem;
 
     label {
       font-weight: 700;
@@ -90,23 +93,27 @@
   .forgot-password {
     position: relative;
     margin: 1rem 0;
-
+    width: 8rem;
     a {
+      background: $cloud;
+      border-radius: .3rem;
       text-decoration: none;
       color: $darker-grey;
       font-weight: 400;
+      font-style: italic;
+      font-size: .7rem;
+      padding: .5rem;
     }
   }
 
   button {
-
     &.mat-primary {
       background: $primary;
       width: 100%;
       border-radius: 0.313rem;
-      padding: .75rem;
-      font-weight: 600;
-      font-size: 1.125rem;
+      padding: .4rem;
+      font-weight: 500;
+      font-size: 1rem;
       color: $white !important;
     }
 
@@ -119,8 +126,8 @@
     @media only screen and (max-width: 600px) {
       &.mat-primary {
         background: $primary;
-        bottom: 2rem;
-        width: 22.5rem;
+        bottom: 0;
+        width: 100%;
         padding: .5rem 1rem;
         right: .5rem;
         font-weight: 400;

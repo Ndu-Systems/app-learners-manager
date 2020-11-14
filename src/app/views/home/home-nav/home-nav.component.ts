@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavModel, NavigationModel } from 'src/app/_models';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, NavigationService } from 'src/app/_services';
@@ -12,17 +12,45 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home-nav.component.scss']
 })
 export class HomeNavComponent implements OnInit {
+  navigationSubject: NavigationModel;
+  navigationModel: NavigationModel;
+  @Input() showNav: boolean;
   constructor(private routeTo: Router,
-    ) {
+    private navigationService: NavigationService,
+
+  ) {
   }
 
 
 
   ngOnInit() {
+    this.navigationModel = {
+      IsHome: true,
+      NavUrl: '',
+      Title: ''
+    };
+    this.navigationService.updateNavigationState(this.navigationModel);
+    this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
   }
 
 
   goto(route) {
+    if (route !== '') {
+      this.navigationModel = {
+        IsHome: false,
+        NavUrl: route,
+        Title: route
+      };
+    } else {
+      this.navigationModel = {
+        IsHome: true,
+        NavUrl: '',
+        Title: ''
+      };
+    }
+    this.navigationService.updateNavigationState(this.navigationModel);
+    this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
     this.routeTo.navigate([route]);
   }
+
 }

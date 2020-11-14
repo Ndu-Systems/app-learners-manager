@@ -38,10 +38,10 @@ export class DashboardNavComponent implements OnInit {
 
     this.navigationService.updateNavigationState(this.navigationModel);
     this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
-    if(this.user.UserType === ADMIN){
+    if (this.user.UserType === ADMIN) {
       this.setAdminRoute();
     }
-    if(this.user.UserType === TEACHER){
+    if (this.user.UserType === TEACHER) {
       this.setTeacherRoute();
     }
   }
@@ -74,65 +74,38 @@ export class DashboardNavComponent implements OnInit {
 
   }
 
-setAdminRoute(){
-  this.navItems = [
-    {
-      key: 'Grades',
-      label: 'Grades',
-      routerLink: '/dashboard/grades',
-      imgActive: 'assets/images/dashboard/nav/grades.svg',
-      imgDisabled: 'assets/images/dashboard/nav/grades-disabled.svg',
-      imgMobile: 'assets/images/dashboard/nav/grades-mobile.svg',
-      imgMobileDisabled: 'assets/images/dashboard/nav/grades-mobile-disabled.svg'
-    },
-    {
-      label: 'Learners',
-      routerLink: '/dashboard/learners',
-      imgActive: 'assets/images/dashboard/nav/learners.svg',
-      imgDisabled: 'assets/images/dashboard/nav/learners-disabled.svg',
-      imgMobile: 'assets/images/dashboard/nav/learners-mobile.svg',
-      imgMobileDisabled: 'assets/images/dashboard/nav/learners-mobile-disabled.svg'
-    },
-    {
-      label: 'Teachers',
-      routerLink: '/dashboard/teachers',
-      imgActive: 'assets/images/dashboard/nav/learners.svg',
-      imgDisabled: 'assets/images/dashboard/nav/learners-disabled.svg',
-      imgMobile: 'assets/images/dashboard/nav/learners-mobile.svg',
-      imgMobileDisabled: 'assets/images/dashboard/nav/learners-mobile-disabled.svg'
-    },
+  setAdminRoute() {
+    this.navItems = [
+      {
+        key: 'Grades',
+        label: 'Grades',
+        routerLink: '/dashboard/grades',
+      },
+      {
+        key: 'Learners',
+        label: 'Learners',
+        routerLink: '/dashboard/learners',
+      },
+      {
+        key: 'Teachers',
+        label: 'Teachers',
+        routerLink: '/dashboard/teachers',
+      },
 
-    {
-      key: 'Insights',
-      label: 'Insights',
-      routerLink: '/dashboard',
-      imgActive: 'assets/images/dashboard/nav/dashboard.svg',
-      imgDisabled: 'assets/images/dashboard/nav/dashboard-disabled.svg',
-      imgMobile: 'assets/images/dashboard/nav/home-mobile.svg',
-      imgMobileDisabled: 'assets/images/dashboard/nav/home-mobile-disabled.svg'
-    }
-    // {
-    //   label: 'Admin portal',
-    //   routerLink: '/admin', 
-    //   imgActive: 'assets/images/dashboard/nav/admins.svg',
-    //   imgDisabled:'assets/images/dashboard/nav/admins-disabled.svg',
-    //   imgMobile:'assets/images/dashboard/nav/admins-mobile.svg',
-    //   imgMobileDisabled:'assets/images/dashboard/nav/admins-mobile-disabled.svg',
-    // },
-  ];
-}
-setTeacherRoute(){
-  this.navItems = [
-
-    {
-      key: 'Grades',
-      label: 'Grades',
-      routerLink: '/dashboard/grades',
-      imgActive: 'assets/images/dashboard/nav/grades.svg',
-      imgDisabled: 'assets/images/dashboard/nav/grades-disabled.svg',
-      imgMobile: 'assets/images/dashboard/nav/grades-mobile.svg',
-      imgMobileDisabled: 'assets/images/dashboard/nav/grades-mobile-disabled.svg'
-    }
-  ];
-}
+      // {
+      //   key: 'Insights',
+      //   label: 'Insights',
+      //   routerLink: '/dashboard',
+      // }
+    ];
+  }
+  setTeacherRoute() {
+    this.navItems = [
+      {
+        key: 'Grades',
+        label: 'Grades',
+        routerLink: '/dashboard/grades',
+      }
+    ];
+  }
 }

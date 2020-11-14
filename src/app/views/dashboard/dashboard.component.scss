@@ -21,10 +21,12 @@
   @media only screen and (max-width: 600px) {
     .nav {
       height: 100%;
-      background: transparent;
+      background: $white;
+      box-shadow: none;
     }
     .body {
        padding: 0 1rem;
+ 
     }
     grid-template-columns: 100%;
   }

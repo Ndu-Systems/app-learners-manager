@@ -28,8 +28,8 @@ export class LearnersComponent implements OnInit {
   showLoader: boolean;
   crumbs: BreadCrumbModel[] = [
     {
-      Label: 'dashboard',
-      Link: '/dashboard'
+      Label: 'grades',
+      Link: '/dashboard/grades'
     },
     {
       Label: 'All Learners',

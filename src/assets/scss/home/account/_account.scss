@@ -5,9 +5,7 @@
         width: 60%;
         margin: 0 auto;
 
-        .form-group {
-            margin: 0.5rem 0;
-        }
+        .form-group {}
 
         .alert,
         .error {
@@ -19,12 +17,14 @@
         .cta {
             margin: .5rem 0;
             display: flex;
+
             h1 {
                 font-size: 1rem;
                 color: $grey;
                 font-weight: 500;
                 color: $black;
             }
+
             a {
                 text-decoration: none;
                 font-weight: 500;

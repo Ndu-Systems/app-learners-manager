@@ -34,7 +34,12 @@ export class GradesComponent implements OnInit {
   isDelete: boolean;
   $status: HTMLElement;
   isAdmin: boolean;
-
+  crumbs: BreadCrumbModel[] = [
+    {
+      Label: 'grades',
+      Link: '/dashboard/grades'
+    }
+  ];
   constructor(
     private apiServices: ApiService,
     private router: Router,

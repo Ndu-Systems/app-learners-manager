@@ -15,18 +15,18 @@
 
   .user-profile {
     text-align: center;
-    padding: 2rem 0;
     padding-bottom: 0;
-    margin-top: 4rem;
-    border-top: solid 1px $grey;
+    margin-top: 2rem;
+    padding: 1rem 0;
 
     h1 {
-      font-weight: 400;
-      font-size: 1rem;
+      font-weight: 500;
+      font-size: 12px;
+      margin: 0;
     }
 
     img {
-      width: 4.5rem;
+      width: 3.5rem;
     }
   }
 
@@ -100,10 +100,7 @@
         color: $grey;
         text-align: center;
       }
-
-
     }
-
   }
 
   &.mobile {
@@ -111,20 +108,33 @@
     background: $white;
 
     .modal {
-      h1 {
-        color: $black;
-      }
-
+      background: $white;
       bottom: 0;
-      top:unset;
+      top: unset;
       left: 0;
       right: 0;
       width: 100%;
       position: fixed;
       padding: 1rem;
+
+      h1 {
+        color: $black;
+      }
+
+      .col-1-of-3 {
+        .logout {
+          padding: 0;
+
+          img {
+            height: 1.55rem;
+          }
+        }
+      }
+
       ul {
         padding: 1rem;
       }
+
       .nav-item {
         img {
           position: relative;
@@ -139,6 +149,7 @@
           }
         }
       }
+
       .logout {
         padding: 2rem;
       }
@@ -157,11 +168,78 @@
       display: block;
 
       .col-1-of-3 {
-        grid-template-columns: 15% auto 15%;
+        grid-template-columns: 15% auto 25%;
+        margin-bottom: 0;
 
         img {
           margin: 1rem;
         }
+
+        .notification {
+          cursor: pointer;
+
+          img {
+            margin: 1rem;
+
+            &.bell {
+              height: 2rem;
+            }
+          }
+
+          .span {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            background: #000;
+            font-weight: 400;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: $grey;
+
+            h1.h1 {
+              margin: 0;
+              font-size: 100%;
+              color: $black;
+            }
+
+            &.active {
+              background: $primary;
+            }
+          }
+        }
+      }
+
+      .modal {
+        width: 80%;
+        box-shadow: $box-shadow;
+        border-radius: 0 1rem 1rem 0;
+        h1.h1 {
+          &.fundani {
+            color: $primary;
+          }
+          font-size: 1rem;
+          font-weight: 700;
+        }
+        .user-profile {
+          display: grid;
+          grid-template-columns: 15% auto;
+
+          img {
+            height: 5rem;
+          }
+
+          h1 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 2rem;
+          }
+        }
+
       }
 
     }

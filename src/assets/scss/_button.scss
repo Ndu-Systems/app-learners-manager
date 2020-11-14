@@ -5,9 +5,9 @@ button {
       background: $primary;
       width: 100%;
       border-radius: 0.313rem;
-      padding: .75rem;
-      font-weight: 800;
-      font-size: 1.125rem;
+      padding: .5rem;
+      font-weight: 500;
+      font-size: 1rem;
       color: $white !important;
     }
   
@@ -47,6 +47,7 @@ button.secondary {
   padding: 1rem;
   color: $white;
   bottom: 11rem;
-  right: 19rem;
+  right: 2rem;
+  bottom: 10rem;
   height: 2rem;  
 }

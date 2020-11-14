@@ -1,55 +1,55 @@
-<span *ngIf="grades$ | async as grades">
-  <!-- <div class="head">
-    <div>
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+
+  <div *ngIf="grades$ | async as grades">
+    <div class="teacher-grades"
+         *ngIf="user">
+      <app-company-view [company]="user.Company"></app-company-view>
+    </div>
+    <div class="teacher-grades"
+         *ngIf="grades && institutionTypes">
+      <app-teacher-grades [grades]="grades"
+                          [institutionTypes]="institutionTypes"></app-teacher-grades>
+    </div>
+  </div>
+
+  <ng-template #nodata>
+    <div class="nodata">
       <h1>
-        Hi, {{user?.Name}}
+        You don't have any grades yes, create grade.
       </h1>
     </div>
-  </div> -->
+  </ng-template>
+  <div class="overlay"
+       *ngIf="showModal"
+       (click)="closeModal()"></div>
+  <div class="modal"
+       *ngIf="showModal && !isDelete">
+    <div class="close"
+         (click)="closeModal()">
+      <span class="material-icons">
+        west
+      </span> {{modalHeading}}
+    </div>
 
-  <div class="teacher-grades" *ngIf="user">
-    <app-company-view [company]="user.Company" ></app-company-view>
-  </div>
-  <div class="teacher-grades" *ngIf="grades && institutionTypes">
-    <app-teacher-grades [grades]="grades" [institutionTypes]="institutionTypes"></app-teacher-grades>
-  </div>
-
-</span>
-
-
-
-
-<ng-template #nodata>
-  <div class="nodata">
-    <h1>
-      You don't have any grades yes, create grade.
-    </h1>
-  </div>
-</ng-template>
-
-
-
-
-<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal && !isDelete">
-  <div class="close" (click)="closeModal()">
-    <span class="material-icons">
-      west
-    </span> {{modalHeading}}
   </div>
 
-</div>
 
-
-<div class="modal" *ngIf="isDelete">
-  <div class="delete-modal">
-    <span class="material-icons">
-      west
-    </span> {{modalHeading}}
-    <button mat-button color="primary" class="danger" (click)="update()"> Yes, delete</button>
-    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
-    <div class="error">
-      {{error}}
+  <div class="modal"
+       *ngIf="isDelete">
+    <div class="delete-modal">
+      <span class="material-icons">
+        west
+      </span> {{modalHeading}}
+      <button mat-button
+              color="primary"
+              class="danger"
+              (click)="update()"> Yes, delete</button>
+      <button mat-button
+              color="primary"
+              class="secondary"
+              (click)="closeModal()"> Cancel</button>
+      <div class="error">
+        {{error}}
+      </div>
     </div>
   </div>
-</div>
