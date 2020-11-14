@@ -27,6 +27,12 @@
         Edit organization profile
       </span>
     </h1>
+    <h1 class="stat"  *ngIf="gradeCount && gradeCount > 0">
+      number of grades
+      <span>
+        {{gradeCount}}
+      </span>
+    </h1>
   </div>
 </div>
 

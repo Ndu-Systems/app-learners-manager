@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class CompanyViewComponent implements OnInit {
   @Input() company;
+  @Input() gradeCount: number;
+
   showModal: boolean;
   addDp: boolean;
   modalHeading: string;
@@ -69,7 +71,7 @@ export class CompanyViewComponent implements OnInit {
 
   update() {
     this.apiServices.add(UPDATE_COMPANY_URL, this.company).subscribe(res => {
-     this.closeModal();
+      this.closeModal();
       this.openSnackBar('Company updated  created.', 'Success!');
     })
   }

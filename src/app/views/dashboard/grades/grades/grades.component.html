@@ -2,8 +2,8 @@
 
   <div *ngIf="grades$ | async as grades">
     <div class="teacher-grades"
-         *ngIf="user">
-      <app-company-view [company]="user.Company"></app-company-view>
+         *ngIf="user && grades">
+      <app-company-view [company]="user.Company" [gradeCount]="grades.length"></app-company-view>
     </div>
     <div class="teacher-grades"
          *ngIf="grades && institutionTypes">

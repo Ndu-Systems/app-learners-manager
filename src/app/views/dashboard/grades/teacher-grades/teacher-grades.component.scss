@@ -4,12 +4,12 @@
     background: $white;
     padding: 2rem;
     border-radius: $border-radius;
-
+    box-shadow: $box-shadow;
 
 
     .header {
         display: grid;
-        grid-template-columns: 60% auto;
+        grid-template-columns: 50% auto;
         box-sizing: border-box;
         border-bottom: 1px solid $cloud;
         margin-bottom: 4rem;

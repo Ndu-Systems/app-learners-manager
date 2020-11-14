@@ -2,11 +2,12 @@
 
 .company {
     background: $white;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: $border-radius;
     margin: 1rem 0;
     display: grid;
     grid-template-columns: 15% auto;
+    box-shadow: $box-shadow;
 
     .dp {
         width: 10rem;
@@ -16,8 +17,6 @@
         overflow: hidden;
         border: 3px solid $cloud;
         background: $cloud;
-
-
     }
 
     img {
@@ -33,21 +32,37 @@
     padding: 2rem;
 
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.25rem;
 
         span {
             display: block;
-            font-size: .9rem;
+            font-size: .7rem;
             font-weight: 500;
             font-style: italic;
         }
 
         .link {
-            color: $darker-grey;
+            color: $black;
+            background: $grey;
+            width: 10rem;
+            padding: .2rem;
+            border-radius: .5rem;
             margin-top: 1rem;
             cursor: pointer;
-            font-size: .8rem;
-            font-weight: 400;
+            font-size: .6rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        &.stat {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: capitalize;
+
+            span {
+                font-size: 1.2rem;
+                font-weight: 900;
+            }
         }
     }
 }
@@ -57,8 +72,10 @@
     .company {
         grid-template-columns: 35% auto;
     }
+
     .details {
         padding: 0 .5rem;
+
         h1 {
             font-size: 1rem;
         }
