@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-  <g id="burger-menu" transform="translate(-36 -36)">
-    <g id="Rectangle_105" data-name="Rectangle 105" transform="translate(36 36)" fill="#fff" stroke="#35b23d" stroke-width="2">
-      <rect width="14" height="14" stroke="none"/>
-      <rect x="1" y="1" width="12" height="12" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="40" viewBox="0 0 38 40">
+  <g id="burger-menu" transform="translate(-405 -290.151)">
+    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(405 290.151)" fill="#fff" stroke="#009cd7" stroke-width="3">
+      <rect width="17" height="18" rx="2" stroke="none"/>
+      <rect x="1.5" y="1.5" width="14" height="15" rx="0.5" fill="none"/>
     </g>
-    <g id="Rectangle_106" data-name="Rectangle 106" transform="translate(36 52)" fill="#fff" stroke="#35b23d" stroke-width="2">
-      <rect width="14" height="14" stroke="none"/>
-      <rect x="1" y="1" width="12" height="12" fill="none"/>
+    <g id="Rectangle_1-2" data-name="Rectangle 1" transform="translate(405 312.151)" fill="#fff" stroke="#009cd7" stroke-width="3">
+      <rect width="17" height="18" rx="2" stroke="none"/>
+      <rect x="1.5" y="1.5" width="14" height="15" rx="0.5" fill="none"/>
     </g>
-    <g id="Rectangle_107" data-name="Rectangle 107" transform="translate(52 52)" fill="#fff" stroke="#35b23d" stroke-width="2">
-      <rect width="14" height="14" stroke="none"/>
-      <rect x="1" y="1" width="12" height="12" fill="none"/>
+    <g id="Rectangle_1-3" data-name="Rectangle 1" transform="translate(425 312.151)" fill="#fff" stroke="#009cd7" stroke-width="3">
+      <rect width="18" height="18" rx="2" stroke="none"/>
+      <rect x="1.5" y="1.5" width="15" height="15" rx="0.5" fill="none"/>
     </g>
   </g>
 </svg>

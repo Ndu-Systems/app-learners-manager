@@ -1,9 +1,6 @@
 @import '../../../../../assets/scss/color';
 
-.main {
-    padding: 8rem 0;
-}
-
+ 
 .form {
     width: 40%;
 
@@ -20,7 +17,8 @@
         text-align: center;
         width: 100%;
         color: $primary;
-        position: relative; 
+        position: relative;
+
         span {
             font-size: .8rem;
             color: $black;
@@ -45,11 +43,12 @@
         padding: 1rem;
         left: 0;
         margin-top: 4rem;
+
         .action {
             button.mat-button {
-              padding: .5rem;
+                padding: .5rem;
             }
-          }
+        }
     }
 
     .cta {

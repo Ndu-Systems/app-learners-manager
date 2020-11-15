@@ -4,7 +4,7 @@
   border-radius: 10px;
   padding: 20px;
   background: $white;
-  padding: 1rem;
+  padding: 0 1rem;
 
   @media only screen and (max-width: 600px) {
     display: flex;
@@ -88,12 +88,17 @@
       font-size: .75rem;
       text-transform: capitalize;
     }
+
+    @media screen and (max-width: 600px) {
+      margin: 0;
+    }
   }
 
   .forgot-password {
     position: relative;
     margin: 1rem 0;
     width: 8rem;
+
     a {
       background: $cloud;
       border-radius: .3rem;
@@ -129,7 +134,6 @@
         bottom: 0;
         width: 100%;
         padding: .5rem 1rem;
-        right: .5rem;
         font-weight: 400;
       }
     }

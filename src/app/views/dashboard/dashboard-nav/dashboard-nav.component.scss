@@ -218,13 +218,16 @@
         width: 80%;
         box-shadow: $box-shadow;
         border-radius: 0 1rem 1rem 0;
+
         h1.h1 {
           &.fundani {
             color: $primary;
           }
+
           font-size: 1rem;
           font-weight: 700;
         }
+
         .user-profile {
           display: grid;
           grid-template-columns: 15% auto;
@@ -237,6 +240,17 @@
             font-size: 1rem;
             font-weight: 500;
             margin-top: 2rem;
+          }
+        }
+
+        button.mat-button.logout {
+           color: $darker-grey !important;
+           padding: 0;
+           width: 15rem !important;
+           background: $grey;
+          img {
+            height: 1rem;
+            margin-left: 2rem;
           }
         }
 

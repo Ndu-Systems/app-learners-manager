@@ -1,53 +1,71 @@
-<app-home-nav [showNav]="false"></app-home-nav>
+ <div class="main account">
+
+   <div class="col-1-of-1">
+
+     <form class="form"
+           [formGroup]="rForm">
+       <a routerLink=""> <img src="assets/images/common/arrow.svg"
+              alt="go back"></a>
+       <h1>
+         Login to your account.
+       </h1>
+       <div class="form-group">
+         <label for="exampleInputEmail1">Email address</label>
+         <input type="email"
+                class="form-control"
+                formControlName="Email"
+                id="exampleInputEmail1"
+                placeholder="Enter email">
+         <div class="alert"
+              *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+           Email is required
+         </div>
+       </div>
+       <div class="form-group">
+         <label for="exampleInputPassword1">
+           Password
+         </label>
+         <input type="password"
+                [type]="hidePassword? 'password': 'text'"
+                class="form-control"
+                formControlName="Password"
+                id="exampleInputPassword1"
+                placeholder="Password">
+         <mat-icon class="pointer"
+                   (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
+         </mat-icon>
+         <div class="showPassword"
+              (click)="hidePassword = !hidePassword">
+           <div class="alert"
+                *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+             Password is required
+           </div>
+         </div>
+       </div>
+
+       <div class="forgot-password">
+         <a routerLink="/forgot-password"
+            class="link">forgot password ?</a>
+       </div>
+       <div class="action">
+         <button mat-button
+                 color="primary"
+                 (click)="Login()"
+                 [disabled]="!rForm.valid">
+           Login
+         </button>
+         <h5 class="error">{{error}}</h5>
+       </div>
+       <div class="cta">
+         <a routerLink="/sign-up">
+           <span>Don't have an account?</span>
+           Sign up</a>
+       </div>
+     </form>
+   </div>
 
 
-<div class="main account">
-  <div class="col-1-of-1">
-    <form class="form" [formGroup]="rForm">
-      <h1>
-        Login to your account.
-      </h1>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" formControlName="Email" id="exampleInputEmail1"
-          placeholder="Enter email">
-        <div class="alert" *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
-          Email is required
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">
-          Password
-          <mat-icon class="pointer" (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+ </div>
 
-        </label>
-        <input type="password" [type]="hidePassword? 'password': 'text'" class="form-control" formControlName="Password"
-          id="exampleInputPassword1" placeholder="Password">
-        <div class="showPassword" (click)="hidePassword = !hidePassword">
-          <div class="alert" *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
-            Password is required
-          </div>
-        </div>
-      </div>
-
-      <div class="forgot-password">
-        <a routerLink="/forgot-password" class="link">forgot password ?</a>
-      </div>
-      <div class="action">
-        <button mat-button color="primary" (click)="Login()" [disabled]="!rForm.valid">
-          Login
-        </button>
-        <h5 class="error">{{error}}</h5>
-      </div>
-      <div class="cta">
-        <a routerLink="/sign-up">
-          <span>Don't have an account?</span>
-          Sign up</a>
-      </div>
-    </form>
-  </div>
-
-
-</div>
-
-<app-loader [showLoader]="showLoader" *ngIf="showLoader"></app-loader>
+ <app-loader [showLoader]="showLoader"
+             *ngIf="showLoader"></app-loader>
