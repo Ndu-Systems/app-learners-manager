@@ -2,8 +2,8 @@
 
 .subjects {
     display: grid;
-    grid-template-columns: repeat(3, 25%);
-    grid-gap: 2rem;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 1rem;
 
     @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
@@ -12,6 +12,7 @@
 
     .subject {
         background: $cloud;
+        width: 15rem;
         padding: 1rem;
         border-radius: .4rem;
         cursor: pointer;
@@ -23,13 +24,13 @@
             .name {
                 font-weight: 600;
                 display: block;
-                letter-spacing: .1rem;
-                font-size: 1.4rem;
+                font-size: 1rem;
                 margin-bottom: .5rem;
             }
 
             .lessions {
-                font-size: 1.1rem;
+                font-size: .85rem;
+                font-weight: 500;
                 display: block;
             }
 

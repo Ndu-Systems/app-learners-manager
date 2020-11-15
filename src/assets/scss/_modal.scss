@@ -18,7 +18,7 @@
   overflow-y: scroll;
   max-height: 100vh;
   height: 100%;
-  padding: 8rem 16rem;
+  padding: 4rem 16rem;
   box-sizing: border-box;
 
   ::-webkit-scrollbar-thumb {
@@ -46,7 +46,6 @@
   .close {
     text-align: left;
     cursor: pointer;
-    padding: 1rem 16rem;
     font-weight: 800;
     border-bottom: 1px solid $grey;
     position: fixed;
@@ -55,9 +54,8 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-
+    padding: 1rem;
     @media only screen and (max-width: 600px) {
-      padding: 1rem;
 
     }
 
@@ -109,7 +107,7 @@
       margin: .3rem;
     }
 
-    h1{
+    h1 {
       text-align: left;
       margin: .3rem;
     }
@@ -147,10 +145,7 @@
 
   button {
     @media only screen and (max-width: 600px) {
-      position: fixed;
-      left: 1rem;
-      bottom: 2rem;
-      width: 92% !important;
+      margin: 1rem auto;
       z-index: 10000;
     }
   }
@@ -161,7 +156,7 @@
     }
   }
 
-  .btn-float{
+  .btn-float {
     position: fixed;
     z-index: 1000;
     right: 22%;
@@ -170,6 +165,7 @@
     padding: .5rem 1rem;
     width: 10rem !important;
   }
+
   .col-1-of-2 {
 
     input,

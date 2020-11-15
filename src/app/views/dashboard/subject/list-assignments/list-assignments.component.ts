@@ -67,7 +67,7 @@ export class ListAssignmentsComponent implements OnInit {
 
     this.error = '';
     if (!this.assignment.Tittle) {
-      this.error = `⚠️ Enter  assignment  tittle`;
+      this.error = `⚠️ Enter  assignment  title`;
       return false;
     }
     this.showLoader = true;
@@ -83,7 +83,7 @@ export class ListAssignmentsComponent implements OnInit {
 
     this.error = '';
     if (!this.assignment.Tittle) {
-      this.error = `⚠️ Enter  assignment  tittle`;
+      this.error = `⚠️ Enter  assignment  title`;
       return false;
     }
     this.showLoader = true;

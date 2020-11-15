@@ -24,7 +24,7 @@
          (click)="logout()"
          routerLinkActive="active-link"
          [routerLinkActiveOptions]="{exact: true}">
-        <div class="nav-item">
+        <!-- <div class="nav-item">
           <img src="assets/images/dashboard/nav/logout.svg"
                alt="feed"
                class="hl-on">
@@ -32,10 +32,17 @@
                alt="feed"
                class="hl-off">
           Logout
-        </div>
+        </div> -->
+        
       </a>
     </li>
   </ul>
+  <button (click)="logout()" mat-button class="logout" color="primary">
+    logout
+    <img src="assets/images/common/logout.svg"
+    alt="feed"
+    class="hl-on">
+  </button>
 </div>
 
 <div class="nav mobile">

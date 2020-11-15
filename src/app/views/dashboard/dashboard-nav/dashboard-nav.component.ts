@@ -71,7 +71,6 @@ export class DashboardNavComponent implements OnInit {
     }
     this.navigationService.updateNavigationState(this.navigationModel);
     this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
-
   }
 
   setAdminRoute() {

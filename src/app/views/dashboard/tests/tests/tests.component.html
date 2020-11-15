@@ -1,6 +1,10 @@
-<div class="" *ngIf="tests">
-  <div class="tests" *ngIf="tests.length; else nodata">
-    <div class="test" *ngFor="let test of tests" (click)="preview(test)">
+<div class=""
+     *ngIf="tests">
+  <div class="tests"
+       *ngIf="tests.length; else nodata">
+    <div class="test"
+         *ngFor="let test of tests"
+         (click)="preview(test)">
       <p>
         <span class="tittle">
           <span class="material-icons">
@@ -13,7 +17,9 @@
 
     <div class="test add-row">
       <div class="add">
-        <button mat-button color="primary" (click)="add()"> Set a test</button>
+        <button mat-button
+                color="primary"
+                (click)="add()"> Set a test</button>
       </div>
     </div>
   </div>
@@ -30,44 +36,54 @@
   </ng-template>
 </div>
 
-<div class="overlay" *ngIf="showModal || isDelete || showPreview" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal">
-  <h1>
-    {{modalHeading}}
-  </h1>
+<div class="overlay"
+     *ngIf="showModal || isDelete || showPreview"
+     (click)="closeModal()"></div>
+<div class="modal"
+     *ngIf="showModal">
+  <div class="close"
+       (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
 
   <div class="form">
-    <label for="">Test title**</label>
-    <input type="text" [(ngModel)]="current.Name">
-
-    <label for="">Total marks**</label>
-    <input type="number" [(ngModel)]="current.Marks">
-
-
-    <!-- <label for="">Test duration</label>
-    <input type="number" [(ngModel)]="duration"> -->
-
-
-
-    <label for="">Test date</label>
-    <input type="date" [(ngModel)]="current.TestDate">
-
-    <div class="col-1-of-2">
-      <div class="">
-        <label for="">Start time</label>
-        <input type="time" [(ngModel)]="current.TestTime">
-      </div>
-      <div class="">
-        <label for="">Finish time</label>
-        <input type="time" [(ngModel)]="current.FinishTime">
-      </div>
+    <div class="form-group">
+      <label for="">Test title**</label>
+      <input type="text"
+             [(ngModel)]="current.Name">
+    </div>
+    
+    <div class="form-group">
+      <label for="">Total marks**</label>
+      <input type="number"
+             [(ngModel)]="current.Marks">
     </div>
 
-    <!-- <label for="">Show Result Same Time</label>
-    <input type="checkbox" [(ngModel)]="showResultSameTime"> -->
+    <div class="form-group">
+      <label for="">Test date</label>
+      <input type="date"
+             [(ngModel)]="current.TestDate">
+    </div>
 
-
-    <button mat-button color="primary" (click)="save()"> Save Test</button>
+   
+    
+    <div class="col-1-of-2">
+      <div class="form-group">
+        <label for="">Start time</label>
+        <input type="time"
+               [(ngModel)]="current.TestTime">
+      </div>
+      <div class="form-group">
+        <label for="">Finish time</label>
+        <input type="time"
+               [(ngModel)]="current.FinishTime">
+      </div>
+    </div>
+    <button mat-button
+            color="primary"
+            (click)="save()"> Save Test</button>
     <div class="error">
       {{error}}
     </div>
@@ -75,15 +91,22 @@
 </div>
 
 
-<div class="modal " *ngIf="isDelete">
+<div class="modal "
+     *ngIf="isDelete">
   <div class="delete-modal">
     <h1>
       {{modalHeading}}
     </h1>
 
 
-    <button mat-button color="primary" class="danger" (click)="save()"> Yes, delete</button>
-    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <button mat-button
+            color="primary"
+            class="danger"
+            (click)="save()"> Yes, delete</button>
+    <button mat-button
+            color="primary"
+            class="secondary"
+            (click)="closeModal()"> Cancel</button>
     <div class="error">
       {{error}}
     </div>
@@ -91,11 +114,13 @@
 </div>
 
 
-<div class="modal test-modal" *ngIf="showPreview && current">
-  <div class="close" (click)="closeModal()">
+<div class="modal test-modal"
+     *ngIf="showPreview && current">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
-    </span> {{modalHeading}} 
+    </span> {{modalHeading}}
     <!-- <button mat-button (click)="edit()" style="float: right; width: 7rem;">
       Edit
     </button> -->

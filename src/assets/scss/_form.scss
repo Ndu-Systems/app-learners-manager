@@ -4,7 +4,7 @@
   border-radius: 10px;
   padding: 20px;
   background: $white;
-  padding: 0 1rem;
+  padding: 1rem;
 
   @media only screen and (max-width: 600px) {
     display: flex;
@@ -47,6 +47,8 @@
     input[type=text],
     [type=email],
     [type=number],
+    [type=date],
+    [type=time],
     [type=password],
     select {
       width: 100%;
@@ -131,7 +133,6 @@
     @media only screen and (max-width: 600px) {
       &.mat-primary {
         background: $primary;
-        bottom: 0;
         width: 100%;
         padding: .5rem 1rem;
         font-weight: 400;

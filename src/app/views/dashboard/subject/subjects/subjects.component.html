@@ -1,125 +1,113 @@
-<div class="tab">
-  <!-- <p>Subjects for <b>{{grade.Name}}</b></p> -->
+ <div *ngIf="subjects">
+   <div class="subjects"
+        *ngIf="subjects.length; else nosubjects">
 
-  <span *ngIf="subjects">
-    <div class="subjects"
-         *ngIf="subjects.length; else nosubjects">
-      <!-- <pre>
-      {{subjects | json}}
-     </pre> -->
-      <div class="subject"
-           *ngFor="let item of subjects"
-           (click)="openSubject(item)">
-        <p>
-          <span class="name">
-            {{item.Name}}
-          </span>
-          <span class="lessions">
-            <span class="material-icons">
-              article
-            </span>
-            Lessons ({{item.Lessons?.length || 0}})
-          </span>
-          <span class="lessions">
-            <span class="material-icons">
-              assignment_turned_in
-            </span>
-            Tests ({{item.Tests?.length || 0}})
-          </span>
-          <!-- <span class="lessions">
-            <span class="material-icons">
-              people_alt
-            </span>
-            Students enrolled ({{item.Tests?.length || 0}})
-          </span> -->
-        </p>
-      </div>
+     <div class="subject"
+          *ngFor="let item of subjects"
+          (click)="openSubject(item)">
+       <p>
+         <span class="name">
+           {{item.Name}}
+         </span>
+         <span class="lessions">
+           <span class="material-icons">
+             article
+           </span>
+           Lessons ({{item.Lessons?.length || 0}})
+         </span>
+         <span class="lessions">
+           <span class="material-icons">
+             assignment_turned_in
+           </span>
+           Tests ({{item.Tests?.length || 0}})
+         </span>
+       </p>
+     </div>
 
-      <button mat-button
-              class="add-new"
-              color="primary"
-              *ngIf="isAdmin"
-              (click)="add()"> Add new subject</button>
-    </div>
+     <button mat-button
+             class="add-new"
+             color="primary"
+             *ngIf="isAdmin"
+             (click)="add()"> Add new subject</button>
+   </div>
 
-    <ng-template #nosubjects>
-      <div class="nodata">
-        <h1>
-          No subjects found.
-          <span *ngIf="isAdmin"
-                (click)="add()">
-            Add subject
-          </span>
-        </h1>
-      </div>
-    </ng-template>
-  </span>
-</div>
+   <ng-template #nosubjects>
+     <div class="nodata">
+       <h1>
+         No subjects found.
+         <span *ngIf="isAdmin"
+               (click)="add()">
+           Add subject
+         </span>
+       </h1>
+     </div>
+   </ng-template>
+ </div>
 
 
 
-<div class="overlay"
-     *ngIf="showModal || isDelete"
-     (click)="closeModal()"></div>
-<div class="modal"
-     *ngIf="showModal">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
-      west
-    </span> {{modalHeading}}
-  </div>
+ <div class="overlay"
+      *ngIf="showModal || isDelete"
+      (click)="closeModal()"></div>
+ <div class="modal"
+      *ngIf="showModal">
+   <div class="close"
+        (click)="closeModal()">
+     <span class="material-icons">
+       west
+     </span> {{modalHeading}}
+   </div>
 
-  <div class="form">
-    <div class="form-group">
-      <label for="">Subject name**</label>
-      <input type="text"
-             [(ngModel)]="name">
-    </div>
+   <div class="form">
+     <div class="form-group">
+       <label for="">Subject name**</label>
+       <input type="text"
+              [(ngModel)]="name">
+     </div>
 
-    <div class="form-group">
-      <label for="">Subject code</label>
-      <input type="text"
-             [(ngModel)]="code">
-    </div>
+     <div class="form-group">
+       <label for="">Subject code</label>
+       <input type="text"
+              [(ngModel)]="code">
+     </div>
 
-    <div class="form-group">
-      <label for="">Pass mark</label>
-      <input type="text"
-             [(ngModel)]="passMark">
-    </div>
+     <div class="form-group">
+       <label for="">Pass mark</label>
+       <input type="text"
+              [(ngModel)]="passMark">
+     </div>
 
-    <div class="form-group">
-      <label for="">Subject description</label>
-      <textarea [(ngModel)]="description"></textarea>
-    </div>
+     <div class="form-group">
+       <label for="">Subject description</label>
+       <textarea [(ngModel)]="description"></textarea>
+     </div>
 
-    <button mat-button
-            color="primary"
-            (click)="save()"> Save subject </button>
-    <div class="error">
-      {{error}}
-    </div>
-  </div>
-</div>
+     <button mat-button
+             color="primary"
+             (click)="save()"> Save subject </button>
+     <div class="error">
+       {{error}}
+     </div>
+   </div>
+ </div>
 
 
-<div class="modal"
-     *ngIf="isDelete">
-  <div class="delete-modal">
-    <h1>
-      {{modalHeading}}
-    </h1>
-    <button mat-button
-            color="primary"
-            class="danger"
-            (click)="save()"> Yes, delete</button>
-    <button mat-button
-            color="primary"
-            class="secondary"
-            (click)="closeModal()"> Cancel</button>
-    <div class="error">
-      {{error}}
-    </div>
-  </div>
-</div>
+ <div class="modal"
+      *ngIf="isDelete">
+   <div class="delete-modal">
+     <h1>
+       {{modalHeading}}
+     </h1>
+     <button mat-button
+             color="primary"
+             class="danger"
+             (click)="save()"> Yes, delete</button>
+     <button mat-button
+             color="primary"
+             class="secondary"
+             (click)="closeModal()"> Cancel</button>
+     <div class="error">
+       {{error}}
+     </div>
+   </div>
+ </div>

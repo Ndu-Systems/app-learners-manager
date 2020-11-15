@@ -1,6 +1,10 @@
-<div class="" *ngIf="assignments">
-  <div class="lessons" *ngIf="assignments.length; else nodata">
-    <div class="lesson" *ngFor="let assignment of assignments" (click)="preview(assignment)">
+<div class=""
+     *ngIf="assignments">
+  <div class="lessons"
+       *ngIf="assignments.length; else nodata">
+    <div class="lesson"
+         *ngFor="let assignment of assignments"
+         (click)="preview(assignment)">
       <p>
         <span class="tittle">
           <span class="material-icons">
@@ -15,7 +19,9 @@
 
     <div class="lesson add-row">
       <div class="add">
-        <button mat-button color="primary" (click)="add()"> Add new assignment</button>
+        <button mat-button
+                color="primary"
+                (click)="add()"> Add new assignment</button>
       </div>
     </div>
   </div>
@@ -34,33 +40,46 @@
 
 
 
-<div class="overlay" *ngIf="showModal || showDelete || showPreview" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal && assignment">
-  <div class="close" (click)="closeModal()">
+<div class="overlay"
+     *ngIf="showModal || showDelete || showPreview"
+     (click)="closeModal()"></div>
+<div class="modal"
+     *ngIf="showModal && assignment">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
   </div>
 
   <div class="form">
-    <label for="">Assignment tittle**</label>
-    <input type="text" placeholder="e.g. How to write a strong introduction." [(ngModel)]="assignment.Tittle">
-
-    <label for="">Assignment points**</label>
-    <input type="number" placeholder="e.g. 100" [(ngModel)]="assignment.Points">
-
-    <label for="">Assignment due date**</label>
-    <input type="date" [(ngModel)]="assignment.DueDate">
-
-    <label for="">Assignment Instructions</label>
-
-    <textarea [(ngModel)]="assignment.Instructions" placeholder="e.g. How to write a strong introduction.">
-
-    </textarea>
-
-
-
-    <button mat-button color="primary" class="btn-float" (click)="save()"> Save Assignment</button>
+    <div class="form-group">
+      <label for="">Assignment tittle**</label>
+      <input type="text"
+             placeholder="e.g. How to write a strong introduction."
+             [(ngModel)]="assignment.Tittle">
+    </div>
+    <div class="form-group">
+      <label for="">Assignment points**</label>
+      <input type="number"
+             placeholder="e.g. 100"
+             [(ngModel)]="assignment.Points">
+    </div>
+    <div class="form-group">
+      <label for="">Assignment due date**</label>
+      <input type="date"
+             [(ngModel)]="assignment.DueDate">
+    </div>
+    <div class="form-group">
+      <label for="">Assignment Instructions</label>
+      <textarea [(ngModel)]="assignment.Instructions"
+                placeholder="e.g. How to write a strong introduction.">
+      </textarea>
+    </div>
+    <button mat-button
+            color="primary"
+            class="btn-float"
+            (click)="save()"> Save Assignment</button>
     <div class="error">
       {{error}}
     </div>
@@ -68,9 +87,11 @@
 </div>
 
 
-<div class="modal" *ngIf="showPreview && assignment">
+<div class="modal"
+     *ngIf="showPreview && assignment">
   <div class="delete-modal">
-    <div class="close" (click)="closeModal()">
+    <div class="close"
+         (click)="closeModal()">
       <span class="material-icons">
         west
       </span> {{modalHeading}}
@@ -78,30 +99,40 @@
 
     <div class="form">
       <label for="">Assignment tittle**</label>
-      <input type="text" placeholder="e.g. How to write a strong introduction." [(ngModel)]="assignment.Tittle">
+      <input type="text"
+             placeholder="e.g. How to write a strong introduction."
+             [(ngModel)]="assignment.Tittle">
 
       <label for="">Assignment points**</label>
-      <input type="number" placeholder="e.g. 100" [(ngModel)]="assignment.Points">
+      <input type="number"
+             placeholder="e.g. 100"
+             [(ngModel)]="assignment.Points">
 
       <label for="">Assignment due date**</label>
-      <input type="date" [(ngModel)]="assignment.DueDate">
+      <input type="date"
+             [(ngModel)]="assignment.DueDate">
 
       <label for="">Assignment Instructions</label>
 
-      <textarea [(ngModel)]="assignment.Instructions" placeholder="e.g. How to write a strong introduction.">
+      <textarea [(ngModel)]="assignment.Instructions"
+                placeholder="e.g. How to write a strong introduction.">
 
       </textarea>
 
 
       <div class="files">
         <label for="">Assignment Files</label>
-        <app-images [images]="assignment.Images" [otherId]="assignment.AssignmentId"
-          (onUploadFinished)="uploadFinished($event)"></app-images>
+        <app-images [images]="assignment.Images"
+                    [otherId]="assignment.AssignmentId"
+                    (onUploadFinished)="uploadFinished($event)"></app-images>
       </div>
 
 
 
-      <button mat-button color="primary" class="btn-float" (click)="update()"> Save Changes</button>
+      <button mat-button
+              color="primary"
+              class="btn-float"
+              (click)="update()"> Save Changes</button>
       <div class="error">
         {{error}}
       </div>
@@ -113,16 +144,24 @@
 </div>
 
 
-<div class="modal" *ngIf="showDelete">
+<div class="modal"
+     *ngIf="showDelete">
   <div class="delete-modal">
-    <div class="close" (click)="closeModal()">
+    <div class="close"
+         (click)="closeModal()">
       <span class="material-icons">
         west
       </span> {{modalHeading}}
     </div>
 
-    <button mat-button color="primary" class="danger" (click)="formatBody()"> Yes, delete</button>
-    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <button mat-button
+            color="primary"
+            class="danger"
+            (click)="formatBody()"> Yes, delete</button>
+    <button mat-button
+            color="primary"
+            class="secondary"
+            (click)="closeModal()"> Cancel</button>
     <div class="error">
       {{error}}
     </div>

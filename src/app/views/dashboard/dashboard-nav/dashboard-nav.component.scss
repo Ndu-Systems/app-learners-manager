@@ -241,22 +241,36 @@
             font-weight: 500;
             margin-top: 2rem;
           }
-        }
-
+        }  
         button.mat-button.logout {
-           color: $darker-grey !important;
-           padding: 0;
-           width: 15rem !important;
-           background: $grey;
-          img {
-            height: 1rem;
-            margin-left: 2rem;
-          }
-        }
+          color: $darker-grey !important;
+          padding: 0;
+          width: 15rem !important;
+          background: $grey;
+         img {
+           height: 1rem;
+           margin-left: 2rem;
+         }
+     
+       }  
 
       }
 
     }
   }
+  button.mat-button.logout {
+    color: $darker-grey !important;
+    padding: 0;
+    width: 8rem !important;
+    background: $grey;
+   img {
+     height: 1rem;
+     margin-left: 2rem;
+   }
+
+   @media screen and (max-width: 600px) {
+    width: 15rem !important;
+   }
+ }
 
 }

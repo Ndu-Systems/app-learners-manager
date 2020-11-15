@@ -16,6 +16,8 @@
   .body {
     background: $cloud;
     padding: 0 2rem;
+    overflow-y: scroll;
+    height: 100vh;
   }
 
   @media only screen and (max-width: 600px) {
