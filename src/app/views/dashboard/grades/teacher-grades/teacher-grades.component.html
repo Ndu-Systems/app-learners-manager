@@ -37,10 +37,10 @@
   </div>
 
   <div class="form">
-    <div class="form-group">
+    <div class="form-group" *ngIf="institutionTypes">
       <label for="">Select Institution Type*</label>
-      <select [(ngModel)]="gradeToAdd.InstituteTypeId"> {{InstituteTypeId}}
-        <option *ngFor="let item of institutionTypes" [value]="item.InstituteTypeId">{{item.Name}}</option>
+      <select (change)="selectedInstitutionType($event)">
+        <option *ngFor="let item of institutionTypes" [value]="item.Name">{{item.Name}}</option>
       </select>
     </div>
     <div class="form-group">
@@ -69,7 +69,7 @@
   <div class="form">
     <div class="form-group">
       <label for="">Select Institution Type*</label>
-      <select [(ngModel)]="grade.InstituteTypeId"> {{InstituteTypeId}}
+      <select [(ngModel)]="grade.InstitutionTypeId"> {{InstitutionTypeId}}
         <option *ngFor="let item of institutionTypes" [value]="item.InstitutionTypeId">{{item.Name}}</option>
       </select>
     </div>

@@ -35,7 +35,7 @@ export interface Grade {
     CompanyId : string;
     Name?: string;
     Description?: string;
-    InstituteTypeId?: number;
+    InstitutionTypeId?: number;
     CreateDate?: string;
     CreateUserId?: string;
     ModifyDate?: string;

@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { InstitutionTypeModel } from 'src/app/_models';
+import { GenericQueryModel, InstitutionTypeModel } from 'src/app/_models';
 import { Grade } from 'src/app/_models/grade.model';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, ApiService } from 'src/app/_services';
 import { GradeService } from 'src/app/_services/grade.service';
+import { GET_INSTITUTION_TYPES_API } from 'src/app/_services/_shared';
 import { ADD_GRADE_URL, UPDATE_GRADE_URL } from 'src/app/_services/_shared/constants';
 
 @Component({
@@ -14,7 +15,7 @@ import { ADD_GRADE_URL, UPDATE_GRADE_URL } from 'src/app/_services/_shared/const
 })
 export class TeacherGradesComponent implements OnInit {
   @Input() grades: Grade[];
-  @Input() institutionTypes: InstitutionTypeModel[];
+  institutionTypes: InstitutionTypeModel[];
   grade: Grade;
   gradeId: string;
   showModal: boolean;
@@ -24,7 +25,7 @@ export class TeacherGradesComponent implements OnInit {
   errors: any[];
   gradeToAdd: Grade;
   user: User;
-  InstituteTypeId: any;
+  InstitutionTypeId: any;
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -35,6 +36,7 @@ export class TeacherGradesComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
+
     if (this.grades && this.grades.length) {
       if (this.gradeService.currentSelectedGradeValue) {
         this.grade = this.gradeService.currentSelectedGradeValue;
@@ -45,6 +47,9 @@ export class TeacherGradesComponent implements OnInit {
       }
 
     }
+
+    this.getInstitutionTypes();
+
   }
   gradeChanged(grade: Grade) {
     this.grade = grade;
@@ -60,7 +65,7 @@ export class TeacherGradesComponent implements OnInit {
       CompanyId: this.user.CompanyId,
       Name: '',
       Description: '',
-      InstituteTypeId: 0,
+      InstitutionTypeId: 0,
       CreateUserId: this.user.UserId,
       ModifyUserId: this.user.UserId,
       StatusId: 1
@@ -73,11 +78,27 @@ export class TeacherGradesComponent implements OnInit {
     this.isDelete = false;
     this.isUpdate = false;
   }
+  getInstitutionTypes() {
+    const query: GenericQueryModel = { StatusId: 1 };
+    this.apiServices.getWithQuery(GET_INSTITUTION_TYPES_API, query).subscribe(data => {
+      const institutions = data as InstitutionTypeModel[];
+      if (institutions != null &&
+        institutions != undefined &&
+        institutions.length > 0) {
+        this.institutionTypes = institutions;
+      }
+    })
+  }
 
+  selectedInstitutionType($event) {
+    const typeName = $event.target.value;
+    const instituteType = this.institutionTypes.find(x => x.Name === typeName);
+    this.gradeToAdd.InstitutionTypeId = instituteType.InstitutionTypeId;
+  }
   save() {
 
     this.errors = [];
-    if (!this.gradeToAdd.InstituteTypeId) {
+    if (!this.gradeToAdd.InstitutionTypeId) {
       this.errors.push(`⚠️ Institution type is required`);
     }
     if (!this.gradeToAdd.Name) {
@@ -90,7 +111,6 @@ export class TeacherGradesComponent implements OnInit {
     if (this.errors.length > 0) {
       return false;
     }
-
     this.apiServices.add(ADD_GRADE_URL, this.gradeToAdd).subscribe(res => {
       if (res && res.GradeId) {
         res.Subjects = [];
@@ -107,7 +127,7 @@ export class TeacherGradesComponent implements OnInit {
   update() {
 
     this.errors = [];
-    if (!this.grade.InstituteTypeId) {
+    if (!this.grade.InstitutionTypeId) {
       this.errors.push(`⚠️ Institution type is required`);
     }
     if (!this.grade.Name) {

@@ -117,6 +117,7 @@ export class SignUpComponent implements OnInit {
           setTimeout(() => {
             this.showLoader = false;
             alert('Account Registered successfully, PLEASE Check your email for activation');
+            this.routeTo.navigate(['']);
           }, 1000);
         }
       });

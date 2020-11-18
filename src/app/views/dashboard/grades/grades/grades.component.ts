@@ -121,7 +121,7 @@ export class GradesComponent implements OnInit {
     this.showModal = true;
     this.isUpdate = true;
     this.name = item.Name;
-    this.institutionTypeId = item.InstituteTypeId;
+    this.institutionTypeId = item.InstitutionTypeId;
     this.current = item;
     this.modalHeading = 'Update grade.'
     this.allGrades.map(x => x.Viewing = false);
