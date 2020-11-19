@@ -15,11 +15,22 @@
         margin-bottom: 4rem;
 
         .name {
-            padding: 1rem .5rem;
-            font-weight: 600;
-            position: relative;
-            top: .5rem;
-            color: $primary;
+            display: grid;
+            grid-template-columns: 80% 20%;
+            padding: 0 1rem;
+
+            h1 {
+                font-weight: 600;
+                position: relative;
+                top: .5rem;
+                color: $primary;
+                font-size: inherit;
+            }
+
+            @media only screen and (max-width: 600px) {
+                padding: 0;
+             }
+
         }
 
         .switch {
@@ -74,8 +85,9 @@
     @media only screen and (max-width: 600px) {
         a {
             left: 0;
-            width: 80%;
+            width: 7rem;
             margin: 0 auto;
+            margin-left: 1rem;
         }
 
     }
@@ -84,11 +96,13 @@
 .edit-grade {
     cursor: pointer;
     position: relative;
-    margin-left: 2rem;
-    top: .3rem;
     background: $cloud;
     border-radius: .3rem;
     padding: .2rem;
-}
+    color: $primary;
+    height: 2rem;
+    width: 2rem;
+    margin: 1rem;
 
- 
+    @media only screen and (max-width: 600px) {}
+}

@@ -78,6 +78,9 @@
 
         h1 {
             font-size: 1rem;
+            &.stat {
+                font-size: .75rem;
+            }
         }
     }
 

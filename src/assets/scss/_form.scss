@@ -7,16 +7,13 @@
   padding: 1rem;
 
   @media only screen and (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
     border-radius: 5px;
     padding: 20px;
-    width: 56%;
     display: block;
     position: relative;
     margin: 0;
-    left: 1rem;
     position: absolute;
+    width: 80%;
   }
 
   h1 {
