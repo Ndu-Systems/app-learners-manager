@@ -1,37 +1,36 @@
-
 button {
 
+  &.mat-primary {
+    background: $primary;
+    width: 100%;
+    border-radius: 0.313rem;
+    padding: .5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: $white !important;
+  }
+
+  &.mat-flat-button.mat-primary[disabled] {
+    background-color: $grey;
+  }
+
+  &[disabled] {
+    background-color: $grey;
+  }
+
+  @media only screen and (max-width: 600px) {
     &.mat-primary {
       background: $primary;
       width: 100%;
-      border-radius: 0.313rem;
-      padding: .5rem;
-      font-weight: 500;
-      font-size: 1rem;
-      color: $white !important;
-    }
-  
-    &.mat-flat-button.mat-primary[disabled] {
-      background-color: $grey;
-    }
-
-    &[disabled] {
-      background-color: $grey;
-    }
-  
-    @media only screen and (max-width: 600px) {
-      &.mat-primary {
-        background: $primary;
-        width: 100%;
-      }
     }
   }
-  
+}
 
-  button {
-    &.mat-primary {
-       color: $white;
-    }
+
+button {
+  &.mat-primary {
+    color: $white;
+  }
 }
 
 button.secondary {
@@ -42,12 +41,10 @@ button.secondary {
 }
 
 
-.save-all{
+.save-all {
   position: fixed;
   padding: 1rem;
   color: $white;
-  bottom: 11rem;
   right: 2rem;
-  bottom: 10rem;
-  height: 2rem;  
-}
+  bottom: 2rem;
+ }

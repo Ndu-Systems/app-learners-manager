@@ -8,7 +8,7 @@
 @import '../scss/comments';
 @import '../scss/lessons';
 @import '../scss/keyframes';
-
+@import '../scss/container';
 @import '../scss/dashboard/index';
 
 // *{
@@ -98,10 +98,8 @@ body {
     height: 80vh;
     overflow-y: scroll;
     background: $white;
- 
-    border-radius: 0.5rem;
-
     box-shadow: $box-shadow;
+
     .heading {
         display: grid;
         grid-template-columns: 80% auto;
@@ -177,6 +175,10 @@ body {
             }
         }
     }
+}
+
+.material-icons {
+    margin-right: 2rem;
 }
 
 .error {
@@ -624,17 +626,17 @@ span.date {
     border-bottom: 1px solid $cloud;
 
     h1 {
-        font-weight: 400;
+        font-weight: 700;
         display: block;
-        letter-spacing: .1rem;
-        font-size: 1.4rem;
-        margin-bottom: .5rem;
-
+        font-size: 1.2rem;
+        margin-bottom: .15rem;
         span {
             margin: .5rem 0;
-            font-size: 1.1rem;
+            font-size: .85rem;
             display: block;
+            font-weight: 400;
         }
+
     }
 }
 

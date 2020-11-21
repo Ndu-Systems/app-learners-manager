@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserProfileComponent implements OnInit {
   @Input() user: User;
+  @Input() userType: string;
   current: User;
   showModal: boolean;
   showConfirm: boolean;
@@ -30,14 +31,14 @@ export class UserProfileComponent implements OnInit {
     this.current = user;
     this.showModal = true;
     this.showConfirm = true;
-    this.modalHeading = 'Update student access'
+    this.modalHeading = `Update  ${this.userType} access`;
     if (Number(user.StatusId) === STATUS_PENDING_PAYMENTS) {
-      this.modalBody = `The student access will be locked`;
-      this.modalCTA = `Lock student access`;
+      this.modalBody = `The ${this.userType} access will be locked`;
+      this.modalCTA = `Lock ${this.userType} access`;
     }
     if (Number(user.StatusId) === STATUS_ACTIVE) {
-      this.modalBody = `The student access will activated!`;
-      this.modalCTA = `Grant student access`;
+      this.modalBody = `The ${this.userType} access will activated!`;
+      this.modalCTA = `Grant ${this.userType} access`;
     }
   }
 
@@ -47,8 +48,8 @@ export class UserProfileComponent implements OnInit {
     this.showLoader = true;
     this.apiServices.add(UPDATE_USER_URL, this.current).subscribe(res => {
       if (Number(this.current.StatusId) === STATUS_PENDING_PAYMENTS) {
-        this.modalBody = `The student access will be locked`;
-        this.modalCTA = `Lock student access`;
+        this.modalBody = `The ${this.userType} access will be locked`;
+        this.modalCTA = `Lock ${this.userType} access`;
 
         this.sendEmail(
           'Bad news ! You account was locked!',

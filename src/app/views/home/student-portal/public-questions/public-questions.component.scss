@@ -2,10 +2,10 @@
 
 .public-questions {
     background: $white;
-    margin: 5rem auto;
+    margin: 1rem auto;
     box-sizing: border-box;
-    padding: 2rem;
-    border-radius: .8rem;
+    padding: 1rem;
+    border-radius: $border-radius;
 
     .intro {
         display: grid;
@@ -20,13 +20,14 @@
 
     ul {
         li {
-            font-weight: 500;
+            font-weight: 400;
+            margin: 1rem;
+            font-size: .85rem;
+            color: $darker-grey;
         }
     }
 
     .actions {
-        display: grid;
-        grid-template-columns: 20% auto;
 
         button {
             width: 12rem;

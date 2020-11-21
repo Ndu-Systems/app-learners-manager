@@ -1,0 +1,11 @@
+.container {
+    padding: 1rem;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    .view-port {
+        overflow-y: scroll;
+        height: 53vh;
+    }
+}

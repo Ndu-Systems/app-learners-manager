@@ -1,6 +1,7 @@
 @import '../../../../../assets/scss/color';
 
 
+
 .grades-item {
     // display: grid;
     // grid-template-columns: repeat(6, 15%);
@@ -9,21 +10,28 @@
 
     .grade-item {
         box-sizing: border-box;
-        width: 50%;
         padding: 1rem;
         border-radius: 0;
         font-weight: 600;
         background: $cloud;
         color: $primary;
-       
+    }
 
+    @media only screen and (max-width: 600px) {
+        padding: 1rem 0;
     }
 }
 
-.grade-details{
+.grade-details {
     margin-bottom: 5rem;
     width: 50%;
+
+    @media only screen and (max-width: 600px) {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
 }
+
 ::ng-deep {
 
     .mat-checkbox-ripple .mat-ripple-element,

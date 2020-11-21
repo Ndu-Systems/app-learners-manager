@@ -1,16 +1,12 @@
 @import '../../../../../assets/scss/color';
 
 .main {
-    padding: 2rem 0;
 
     @media only screen and (max-width: 600px) {
         padding: 5rem 0;
     }
 
-
     .top-tab {
-        // display: grid;
-        // grid-template-columns: repeat(5, 20%);
         margin: 1rem 0;
         display: flex;
         width: 100%;
@@ -47,7 +43,7 @@
             padding: 1rem 0;
         }
 
-     
+
     }
 
 }
@@ -181,7 +177,7 @@ h1 {
     padding: 1rem 2rem;
     display: grid;
     grid-template-columns: 12% 50% 30% 10%;
-    border-radius: .8rem;
+    border-radius: $border-radius;
     box-sizing: border-box;
 
     .col {

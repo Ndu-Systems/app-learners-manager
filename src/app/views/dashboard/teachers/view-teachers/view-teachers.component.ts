@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BreadCrumbModel } from 'src/app/_models';
 import { Grade, Subject, Teachersubject } from 'src/app/_models/grade.model';
 import { TeacherSubject } from 'src/app/_models/teacher.grade.subject ';
 import { User } from 'src/app/_models/user.model';
@@ -22,6 +23,12 @@ export class ViewTeachersComponent implements OnInit {
   modalHeading: string;
   user: User;
   teachersubjects: Teachersubject[] = [];
+  crumbs: BreadCrumbModel[] = [
+    {
+      Label: 'teachers',
+      Link: '/dashboard/teachers'
+    } 
+  ];
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,

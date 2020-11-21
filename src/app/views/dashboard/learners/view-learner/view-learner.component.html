@@ -1,17 +1,19 @@
 <h3>
-  <span class="material-icons" (click)="back()">
+  <span class="material-icons"
+        (click)="back()">
     west
   </span>
   Learner profile
 </h3>
-<div class="main-list" *ngIf="student">
-
-  <app-user-profile [user]="student"></app-user-profile>
-  <div class="more">
-    <mat-tab-group>
-      <mat-tab label="Subjects">
+<div class="container"
+     *ngIf="student">
+<app-user-profile [user]="student" [userType]="'Learner'"></app-user-profile>
+  <mat-tab-group>
+    <mat-tab label="Subjects">
+      <div class="view-port">
         <div *ngFor="let item of student.Studentsubjects">
-          <div class="subject-item" *ngIf="item.StatusId==1">
+          <div class="subject-item"
+               *ngIf="item.StatusId==1">
             <h1>
               {{item?.Subject?.Name}}
               <span>
@@ -21,24 +23,30 @@
           </div>
 
         </div>
-        <div class="save-all">
-          <button mat-button color="primary" (click)="add()"> Assign subjects</button>
-        </div>
-      </mat-tab>
-      <mat-tab label="Parent details">
-      </mat-tab>
-      <mat-tab label="Perfomance">
-      </mat-tab>
+      </div>
+      <div class="save-all">
+        <button mat-button
+                color="primary"
+                (click)="add()"> Assign subjects</button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Parent details">
+    </mat-tab>
+    <mat-tab label="Perfomance">
+    </mat-tab>
 
-    </mat-tab-group>
-  </div>
+  </mat-tab-group>
 </div>
 
 
 
-<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal">
-  <div class="close" (click)="closeModal()">
+<div class="overlay"
+     *ngIf="showModal"
+     (click)="closeModal()"></div>
+<div class="modal"
+     *ngIf="showModal">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
@@ -50,10 +58,13 @@
       <div class="form-group">
         <label for="exampleInputName"> {{student?.Grade?.Name}} Subjects</label>
         <div class="subjects">
-          <div class="subject-item grid pointer" *ngFor="let subject of subjects" (click)="select(subject)">
+          <div class="subject-item grid pointer"
+               *ngFor="let subject of subjects"
+               (click)="select(subject)">
 
             <div class="label">
-              <input type="checkbox" [checked]="subject.IsSelected">
+              <input type="checkbox"
+                     [checked]="subject.IsSelected">
             </div>
             <div class="label">
               {{subject.Name}}
@@ -65,7 +76,9 @@
     </div>
     <div class="action">
       <div class="save-all">
-        <button mat-button color="primary" (click)="saveAll()"> Save changes</button>
+        <button mat-button
+                color="primary"
+                (click)="saveAll()"> Save changes</button>
       </div>
     </div>
   </div>

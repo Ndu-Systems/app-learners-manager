@@ -19,10 +19,9 @@
 
   <mat-tab-group (selectedTabChange)="onTabChanged($event)" [selectedIndex]="selectedIndex">
     <mat-tab label="Lessons">
-      <div class="recent topic" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length">
+      <div class="" *ngIf="studentsubject.Lessons && studentsubject.Lessons.length">
         <div class="topics">
-
-          <div *ngFor="let item of studentsubject.Lessons" class="topics">
+          <div *ngFor="let item of studentsubject.Lessons" class="topic">
             <div class="line pointer" (click)="readTopic(item)">
 
               <div class="text">
@@ -43,12 +42,11 @@
       </div>
     </mat-tab>
     <mat-tab label="Quiz tests" *ngIf="studentsubject.Tests && studentsubject.Tests.length">
-      <div class="recent topic">
+      <div class="quiz">
         <h1>
           {{studentsubject.Name}} <span class="lessons-heading">Tests</span>
         </h1>
         <div class="topics">
-
           <div *ngFor="let item of studentsubject.Tests" class="topics">
             <div class="line pointer" (click)="takeTest(item)">
 

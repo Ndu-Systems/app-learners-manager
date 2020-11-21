@@ -1,30 +1,31 @@
-<h3>
-  <span class="material-icons" (click)="back()">
-    west
-  </span>
-  Teacher profile
-</h3>
-<div class="main-list" *ngIf="teacher">
-
-  <app-user-profile [user]="teacher"></app-user-profile>
+<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+<div class="container"
+     *ngIf="teacher">
+  <app-user-profile [user]="teacher" [userType]="'teacher'"></app-user-profile>
   <div class="more">
     <mat-tab-group>
       <mat-tab label="Teacher Subjects">
-        <div *ngIf="teacher.Grades">
-          <div class="grades-item" *ngIf="teacher.Grades.length; else nodata">
-            <div  *ngFor="let grade of teacher.Grades; let i = index">
-             <div  class="grade-item"> {{grade.Name}}</div>
+        <div class="view-port" *ngIf="teacher.Grades">
+          <div class="grades-item col-1-of-2"
+               *ngIf="teacher.Grades.length; else nodata">
+            <div *ngFor="let grade of teacher.Grades; let i = index">
+              <div class="grade-item"> {{grade.Name}}</div>
               <div class="grade-details">
-                <div class="subject-item pointer" *ngFor="let subject of grade.Subjects">
-                  <section class="example-section"  (click)="selectSubject(subject)">
+                <div class="subject-item pointer"
+                     *ngFor="let subject of grade.Subjects">
+                  <section class="example-section"
+                           (click)="selectSubject(subject)">
                     <!-- <mat-checkbox [checked]="subject.IsSelected" class="example-margin">{{subject.Name}}</mat-checkbox> -->
-                    <input  [checked]="subject.IsSelected" type="checkbox">{{subject.Name}}
+                    <input [checked]="subject.IsSelected"
+                           type="checkbox">{{subject.Name}}
                   </section>
                 </div>
               </div>
             </div>
             <div class="save-all">
-              <button mat-button color="primary" (click)="saveAll()"> Save subjects</button>
+              <button mat-button
+                      color="primary"
+                      (click)="saveAll()"> Save subjects</button>
             </div>
           </div>
           <ng-template #nodata>
@@ -45,4 +46,3 @@
     </mat-tab-group>
   </div>
 </div>
-

@@ -3,10 +3,10 @@
 .company {
     background: $white;
     padding: 1rem;
-    border-radius: $border-radius;
     margin: 1rem 0;
     display: grid;
     grid-template-columns: 15% auto;
+    border-radius: $border-radius;
     box-shadow: $box-shadow;
 
     .dp {

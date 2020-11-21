@@ -1,8 +1,8 @@
 <div class="main">
-
   <div class="top-header">
     <div class="logo col">
-      <img src="assets/images/common/logo-home.png" alt="">
+      <img src="assets/images/common/logo-home.png"
+           alt="">
     </div>
     <div class="col username">
     </div>
@@ -16,30 +16,37 @@
       </div>
     </div>
     <div class="col logout">
-      <img src="assets/images/common/off.svg" (click)="signOut()" alt="log-off logo">
+      <img src="assets/images/common/off.svg"
+           (click)="signOut()"
+           alt="log-off logo">
     </div>
   </div>
 
-  <div class="company" *ngIf="user">
+  <div class="company"
+       *ngIf="user">
     <app-student-company [company]="user.Company"></app-student-company>
   </div>
 
   <div class="public-questions">
-    <app-public-questions *ngIf="studentsubjects && user" [user]="user" [subjects]="studentsubjects">
+    <app-public-questions *ngIf="studentsubjects && user"
+                          [user]="user"
+                          [subjects]="studentsubjects">
     </app-public-questions>
   </div>
-
   <div class="student-subjects">
-    <app-student-subjects-list *ngIf="studentsubjects && user" [subjects]="studentsubjects"></app-student-subjects-list>
+    <app-student-subjects-list *ngIf="studentsubjects && user"
+                               [subjects]="studentsubjects"></app-student-subjects-list>
   </div>
 
 
 </div>
 
 
-<div class="overlay" *ngIf="showModal"></div>
+<div class="overlay"
+     *ngIf="showModal"></div>
 
-<div class="modal" *ngIf="showLocked">
+<div class="modal"
+     *ngIf="showLocked">
 
 
   <div class="form">
@@ -49,11 +56,14 @@
         {{user.Billing[0].AmountDue | currency:'R'}} </strong>
     </p>
 
-    <div class="file" *ngIf="!user.Billing[0].PayProof">
+    <div class="file"
+         *ngIf="!user.Billing[0].PayProof">
       <p>
         If you already paid , please upload the proof of payment
       </p>
-      <input type="file" accept="image/*" (change)="imageChanged($event)">
+      <input type="file"
+             accept="image/*"
+             (change)="imageChanged($event)">
 
     </div>
 
@@ -63,8 +73,10 @@
     <div class="actions">
 
       <div class="sign-out">
-        <img src="assets/images/common/off.svg" alt="log-off logo">
-        <a mat-button (click)="signOut()">
+        <img src="assets/images/common/off.svg"
+             alt="log-off logo">
+        <a mat-button
+           (click)="signOut()">
           sign-out
         </a>
       </div>
