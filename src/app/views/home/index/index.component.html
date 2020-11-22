@@ -1,5 +1,5 @@
+<app-home-nav [showNav]="true"></app-home-nav>
 <div class="home">
-  <app-home-nav [showNav]="true"></app-home-nav>
   <button mat-button
           class="get-started mobile"
           color="primary"
@@ -9,16 +9,12 @@
   <div class="intro">
     <div class="">
       <h1>
-        Start teaching your students from anywhere!
+        Welcome to a new way of delivering educational content.
         <span>
-          Learning management system for learners at every level.
+          Providing flexibility and aiding in making the task of arranging development
+          opportunities far easier.
         </span>
-        <span>
-          Engaging learning experiences with videos and images.
-        </span>
-        <span>
-          Online assessments and same time results.
-        </span>
+
       </h1>
       <button mat-button
               class="get-started desktop"
@@ -29,177 +25,155 @@
     </div>
     <div class="showcase">
       <img class="home-image"
-           src="assets/images/common/main-home.png"
+           src="assets/images/home/home-image-desktop.svg"
            alt="">
     </div>
   </div>
-
-
-
-  <div class="see-examples">
-    <h1>
-      Let's walk you through
+</div>
+<div class="banner-blue">
+  <div class="content">
+    <h1 class="h4">
+      Become a member and teach your community of dedicated students or learners.
     </h1>
-    <div class="example">
-      <h1>
-        Student online test example.
-      </h1>
+    <button mat-button
+            class="get-started desktop"
+            color="primary"
+            (click)="getStarted()">
+      Setup my organization </button>
+  </div>
+</div>
 
+<div class="home">
+  <div class="video-tutorials col-1-of-2">
+    <div class="video">
       <video controls>
         <source src="assets/vids/test.mp4"
                 type="video/mp4">
       </video>
     </div>
-    <div class="example">
-      <h1>
-        Online lesson example.
+    <div class="typography">
+      <h1 class="h6">
+        our offering
       </h1>
-
-      <video controls>
-        <source src="assets/vids/teach.mp4"
-                type="video/mp4">
-      </video>
-    </div>
-  </div>
-
-  <div class="see-examples">
-    <div class="cta">
-      <h1>
-        Do you think this will change the game in your institution?
+      <h1 class="h4">
+        Help learners/students achieve amazing results in their academics
+      </h1>
+      <h1 class="h5">
+        ✔️ Learning management system for learners at every level.
+      </h1>
+      <h1 class="h5">
+        ✔️ Engaging learning experiences with videos and images.
+      </h1>
+      <h1 class="h5">
+        ✔️ Online assessments and same time results.
       </h1>
       <button mat-button
+              class="get-started desktop"
               color="primary"
               (click)="getStarted()">
-        Create your institution account.
+        Get started
       </button>
     </div>
   </div>
-</div>
-
-
-
-
-
-
-
-
-<!-- <div class="banner">
-  <h1 class="big-header">
-    Start teaching and testing your students online
-  </h1>
-  <h1 class="sub-header">
-    start a plan with us and enjoy membership benefits such as study material (downloadable) & online video tutorials to
-    catch up on past modules.
-  </h1>
-  <button mat-button color="primary" (click)="getStarted()">
-    Get started
-  </button>
-</div>
-<div class="image">
-  <img src="assets/images/home/study-book.svg" alt="study book image">
-</div>
-
-<div class="tools">
-  <h1 class="main">
-    Modern mobile tools for modern individuals.
-  </h1>
-  <div class="tool-section col-1-of-3">
-    <div class="tool col-1-of-1">
-      <img src="assets/images/home/tool-1.svg" alt="tool 1">
-      <h1 class="text">
-        Communication based on individual needs.
-      </h1>
-    </div>
-    <div class="tool col-1-of-1">
-      <img src="assets/images/home/tool-2.svg" alt="tool 2">
-      <h1 class="text">
-        Access study material based on purchases of packages.
-      </h1>
-    </div>
-    <div class="tool col-1-of-1">
-      <img src="assets/images/home/tool-3.svg" alt="tool 3">
-      <h1 class="text">
-        Synchronized courses based on your curriculum subjects.
-      </h1>
-    </div>
-  </div>
-</div>
-
-<div class="posts" style="display: none;">
-  <h1 class="main">
-    Latest posts
-  </h1>
-  <div class="post-section col-1-of-2">
-    <div class="tips">
-      <img src="assets/images/home/posts.svg" alt="posts svg">
-      <div class="quick-tip">
-        <h1 class="sub-main">Quick tips</h1>
-        <h1 class="text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.
+  <div class="feature-grid col-1-of-2">
+    <div class="features">
+      <div class="feature">
+        <h1 class="h4">
+          Quick onboarding process.
+          <span>
+            Share your institute account via a unique link
+          </span>
+        </h1>
+      </div>
+      <div class="feature">
+        <h1 class="h4">
+          Multi user dashboards.
+          <span>
+            Each user persona is assigned their own view.
+          </span>
+        </h1>
+      </div>
+      <div class="feature">
+        <h1 class="h4">
+          Create multiple grade levels
+          <span>
+            Data driven tool for simple process initiations.
+          </span>
+        </h1>
+      </div>
+      <div class="feature">
+        <h1 class="h4">
+          Share multimedia content
+          <span>
+            From highlighted fonts to YouTube grade videos.
+          </span>
+        </h1>
+      </div>
+      <div class="feature">
+        <h1 class="h4">
+          User profile and customization
+          <span>
+            You will be granted your own personal profile.
+          </span>
         </h1>
       </div>
     </div>
-    <div class="news-feed">
-      <div class="feed">
-        <h1 class="timespan">
-          15 Jul 2020
-        </h1>
-        <h1 class="sub-main">Sum heading over here from the board.</h1>
-        <h1 class="text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.
-        </h1>
-      </div>
-      <div class="feed">
-        <h1 class="timespan">
-          15 Jul 2020
-        </h1>
-        <h1 class="sub-main">Sum heading over here from the board.</h1>
-        <h1 class="text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.
-        </h1>
-      </div>
-      <div class="feed">
-        <h1 class="timespan">
-          15 Jul 2020
-        </h1>
-        <h1 class="sub-main">Sum heading over here from the board.</h1>
-        <h1 class="text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.
-        </h1>
-      </div>
-      <div class="feed">
-        <h1 class="timespan">
-          15 Jul 2020
-        </h1>
-        <h1 class="sub-main">Sum heading over here from the board.</h1>
-        <h1 class="text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.
-        </h1>
-      </div>
-      <div class="feed">
-        <h1 class="timespan">
-          15 Jul 2020
-        </h1>
-        <h1 class="sub-main">Sum heading over here from the board.</h1>
-        <h1 class="text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has.
-        </h1>
-      </div>
+    <div class="feature-image">
+      <img class=""
+      src="assets/images/home/feature-image.svg"
+      alt="">
     </div>
   </div>
-</div>
-
-<div class="get-started col-1-of-2">
-  <div class="caption">
-    <h1 class="main">
-      Ready to start your online learning?
+  <div class="cta">
+    <h1 class="h4">
+      Do you think this will change the game in your institution?
     </h1>
-    <h1 class="text">
-      Sign up for a free trial account and start experiencing our product offering.
-    </h1>
-    <button mat-button color="primary" (click)="getStarted()">
-      Get started
+    <button mat-button
+            color="primary"
+            (click)="getStarted()">
+      Create your institution account.
     </button>
   </div>
-  <img src="assets/images/home/get-started.svg" alt="posts svg">
-</div> -->
+</div>
+
+
+
+<!-- <div class="video-tutorials">
+  <h1>
+    Let's walk you through
+  </h1>
+  <div class="example">
+    <h1>
+      Student online test example.
+    </h1>
+
+    <video controls>
+      <source src="assets/vids/test.mp4"
+              type="video/mp4">
+    </video>
+  </div>
+  <div class="example">
+    <h1>
+      Online lesson example.
+    </h1>
+
+    <video controls>
+      <source src="assets/vids/teach.mp4"
+              type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<div class="video-tutorials">
+  <div class="cta">
+    <h1>
+      Do you think this will change the game in your institution?
+    </h1>
+    <button mat-button
+            color="primary"
+            (click)="getStarted()">
+      Create your institution account.
+    </button>
+  </div>
+</div>
+ -->

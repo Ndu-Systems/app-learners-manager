@@ -1,6 +1,8 @@
 @import '../../../../assets/scss/color';
 
 .home {
+    padding: 1rem 19rem;
+
     .intro {
         display: grid;
         grid-template-columns: 40% auto;
@@ -13,18 +15,21 @@
 
         button {
             width: 12rem;
+            border-radius: $border-radius;
         }
 
         h1 {
             margin: 4rem auto;
-            font-weight: 900;
-            font-size: 2.2rem;
+            font-weight: bold;
+            font-size: 1.75rem;
+            color: $primary;
 
             span {
-                font-weight: 600;
+                font-weight: 500;
                 display: block;
                 margin: 2rem 0;
-                font-size: 1.2rem;
+                font-size: 1.125rem;
+                color: $black;
             }
         }
 
@@ -40,20 +45,21 @@
                 right: 0;
             }
         }
+
+        .home-image {
+            width: 37.5rem;
+            height: 37.5rem;
+        }
     }
 
-    .see-examples {
-        // background: $grey;
-        padding: 2rem;
-        border-radius: 1rem;
-        margin: 4rem 0;
+    .video-tutorials {
         box-sizing: border-box;
 
         h1 {
             font-weight: 900;
         }
 
-        .example {
+        .video {
             h1 {
                 font-weight: 600;
                 font-style: italic;
@@ -64,21 +70,95 @@
             }
 
             video {
-                width: 98%;
+                width: 100%;
                 margin: 1rem auto;
-                border-radius: .5rem;
                 border: none;
+                box-shadow: $box-shadow;
             }
         }
 
-        .cta {
-            width: 40%;
-            border-top: 1px solid $primary;
-            margin: 4rem 0;
+        .typography {
+            h1 {
+                font-weight: 600;
+
+                &.h6 {
+                    font-size: 0.875rem;
+                    color: $darker-grey;
+                    text-transform: uppercase;
+                }
+
+                &.h4 {
+                    color: $primary;
+                    font-size: 2rem;
+                }
+
+                &.h5 {
+                    font-size: .85rem;
+                    font-weight: normal;
+                    margin: 1.25rem;
+                }
+            }
+
+            .mat-button {
+                width: 40%;
+                border-top: 1px solid $primary;
+                margin: 2rem 0;
+            }
+        }
+
+
+    }
+
+    .feature-grid {
+        .features {
+            box-sizing: border-box;
+
+            .feature {
+                border-bottom: solid 1px $darker-grey;
+
+                h1 {
+                    font-weight: 600;
+                    font-size: 1.25rem;
+
+                    span {
+                        display: block;
+                        font-size: 1rem;
+                        color: $darker-grey;
+                        margin-top: 1rem;
+                        font-weight: 400;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+
+        .feature-image {
+            img {
+                width: 28.5rem;
+                height: inherit;
+            }
+        }
+    }
+
+    .cta {
+        margin: 3rem;
+        width: 35rem;
+        margin: 4.625rem auto;
+        text-align: center;
+
+        h1.h4 {
+            font-size: 1.563rem;
+            font-weight: 600;
+            color: $primary;
         }
     }
 
     @media screen and (max-width: 600px) {
+        padding: 1rem;
+
         .intro {
             margin-top: 5rem;
             grid-template-columns: 100%;
@@ -94,24 +174,80 @@
                     font-size: 1rem;
                 }
             }
+
+
+            .home-image {
+                width: 100%;
+                height: 100%;
+            }
         }
 
-        .see-examples {
+        .video-tutorials {
             padding: 0 1rem;
+
             .cta {
                 width: 100%;
+
                 h1 {
                     font-size: 1.65rem;
                     font-weight: 600;
                 }
+
                 button {
                     display: none;
                 }
             }
         }
+
+        .feature-grid {
+            .feature-image {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cta {
+            width: 100%;
+        }
     }
 }
 
-.home-image {
-    width: 100%;
+
+.banner-blue {
+    height: 10rem;
+    background: $primary;
+    border-radius: 6.25rem 0 6.25rem 0;
+    padding: 2rem;
+
+    .content {
+        width: 35rem;
+        margin: 0 auto;
+        padding: 1rem;
+        text-align: center;
+
+        h1 {
+            color: $white;
+
+            &.h4 {
+                font-weight: 500;
+                font-size: 1.25rem;
+            }
+        }
+
+        .mat-button {
+            color: $primary !important;
+            background: $white;
+            width: 13.25rem;
+            border-radius: $border-radius;
+        }
+    }
+
+
+    @media screen and (max-width: 600px) {
+        border-radius: 50px 0 50px 0;
+        .content {
+            width: 100%;
+        }
+    }
 }

@@ -4,10 +4,11 @@ button {
     background: $primary;
     width: 100%;
     border-radius: 0.313rem;
-    padding: .5rem;
     font-weight: 500;
     font-size: 1rem;
     color: $white !important;
+    border-radius: $border-radius;
+
   }
 
   &.mat-flat-button.mat-primary[disabled] {
@@ -47,4 +48,4 @@ button.secondary {
   color: $white;
   right: 2rem;
   bottom: 2rem;
- }
+}

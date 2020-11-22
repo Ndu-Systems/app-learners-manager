@@ -22,17 +22,19 @@
          class="sign-in"
          color="primary"
          (click)="goto('sign-in')">
-        Login
+        Sign in
       </a>
     </div>
   </div>
 </div>
 <div class="mobile-nav">
   <img src="assets/images/common/arrow.svg"
-  alt="feed"
-  class="hl-off"
-  *ngIf="!showNav" (click)="goto('')">
-  <div class="items" *ngIf="showNav">
+       alt="feed"
+       class="hl-off"
+       *ngIf="!showNav"
+       (click)="goto('')">
+  <div class="items"
+       *ngIf="showNav">
     <img src="assets/images/common/logo-home.png"
          class="logo"
          alt=""
@@ -45,7 +47,7 @@
          class="sign-in"
          color="primary"
          (click)="goto('sign-in')">
-        Login
+        Sign in
       </a>
     </div>
   </div>

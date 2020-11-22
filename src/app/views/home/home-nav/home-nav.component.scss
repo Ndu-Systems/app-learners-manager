@@ -6,16 +6,15 @@
     top: 0;
     height: 5rem;
     width: 100%;
-    background: $white;
+    background: $cloud;
     z-index: 1000;
     border-top: 3px solid $primary;
-    box-shadow: $box-shadow;
-    padding: 1rem 16rem;
+    padding: 1rem 19rem;
     box-sizing: border-box;
 
     .items {
         display: grid;
-        grid-template-columns: 45% 15% 20% 15%;
+        grid-template-columns: 45% 10% 30% 15%;
 
         .item {
             text-align: center;
@@ -47,19 +46,20 @@
     }
 
     .sign-up {
-        background: $primary-purple;
+        background: $primary;
         color: $white;
-        border-radius: 0.313rem;
         padding: .2rem 1rem;
-
+        border-radius: $border-radius;
+        font-size: 1rem;
     }
 
     .sign-in {
-        background: $primary;
-        color: $white;
-        border-radius: 0.313rem;
+        background: $white;
+        color: $primary;
+        border-radius: $border-radius;
         padding: .2rem 2rem;
-
+        border: solid 2px $primary;
+        font-size: 1rem;
     }
 
     .features {
@@ -102,6 +102,9 @@
             }
         }
 
+        .sign-up {
+            font-size: .85rem;
+        }
         .sign-in {
             background: $primary;
             color: $white;
@@ -109,7 +112,6 @@
             border-radius: 0.313rem;
             padding: .1rem 2rem;
             float: right;
-
         }
     }
 
