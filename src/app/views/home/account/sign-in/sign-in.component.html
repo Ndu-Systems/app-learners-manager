@@ -1,13 +1,11 @@
  <div class="main account">
-
-   <div class="col-1-of-1">
-
+   <div class="col-1-of-2">
      <form class="form"
            [formGroup]="rForm">
        <a routerLink=""> <img src="assets/images/common/arrow.svg"
               alt="go back"></a>
        <h1>
-         Login to your account.
+         Sign in
        </h1>
        <div class="form-group">
          <label for="exampleInputEmail1">Email address</label>
@@ -42,26 +40,30 @@
            </div>
          </div>
        </div>
-
-       <div class="forgot-password">
-         <a routerLink="/forgot-password"
-            class="link">forgot password ?</a>
-       </div>
        <div class="action">
          <button mat-button
                  color="primary"
                  (click)="Login()"
                  [disabled]="!rForm.valid">
-           Login
+           Sign in
          </button>
+         <div class="forgot-password">
+           <a routerLink="/forgot-password"
+              class="link">Forgot password</a>
+         </div>
          <h5 class="error">{{error}}</h5>
        </div>
+
        <div class="cta">
          <a routerLink="/sign-up">
            <span>Don't have an account?</span>
            Sign up</a>
        </div>
      </form>
+     <div class="account-image">
+       <img src="assets/images/home/sign-in-bg.png" class="desktop" alt="sign in background">
+       <img src="assets/images/home/sign-in-bg-mobile.png" class="mobile" alt="sign in background">
+     </div>
    </div>
 
 

@@ -94,19 +94,17 @@
   }
 
   .forgot-password {
-    position: relative;
     margin: 1rem 0;
-    width: 8rem;
+    text-align: center;
 
     a {
-      background: $cloud;
       border-radius: .3rem;
       text-decoration: none;
-      color: $darker-grey;
-      font-weight: 400;
-      font-style: italic;
-      font-size: .7rem;
+      color: $primary;
+      font-weight: 600;
+      font-size: 1rem;
       padding: .5rem;
+      text-transform: capitalize;
     }
   }
 
@@ -153,4 +151,38 @@
 
 button {
   color: $white;
+}
+
+.account-image {
+  img {
+    height: 100vh;
+    float: right;
+
+    &.desktop {
+      display: block;
+    }
+
+    &.mobile {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    position: absolute;
+
+    img {
+
+      &.desktop {
+        display: none;
+      }
+      &.mobile {
+        display: block;
+        position: absolute;
+        width: 343px;
+        height: 269px;
+        left: 1rem;
+        top: 5rem;
+      }
+    }
+  }
 }
