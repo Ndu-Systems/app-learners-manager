@@ -15,5 +15,6 @@ export * from './cta.model';
 export * from './institution-type.model';
 export * from './generic.model.ts';
 export * from './billing.model';
+export * from './company.model';
 // end:ng42.barrel
 

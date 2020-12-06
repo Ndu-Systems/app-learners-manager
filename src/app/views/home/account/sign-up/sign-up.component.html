@@ -4,101 +4,176 @@
           [formGroup]="rForm">
       <a routerLink=""> <img src="assets/images/common/arrow.svg"
              alt="go back"></a>
-      <h1>
-        Create organization account.
-      </h1>
 
-      <div class="form-group">
-        <label for="exampleInputName">Organization or School Name</label>
-        <input type="text"
-               class="form-control"
-               formControlName="CompanyName"
-               id="exampleInputFirstName"
-               placeholder="Enter Organization or School">
-        <div class="alert"
-             *ngIf="!rForm.controls['CompanyName'].valid  && rForm.controls['CompanyName'].touched ">
-          Organization or school Name is required
+      <div class="personal-details"
+           *ngIf="showPersonalDetails">
+        <h1>
+          Create new account.
+        </h1>
+        <div class="col-1-of-2">
+          <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="Name"
+                   id="exampleInputFirstName"
+                   placeholder="Enter First Name">
+            <div class="alert"
+                 *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
+              Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputSurname">Surname</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="Surname"
+                   id="exampleInputSurname"
+                   placeholder="Enter Surname">
+            <div class="alert"
+                 *ngIf="!rForm.controls['Surname'].valid  && rForm.controls['Surname'].touched ">
+              Surname is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPhoneNumber">Contact number</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="PhoneNumber"
+                 id="exampleInputPhoneNumber"
+                 maxlength="13"
+                 placeholder="Enter Contact Number (+27)">
+          <div class="alert"
+               *ngIf="!rForm.controls['PhoneNumber'].valid  && rForm.controls['PhoneNumber'].touched ">
+            Contact number is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail">Email address</label>
+          <input type="email"
+                 class="form-control"
+                 formControlName="Email"
+                 id="exampleInputEmail"
+                 placeholder="Enter email">
+          <div class="alert"
+               *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
+            Email is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">
+            Password
+          </label>
+          <input type="password"
+                 [type]="hidePassword? 'password': 'text'"
+                 class="form-control"
+                 formControlName="Password"
+                 id="exampleInputPassword1"
+                 placeholder="Password">
+          <mat-icon class="pointer"
+                    (click)="hidePassword = !hidePassword">
+            {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <div class="showPassword"
+               (click)="hidePassword = !hidePassword">
+            <div class="alert"
+                 *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
+              Password is required
+            </div>
+          </div>
+        </div>
+        <div class="action">
+          <button mat-button
+                  color="primary"
+                  (click)="loadOrganizationDetails()">
+            <span *ngIf="loading">
+              loading...
+            </span>
+            <span *ngIf="!loading">
+              Sign up
+            </span>
+          </button>
+          <div class="cta">
+            <a routerLink="/sign-in"> <span>Already got an account?</span> Sign in</a>
+          </div>
         </div>
       </div>
 
-
-      <div class="col-1-of-2">
+      <div class="organization-details"
+           *ngIf="showOrganizationDetails">
+        <h1>
+          <span>One more step...</span>
+          Enter organization/school information
+        </h1>
         <div class="form-group">
-          <label for="exampleInputName">Name</label>
+          <label for="exampleInputName">Organization/School Name</label>
           <input type="text"
                  class="form-control"
-                 formControlName="Name"
+                 formControlName="CompanyName"
                  id="exampleInputFirstName"
-                 placeholder="Enter First Name">
+                 placeholder="Enter Organization or School">
           <div class="alert"
-               *ngIf="!rForm.controls['Name'].valid  && rForm.controls['Name'].touched ">
-            Name is required
+               *ngIf="!rForm.controls['CompanyName'].valid  && rForm.controls['CompanyName'].touched ">
+            Organization or school Name is required
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputSurname">Surname</label>
+          <label for="exampleInputName">Organization handler</label>
           <input type="text"
                  class="form-control"
-                 formControlName="Surname"
-                 id="exampleInputSurname"
-                 placeholder="Enter Surname">
+                 formControlName="Handler"
+                 id="exampleInputFirstName"
+                 placeholder="Enter Organization/School handler">
           <div class="alert"
-               *ngIf="!rForm.controls['Surname'].valid  && rForm.controls['Surname'].touched ">
-            Surname is required
+               *ngIf="!rForm.controls['Handler'].valid  && rForm.controls['Handler'].touched ">
+            Organization/school handler
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPhoneNumber">Contact number</label>
-        <input type="text"
-               class="form-control"
-               formControlName="PhoneNumber"
-               id="exampleInputPhoneNumber"
-               maxlength="13"
-               placeholder="Enter Contact Number (+27)">
-        <div class="alert"
-             *ngIf="!rForm.controls['PhoneNumber'].valid  && rForm.controls['PhoneNumber'].touched ">
-          Contact number is required
+        <div class="action">
+          <button mat-button
+                  color="primary"
+                  (click)="loadInstitutionDetails()">
+            <span *ngIf="loading">
+              loading...
+            </span>
+            <span *ngIf="!loading">
+              Continue
+            </span>
+          </button>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="exampleInputEmail">Email address</label>
-        <input type="email"
-               class="form-control"
-               formControlName="Email"
-               id="exampleInputEmail"
-               placeholder="Enter email">
-        <div class="alert"
-             *ngIf="!rForm.controls['Email'].valid  && rForm.controls['Email'].touched ">
-          Email is required
+      <div class="institution-type-details"
+           *ngIf="showInstitutionDetails">
+        <h1>
+          <span>We're done.</span>
+          Please provide institution details.
+        </h1>
+        <div class="form-group">
+          <label for="exampleInputName">Select Institution Type</label>
+          <mat-form-field>
+            <mat-select formControlName="InstitutionTypeId">
+              <mat-option *ngFor="let item of InstitutionTypes; let i = index"
+                          [value]="item.InstitutionTypeId"
+                          (click)="onSelectedInstitutionType(item)">
+                {{item.Name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputPassword1">
-          Password
-        </label>
-        <input type="password"
-               [type]="hidePassword? 'password': 'text'"
-               class="form-control"
-               formControlName="Password"
-               id="exampleInputPassword1"
-               placeholder="Password">
-        <mat-icon class="pointer"
-                  (click)="hidePassword = !hidePassword">
-          {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <div class="showPassword"
-             (click)="hidePassword = !hidePassword">
-          <div class="alert"
-               *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">
-            Password is required
+        <div class="pills">
+          <div class="pill"
+               *ngFor="let item of GradesToSelect">
+            <h1>
+              {{item.Name}}
+            </h1>
           </div>
         </div>
+
       </div>
-
-
-      <div class="action">
+      <div class="action"
+           *ngIf="showSignUp">
         <button mat-button
                 color="primary"
                 (click)="onSubmit(rForm.value)"
@@ -106,9 +181,7 @@
           Sign up
         </button>
         <span class="error">{{error}}</span>
-      </div>
-      <div class="cta">
-        <a routerLink="/sign-in"> <span>Already got an account?</span> Sign in</a>
+
       </div>
     </form>
     <div class="account-image">

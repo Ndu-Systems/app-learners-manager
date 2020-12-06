@@ -50,5 +50,6 @@ export const ADD_ASSIGNMENT_URL = `api/assignment/add-assignment.php`;
 export const UPDATE_ASSIGNMENT_URL = `api/assignment/update-assignment.php`;
 export const GET_ASSIGNMENT_URL = `api/assignment/get-assignment.php`;
 export const UPDATE_COMPANY_URL = `api/company/update-company.php`;
+export const GET_INSTITUTION_TYPES = `api/institution-type/list-institution-types.php`;
 
 

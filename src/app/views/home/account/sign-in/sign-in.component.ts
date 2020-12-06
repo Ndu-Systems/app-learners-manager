@@ -52,7 +52,9 @@ export class SignInComponent implements OnInit {
     this.loading$ = this.accountService.loading;
     const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
     this.token = baseUrlMain.substring(baseUrlMain.indexOf('=') + 1);
-    this.activateUser();
+    if(!this.token.includes('http')) {
+      this.activateUser();
+    }   
   }
 
   activateUser() {
@@ -76,27 +78,28 @@ export class SignInComponent implements OnInit {
     const email = this.getFormValues.Email.value;
     const password = this.getFormValues.Password.value;
     this.showLoader = true;
+
     this.accountService.login({ email, password }).subscribe(user => {
       if (user && user.UserId) {
         this.error = '';
         this.accountService.updateUserState(user);
         let userRoles = user.Roles;
-        this.showLoader = false;
-        if (userRoles) {
-          if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
-            this.routeTo.navigate(['dashboard/grades']);
+        setTimeout(() => {
+          this.showLoader = false;
+          if (userRoles) {
+            if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
+              this.routeTo.navigate(['dashboard/grades']);
+            }
+
+            if (user.Roles.find(x => x.RoleName === LEARNER)) {
+              this.routeTo.navigate(['/my-portal']);
+            }
           }
 
-          if (user.Roles.find(x => x.RoleName === LEARNER)) {
-            this.routeTo.navigate(['/my-portal']);
+          if (!userRoles) {
+            alert('User have no roles');
           }
-        }
-
-        if (!userRoles) {
-          alert('User have no roles');
-        }
-
-
+        }, 2000);
       }
       else {
         let err: any = user;

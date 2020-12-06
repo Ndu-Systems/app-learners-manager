@@ -6,8 +6,8 @@ import { SYSTEM, IS_DELETED_FALSE, AWAITING_ACTIVATION, LEARNER, DEFAULT_PASSWOR
 import { UserModel } from 'src/app/_models/user.model';
 import { first } from 'rxjs/operators';
 import { Grade, Subject } from 'src/app/_models/grade.model';
-import { GET_GRADES_URL, GET_INSTITUTION_TYPES_API, DEFAULT_DATE } from 'src/app/_services/_shared';
-import { Email, InstitutionTypeModel, GenericQueryModel, NavigationModel } from 'src/app/_models';
+import { GET_GRADES_URL, GET_INSTITUTION_TYPES_API, DEFAULT_DATE, GET_INSTITUTION_TYPES } from 'src/app/_services/_shared';
+import { Email, InstitutionTypeModel, GenericQueryModel, NavigationModel, SignUpModel, GradeSignUpModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,8 +25,15 @@ export class SignUpComponent implements OnInit {
   paymentTypes: any[] = [];
   paymentOption: string;
   showLoader: boolean;
+  loading: boolean;
   navigationModel: NavigationModel;
-
+  showPersonalDetails: boolean = true;
+  showOrganizationDetails: boolean;
+  showInstitutionDetails: boolean;
+  showSignUp: boolean;
+  InstitutionTypeId: string;
+  InstitutionTypes: InstitutionTypeModel[] = [];
+  GradesToSelect: Grade[] = [];
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -34,11 +41,11 @@ export class SignUpComponent implements OnInit {
     private apiServices: ApiService,
     private emailService: EmailService,
     private navigationService: NavigationService
-
   ) { }
 
   ngOnInit() {
-
+    this.InstitutionTypes = [];
+    this.getInstitutionTypes();
     this.rForm = this.fb.group({
       Email: new FormControl(null, Validators.compose([
         Validators.required,
@@ -48,22 +55,29 @@ export class SignUpComponent implements OnInit {
       PhoneNumber: [null, Validators.required],
       Name: [null, Validators.required],
       CompanyName: [null, Validators.required],
+      Handler: [null],
       Surname: [null, Validators.required],
       GradeId: ['n/a'],
       UserType: ADMIN,
       CreateUserId: [SYSTEM],
       ModifyUserId: [SYSTEM],
       IsDeleted: [IS_DELETED_FALSE],
-      StatusId: [AWAITING_ACTIVATION]
+      StatusId: [AWAITING_ACTIVATION],
+      InstitutionTypeId: [null, Validators.required]
     });
-
   }
 
-  onSubmit(model: UserModel) {
+  onSubmit(model: SignUpModel) {
     model.Roles = [];
     model.Roles.push({ Name: ADMIN });
     this.showLoader = true;
-
+    model.Grades = [];
+    this.GradesToSelect.forEach(item => {
+      let itemToAdd: GradeSignUpModel = {
+        GradeId: item.GradeId
+      };
+      model.Grades.push(itemToAdd);
+    });
     this.accountService.register(model).subscribe(data => {
       // send email logic here.
       if (data.Email) {
@@ -83,6 +97,14 @@ export class SignUpComponent implements OnInit {
       }
     });
   }
+
+  getInstitutionTypes() {
+    const query: GenericQueryModel = { StatusId: 1 }
+    this.apiServices.getWithQuery(GET_INSTITUTION_TYPES, query).subscribe(data => {
+      this.InstitutionTypes = data as InstitutionTypeModel[];
+    });
+  }
+
   gradeSelected(gradeId: string) {
     const grade = this.grades.find(x => x.GradeId === gradeId);
     if (!grade) { return; }
@@ -92,6 +114,7 @@ export class SignUpComponent implements OnInit {
     }
     this.selectedSubjects = [];
   }
+
   selectSubject(subject: Subject) {
     const index = this.selectedSubjects.indexOf(subject);
     if (subject.Class.find(x => x === 'active')) {
@@ -103,10 +126,38 @@ export class SignUpComponent implements OnInit {
     this.selectedSubjects.push(subject);
   }
 
-  sendEmail(data: UserModel) {
+
+  loadOrganizationDetails() {
+    this.loading = true;
+    setTimeout(() => {
+      this.showPersonalDetails = false;
+      this.loading = false;
+      this.showOrganizationDetails = true;
+    }, 2000);
+  }
+
+  loadInstitutionDetails() {
+    this.loading = true;
+    setTimeout(() => {
+      this.showOrganizationDetails = false;
+      this.getInstitutionTypes();
+      this.loading = false;
+    }, 1000);
+    setTimeout(() => {
+      this.showInstitutionDetails = true;
+      this.showSignUp = true;
+    }, 1000);
+    
+  }
+
+  onSelectedInstitutionType(item: InstitutionTypeModel) {
+    this.GradesToSelect = item.Grades;
+  }
+
+  sendEmail(data: SignUpModel) {
     const emailToSend: Email = {
       Email: data.Email,
-      Subject: 'Online Thalente: Welcome & Activation',
+      Subject: 'Fundani.co.za: Welcome & Activation',
       Message: '',
       Link: this.accountService.generateAccountActivationReturnLink(data.UserToken)
     };

@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: 'question/:id', component: ViewQuestionComponent },
       { path: 'questions-hub', component: ListQuestionsComponent },
       { path: 'student-assignment', component: StudentAssignmentComponent },
-      { path: 'features', component: FeaturesComponent },
+      { path: 'features', component: FeaturesComponent }
     ]
 
   }

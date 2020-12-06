@@ -29,15 +29,19 @@
 
 .details {
     border-left: 1px solid $cloud;
-    padding: 2rem;
+    padding: 1rem;
 
     h1 {
         font-size: 1.25rem;
-
+        &.header {
+            font-size: .8rem;
+            font-weight: 400;
+            color: $darker-grey;
+        }
         span {
             display: block;
             font-size: .7rem;
-            font-weight: 500;
+            font-weight: 600;
             font-style: italic;
         }
 
@@ -55,13 +59,13 @@
         }
 
         &.stat {
-            font-size: 1rem;
+            font-size: .85rem;
             font-weight: 500;
             text-transform: capitalize;
-
+            color: $darker-grey;
             span {
-                font-size: 1.2rem;
-                font-weight: 900;
+                font-size: 1rem;
+                font-weight: 700;
             }
         }
     }

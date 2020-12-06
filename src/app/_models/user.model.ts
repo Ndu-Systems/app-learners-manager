@@ -2,6 +2,7 @@ import { Studentsubject } from './studentsubject.model';
 import { Grade, Subject } from './grade.model';
 import { BillingModel } from './billing.model';
 import { TeacherSubject } from './teacher.grade.subject ';
+import { CompanyModel } from './company.model';
 
 export interface User {
   UserId?: string;
@@ -35,7 +36,7 @@ export interface User {
   Grade?: Grade;
   Billing?: any[];
   PhoneNumber: any;
-  Company?: any;
+  Company?: CompanyModel;
 }
 
 
@@ -57,7 +58,9 @@ export interface UserModel {
   Roles: Role[];
   Studentsubjects: any[];
   Teachersubjects: any[];
-  Billing: BillingModel
+  Billing: BillingModel;
+  CompanyName?: string;
+  Handler?:string;
 }
 export interface Role {
   Name: string;

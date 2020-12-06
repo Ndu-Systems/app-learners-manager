@@ -1,6 +1,6 @@
   <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 
-  <div *ngIf="grades$ | async as grades">
+  <div *ngIf="grades">
     <div class="teacher-grades"
          *ngIf="user && grades">
       <app-company-view [company]="user.Company" [gradeCount]="grades.length"></app-company-view>

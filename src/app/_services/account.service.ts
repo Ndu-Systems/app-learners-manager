@@ -7,7 +7,7 @@ import { SplashService } from './splash.service';
 import { User, UserModel } from '../_models/user.model';
 import { COMMON_CONN_ERR_MSG } from './_shared/constants';
 import { map } from 'rxjs/operators';
-import { TokenModel, EmailGetRequestModel, ChangePasswordModel } from '../_models';
+import { TokenModel, EmailGetRequestModel, ChangePasswordModel, SignUpModel } from '../_models';
 
 
 @Injectable({
@@ -45,8 +45,8 @@ export class AccountService {
   }
 
 
-  register(model: UserModel) {
-    return this.http.post<UserModel>(`${this.url}/api/account/register.php`, model).pipe(map(user => {
+  register(model: SignUpModel) {
+    return this.http.post<SignUpModel>(`${this.url}/api/account/register.php`, model).pipe(map(user => {
       if (user) {
         return user;
       }

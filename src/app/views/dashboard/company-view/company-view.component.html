@@ -15,25 +15,43 @@
            alt="">
     </div>
   </div>
-
-  <div class="details">
-    <h1>
-      {{company.Name}}
-      <span>
-        {{company.Description}}
-      </span>
-      <span class="link"
-            (click)="showEditUplaod()">
-        Edit organization profile
-      </span>
-    </h1>
-    <h1 class="stat"  *ngIf="gradeCount && gradeCount > 0">
-      number of grades
-      <span>
-        {{gradeCount}}
-      </span>
-    </h1>
+  <div class="col-1-of-2">
+    <div class="details">
+      <h1 class="header">
+        Organization Details
+      </h1>
+      <h1>
+        {{company.Name}}
+        <span>
+          {{company.Description}}
+        </span>
+        <span class="link"
+              (click)="showEditUplaod()">
+          Edit organization profile
+        </span>
+      </h1>
+      <h1 class="stat"
+          *ngIf="gradeCount && gradeCount > 0">
+        number of grades
+        <span>
+          {{gradeCount}}
+        </span>
+      </h1>
+    </div>
+    <div class="details" *ngIf="Institution.InstitutionType">
+      <h1 class="header">
+        Institution Details
+      </h1>
+      <h1>
+        {{Institution.InstitutionType.Name}}
+        <span>
+          {{Institution.InstitutionType.Description}}
+        </span>        
+      </h1>
+     
+    </div>
   </div>
+
 </div>
 
 <div class="overlay"
@@ -75,13 +93,28 @@
   </div>
 
   <div class="form">
-    <label for="">Name</label>
-    <input type="text"
-           [(ngModel)]="company.Name">
+    <div class="form-group">
+      <label for="NameCtrl">Name</label>
+      <input type="text"
+             id="NameCtrl"
+             [(ngModel)]="company.Name">
+    </div>
+    <div class="form-group">
+      <label for="HandlerCtrl">Slogan</label>
+      <input type="text"
+             id="HandlerCtrl"
+             [(ngModel)]="company.Handler">
+    </div>
+    <div class="form-group">
+      <label for="DescriptionCtrl">Description</label>
+      <textarea name="DescriptionCtrl"
+                id="DescriptionCtrl"
+                [(ngModel)]="company.Description"
+                cols="30"
+                rows="10"></textarea>
+    </div>
 
-    <label for="">Slogan</label>
-    <input type="text"
-           [(ngModel)]="company.Description">
+
     <button mat-button
             color="primary"
             (click)="update()"> Save changes</button>

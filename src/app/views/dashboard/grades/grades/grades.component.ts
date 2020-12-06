@@ -31,6 +31,7 @@ export class GradesComponent implements OnInit {
   error = '';
   institutionTypes: InstitutionTypeModel[] = [];
   grades$: Observable<TeacherSubject[]>;
+  grades: Grade[];
   isDelete: boolean;
   $status: HTMLElement;
   isAdmin: boolean;
@@ -51,13 +52,21 @@ export class GradesComponent implements OnInit {
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
     this.grades$ = this.gradeService.teacherSubjectListObservable;
-    // this.gradeService.getGrades(this.user.CompanyId);
-    this.gradeService.getTeacherGradesSubjects(this.user.UserId, this.user.UserType, this.user.CompanyId);
-    this.gradeService.gardesObservable.subscribe(data => {
-      if (data) {
-        this.allGrades = data;
+    if(this.user.Company){
+      const institution = this.user.Company.Institutions[0];
+      if(institution.Grades){
+        this.grades = institution.Grades;
+      } else {
+        alert('He is dead jim')
       }
-    });
+    }
+    // this.gradeService.getGrades(this.user.CompanyId);
+    // this.gradeService.getTeacherGradesSubjects(this.user.UserId, this.user.UserType, this.user.CompanyId);
+    // this.gradeService.gardesObservable.subscribe(data => {
+    //   if (data) {
+    //     this.allGrades = data;
+    //   }
+    // });
 
     // this.requestPermission();
     // this.nonPersistentNotification();
