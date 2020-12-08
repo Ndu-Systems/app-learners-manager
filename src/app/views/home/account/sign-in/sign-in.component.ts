@@ -7,6 +7,7 @@ import { AccountService } from 'src/app/_services/account.service';
 import { ADMIN, LEARNER, TEACHER } from 'src/app/_shared';
 import { LocationStrategy } from '@angular/common';
 import { TokenModel } from 'src/app/_models';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-sign-in',
@@ -33,6 +34,7 @@ export class SignInComponent implements OnInit {
     private routeTo: Router,
     private accountService: AccountService,
     private location: LocationStrategy,
+    private _snackBar: MatSnackBar
 
   ) {
   }
@@ -63,7 +65,8 @@ export class SignInComponent implements OnInit {
       this.accountService.activateUser(tokenModel)
         .subscribe(data => {
           if (data > 0) {
-            alert('Account successfully activated, Please login');
+            const message = 'Account successfully activated, Please login';
+            this.openSnackBar(message, 'Success!');
             return;
           }
         });
@@ -97,7 +100,9 @@ export class SignInComponent implements OnInit {
           }
 
           if (!userRoles) {
-            alert('User have no roles');
+            const message ='User have no roles';
+            this.openSnackBar(message, 'Success!');
+
           }
         }, 2000);
       }
@@ -115,5 +120,10 @@ export class SignInComponent implements OnInit {
     this.showMobileNav = !this.showMobileNav;
   }
 
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
 
+  }
 }

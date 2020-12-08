@@ -8,6 +8,7 @@ import { first } from 'rxjs/operators';
 import { Grade, Subject } from 'src/app/_models/grade.model';
 import { GET_GRADES_URL, GET_INSTITUTION_TYPES_API, DEFAULT_DATE, GET_INSTITUTION_TYPES } from 'src/app/_services/_shared';
 import { Email, InstitutionTypeModel, GenericQueryModel, NavigationModel, SignUpModel, GradeSignUpModel } from 'src/app/_models';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-sign-up',
@@ -40,7 +41,8 @@ export class SignUpComponent implements OnInit {
     private accountService: AccountService,
     private apiServices: ApiService,
     private emailService: EmailService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -167,7 +169,7 @@ export class SignUpComponent implements OnInit {
         if (response > 0) {
           setTimeout(() => {
             this.showLoader = false;
-            alert('Account Registered successfully, PLEASE Check your email for activation');
+            this.openSnackBar('Account Registered successfully. Check your email', 'Success!');
             this.routeTo.navigate(['']);
           }, 1000);
         }
@@ -214,5 +216,10 @@ export class SignUpComponent implements OnInit {
     this.routeTo.navigate(['']);
 
   }
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
 
+  }
 }

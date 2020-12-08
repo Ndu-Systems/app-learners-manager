@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenModel } from 'src/app/_models';
@@ -35,6 +36,7 @@ export class LoginModalComponent implements OnInit {
     private routeTo: Router,
     private accountService: AccountService,
     private location: LocationStrategy,
+    private _snackBar: MatSnackBar
 
   ) {
   }
@@ -63,7 +65,9 @@ export class LoginModalComponent implements OnInit {
       this.accountService.activateUser(tokenModel)
         .subscribe(data => {
           if (data > 0) {
-            alert('Account successfully activated, Please login');
+            const message = 'Account successfully activated, Please login';
+            this.openSnackBar(message, 'Success!');
+
             return;
           }
         });
@@ -95,10 +99,9 @@ export class LoginModalComponent implements OnInit {
         }
 
         if (!userRoles) {
-          alert('User have no roles');
+          const message = 'User have no roles';
+          this.openSnackBar(message, 'Success!');
         }
-
-
       }
       else {
         let err: any = user;
@@ -114,4 +117,10 @@ export class LoginModalComponent implements OnInit {
     this.showMobileNav = !this.showMobileNav;
   }
 
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
+  }
 }

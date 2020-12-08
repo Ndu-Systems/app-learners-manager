@@ -17,7 +17,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MaterialModule,
     PrimeNgModule,
     MatSnackBarModule,
-
     QuillModule.forRoot()
 
   ],

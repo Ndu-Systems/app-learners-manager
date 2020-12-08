@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Email } from 'src/app/_models/email.model';
 import { User } from 'src/app/_models/user.model';
 import { ApiService, EmailService } from 'src/app/_services';
@@ -23,6 +24,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private emailService: EmailService,
     private apiServices: ApiService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -91,9 +93,18 @@ export class UserProfileComponent implements OnInit {
     this.emailService.sendGenarlTextEmail(emailToSend)
       .subscribe(response => {
         if (response > 0) {
-          alert('User saved,  And email was send to ' + data.Name);
+         const message = 'User saved,  And email was send to ' + data.Name;
+          this.openSnackBar(message, 'Success!');
+
         }
       });
+  }
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
   }
 
 }

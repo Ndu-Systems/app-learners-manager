@@ -8,6 +8,7 @@ import { STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/_services/user.service';
 import { LEARNER } from 'src/app/_shared';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-learners',
@@ -54,7 +55,7 @@ export class LearnersComponent implements OnInit {
     private accountService: AccountService,
     private emailService: EmailService,
     private userService: UserService,
-
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -167,7 +168,8 @@ export class LearnersComponent implements OnInit {
     this.emailService.sendGenarlTextEmail(emailToSend)
       .subscribe(response => {
         if (response > 0) {
-          alert('User saved,  And email was send to ' + data.Name);
+          const message = 'User saved,  And email was send to ' + data.Name;
+          this.openSnackBar(message, 'Success!');
         }
       });
   }
@@ -182,5 +184,13 @@ export class LearnersComponent implements OnInit {
   view(user: User) {
     this.userService.updateUserState(user);
     this.router.navigate(['dashboard/view-learner', user.UserId]);
+  }
+
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 3000
+    });
+
   }
 }
