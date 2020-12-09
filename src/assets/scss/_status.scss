@@ -1,0 +1,16 @@
+.status {
+    color: $white;
+ 
+    &.verification {
+        background: $orange;
+       
+    }
+    &.completed,&.draft {
+        background: $black;
+    }
+
+    &.active {
+        background: $success;
+    }
+
+}

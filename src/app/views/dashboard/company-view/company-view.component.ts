@@ -2,9 +2,10 @@ import { Institution } from './../../../_models/company.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { CompanyModel } from 'src/app/_models';
-import { ApiService, DocumentsService } from 'src/app/_services';
+import { AccountService, ApiService, DocumentsService } from 'src/app/_services';
 import { UPDATE_COMPANY_URL } from 'src/app/_services/_shared';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/_models/user.model';
 
 @Component({
   selector: 'app-company-view',
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./company-view.component.scss']
 })
 export class CompanyViewComponent implements OnInit {
-  @Input() company: CompanyModel;
+  company: CompanyModel;
   @Input() gradeCount: number;
 
   showModal: boolean;
@@ -22,15 +23,23 @@ export class CompanyViewComponent implements OnInit {
   isUpdate: boolean;
   error: string;
   Institution: Institution;
+
+  user:User;
   constructor(
     private documentsService: DocumentsService,
     private apiServices: ApiService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private accountService: AccountService
 
   ) { }
 
   ngOnInit() {
+    this.user = this.accountService.currentUserValue;
+    if(this.user.Company) {
+      this.company = this.user.Company;
+    }
     this.Institution = this.company.Institutions[0];
+  
   }
 
   showUplaod() {

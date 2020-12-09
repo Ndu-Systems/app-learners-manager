@@ -1,54 +1,53 @@
-  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-
-  <div *ngIf="grades">
-    <div class="teacher-grades"
-         *ngIf="user && grades">
-      <app-company-view [company]="user.Company" [gradeCount]="grades.length"></app-company-view>
-    </div>
+ <div class="headers">
+   <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+   <!-- <app-header-banner [headerBanner]="headerBanner"
+                      (showModalEventEmitter)="add()"></app-header-banner> -->
+ </div>
+ <div *ngIf="grades">
     <div class="teacher-grades"
          *ngIf="grades && institutionTypes">
       <app-teacher-grades [grades]="grades"></app-teacher-grades>
-    </div>
-  </div>
+    </div> 
+ </div>
 
-  <ng-template #nodata>
-    <div class="nodata">
-      <h1>
-        You don't have any grades yes, create grade.
-      </h1>
-    </div>
-  </ng-template>
-  <div class="overlay"
-       *ngIf="showModal"
-       (click)="closeModal()"></div>
-  <div class="modal"
-       *ngIf="showModal && !isDelete">
-    <div class="close"
-         (click)="closeModal()">
-      <span class="material-icons">
-        west
-      </span> {{modalHeading}}
-    </div>
+ <ng-template #nodata>
+   <div class="nodata">
+     <h1>
+       You don't have any grades yes, create grade.
+     </h1>
+   </div>
+ </ng-template>
+ <div class="overlay"
+      *ngIf="showModal"
+      (click)="closeModal()"></div>
+ <div class="modal"
+      *ngIf="showModal && !isDelete">
+   <div class="close"
+        (click)="closeModal()">
+     <span class="material-icons">
+       west
+     </span> {{modalHeading}}
+   </div>
 
-  </div>
+ </div>
 
 
-  <div class="modal"
-       *ngIf="isDelete">
-    <div class="delete-modal">
-      <span class="material-icons">
-        west
-      </span> {{modalHeading}}
-      <button mat-button
-              color="primary"
-              class="danger"
-              (click)="update()"> Yes, delete</button>
-      <button mat-button
-              color="primary"
-              class="secondary"
-              (click)="closeModal()"> Cancel</button>
-      <div class="error">
-        {{error}}
-      </div>
-    </div>
-  </div>
+ <div class="modal"
+      *ngIf="isDelete">
+   <div class="delete-modal">
+     <span class="material-icons">
+       west
+     </span> {{modalHeading}}
+     <button mat-button
+             color="primary"
+             class="danger"
+             (click)="update()"> Yes, delete</button>
+     <button mat-button
+             color="primary"
+             class="secondary"
+             (click)="closeModal()"> Cancel</button>
+     <div class="error">
+       {{error}}
+     </div>
+   </div>
+ </div>

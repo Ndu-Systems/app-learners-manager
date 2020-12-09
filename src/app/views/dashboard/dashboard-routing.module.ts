@@ -44,7 +44,8 @@ const routes: Routes = [
       { path: 'view-learner/:id', component: ViewLearnerComponent },
       { path: 'view-teacher/:id', component: ViewTeachersComponent },
       { path: 'learners', component: LearnersComponent },
-      { path: 'teachers', component: TeachersComponent },
+      { path: 'teachers', component: TeachersComponent }, 
+      { path: 'company', component: CompanyViewComponent }, 
     ]
   }
 ];

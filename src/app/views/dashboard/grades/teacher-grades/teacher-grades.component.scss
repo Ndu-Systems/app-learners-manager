@@ -6,13 +6,20 @@
     border-radius: $border-radius;
     box-shadow: $box-shadow;
 
+    .col-1-of-4 {
+        grid-gap: 0;
+
+        @media only screen and (max-width: 600px) {
+            grid-gap: 1rem;
+        }
+    }
 
     .header {
         display: grid;
         grid-template-columns: 50% auto;
         box-sizing: border-box;
         border-bottom: 1px solid $cloud;
-        margin-bottom: 4rem;
+        background: $white;
 
         .name {
             display: grid;
@@ -29,7 +36,7 @@
 
             @media only screen and (max-width: 600px) {
                 padding: 0;
-             }
+            }
 
         }
 
@@ -48,6 +55,11 @@
         }
     }
 
+    .subjects {
+        height: 74vh;
+        overflow-y: scroll;
+    }
+
     @media only screen and (max-width: 600px) {
         padding: 1rem;
 
@@ -63,6 +75,7 @@
             }
         }
     }
+
 }
 
 .add-new {

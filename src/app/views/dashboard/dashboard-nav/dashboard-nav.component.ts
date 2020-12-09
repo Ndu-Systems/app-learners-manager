@@ -90,6 +90,11 @@ export class DashboardNavComponent implements OnInit {
         label: 'Teachers',
         routerLink: '/dashboard/teachers',
       },
+      {
+        key: 'Company',
+        label: 'Organization',
+        routerLink: '/dashboard/company',
+      },
 
       // {
       //   key: 'Insights',

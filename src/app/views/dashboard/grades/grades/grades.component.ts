@@ -41,6 +41,10 @@ export class GradesComponent implements OnInit {
       Link: '/dashboard/grades'
     }
   ];
+  headerBanner: HeaderBannerModel = {
+    Header: 'Grades',
+    SubHeader: 'A collection of grade subjects.'
+  };
   constructor(
     private apiServices: ApiService,
     private router: Router,
@@ -59,6 +63,7 @@ export class GradesComponent implements OnInit {
       } else {
         alert('He is dead jim')
       }
+   
     }
     // this.gradeService.getGrades(this.user.CompanyId);
     // this.gradeService.getTeacherGradesSubjects(this.user.UserId, this.user.UserType, this.user.CompanyId);

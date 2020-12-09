@@ -1,5 +1,12 @@
 @import '../../../../../assets/scss/color';
 
+.subjects {
+    padding: 1rem;
+    @media only screen and (max-width: 600px) {
+        padding: 0;
+    }
+}
+
 .tab {
     padding: 2rem 1rem;
 }
