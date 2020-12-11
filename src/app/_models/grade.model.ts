@@ -45,6 +45,7 @@ export interface Grade {
     Viewing?: boolean;
     Class?: string[];
     Grade?: any;
+    CompanyGradeId?: any;
 }
 
 export interface Teachersubject {
