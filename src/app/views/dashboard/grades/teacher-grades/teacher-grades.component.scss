@@ -32,6 +32,13 @@
                 top: .5rem;
                 color: $primary;
                 font-size: inherit;
+                span {
+                    display: block;
+                    font-weight: 500;
+                    font-size: .66rem;
+                    color: $darker-grey;
+                    text-transform: capitalize;
+                }
             }
 
             @media only screen and (max-width: 600px) {
@@ -58,6 +65,12 @@
     .subjects {
         height: 74vh;
         overflow-y: scroll;
+
+        h1.heading {
+            font-size: 1.25rem;
+            padding: 0 1rem;
+            font-weight: 500;
+        }
     }
 
     @media only screen and (max-width: 600px) {
