@@ -4,7 +4,7 @@ import { ADD_SUBJECT_URL, UPDATE_SUBJECT_URL, STATUS_DELETED } from 'src/app/_se
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
 import { AccountService } from 'src/app/_services/account.service';
-import { Subject } from 'src/app/_models/grade.model';
+import { Grade, Subject } from 'src/app/_models/grade.model';
 import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
 import { ADMIN } from 'src/app/_shared';
@@ -18,7 +18,7 @@ import { ADMIN } from 'src/app/_shared';
 export class SubjectsComponent implements OnInit {
 
   @Input() subjects: Subject[];
-  @Input() gradeId: string;
+  @Input() grade: Grade;
 
   showModal: boolean;
   name: string;
@@ -74,7 +74,7 @@ export class SubjectsComponent implements OnInit {
 
   save() {
     const data = {
-      GradeId: this.gradeId,
+      GradeId: this.grade.CompanyGradeId,
       Name: this.name,
       ImageUrl: "",
       Description: this.description,

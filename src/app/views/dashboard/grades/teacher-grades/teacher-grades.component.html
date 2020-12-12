@@ -18,54 +18,10 @@
       </mat-form-field> 
     </div>
   </div>
-  <!-- <div class="subjects">
-    <app-subjects *ngIf="grade" [subjects]="grade.Subjects" [gradeId]="grade.GradeId"></app-subjects>
-  </div> -->
   <div class="subjects">
-     <h1 class="heading">
-      {{grade?.Name}}: module subjects
-    </h1>
-    <div class="col-1-of-4">
-      <div class="dashboard-card"
-           *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
-        <div class="card-img">
-          <img src="assets/images/dashboard/education.jpg"
-               alt="placeholder">
-        </div>
-        <div class="card-content">
-          <h1 class="heading">
-            UX designer fundamentals basic knowledge
-          </h1>
-          <div class="topics">
-            <img src="assets/images/dashboard/book.svg"
-                 alt="placeholder"><a class="cta">0 topics</a>
-          </div>
-          <div class="card-stats">
-            <h1 class="h1">
-              attending learners
-            </h1>
-            <h1 class="h1 value">
-              100
-            </h1>
-            <h1 class="h1">
-              number of test/assignments
-            </h1>
-            <h1 class="h1 value">
-              100
-            </h1>
-          </div>
-        </div>
-        <div class="card-actions">         
-          <button mat-button
-                  color="primary"
-                  class="cta">
-            view this subject
-          </button>
-        </div>
-
-      </div>
-    </div>
+    <app-subjects *ngIf="grade" [subjects]="grade.Subjects" [grade]="grade"></app-subjects>
   </div>
+ 
 </div>
 
 

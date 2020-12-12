@@ -1,61 +1,75 @@
 @import '../../../../../assets/scss/color';
 
+.header {
+    background: $white;
+    width: 87%;
+    z-index: 55;
+
+    h1.heading {
+        font-size: 1.25rem;
+        padding: 0 1rem;
+        font-weight: 500;
+    }
+
+    @media only screen and (max-width: 600px) {}
+
+}
+
 .subjects {
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    grid-gap: 1rem;
+    height: 69vh;
+    overflow-y: scroll;
+
+    .dashboard-card {
+        margin: 1rem;
+    }
 
     @media only screen and (max-width: 600px) {
         grid-template-columns: 100%;
         grid-gap: .8rem;
-    }
 
-    .subject {
-        background: $cloud;
-        width: 15rem;
-        padding: 1rem;
-        border-radius: .4rem;
-        cursor: pointer;
-
-        p {
-            padding: 0;
+        .dashboard-card {
             margin: 0;
-
-            .name {
-                font-weight: 600;
-                display: block;
-                font-size: 1rem;
-                margin-bottom: .5rem;
-            }
-
-            .lessions {
-                font-size: .85rem;
-                font-weight: 500;
-                display: block;
-            }
-
-            .material-icons {
-                font-size: 1.5rem;
-                position: relative;
-                top: .4rem;
-                margin-right: .5rem;
-            }
+            margin-bottom: .5rem;
         }
     }
+
 }
 
 
-.mat-button.add-new {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 10rem;
+.mat-button {
 
-    @media only screen and (max-width: 600px) {
-        bottom: 1rem;
-        width: 22.5rem;
-        padding: .5rem 1rem;
-        right: .5rem;
-        font-weight: 400;
+    &.add-new {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 10rem;
+
+        &.desktop {
+            display: block;
+        }
+
+        &.mobile {
+            display: none;
+            width: 5rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            bottom: 5rem;
+            padding: .5rem 1rem;
+            right: 2rem;
+            font-weight: 400;
+
+            &.desktop {
+                display: none;
+            }
+
+            &.mobile {
+                display: block;
+                width: 7rem;
+                border-radius: 50px;
+            }
+        }
     }
 }

@@ -31,3 +31,4 @@ export interface Institution {
     InstitutionType: InstitutionTypeModel;
     Grades: Grade[];
 }
+

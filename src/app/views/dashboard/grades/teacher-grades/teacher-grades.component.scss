@@ -62,16 +62,6 @@
         }
     }
 
-    .subjects {
-        height: 74vh;
-        overflow-y: scroll;
-
-        h1.heading {
-            font-size: 1.25rem;
-            padding: 0 1rem;
-            font-weight: 500;
-        }
-    }
 
     @media only screen and (max-width: 600px) {
         padding: 1rem;
