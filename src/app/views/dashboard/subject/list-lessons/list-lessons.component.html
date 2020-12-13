@@ -1,21 +1,33 @@
-<div class="" *ngIf="lessons">
-  <div class="lessons" *ngIf="lessons.length; else nodata">
-    <div class="lesson" *ngFor="let lesson of lessons" (click)="preview(lesson)">
-      <p>
-        <span class="tittle">
-          <span class="material-icons">
-            description
-          </span>
-          {{lesson.Tittle}}</span>
-        <span class="stat"> 5 people read this</span>
-      </p>
+<div class=""
+     *ngIf="lessons">
+  <div class="lessons"
+       *ngIf="lessons.length; else nodata">
+    <div class="lesson"
+         *ngFor="let lesson of lessons"
+         (click)="preview(lesson)">
+      <i class="material-icons">
+        description
+      </i>
+      <h1 class="tittle">
+        {{lesson.Tittle}}
+        <span class="stat">(0) people read this...</span>
+        <span class="stat">(0) people discussing this..</span>
+      </h1>
     </div>
 
-    <div class="lesson add-row">
-      <div class="add">
-        <button mat-button color="primary" (click)="add()"> Add new lesson</button>
-      </div>
-    </div>
+    <!-- <div class="add">
+      <button mat-button
+              color="primary"
+              (click)="add()"> Add new lesson</button>
+    </div> -->
+    <button mat-button
+            class="add-new desktop"
+            color="primary"
+            (click)="add()"> Add new lesson</button>
+    <button mat-button
+            class="add-new mobile"
+            color="primary"
+            (click)="add()"> + Lesson</button>
   </div>
 
   <ng-template #nodata>
@@ -33,9 +45,13 @@
 
 
 
-<div class="overlay" *ngIf="showModal || showDelete || showPreview" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal">
-  <div class="close" (click)="closeModal()">
+<div class="overlay"
+     *ngIf="showModal || showDelete || showPreview"
+     (click)="closeModal()"></div>
+<div class="modal"
+     *ngIf="showModal">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
@@ -43,7 +59,9 @@
 
   <div class="form">
     <label for="">Lesson tittle**</label>
-    <input type="text" placeholder="e.g. How to write a strong introduction." [(ngModel)]="tittle">
+    <input type="text"
+           placeholder="e.g. How to write a strong introduction."
+           [(ngModel)]="tittle">
 
 
     <span *ngIf="contentType === 'Blog'">
@@ -53,11 +71,17 @@
           Be more descriptive as you can use images and color highlighters to emphasize more.
         </span>
       </label>
-      <quill-editor placeholder="Start typing or click image icon to uplaod" class="editor" [styles]="editorStyle" [(ngModel)]="contentBody">
+      <quill-editor placeholder="Start typing or click image icon to uplaod"
+                    class="editor"
+                    [styles]="editorStyle"
+                    [(ngModel)]="contentBody">
 
       </quill-editor>
     </span>
-    <button mat-button color="primary" class="btn-float" (click)="formatBody()"> Save Lesson</button>
+    <button mat-button
+            color="primary"
+            class="btn-float"
+            (click)="formatBody()"> Save Lesson</button>
     <div class="error">
       {{error}}
     </div>
@@ -65,16 +89,24 @@
 </div>
 
 
-<div class="modal" *ngIf="showDelete">
+<div class="modal"
+     *ngIf="showDelete">
   <div class="delete-modal">
-    <div class="close" (click)="closeModal()">
+    <div class="close"
+         (click)="closeModal()">
       <span class="material-icons">
         west
       </span> {{modalHeading}}
     </div>
 
-    <button mat-button color="primary" class="danger" (click)="formatBody()"> Yes, delete</button>
-    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
+    <button mat-button
+            color="primary"
+            class="danger"
+            (click)="formatBody()"> Yes, delete</button>
+    <button mat-button
+            color="primary"
+            class="secondary"
+            (click)="closeModal()"> Cancel</button>
     <div class="error">
       {{error}}
     </div>
@@ -82,22 +114,28 @@
 </div>
 
 
-<div class="modal" *ngIf="showPreview && current">
-  <div class="close" >
-    <span class="material-icons" (click)="closeModal()">
+<div class="modal"
+     *ngIf="showPreview && current">
+  <div class="preview close">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
     </span>
     {{modalHeading}}
-    <button class="edit" mat-button (click)="edit()">
+    <button class="edit"
+            mat-button
+            (click)="edit()">
       <span class="material-icons">
         edit
-      </span> 
+      </span>
       Edit
     </button>
-    <button class="share" mat-button (click)="copyText()">
+    <button class="share"
+            mat-button
+            (click)="copyText()">
       <span class="material-icons">
         share
-      </span>   Share
+      </span> Share
     </button>
   </div>
   <div class="html-view editor">
@@ -109,10 +147,12 @@
   <mat-tab-group>
     <mat-tab label="Comments && Questions">
 
-      <div class="comments" *ngIf="current">
+      <div class="comments"
+           *ngIf="current">
         <h1>Discussion</h1>
 
-        <div class="comment wider" *ngFor="let comment of current.Comments  ; let i = index">
+        <div class="comment wider"
+             *ngFor="let comment of current.Comments  ; let i = index">
           <span *ngIf="!comment.ParentId">
             <div class="user-dp">
               <div class="dp">
@@ -126,15 +166,19 @@
                 </span>
                 <span class="messaage">
                   <div class="reply">
-                    <a (click)="reply(comment)" *ngIf="!comment.ShowReply">
+                    <a (click)="reply(comment)"
+                       *ngIf="!comment.ShowReply">
                       <span class="material-icons">
                         reply
                       </span>
                       Reply
                     </a>
-    
-                    <div class="reply-input" *ngIf="comment.ShowReply">
-                      <input type="text" placeholder="Type reply message here..." [(ngModel)]="comment.Reply">
+
+                    <div class="reply-input"
+                         *ngIf="comment.ShowReply">
+                      <input type="text"
+                             placeholder="Type reply message here..."
+                             [(ngModel)]="comment.Reply">
                       <button (click)="postComment(comment)">
                         <span class="material-icons">
                           send
@@ -144,12 +188,14 @@
                   </div>
                 </span>
                 <span class="messaage">
-                  <div class="btn-show-replies" *ngIf="!comment.ShowReplies && comment.Replies.length > 0"
-                    (click)="toggleReplies(comment)">
+                  <div class="btn-show-replies"
+                       *ngIf="!comment.ShowReplies && comment.Replies.length > 0"
+                       (click)="toggleReplies(comment)">
                     <a>-- View replies ({{comment.Replies.length}})</a>
                   </div>
-                  <div class="btn-show-replies" *ngIf="comment.ShowReplies && comment.Replies.length > 0"
-                    (click)="toggleReplies(comment)">
+                  <div class="btn-show-replies"
+                       *ngIf="comment.ShowReplies && comment.Replies.length > 0"
+                       (click)="toggleReplies(comment)">
                     <a>-- Hide replies</a>
                   </div>
                 </span>
@@ -195,15 +241,17 @@
               </div>
             </div> -->
 
-            <div class="comment-text" *ngIf="comment.ShowReplies">
+            <div class="comment-text"
+                 *ngIf="comment.ShowReplies">
 
               <div class="replies">
-                <div class="comment wider" *ngFor="let rep of comment.Replies  ; let i = index">
+                <div class="comment wider"
+                     *ngFor="let rep of comment.Replies  ; let i = index">
                   <div class="user-dp">
                     <div class="dp">
                       {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
                     </div>
-    
+
                     <p>
                       {{rep.User.Name}} {{rep.User.Surname}}
                       <span class="messaage">
@@ -213,7 +261,7 @@
                   </div>
                 </div>
               </div>
-    
+
             </div>
           </span>
         </div>
@@ -221,7 +269,8 @@
     </mat-tab>
     <mat-tab label="Read and understood">
       <div class="students-likes">
-        <div class="student" *ngFor="let student of current.Students  ; let i = index">
+        <div class="student"
+             *ngFor="let student of current.Students  ; let i = index">
           <div class="user-dp">
             <div class="dp">
               {{student.User.Name[0]}}{{student.User.Surname[0]}}

@@ -5,30 +5,6 @@
 </div>
 <div class="subjects"
      *ngIf="subjects.length; else nosubjects;">
-
-  <!-- <div class="subject"
-          *ngFor="let item of subjects"
-          (click)="openSubject(item)">
-       <p>
-         <span class="name">
-           {{item.Name}}
-         </span>
-         <span class="lessions">
-           <span class="material-icons">
-             article
-           </span>
-           Lessons ({{item.Lessons?.length || 0}})
-         </span>
-         <span class="lessions">
-           <span class="material-icons">
-             assignment_turned_in
-           </span>
-           Tests ({{item.Tests?.length || 0}})
-         </span>
-       </p>
-
-     </div> -->
-
   <div class="dashboard-card"
        *ngFor="let item of subjects">
     <div class="card-img">

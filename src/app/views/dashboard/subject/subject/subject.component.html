@@ -1,20 +1,24 @@
-<div class="head"
-     *ngIf="subject">
-  <div (click)="back()">
-    <span class="material-icons">
-      west
-    </span>
-  </div>
-
-  <div>
-    <h1>
-      {{subject.Name}}
-    </h1>
-  </div>
-</div>
-
 <div class="main-list"
      *ngIf="subject">
+  <div class="header">
+    <div class="go-back">
+      <div (click)="back()"
+           class="arrow">
+        <span class="material-icons">
+          west
+        </span>
+      </div>
+      <h1>
+        {{subject.Name}}
+        <span>
+          {{subject.Description}}
+        </span>
+      </h1>
+    </div>
+    <div class="header-stats">
+
+    </div>
+  </div>
   <mat-tab-group (selectedTabChange)="onTabChanged($event)"
                  [selectedIndex]="selectedIndex">
     <mat-tab label="Lessons">
