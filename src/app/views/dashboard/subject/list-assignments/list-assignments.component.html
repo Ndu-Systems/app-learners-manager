@@ -5,26 +5,24 @@
     <div class="lesson"
          *ngFor="let assignment of assignments"
          (click)="preview(assignment)">
-      <p>
-        <span class="tittle">
-          <span class="material-icons">
-            description
-          </span>
-          {{assignment.Tittle}}</span>
+         <i class="material-icons">
+          description
+        </i>
+      <h1 class="tittle">
+         
+          {{assignment.Tittle}}
         <span class="stat">
           {{assignment.Points}} Points | Due: {{assignment.DueDate | date: 'mediumDate'}}
         </span>
-      </p>
+      </h1>
     </div>
-
-    <div class="lesson add-row">
-      <div class="add">
-        <button mat-button
-                color="primary"
-                (click)="add()"> Add new assignment</button>
-      </div>
+    <div class="add-new">
+      <button mat-button
+              color="primary"
+              (click)="add()"> Add new assignment</button>
     </div>
   </div>
+
 
   <ng-template #nodata>
     <div class="nodata">

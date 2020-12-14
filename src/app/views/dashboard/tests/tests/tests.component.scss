@@ -2,45 +2,53 @@
 
 
 .tests {
-    margin: 2rem 0;
+    margin: 0;
+    padding: 1rem;
 
     .test {
         padding: 1rem;
-        border-bottom: 1px solid $cloud;
         cursor: pointer;
+        border-radius: 1rem;
+        box-shadow: $box-shadow;
 
-        p {
-            .tittle {
+        .material-icons {
+            font-size: 1.5rem;
+            position: relative;
+            color: $primary;
+        }
+
+        h1 {
+            &.tittle {
                 display: block;
-                font-weight: 500;
+                font-weight: 700;
                 font-size: 1.2rem;
 
-                .material-icons {
-                    font-size: 2.5rem;
-                    position: relative;
-                    top: 1rem;
-                    margin-right: 1rem;
-                    color: $primary;
-                }
             }
 
             .stat {
+                display: block;
                 font-weight: 300;
                 color: $darker-grey;
                 font-size: .9rem;
                 margin-top: .2rem;
-                margin-left: 4rem;
             }
         }
     }
 
-    .add-row {
+    .add-new {
         margin-top: 4rem;
+        padding: 1rem;
+        border-bottom: 1px solid $cloud;
 
-        .add {
-            button {
-                width: 10rem;
-                color: $white !important;
+        .mat-button {
+            width: 15rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            padding: 0;
+
+            .mat-button {
+                width: 100%;
             }
         }
     }
@@ -52,9 +60,7 @@ iframe {
 }
 
 .test-modal {
-background: $cloud;
+    background: $cloud;
 
-    .body {
-       
-    }
+    .body {}
 }

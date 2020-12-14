@@ -7,16 +7,16 @@
     .lesson {
         padding: 1rem;
         margin: 1rem 0;
-        border-bottom: 1px solid $cloud;
         cursor: pointer;
         border-radius: 1rem;
         box-shadow: $box-shadow;
 
         .material-icons {
             font-size: 1.5rem;
-            position: relative;          
-            color: $primary;            
+            position: relative;
+            color: $primary;
         }
+
         h1 {
             &.tittle {
                 display: block;
@@ -42,42 +42,24 @@
 
     }
 
+    .add-new {
+        margin-top: 4rem;
+        padding: 1rem;
+        border-bottom: 1px solid $cloud;
 
-    .mat-button {
+        .mat-button {
+            width: 15rem;
+        }
 
-        &.add-new {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 10rem;
+        @media only screen and (max-width: 600px) {
+            padding: 0;
 
-            &.desktop {
-                display: block;
-            }
-
-            &.mobile {
-                display: none;
-                width: 5rem;
-            }
-
-            @media only screen and (max-width: 600px) {
-                bottom: 5rem;
-                padding: .5rem 1rem;
-                right: 2rem;
-                font-weight: 400;
-
-                &.desktop {
-                    display: none;
-                }
-
-                &.mobile {
-                    display: block;
-                    width: 7rem;
-                    border-radius: 50px;
-                }
+            .mat-button {
+                width: 100%;
             }
         }
     }
+
 }
 
 iframe {
