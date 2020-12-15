@@ -32,6 +32,7 @@
                 top: .5rem;
                 color: $primary;
                 font-size: inherit;
+
                 span {
                     display: block;
                     font-weight: 500;
@@ -62,6 +63,11 @@
         }
     }
 
+    .subjects {
+        height: 80vh;
+        overflow-y: scroll;
+
+    }
 
     @media only screen and (max-width: 600px) {
         padding: 1rem;
@@ -77,6 +83,8 @@
                 grid-template-columns: 50% auto;
             }
         }
+
+        
     }
 
 }

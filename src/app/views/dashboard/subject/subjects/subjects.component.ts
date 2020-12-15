@@ -31,6 +31,7 @@ export class SubjectsComponent implements OnInit {
   isUpdate: boolean;
   current: Subject;
   modalHeading = 'Add new subject';
+  text= '';
   grades: any;
   isDelete: boolean;
   crumbs: BreadCrumbModel[] = [];
@@ -143,7 +144,8 @@ export class SubjectsComponent implements OnInit {
     this.name = item.Name;
     this.current = item;
     this.current.StatusId = STATUS_DELETED;
-    this.modalHeading = `${item.Name}  will be deleted, continue?`
+    this.modalHeading = `DELETE ${item.Name}?`;
+    this.text = `${item.Name}  will be deleted, continue?`;
     this.subjects.map(x => x.Viewing = false);
   }
   edit(item: Subject) {

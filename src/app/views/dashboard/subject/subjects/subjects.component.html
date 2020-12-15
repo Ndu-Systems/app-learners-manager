@@ -11,6 +11,23 @@
       <img src="assets/images/dashboard/education.jpg"
            alt="placeholder">
     </div>
+
+    <div class="menu">
+      <i class="material-icons">
+        settings
+      </i>
+      <div class="menu-items">
+        <a (click)="edit(item)">
+          <i class="material-icons">
+            edit
+          </i>&nbsp;Edit item</a>
+
+        <a (click)="delete(item)">
+          <i class="material-icons delete">
+            delete
+          </i>&nbsp;Delete item</a>
+      </div>
+    </div>
     <div class="card-content">
       <h1 class="heading">
         {{item.Name}}
@@ -19,7 +36,7 @@
         <img src="assets/images/dashboard/book.svg"
              alt="placeholder"><a class="cta">({{item.Lessons?.length || 0}}) lessons</a>
       </div>
-      <div class="card-stats">       
+      <div class="card-stats">
         <h1 class="h1">
           number of test/assignments
         </h1>
@@ -112,18 +129,26 @@
 
 <div class="modal"
      *ngIf="isDelete">
-  <div class="delete-modal">
-    <h1>
-      {{modalHeading}}
+  <div class="close"
+       (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+  <div class="cta-form">
+    <img src="assets/images/common/delete.svg"
+         alt="delete vector">
+    <h1 class="heading">
+      {{text}}
+      <span>
+        A soft delete will be performed, check Archives for more.
+      </span>
     </h1>
+
     <button mat-button
             color="primary"
             class="danger"
             (click)="save()"> Yes, delete</button>
-    <button mat-button
-            color="primary"
-            class="secondary"
-            (click)="closeModal()"> Cancel</button>
     <div class="error">
       {{error}}
     </div>

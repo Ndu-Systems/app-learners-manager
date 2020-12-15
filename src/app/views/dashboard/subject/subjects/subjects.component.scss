@@ -15,11 +15,25 @@
 
 }
 
+.modal {
+    padding: 0;
+
+    .form {
+        margin: 0 auto;
+        margin-top: 5rem;
+        width: 25vw;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .form {
+            width: 85vw;
+        }
+    }
+}
+
 .subjects {
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    height: 70vh;
-    overflow-y: scroll;
 
     .dashboard-card {
         margin: 1rem;
@@ -45,6 +59,7 @@
         bottom: 2rem;
         right: 2rem;
         width: 10rem;
+        border-radius: 1rem;
 
         &.desktop {
             display: block;

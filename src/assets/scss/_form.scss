@@ -90,10 +90,12 @@
 
     select {
       cursor: pointer;
-      option{
+
+      option {
         cursor: pointer;
       }
     }
+
     @media screen and (max-width: 600px) {
       margin: 0;
     }
@@ -181,6 +183,7 @@ button {
       &.desktop {
         display: none;
       }
+
       &.mobile {
         display: block;
         position: absolute;
@@ -189,6 +192,41 @@ button {
         left: 1rem;
         top: 5rem;
       }
+    }
+  }
+}
+
+.cta-form {
+  padding: 1rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 25vw;
+  background: $white;
+  text-align: center;
+
+  img {
+    height: 12rem;
+  }
+
+  .heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    span {
+      font-size: .85rem;
+      color: $darker-grey;
+      display: block;
+      font-weight: 400;
+      margin-top: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 85vw;
+    margin-top: 5rem;
+
+    img {
+      height: 8rem;
     }
   }
 }
