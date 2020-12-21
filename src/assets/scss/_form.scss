@@ -37,6 +37,7 @@
       font-weight: 700;
       color: $black;
       font-size: .95rem;
+      margin-top: 0;
     }
 
 
@@ -67,6 +68,12 @@
       border-radius: 4px;
       margin: 8px 0;
       resize: vertical;
+    }
+
+    .alert {
+      font-weight: 500;
+      font-size: .85rem;
+      color: $danger;
     }
 
     .mat-radio-button.mat-accent .mat-radio-inner-circle {

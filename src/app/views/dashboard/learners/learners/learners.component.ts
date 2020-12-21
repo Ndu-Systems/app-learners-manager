@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/_services/user.service';
-import { LEARNER } from 'src/app/_shared';
+import { ADMIN, LEARNER } from 'src/app/_shared';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -40,7 +40,7 @@ export class LearnersComponent implements OnInit {
 
   headerBanner: HeaderBannerModel = {
     Header: 'Learners',
-    SubHeader: 'A collection of learners in the system.',
+    SubHeader: 'A collection of learners for your organization.',
     ctaLabel: '+ Add learner'
   };
   showConfirm: boolean;
@@ -48,6 +48,7 @@ export class LearnersComponent implements OnInit {
   modalCTA: string;
   proofOfPayment: string;
   showAddLearner: boolean;
+  isAdmin: boolean;
 
   constructor(
     private apiServices: ApiService,
@@ -60,6 +61,9 @@ export class LearnersComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
+    if (this.user.UserType === ADMIN) {
+      this.isAdmin = true;
+    }
     this.userService.userListObservable.subscribe(data => {
       this.users = data;
     });

@@ -1,5 +1,6 @@
 button {
 
+  
   &.mat-primary {
     background: $primary;
     width: 100%;
@@ -8,7 +9,7 @@ button {
     font-size: 1rem;
     color: $white !important;
     border-radius: $border-radius;
-
+   
   }
 
   &.mat-flat-button.mat-primary[disabled] {

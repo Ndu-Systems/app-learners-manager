@@ -5,7 +5,7 @@ import { User } from 'src/app/_models/user.model';
 import { ApiService, AccountService, EmailService } from 'src/app/_services';
 import { UserService } from 'src/app/_services/user.service';
 import { STATUS_PENDING_PAYMENTS, STATUS_ACTIVE, UPDATE_USER_URL } from 'src/app/_services/_shared';
-import { TEACHER } from 'src/app/_shared';
+import { ADMIN, TEACHER } from 'src/app/_shared';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -37,7 +37,7 @@ export class TeachersComponent implements OnInit {
 
   headerBanner: HeaderBannerModel = {
     Header: 'Teachers',
-    SubHeader: 'A collection of teachers in the system.',
+    SubHeader: 'A collection of teachers for your  organization.',
     ctaLabel: '+ Add Teacher'
   };
   showConfirm: boolean;
@@ -45,6 +45,7 @@ export class TeachersComponent implements OnInit {
   modalCTA: string;
   proofOfPayment: string;
   showAddLearner: boolean;
+  isAdmin: boolean;
 
   constructor(
     private apiServices: ApiService,
@@ -57,6 +58,9 @@ export class TeachersComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
+    if (this.user.UserType === ADMIN) {
+      this.isAdmin = true;
+    }
     this.userService.userListObservable.subscribe(data=>{
       this.users = data;
     });

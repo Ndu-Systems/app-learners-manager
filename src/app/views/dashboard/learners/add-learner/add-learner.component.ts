@@ -35,16 +35,21 @@ export class AddLearnerComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.user = this.accountService.currentUserValue;
     if (this.user) {
       this.showLoader = true;
-      this.apiService.get(`${GET_GRADES_URL}?CompanyId=${this.user.CompanyId}`).subscribe(data => {
-        if (data) {
-          this.grades = data;
+
+      if (this.user.Company) {
+        const institution = this.user.Company.Institutions[0];
+        if (institution.Grades) {
+          // make sure that grades/years have subjects
+          this.grades = institution.Grades.filter(x => x.Subjects.length > 0);
           this.showLoader = false;
+        } else {
+          alert('He is dead jim')
         }
-      });
+
+      }
       this.rForm = this.fb.group({
         Email: new FormControl(null, Validators.compose([
           Validators.required,
@@ -55,7 +60,7 @@ export class AddLearnerComponent implements OnInit {
         Name: [null, Validators.required],
         CompanyId: [this.user.CompanyId, Validators.required],
         Surname: [null, Validators.required],
-        GradeId: [null],
+        GradeId: [null, Validators.required],
         UserType: LEARNER,
         CreateUserId: [this.user.UserId],
         ModifyUserId: [this.user.UserId],
@@ -93,20 +98,16 @@ export class AddLearnerComponent implements OnInit {
     this.emailService.sendAccountActivationEmail(emailToSend)
       .subscribe(response => {
         if (response > 0) {
+          this.showLoader = false;
 
         }
       });
   }
 
   gradeChanged(gradeId: string) {
-    this.apiService.get(`${GET__GRADE_DETAILS_URL}?GradeId=${gradeId}`).subscribe(data => {
-      if (data) {
-        this.grade = data;
-        this.subjects = this.grade.Subjects;
-        this.subjects.map(x => x.IsSelected = true);
-      }
-    });
-
+    this.subjects = []; // ensure old subjects get formatted.
+    this.subjects = this.grades.find(x => x.GradeId === gradeId).Subjects;
   }
+
 
 }

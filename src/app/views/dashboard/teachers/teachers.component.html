@@ -1,66 +1,89 @@
-<div class="headers">
-  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-  <app-header-banner [headerBanner]="headerBanner" (showModalEventEmitter)="add()"></app-header-banner>
-</div>
-<div class="main-list" *ngIf="users">
-  <div class="items">
-    <div class="item pointer" *ngFor="let item of users" (click)="view(item)">
-      <div class="details">
-        <div class="icon">
-          <div class="user-dp">
-            <div class="dp">{{item.Name[0]}}{{item.Surname[0]}}</div>
-          </div>
-        </div>
-        <div class="data">
-          <h1>
-            {{item.Name}} {{item.Surname}}
-            <span>{{item.Grade?.Name}}</span>
-          </h1>
-        </div>
-        <div class="data">
-          <h1>
-            {{item.PhoneNumber}}
-            <span>{{item.Email}}</span>
-          </h1>
-        </div>
-        <div class="data">
-          <h1>
-            Join Date
-            <span>{{item.CreateDate| date: 'mediumDate'}}</span>
-          </h1>
-        </div>
-        <div class="data">
-          <!-- <h1>
-            Subjects
-            <span>{{item.Studentsubject | studentsubjects}}</span>
-          </h1> -->
-        </div>
-   
+<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 
-        <div class="viewing" *ngIf="item.Viewing">
-          <ul>
-            <li (click)="open(item.GradeId)">
-              <span class="material-icons">
-                list
-              </span>View Subjects</li>
-            <li (click)="edit(item)">
-              <span class="material-icons">
-                edit
-              </span>Edit</li>
-            <li (click)="delete(item.GradeId)" class="delete"><span class="material-icons">
-                delete_outline
-              </span>Delete</li>
-          </ul>
+<div class="container-fluid">
+  <app-header-banner [headerBanner]="headerBanner"
+                     (showModalEventEmitter)="add()"></app-header-banner>
+  <div class="main-list"
+       *ngIf="users.length; else nodata;">
+    <div class="items">
+      <div class="item pointer"
+           *ngFor="let item of users"
+           (click)="view(item)">
+        <div class="details">
+          <div class="icon">
+            <div class="user-dp">
+              <div class="dp">{{item.Name[0]}}{{item.Surname[0]}}</div>
+            </div>
+          </div>
+          <div class="data">
+            <h1>
+              {{item.Name}} {{item.Surname}}
+              <span>{{item.Grade?.Name}}</span>
+            </h1>
+          </div>
+          <div class="data">
+            <h1>
+              {{item.PhoneNumber}}
+              <span>{{item.Email}}</span>
+            </h1>
+          </div>
+          <div class="data">
+            <h1>
+              Join Date
+              <span>{{item.CreateDate| date: 'mediumDate'}}</span>
+            </h1>
+          </div>
+          <div class="data">
+            <!-- <h1>
+Subjects
+<span>{{item.Studentsubject | studentsubjects}}</span>
+</h1> -->
+          </div>
+
+
+          <div class="viewing"
+               *ngIf="item.Viewing">
+            <ul>
+              <li (click)="open(item.GradeId)">
+                <span class="material-icons">
+                  list
+                </span>View Subjects</li>
+              <li (click)="edit(item)">
+                <span class="material-icons">
+                  edit
+                </span>Edit</li>
+              <li (click)="delete(item.GradeId)"
+                  class="delete"><span class="material-icons">
+                  delete_outline
+                </span>Delete</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  
+  <ng-template #nodata>
+    <div class="nodata">
+      <h1>
+        No Teachers found.
+        <span *ngIf="isAdmin"
+              (click)="add()">
+          Add teacher
+        </span>
+      </h1>
+    </div>
+  </ng-template>
 </div>
 
-<div class="overlay" *ngIf="showModal"></div>
 
-<div class="modal" *ngIf="showConfirm">
-  <div class="close" (click)="cancelStatusChange()">
+<div class="overlay"
+     *ngIf="showModal"></div>
+
+<div class="modal"
+     *ngIf="showConfirm">
+  <div class="close"
+       (click)="cancelStatusChange()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
@@ -71,12 +94,16 @@
       {{modalBody}}
     </p>
 
-    <button mat-button color="primary" (click)="updateStatus()"> {{modalCTA}} </button>
+    <button mat-button
+            color="primary"
+            (click)="updateStatus()"> {{modalCTA}} </button>
 
   </div>
 </div>
-<div class="modal" *ngIf="proofOfPayment">
-  <div class="close" (click)="closeModal()">
+<div class="modal"
+     *ngIf="proofOfPayment">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
@@ -84,16 +111,19 @@
 
   <div class="form">
 
-    <img [src]="proofOfPayment" alt="">
+    <img [src]="proofOfPayment"
+         alt="">
   </div>
 </div>
-<div class="modal" *ngIf="showAddLearner">
-  <div class="close" (click)="closeModal()">
+<div class="modal"
+     *ngIf="showAddLearner">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
   </div>
 
-<app-add-teacher (doneAdding)="doneAdding($event)"></app-add-teacher>
+  <app-add-teacher (doneAdding)="doneAdding($event)"></app-add-teacher>
 </div>
 <app-dash-loader *ngIf="showLoader"></app-dash-loader>
