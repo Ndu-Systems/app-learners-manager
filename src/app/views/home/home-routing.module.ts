@@ -29,7 +29,7 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      { path: '', component: IndexComponent },
+      { path: '', component: SignInComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
       { path: 'pricing', component: PricingTableComponent },

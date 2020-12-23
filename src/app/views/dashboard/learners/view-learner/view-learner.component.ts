@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, ThemePalette } from '@angular/material';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'src/app/_models/grade.model';
+import { Grade, Subject } from 'src/app/_models/grade.model';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, ApiService } from 'src/app/_services';
 import { UserService } from 'src/app/_services/user.service';
@@ -20,7 +20,9 @@ export class ViewLearnerComponent implements OnInit {
   modalHeading: string;
   subjects: Subject[] = [];
   color: ThemePalette = 'primary';
-  user: any;
+  user: User;
+  grades: Grade[] = [];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
@@ -39,8 +41,8 @@ export class ViewLearnerComponent implements OnInit {
     this.user = this.accountService.currentUserValue;
     this.student = this.userService.currentUserValue;
     this.userService.getUser(this.userId);
-    this.userService.userObservable.subscribe(user => {
-      this.student = user;
+    this.userService.userObservable.subscribe(data => {
+      this.student = data;
       this.loadSubjects();
     });
   }
@@ -56,18 +58,31 @@ export class ViewLearnerComponent implements OnInit {
     this.showModal = false;
   }
   loadSubjects() {
-    this.apiService.get(`${GET__GRADE_DETAILS_URL}?GradeId=${this.student.GradeId}`).subscribe(data => {
-      if (data && data.Subjects) {
-        this.subjects = data.Subjects;
-        this.subjects.map(subject => {
-          if (this.student.Studentsubjects.find(x => x.SubjectId === subject.SubjectId
-            && Number(x.StatusId) === STATUS_ACTIVE)) {
-            subject.IsSelected = true;
-          }
-          return subject;
-        });
+    // this.apiService.get(`${GET__GRADE_DETAILS_URL}?GradeId=${this.student.GradeId}`).subscribe(data => {
+    //   if (data && data.Subjects) {
+    //     this.subjects = data.Subjects;
+    //     this.subjects.map(subject => {
+    //       if (this.student.Studentsubjects.find(x => x.SubjectId === subject.SubjectId
+    //         && Number(x.StatusId) === STATUS_ACTIVE)) {
+    //         subject.IsSelected = true;
+    //       }
+    //       return subject;
+    //     });
+    //   }
+    // });
+    if (this.user.Company) {
+      const institution = this.user.Company.Institutions[0];
+      if (institution.Grades) {
+        // make sure that grades/years have subjects
+        this.grades = institution.Grades.filter(x => x.Subjects.length > 0);
+        this.subjects = [];
+        const grade = this.grades.find(x => x.CompanyGradeId === this.student.GradeId);
+        this.subjects = this.grades.find(x => x.GradeId === grade.GradeId).Subjects;
+    
+      } else {
+        alert('He is dead jim')
       }
-    });
+    }
 
   }
   select(subject: Subject) {
@@ -88,7 +103,6 @@ export class ViewLearnerComponent implements OnInit {
       const existingStudentSubect = this.student.Studentsubjects.find(x => x.SubjectId === sub.SubjectId);
       if (existingStudentSubect) {
         studentSubject.Id = existingStudentSubect.Id;
-
       }
       if (!sub.IsSelected) {
         studentSubject.StatusId = STATUS_DELETED;

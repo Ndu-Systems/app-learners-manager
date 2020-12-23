@@ -64,10 +64,13 @@
     <button mat-button
             color="primary"
             (click)="save()"> Save grade </button>
-    <div class="error"
-         *ngFor="let error of errors">
-      {{error}}
-    </div>
+    <span *ngIf="errors">
+      <div class="error"
+           *ngFor="let error of errors">
+        {{error}}
+      </div>
+    </span>
+
   </div>
 
 </div>

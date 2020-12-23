@@ -130,7 +130,7 @@
 
 
     <button mat-button color="primary" (click)="saveSection()"> Save Section</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -148,7 +148,7 @@
 
     <button mat-button color="primary" class="danger" (click)="saveSection()"> Yes, delete</button>
     <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -180,7 +180,7 @@
 
 
     <button mat-button color="primary" (click)="saveQuestion()"> Save question</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>

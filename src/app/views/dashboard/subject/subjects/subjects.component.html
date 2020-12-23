@@ -120,7 +120,7 @@
     <button mat-button
             color="primary"
             (click)="save()"> Save subject </button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -149,7 +149,7 @@
             color="primary"
             class="danger"
             (click)="save()"> Yes, delete</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>

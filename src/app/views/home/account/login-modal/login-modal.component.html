@@ -33,7 +33,7 @@
         <button mat-button color="primary" (click)="Login()" [disabled]="!rForm.valid">
           Login
         </button>
-        <h5 class="error">{{error}}</h5>
+        <h5 class="error" *ngIf="error">{{error}}</h5>
       </div>
       <div class="cta">
         <h1>Don't have an account?</h1>

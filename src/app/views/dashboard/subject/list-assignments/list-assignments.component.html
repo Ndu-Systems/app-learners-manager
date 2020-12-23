@@ -78,7 +78,7 @@
             color="primary"
             class="btn-float"
             (click)="save()"> Save Assignment</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -131,11 +131,11 @@
               color="primary"
               class="btn-float"
               (click)="update()"> Save Changes</button>
-      <div class="error">
+      <div class="error" *ngIf="error">
         {{error}}
       </div>
     </div>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -160,7 +160,7 @@
             color="primary"
             class="secondary"
             (click)="closeModal()"> Cancel</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>

@@ -15,8 +15,8 @@
         <div class="dp pc-only">{{user.Name[0]}}{{user.Surname[0]}}</div>
         <div class="name">
           <h1 class="h1">
-            {{user.Name}} {{user.Surname}}
-            <span class="status grade">{{user.Grade.Name}}</span>
+            {{user?.Name}} {{user?.Surname}}
+            <span class="status grade">{{user?.Grade?.Name}}</span>
           </h1>
         </div>
       </div>

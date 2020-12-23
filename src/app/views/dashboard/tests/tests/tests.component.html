@@ -82,7 +82,7 @@
     <button mat-button
             color="primary"
             (click)="save()"> Save Test</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -105,7 +105,7 @@
             color="primary"
             class="secondary"
             (click)="closeModal()"> Cancel</button>
-    <div class="error">
+    <div class="error" *ngIf="error">
       {{error}}
     </div>
   </div>

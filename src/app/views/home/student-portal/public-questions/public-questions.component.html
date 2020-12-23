@@ -91,7 +91,7 @@
               color="primary"
               class="btn-float"
               (click)="formatBody()"> Post your question</button>
-      <div class="error">
+      <div class="error" *ngIf="error">
         {{error}}
       </div>
     </div>

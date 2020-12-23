@@ -49,8 +49,8 @@ export class AddLearnerComponent implements OnInit {
         } else {
           alert('He is dead jim')
         }
-
       }
+
       this.rForm = this.fb.group({
         Email: new FormControl(null, Validators.compose([
           Validators.required,

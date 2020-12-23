@@ -180,7 +180,7 @@
                 [disabled]="!rForm.valid">
           Sign up
         </button>
-        <span class="error">{{error}}</span>
+        <span class="error" *ngIf="error">{{error}}</span>
 
       </div>
     </form>
