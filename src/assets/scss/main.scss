@@ -11,6 +11,8 @@
 @import '../scss/container';
 @import '../scss/dashboard/index';
 @import '../scss/status';
+@import '../scss/my-portal/index';
+@import '../scss/dp';
 // *{
 //     box-sizing: border-box;
 // }
@@ -97,8 +99,7 @@ body {
     padding: 0rem 2rem;
     height: 80vh;
     overflow-y: scroll;
-    background: $white;
-    box-shadow: $box-shadow;
+    background: $white;     
 
     .heading {
         display: grid;
@@ -185,8 +186,9 @@ body {
     padding: .5rem;
     color: #df122e;
     font-weight: 700;
-    text-transform: capitalize;
-}
+    background: #ff475738;
+    border-radius: 10px;
+ }
 
 .nodata {
     background: rgba(255, 166, 0, 0.096);

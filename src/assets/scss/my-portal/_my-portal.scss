@@ -1,0 +1,179 @@
+$border-radius: 10px;
+
+.my-portal {
+
+    .top-header {
+        display: grid;
+        grid-template-columns: 10% 25% 25% auto 30%;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+
+        .tab {
+            display: block;
+        }
+
+        .logo {
+            img {
+                height: 2.313rem;
+                margin-block-start: 0.67em;
+                margin-block-end: 0.67em;
+            }
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 80% auto;
+
+            .profile {
+                display: grid;
+                grid-template-columns: 20% auto;
+
+                .dp {
+                    margin-block-start: 0.67em;
+                    margin-block-end: 0.67em;
+                }
+
+                .name {
+                    margin-left: .5rem;
+
+                    h1 {
+                        font-size: 1.25rem;
+                        font-weight: 500;
+                        margin-block-start: 0.97em;
+                        margin-block-end: 0.97em;
+                    }
+
+                }
+            }
+
+            .logout {
+                margin-top: 2rem;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 40% auto;
+
+            .tab {
+                display: none;
+            }
+
+            .logo {
+                img {
+                    height: 1.75rem;
+                }
+            }
+
+            .options {
+                .profile {
+                    grid-template-columns: 100%;
+
+                    .name {
+                        overflow-x: hidden;
+
+                        h1 {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+
+                .logout {
+                    margin-top: 1rem;
+                }
+
+            }
+        }
+    }
+
+    .company {
+        display: grid;
+        grid-template-columns: 10% auto;
+        grid-gap: 1rem;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+        padding: 1rem;
+        margin-bottom: 1rem;
+
+        .details {
+            display: grid;
+            grid-template-columns: 33.33% 33.33% auto;
+
+            h1 {
+                margin-right: .8rem;
+                margin-block-start: 1 .67em;
+                margin-block-end: 1.67em;
+
+                &.h1 {
+                    font-size: 1.125rem;
+                    font-weight: 700;
+
+                    span {
+                        display: block;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: $darker-grey;
+                        margin: .5rem 0;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 100%;
+
+            .details {
+                grid-template-columns: 100%;
+
+                h1 {
+                    margin: 0;
+                    margin-bottom: 1rem;
+                    &.h1 {
+                        font-size: 1rem;
+                        span {
+                            font-size: .75rem;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    .public-questions {
+        background: $white;
+        box-sizing: border-box;
+        padding: 1rem;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        margin-bottom: 1rem;
+
+        .intro {
+            display: grid;
+            grid-template-columns: 80% auto;
+
+            img {
+                width: 100%;
+                position: relative;
+                top: 2rem;
+            }
+        }
+
+        ul {
+            li {
+                font-weight: 400;
+                margin: 1rem;
+                font-size: .85rem;
+                color: $darker-grey;
+            }
+        }
+
+        .actions {
+            button {
+                width: 12rem;
+            }
+        }
+    }
+}

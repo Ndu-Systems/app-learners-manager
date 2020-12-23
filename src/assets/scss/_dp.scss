@@ -1,0 +1,10 @@
+.round-dp {
+    border-radius: 100px;
+    overflow: hidden;
+    height: 6.5rem;
+    width: 6.5rem;
+    box-shadow: $box-shadow;
+    img {
+        width: 100%;
+    }
+}

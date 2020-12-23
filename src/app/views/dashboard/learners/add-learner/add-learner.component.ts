@@ -22,6 +22,7 @@ export class AddLearnerComponent implements OnInit {
   error = '';
 
   subjects: Subject[] = [];
+  learnerSubjects: Subject[] = [];
   grade: Grade;
 
   constructor(
@@ -71,12 +72,20 @@ export class AddLearnerComponent implements OnInit {
 
   }
 
+  onSubjectSelect(item: Subject) {
+    const index = this.learnerSubjects.indexOf(item);
+    if (index < 0) {
+      this.learnerSubjects.push(item);
+    } else {
+      this.learnerSubjects.splice(index, 1);
+    }
+  }
 
   onSubmit(model: UserModel) {
     model.Roles = [];
     model.Roles.push({ Name: LEARNER });
     this.showLoader = true;
-    model.Studentsubjects = this.subjects.filter(x => x.IsSelected);
+    model.Studentsubjects = this.learnerSubjects;
     this.apiService.add(`${ADD_LEARNER_URL}`, model).subscribe(data => {
       // send email logic here.
       if (data.Email) {
@@ -106,7 +115,8 @@ export class AddLearnerComponent implements OnInit {
 
   gradeChanged(gradeId: string) {
     this.subjects = []; // ensure old subjects get formatted.
-    this.subjects = this.grades.find(x => x.GradeId === gradeId).Subjects;
+    const selectedGrade = this.grades.find(x => x.CompanyGradeId === gradeId);
+    this.subjects = this.grades.find(x => x.GradeId === selectedGrade.GradeId).Subjects;
   }
 
 

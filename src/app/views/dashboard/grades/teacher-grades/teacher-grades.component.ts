@@ -51,7 +51,8 @@ export class TeacherGradesComponent implements OnInit {
     this.getInstitutionTypes();
 
   }
-  gradeChanged(grade: Grade) {
+  gradeChanged(gradeId: string) {
+    const grade = this.grades.find(x => x.GradeId === gradeId);
     this.grade = grade;
     this.gradeService.updateSelectedGradeState(grade);
   }

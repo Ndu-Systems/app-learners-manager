@@ -1,9 +1,9 @@
 <div class="header">
   <h1 class="heading">
-    {{grade?.Name}}: module subjects
+    {{grade?.Name}}: module /subjects
   </h1>
 </div>
-<div class="subjects"
+<div class="card-list"
      *ngIf="subjects.length; else nosubjects;">
   <div class="dashboard-card"
        *ngFor="let item of subjects">

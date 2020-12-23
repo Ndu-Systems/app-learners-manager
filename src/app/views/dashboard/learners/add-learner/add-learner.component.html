@@ -10,7 +10,7 @@
       <option selected
               disabled>Choose a grade/year of study</option>
       <option *ngFor="let item of grades"
-              [value]="item.GradeId">{{item.Name}}</option>
+              [value]="item.CompanyGradeId">{{item.Name}}</option>
     </select>
     <div class="alert"
          *ngIf="!rForm.controls['GradeId'].valid  && rForm.controls['GradeId'].touched ">
@@ -21,13 +21,11 @@
     <label for="exampleInputName">Subjects</label>
     <div class="subjects">
       <div class="subject"
-           *ngFor="let subject of subjects">
-        <!-- <input  type="checkbox"> 
-        {{subject?.Name}} -->
+           *ngFor="let subject of subjects">  
 
         <section class="example-section">
           <mat-checkbox [checked]="subject.IsSelected"
-                        class="example-margin">{{subject.Name}}</mat-checkbox>
+                        class="example-margin" (click)="onSubjectSelect(subject)">{{subject.Name}}</mat-checkbox>
         </section>
       </div>
     </div>

@@ -31,25 +31,6 @@
     }
 }
 
-.subjects {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-
-    .dashboard-card {
-        margin: 1rem;
-    }
-
-    @media only screen and (max-width: 600px) {
-        grid-template-columns: 100%;
-        grid-gap: .8rem;
-
-        .dashboard-card {
-            margin: 0;
-            margin-bottom: .5rem;
-        }
-    }
-
-}
 
 
 .mat-button {

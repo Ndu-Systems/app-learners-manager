@@ -93,7 +93,6 @@ export class SignInComponent implements OnInit {
             if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
               this.routeTo.navigate(['dashboard/grades']);
             }
-
             if (user.Roles.find(x => x.RoleName === LEARNER)) {
               this.routeTo.navigate(['/my-portal']);
             }

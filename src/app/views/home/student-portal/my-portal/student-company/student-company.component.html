@@ -1,20 +1,32 @@
 <div class="company">
-  <div class="dp" *ngIf="!company.Dp" (click)="showUplaod()">
+  <div class="dp"
+       *ngIf="!company.Dp"
+       (click)="showUplaod()">
     <span class="material-icons">
       camera_alt
     </span>
   </div>
-  <div class="round-dp" *ngIf="company.Dp" (click)="showUplaod()">
-    <div class="image" *ngIf="company.Dp">
-      <img [src]="company.Dp" alt="">
+  <div class="round-dp"
+       *ngIf="company.Dp"
+       (click)="showUplaod()">
+    <div class="image"
+         *ngIf="company.Dp">
+      <img [src]="company.Dp"
+           alt="">
     </div>
   </div>
 
   <div class="details">
-    <h1>
+    <h1 class="h1">
       {{company.Name}}
       <span>
-        {{company.Description}}
+        Organisation / School name
+      </span>
+    </h1>
+    <h1 class="h1" *ngIf="RegisteredDate">
+      {{RegisteredDate | date:'EEEE,dd MMMM yyyy, h:mm:ss a'}}
+      <span>
+        Organisation / School name
       </span>
     </h1>
   </div>

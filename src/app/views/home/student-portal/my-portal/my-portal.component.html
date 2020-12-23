@@ -1,44 +1,45 @@
-<div class="main">
+<div class="container-fluid my-portal">
   <div class="top-header">
     <div class="logo col">
       <img src="assets/images/common/logo-home.png"
-           alt="">
+           alt="logo here">
     </div>
-    <div class="col username">
+    <div class="tab">
     </div>
-    <div class="col username">
-      <div class="dp pc-only">{{user.Name[0]}}{{user.Surname[0]}}</div>
-      <div class="name">
-        <p>
-          {{user.Name}} {{user.Surname}}
-          <span class="status grade">{{user.Grade.Name}}</span>
-        </p>
+    <div class="tab">
+    </div>
+    <div class="tab">
+    </div>
+    <div class="options">
+      <div class="profile">
+        <div class="dp pc-only">{{user.Name[0]}}{{user.Surname[0]}}</div>
+        <div class="name">
+          <h1 class="h1">
+            {{user.Name}} {{user.Surname}}
+            <span class="status grade">{{user.Grade.Name}}</span>
+          </h1>
+        </div>
       </div>
-    </div>
-    <div class="col logout">
       <img src="assets/images/common/off.svg"
+           class="logout"
            (click)="signOut()"
            alt="log-off logo">
     </div>
   </div>
 
-  <div class="company"
-       *ngIf="user">
-    <app-student-company [company]="user.Company"></app-student-company>
-  </div>
+  <app-student-company *ngIf="user"
+                       [company]="user.Company"
+                       [RegisteredDate]="user.CreateDate"></app-student-company>
 
-  <div class="public-questions">
-    <app-public-questions *ngIf="studentsubjects && user"
-                          [user]="user"
-                          [subjects]="studentsubjects">
-    </app-public-questions>
-  </div>
-  <div class="student-subjects">
+  <app-public-questions *ngIf="studentsubjects && user"
+                        [user]="user"
+                        [subjects]="studentsubjects">
+  </app-public-questions>
+
+  <!-- <div class="student-subjects">
     <app-student-subjects-list *ngIf="studentsubjects && user"
                                [subjects]="studentsubjects"></app-student-subjects-list>
-  </div>
-
-
+  </div> -->
 </div>
 
 
