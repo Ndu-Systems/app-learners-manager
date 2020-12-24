@@ -166,6 +166,9 @@
 
     &.mobile {
       display: block;
+      position: fixed;
+      z-index: 999;
+      width: 92%;
 
       .col-1-of-3 {
         grid-template-columns: 15% auto 25%;
@@ -241,36 +244,40 @@
             font-weight: 500;
             margin-top: 2rem;
           }
-        }  
+        }
+
         button.mat-button.logout {
           color: $darker-grey !important;
           padding: 0;
           width: 15rem !important;
           background: $grey;
-         img {
-           height: 1rem;
-           margin-left: 2rem;
-         }
-     
-       }  
+
+          img {
+            height: 1rem;
+            margin-left: 2rem;
+          }
+
+        }
 
       }
 
     }
   }
+
   button.mat-button.logout {
     color: $darker-grey !important;
     padding: 0;
     width: 8rem !important;
     background: $grey;
-   img {
-     height: 1rem;
-     margin-left: 2rem;
-   }
 
-   @media screen and (max-width: 600px) {
-    width: 15rem !important;
-   }
- }
+    img {
+      height: 1rem;
+      margin-left: 2rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 15rem !important;
+    }
+  }
 
 }

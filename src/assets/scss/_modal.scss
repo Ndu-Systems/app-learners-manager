@@ -20,6 +20,7 @@
   height: 100%;
   padding: 4rem 16rem;
   box-sizing: border-box;
+  align-items: center;
 
   ::-webkit-scrollbar-thumb {
     background: #009CD7;
@@ -30,7 +31,7 @@
     width: 40%;
     margin: 2rem auto;
     @media only screen and (max-width: 600px) {
-      width: 61%;
+      width: 80%;
     }
   }
 

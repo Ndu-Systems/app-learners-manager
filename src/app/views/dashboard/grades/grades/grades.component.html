@@ -1,13 +1,11 @@
  <div class="headers">
    <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-   <!-- <app-header-banner [headerBanner]="headerBanner"
-                      (showModalEventEmitter)="add()"></app-header-banner> -->
  </div>
  <div *ngIf="grades">
-    <div class="teacher-grades"
-         *ngIf="grades && institutionTypes">
-      <app-teacher-grades [grades]="grades"></app-teacher-grades>
-    </div> 
+   <div class="teacher-grades"
+        *ngIf="grades && institutionTypes">
+     <app-teacher-grades [grades]="grades"></app-teacher-grades>
+   </div>
  </div>
 
  <ng-template #nodata>
