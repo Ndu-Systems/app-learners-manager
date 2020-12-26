@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ChangePasswordModel, CtaModel, TokenModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
 import { MatSnackBar } from '@angular/material';
+import { AWAITING_ACTIVATION } from 'src/app/_shared';
 
 @Component({
   selector: 'app-reset-password',
@@ -50,9 +51,25 @@ export class ResetPasswordComponent implements OnInit {
     const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
     this.token = baseUrlMain.substring(baseUrlMain.indexOf('=') + 1);
     // verify user token
-    this.getUserByToken();
+    if (!this.token.includes('http')) {
+      this.getUserByToken();
+    }
+
   }
 
+  activateUser() {
+    const tokenModel: TokenModel = { Token: this.token };
+    if (tokenModel.Token) {
+      this.accountService.activateUser(tokenModel)
+        .subscribe(data => {
+          if (data > 0) {
+            const message = 'Account successfully activated';
+            console.log(`INFO: ${message}`);
+            return;
+          }
+        });
+    }
+  }
   getUserByToken() {
     this.showLoader = true;
     if (this.token === undefined) {
@@ -63,6 +80,10 @@ export class ResetPasswordComponent implements OnInit {
     const tokenModel: TokenModel = { Token: this.token };
     this.accountService.getUserByToken(tokenModel).subscribe(data => {
       if (data) {
+        if (data.StatusId === AWAITING_ACTIVATION || 
+          data.StatusId === '4') {
+          this.activateUser();
+        }
         this.showLoader = false;
       } else {
         this.openSnackBar('You should not be here, please contact support!', 'Forbidden!');
@@ -80,10 +101,16 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
     this.accountService.changePassword(model).subscribe(data => {
-      if (data) {
+      if (data > 0) {
         this.openSnackBar('Please login with your new credentials', 'Success!');
         this.routeTo.navigate(['sign-in']);
-      } else {
+      }
+      else if(data === 'invalid request') {
+        this.openSnackBar('Invalid request, please try again!', 'Error!');
+        this.rForm.reset();
+        return;
+      }
+      else {
         this.openSnackBar('Something went wrong, please try again later!', 'Error!');
         this.routeTo.navigate(['']);
       }

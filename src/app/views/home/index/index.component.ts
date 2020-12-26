@@ -10,6 +10,8 @@ import { NavigationService } from 'src/app/_services';
 })
 export class IndexComponent implements OnInit {
   navigationModel: NavigationModel;
+  showLoader: boolean = false;
+
   constructor(
     private routeTo: Router,
     private navigationService: NavigationService
@@ -21,9 +23,16 @@ export class IndexComponent implements OnInit {
       NavUrl: '',
       Title: 'Home'
     };
+  
     this.navigationService.updateNavigationState(this.navigationModel);
+    this.spinner();
   }
-
+  spinner() {
+    this.showLoader = true;  
+    setTimeout(() => {
+      this.showLoader = false;   
+    }, 1500);
+  }
   getStarted() {
     this.navigationModel = {
       IsHome: false,

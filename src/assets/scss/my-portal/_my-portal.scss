@@ -1,7 +1,7 @@
 $border-radius: 10px;
 
 .my-portal {
-
+    background: $grey;
     .top-header {
         display: grid;
         grid-template-columns: 10% 25% 25% auto 30%;
@@ -9,7 +9,7 @@ $border-radius: 10px;
         border-radius: $border-radius;
         padding: 0 1rem;
         margin-bottom: 1rem;
-
+        background: $white;
         .tab {
             display: block;
         }
@@ -43,6 +43,7 @@ $border-radius: 10px;
                         font-weight: 500;
                         margin-block-start: 0.97em;
                         margin-block-end: 0.97em;
+
                         span {
                             display: block;
                             font-size: 14px;
@@ -102,7 +103,7 @@ $border-radius: 10px;
         border-radius: $border-radius;
         padding: 1rem;
         margin-bottom: 1rem;
-
+        background: $white;
         .details {
             display: grid;
             grid-template-columns: 33.33% 33.33% auto;
@@ -136,8 +137,10 @@ $border-radius: 10px;
                 h1 {
                     margin: 0;
                     margin-bottom: 1rem;
+
                     &.h1 {
                         font-size: 1rem;
+
                         span {
                             font-size: .75rem;
                         }
@@ -166,6 +169,24 @@ $border-radius: 10px;
                 position: relative;
                 top: 2rem;
             }
+
+            .greetings {
+                ul {
+                    padding-inline-start: 0;
+                }
+            }
+
+            @media only screen and (max-width: 600px) {
+                grid-template-columns: 65% auto;
+
+                .greetings {
+                    h1 {
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                    }
+                }
+
+            }
         }
 
         ul {
@@ -180,6 +201,11 @@ $border-radius: 10px;
         .actions {
             button {
                 width: 12rem;
+            }
+            @media only screen and (max-width: 600px) {
+                button {
+                    width: 100%;
+                }
             }
         }
     }

@@ -36,7 +36,8 @@ export class StudentSubjectsListComponent implements OnInit {
     }
 
   }
-  subjectChanged(subject: Studentsubject) {
+  subjectChanged(subjectId: string) {
+    const subject = this.subjects.find(x => x.SubjectId === subjectId);
     this.studentsubject = subject;
     this.studentPortalService.updateCurrentSelectedStudentsubject(subject);
   }

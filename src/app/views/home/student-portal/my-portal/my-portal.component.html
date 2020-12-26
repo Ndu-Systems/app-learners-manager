@@ -36,10 +36,8 @@
                         [subjects]="studentsubjects">
   </app-public-questions>
 
-  <!-- <div class="student-subjects">
-    <app-student-subjects-list *ngIf="studentsubjects && user"
-                               [subjects]="studentsubjects"></app-student-subjects-list>
-  </div> -->
+  <app-student-subjects-list *ngIf="studentsubjects && user"
+                             [subjects]="studentsubjects"></app-student-subjects-list>
 </div>
 
 

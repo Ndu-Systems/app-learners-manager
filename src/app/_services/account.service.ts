@@ -67,6 +67,9 @@ export class AccountService {
     return `${environment.BASE_URL}/#/sign-in?token=${token}`;
   }
 
+  createNewAccountActivationReturnLink(token: string) {
+    return this.generateForgotPasswordReturnLink(token);
+  }
 
   generateToken(data: EmailGetRequestModel) {
     return this.http.post<User>(`${this.url}/api/account/generate-token.php`, data);
@@ -81,7 +84,7 @@ export class AccountService {
   }
 
   changePassword(data: ChangePasswordModel) {
-    return this.http.post<User>(`${this.url}/api/account/change-password.php`, data);
+    return this.http.post<any>(`${this.url}/api/account/change-password.php`, data);
   }
 
 

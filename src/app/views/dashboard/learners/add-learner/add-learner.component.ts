@@ -102,7 +102,7 @@ export class AddLearnerComponent implements OnInit {
       Email: data.Email,
       Subject: 'Fundani: Welcome & Activation',
       Message: '',
-      Link: this.accountService.generateAccountActivationReturnLink(data.UserToken)
+      Link: this.accountService.createNewAccountActivationReturnLink(data.UserToken)
     };
     this.emailService.sendAccountActivationEmail(emailToSend)
       .subscribe(response => {

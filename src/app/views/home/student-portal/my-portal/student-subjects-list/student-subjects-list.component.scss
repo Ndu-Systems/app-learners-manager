@@ -1,13 +1,13 @@
 @import '../../../../../../assets/scss/color';
-
+$border-radius: 10px;
 .student-subjects {
     background: $white;
     padding: 1rem;
     border-radius: $border-radius;
-
+    box-shadow: $box-shadow;
     .header {
         display: grid;
-        grid-template-columns: 60% auto;
+        grid-template-columns: 100%;
         box-sizing: border-box;
         border-bottom: 1px solid $cloud;
 
@@ -31,7 +31,17 @@
                 color: $primary;
             }
         }
+
+        
+        @media only screen and (max-width: 600px) {
+            grid-template-columns: 100%;
+            .switch {
+                grid-template-columns: 100%;
+            }
+        }
     }
+    
+ 
 }
 
 .quiz {

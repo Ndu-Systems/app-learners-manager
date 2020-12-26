@@ -54,9 +54,9 @@ export class SignInComponent implements OnInit {
     this.loading$ = this.accountService.loading;
     const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
     this.token = baseUrlMain.substring(baseUrlMain.indexOf('=') + 1);
-    if(!this.token.includes('http')) {
+    if (!this.token.includes('http')) {
       this.activateUser();
-    }   
+    }
   }
 
   activateUser() {
@@ -88,20 +88,24 @@ export class SignInComponent implements OnInit {
         this.accountService.updateUserState(user);
         let userRoles = user.Roles;
         setTimeout(() => {
-          this.showLoader = false;
+
           if (userRoles) {
             if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
+              this.showLoader = false;
               this.routeTo.navigate(['dashboard/grades']);
             }
             if (user.Roles.find(x => x.RoleName === LEARNER)) {
+              this.showLoader = false;
               this.routeTo.navigate(['/my-portal']);
             }
           }
 
           if (!userRoles) {
-            const message ='User have no roles';
-            this.openSnackBar(message, 'Success!');
+            this.showLoader = false;
 
+            const message = 'User have no roles';
+            this.openSnackBar(message, 'Forbidden!');
+            this.routeTo.navigate(['']);
           }
         }, 2000);
       }
