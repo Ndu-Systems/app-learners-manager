@@ -86,7 +86,7 @@ export class AddLearnerComponent implements OnInit {
     model.Roles.push({ Name: LEARNER });
     this.showLoader = true;
     model.Studentsubjects = this.learnerSubjects;
-    this.apiService.add(`${ADD_LEARNER_URL}`, model).subscribe(data => {
+    this.apiService.actionQuery(`${ADD_LEARNER_URL}`, model).subscribe(data => {
       // send email logic here.
       if (data.Email) {
         this.sendEmail(data);

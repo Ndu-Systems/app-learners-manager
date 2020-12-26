@@ -25,7 +25,8 @@
   </div>
   <app-subjects *ngIf="grade"
                 [subjects]="grade.Subjects"
-                [grade]="grade"></app-subjects>
+                [grade]="grade"
+                (updatedSubjects)="onSubjectsUpdated($event)"></app-subjects>
 
 </div>
 

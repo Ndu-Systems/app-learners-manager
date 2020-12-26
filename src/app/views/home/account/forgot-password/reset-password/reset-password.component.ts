@@ -4,6 +4,7 @@ import { LocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { ChangePasswordModel, CtaModel, TokenModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-reset-password',
@@ -30,7 +31,8 @@ export class ResetPasswordComponent implements OnInit {
     private fb: FormBuilder,
     private routeTo: Router,
     private location: LocationStrategy,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -54,26 +56,17 @@ export class ResetPasswordComponent implements OnInit {
   getUserByToken() {
     this.showLoader = true;
     if (this.token === undefined) {
-      // this.showLoader = false;
-      // this.ctaModel.icon = 'assets/images/error.svg';
-      // this.ctaModel.header = 'Forbidden, Unwanted access';
-      // this.ctaModel.message = 'You should not be here, please contact support';
-      // this.showModal = true;
-      alert('Forbidden: 1004,You should not be here, please contact support!');
-      // this.routeTo.navigate(['']);
+      this.openSnackBar('You should not be here, please contact support!', 'Forbidden!');
+      this.routeTo.navigate(['']);
     }
+
     const tokenModel: TokenModel = { Token: this.token };
     this.accountService.getUserByToken(tokenModel).subscribe(data => {
       if (data) {
         this.showLoader = false;
       } else {
-        // this.showLoader = false;
-        // this.ctaModel.icon = 'assets/images/error.svg';
-        // this.ctaModel.header = 'Forbidden, Unwanted access';
-        // this.ctaModel.message = 'You should not be here, please contact support';
-        // this.showModal = true;
-        alert('Forbidden: 1004,You should not be here, please contact support!');
-        // this.routeTo.navigate(['']);
+        this.openSnackBar('You should not be here, please contact support!', 'Forbidden!');
+        this.routeTo.navigate(['']);
       }
     });
   }
@@ -88,20 +81,19 @@ export class ResetPasswordComponent implements OnInit {
     }
     this.accountService.changePassword(model).subscribe(data => {
       if (data) {
-        // this.showLoader = false;
-        // this.showModal = true;
-        alert('Success,Please login with your new credentials');
+        this.openSnackBar('Please login with your new credentials', 'Success!');
         this.routeTo.navigate(['sign-in']);
       } else {
-        // this.showLoader = false;
-        // this.ctaModel.icon = 'assets/images/error.svg';
-        // this.ctaModel.header = 'Oops, error';
-        // this.ctaModel.message = 'Something went wrong, please try again later!';
-        // this.showModal = true;
-        alert('Error: 1003,Something went wrong, please try again later!');
+        this.openSnackBar('Something went wrong, please try again later!', 'Error!');
         this.routeTo.navigate(['']);
       }
     });
   }
 
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 5000
+    });
+  }
 }

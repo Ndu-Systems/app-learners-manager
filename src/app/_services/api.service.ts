@@ -30,7 +30,7 @@ export class ApiService {
   getWithQuery(url: string, query: GenericQueryModel) {
     return this.http.post(`${this.url}/${url}`,query);
   }
-  add(url, data): Observable<any> {
+  actionQuery(url, data): Observable<any> {
     return this.http.post(`${this.url}/${url}`, data);
   }
 }

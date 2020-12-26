@@ -109,7 +109,7 @@ export class TeachersComponent implements OnInit {
     this.current.Studentsubjects = [];
     this.current.Grade = null;
     this.showLoader = true;
-    this.apiServices.add(UPDATE_USER_URL, this.current).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_USER_URL, this.current).subscribe(res => {
       if (Number(this.current.StatusId) === STATUS_PENDING_PAYMENTS) {
         this.modalBody = `The student access will be locked`;
         this.modalCTA = `Lock student access`;

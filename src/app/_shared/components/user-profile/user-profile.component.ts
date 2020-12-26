@@ -48,7 +48,7 @@ export class UserProfileComponent implements OnInit {
     this.current.Studentsubjects = [];
     this.current.Grade = null;
     this.showLoader = true;
-    this.apiServices.add(UPDATE_USER_URL, this.current).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_USER_URL, this.current).subscribe(res => {
       if (Number(this.current.StatusId) === STATUS_PENDING_PAYMENTS) {
         this.modalBody = `The ${this.userType} access will be locked`;
         this.modalCTA = `Lock ${this.userType} access`;
@@ -102,7 +102,7 @@ export class UserProfileComponent implements OnInit {
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

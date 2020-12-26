@@ -239,13 +239,15 @@
             color: $primary !important;
             background: $white;
             width: 13.25rem;
-            border-radius: $border-radius;
+            border-radius: 0.313rem;
+
         }
     }
 
 
     @media screen and (max-width: 600px) {
         border-radius: 50px 0 50px 0;
+
         .content {
             width: 100%;
         }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailGetRequestModel, Email, CtaModel } from 'src/app/_models';
 import { EmailService, AccountService } from 'src/app/_services';
@@ -28,7 +29,8 @@ export class ForgotPasswordComponent implements OnInit {
     private routeTo: Router,
     private route: ActivatedRoute,
     private accountService: AccountService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -57,29 +59,25 @@ export class ForgotPasswordComponent implements OnInit {
             setTimeout(() => {
               this.showLoader = false;
               this.showModal = true;
-              alert('Success: 1000,Your account has been verified, please check your email.');
+              this.openSnackBar('Your account has been verified. Check your email', 'Success!');
               this.routeTo.navigate(['sign-in']);
             }, 0);
           } else {
-            // this.showLoader = false;
-            // this.ctaModel.icon = 'assets/images/error.svg';
-            // this.ctaModel.header = 'Oops, error';
-            // this.ctaModel.message = 'Something went wrong, please try again later!';
-            // this.showModal = true;
-            alert('Error: 1003,Something went wrong, please try again later!');
+            this.openSnackBar('Something went wrong, please try again later!', 'Error!');
             this.routeTo.navigate(['']);
             return;
           }
         });
       } else {
-        // this.showLoader = false;
-        // this.ctaModel.icon = 'assets/images/error.svg';
-        // this.ctaModel.header = 'Oops, error';
-        // this.ctaModel.message = 'Something went wrong, please try again later!';
-        // this.showModal = true;
-        alert('Error: 1003,Something went wrong, please try again later!');
+        this.openSnackBar('Something went wrong, please try again later!', 'Error!');
         this.routeTo.navigate(['']);
       }
+    });
+  }
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 5000
     });
   }
 }

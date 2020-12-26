@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { GenericQueryModel, InstitutionTypeModel } from 'src/app/_models';
-import { Grade } from 'src/app/_models/grade.model';
+import { Grade, Subject } from 'src/app/_models/grade.model';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, ApiService } from 'src/app/_services';
 import { GradeService } from 'src/app/_services/grade.service';
@@ -30,8 +30,7 @@ export class TeacherGradesComponent implements OnInit {
     private apiServices: ApiService,
     private accountService: AccountService,
     private _snackBar: MatSnackBar,
-    private gradeService: GradeService,
-
+    private gradeService: GradeService
   ) { }
 
   ngOnInit() {
@@ -55,6 +54,11 @@ export class TeacherGradesComponent implements OnInit {
     const grade = this.grades.find(x => x.GradeId === gradeId);
     this.grade = grade;
     this.gradeService.updateSelectedGradeState(grade);
+  }
+
+  onSubjectsUpdated(subjects: Subject[]){
+    this.grade.Subjects = subjects;
+    this.gradeService.updateSelectedGradeState(this.grade);
   }
 
   addGrade() {
@@ -112,14 +116,13 @@ export class TeacherGradesComponent implements OnInit {
     if (this.errors.length > 0) {
       return false;
     }
-    this.apiServices.add(ADD_GRADE_URL, this.gradeToAdd).subscribe(res => {
+    this.apiServices.actionQuery(ADD_GRADE_URL, this.gradeToAdd).subscribe(res => {
       if (res && res.GradeId) {
         res.Subjects = [];
         this.grades.push(res);
         this.grade = res;
         this.gradeId = res.GradeId;
         this.openSnackBar('The grade was created successfuly!', res.Name);
-
       }
       this.closeModal();
     })
@@ -140,7 +143,7 @@ export class TeacherGradesComponent implements OnInit {
       return false;
     }
 
-    this.apiServices.add(UPDATE_GRADE_URL, this.grade).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_GRADE_URL, this.grade).subscribe(res => {
       this.openSnackBar('The grade was updated successfuly!', this.grade.Name);
       this.closeModal();
 
@@ -149,7 +152,7 @@ export class TeacherGradesComponent implements OnInit {
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

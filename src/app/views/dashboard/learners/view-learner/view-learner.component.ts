@@ -110,7 +110,7 @@ export class ViewLearnerComponent implements OnInit {
       todatosave.push(studentSubject);
     });
 
-    this.apiService.add(`${ADD_STUDENT_SUBJECTS_URL}`, todatosave).subscribe(data => {
+    this.apiService.actionQuery(`${ADD_STUDENT_SUBJECTS_URL}`, todatosave).subscribe(data => {
       if (data) {
         this.userService.getUser(this.userId);
         this.closeModal();
@@ -123,7 +123,7 @@ export class ViewLearnerComponent implements OnInit {
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

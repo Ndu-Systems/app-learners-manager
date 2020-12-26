@@ -93,7 +93,7 @@ export class ListLessonsComponent implements OnInit {
       if (parsedHtml.images[i].src.includes("data:"))
         srcs.push(src);
     }
-    this.apiServices.add("api/upload/upload-base-64.php", { images: srcs }).subscribe(data => {
+    this.apiServices.actionQuery("api/upload/upload-base-64.php", { images: srcs }).subscribe(data => {
       if (data) {
         data.forEach(link => {
           parsedHtml.images[this.index].src = `${environment.API_URL}/api/upload/${link}`;
@@ -127,7 +127,7 @@ export class ListLessonsComponent implements OnInit {
       ModifyUserId: this.user.UserId,
       StatusId: 1
     }
-    this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
+    this.apiServices.actionQuery(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
         if (!comment.Replies) {
           comment.Replies = [];
@@ -153,7 +153,7 @@ export class ListLessonsComponent implements OnInit {
     this.showLoader = true;
     if (this.isUpdate || this.showDelete) {
 
-      this.apiServices.add(UPDATE_CONTENT_URL, this.content).subscribe(res => {
+      this.apiServices.actionQuery(UPDATE_CONTENT_URL, this.content).subscribe(res => {
         this.showModal = false;
         this.tittle = '';
         this.description = '';
@@ -164,7 +164,7 @@ export class ListLessonsComponent implements OnInit {
         this.openSnackBar('Lesson updated.', 'Success!');
       })
     } else {
-      this.apiServices.add(ADD_CONTENT_URL, this.content).subscribe(res => {
+      this.apiServices.actionQuery(ADD_CONTENT_URL, this.content).subscribe(res => {
         this.showModal = false;
         this.tittle = '';
         this.description = '';
@@ -197,7 +197,7 @@ export class ListLessonsComponent implements OnInit {
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

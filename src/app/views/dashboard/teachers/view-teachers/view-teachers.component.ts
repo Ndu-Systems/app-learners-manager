@@ -113,7 +113,7 @@ export class ViewTeachersComponent implements OnInit {
       })
     });
 
-    this.apiService.add(`${ADD_TEACHER_SUBJECTS_URL}`, teacherSubjects).subscribe(data => {
+    this.apiService.actionQuery(`${ADD_TEACHER_SUBJECTS_URL}`, teacherSubjects).subscribe(data => {
       if (data) {
         console.log(data);
         this.openSnackBar(`Subjects assigned/unassigned to ${this.teacher.Name}!`, 'Success!');
@@ -123,7 +123,7 @@ export class ViewTeachersComponent implements OnInit {
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

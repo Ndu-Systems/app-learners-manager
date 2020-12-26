@@ -134,7 +134,7 @@ export class MyPortalComponent implements OnInit {
       this.documentsService.uploadFile(formData).subscribe(url => {
         const pp = `${environment.API_URL}/api/upload/${url}`;
         this.user.Billing[0].PayProof = pp;
-        this.apiServices.add(UPDATE_BILLING_URL, this.user.Billing[0]).subscribe(billing => {
+        this.apiServices.actionQuery(UPDATE_BILLING_URL, this.user.Billing[0]).subscribe(billing => {
           this.user.Billing[0] = billing;
         })
       });
@@ -148,7 +148,7 @@ export class MyPortalComponent implements OnInit {
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

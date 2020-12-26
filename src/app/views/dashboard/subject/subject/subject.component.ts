@@ -114,14 +114,14 @@ export class SubjectComponent implements OnInit {
     if (this.isDelete || this.isUpdate) {
       this.current.Name = this.name;
       this.current.Description = this.description;
-      this.apiServices.add(UPDATE_TOPIC_URL, this.current).subscribe(res => {
+      this.apiServices.actionQuery(UPDATE_TOPIC_URL, this.current).subscribe(res => {
         this.showModal = false;
         this.name = '';
         this.description = '';
         this.ngOnInit();
       })
     } else {
-      this.apiServices.add(ADD_TOPIC_URL, data).subscribe(res => {
+      this.apiServices.actionQuery(ADD_TOPIC_URL, data).subscribe(res => {
         this.showModal = false;
         this.name = '';
         this.description = '';

@@ -93,7 +93,7 @@ export class PublicQuestionsComponent implements OnInit {
       if (parsedHtml.images[i].src.includes("data:"))
         srcs.push(src);
     }
-    this.apiServices.add("api/upload/upload-base-64.php", { images: srcs }).subscribe(data => {
+    this.apiServices.actionQuery("api/upload/upload-base-64.php", { images: srcs }).subscribe(data => {
       if (data) {
         data.forEach(link => {
           parsedHtml.images[this.index].src = `${environment.API_URL}/api/upload/${link}`;
@@ -110,14 +110,14 @@ export class PublicQuestionsComponent implements OnInit {
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }
 
   postPublicQuestion() {
     console.log(this.publicQuestion);
-    this.apiServices.add(ADD_PUBLIC_QUESTION_URL, this.publicQuestion).subscribe(data => {
+    this.apiServices.actionQuery(ADD_PUBLIC_QUESTION_URL, this.publicQuestion).subscribe(data => {
       console.log(data);
 
     })

@@ -76,7 +76,7 @@ export class ReadComponent implements OnInit {
       ModifyUserId: this.user.UserId,
       StatusId: 1
     }
-    this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
+    this.apiServices.actionQuery(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
         if (!comment.Replies) {
           comment.Replies = [];
@@ -112,7 +112,7 @@ export class ReadComponent implements OnInit {
       ModifyUserId: this.user.UserId,
       StatusId: 1
     }
-    this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
+    this.apiServices.actionQuery(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
         if (!this.lesson.Comments) {
           this.lesson.Comments = [];

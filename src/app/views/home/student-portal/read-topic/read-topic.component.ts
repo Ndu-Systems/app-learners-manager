@@ -50,7 +50,7 @@ export class ReadTopicComponent implements OnInit {
       StatusId: 1
     }
 
-    this.apiServices.add(SAVE_STUDENT_CONTENT_URL, data).subscribe(response => {
+    this.apiServices.actionQuery(SAVE_STUDENT_CONTENT_URL, data).subscribe(response => {
       this.backClicked();
 
     });
@@ -74,7 +74,7 @@ export class ReadTopicComponent implements OnInit {
       ModifyUserId: this.user.UserId,
       StatusId: 1
     }
-    this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
+    this.apiServices.actionQuery(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
         if (!this.content.Comments) {
           this.content.Comments = [];
@@ -104,7 +104,7 @@ export class ReadTopicComponent implements OnInit {
       ModifyUserId: this.user.UserId,
       StatusId: 1
     }
-    this.apiServices.add(SAVE_COMMENT_URL, data).subscribe(response => {
+    this.apiServices.actionQuery(SAVE_COMMENT_URL, data).subscribe(response => {
       if (response) {
         if (!comment.Replies) {
           comment.Replies = [];

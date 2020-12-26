@@ -157,7 +157,7 @@ export class TestComponent implements OnInit {
       StatusId: 1
     }
 
-    this.apiServices.add(ADD_QUESTION_URL, data).subscribe(res => {
+    this.apiServices.actionQuery(ADD_QUESTION_URL, data).subscribe(res => {
       this.showModal = false;
       this.addingQuestion = false;
       this.question = '';
@@ -187,7 +187,7 @@ export class TestComponent implements OnInit {
       if (this.isDelete) {
         this.current.StatusId = STATUS_DELETED;
       }
-      this.apiServices.add(UPDATE_SECTION_URL, this.current).subscribe(res => {
+      this.apiServices.actionQuery(UPDATE_SECTION_URL, this.current).subscribe(res => {
         this.showModal = false;
         this.isDelete = false;
         this.addingQuestion = false;
@@ -196,7 +196,7 @@ export class TestComponent implements OnInit {
         this.ngOnInit();
       })
     } else {
-      this.apiServices.add(ADD_SECTION_URL, data).subscribe(res => {
+      this.apiServices.actionQuery(ADD_SECTION_URL, data).subscribe(res => {
         this.showModal = false;
         this.addingQuestion = false;
         this.question = '';
@@ -209,7 +209,7 @@ export class TestComponent implements OnInit {
   saveAnswers(answers: Answer[]) {
 
 
-    this.apiServices.add(ADD_OR_UPDARE_ANSWERS_RANGE_URL, answers).subscribe(res => {
+    this.apiServices.actionQuery(ADD_OR_UPDARE_ANSWERS_RANGE_URL, answers).subscribe(res => {
       this.showModal = false;
       this.addingQuestion = false;
       this.question = '';
@@ -242,7 +242,7 @@ export class TestComponent implements OnInit {
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }
@@ -264,7 +264,7 @@ export class TestComponent implements OnInit {
   }
   deleteQuestion(question: Question, index) {
     question.StatusId = STATUS_DELETED;
-    this.apiServices.add(UPDATE_QUESTION_URL, question).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_QUESTION_URL, question).subscribe(res => {
       this.question = '';
       this.contentBody = '';
       if (!this.test.Questions) {

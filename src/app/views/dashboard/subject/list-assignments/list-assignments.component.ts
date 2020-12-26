@@ -72,7 +72,7 @@ export class ListAssignmentsComponent implements OnInit {
     }
     this.showLoader = true;
 
-    this.apiServices.add(ADD_ASSIGNMENT_URL, this.assignment).subscribe(res => {
+    this.apiServices.actionQuery(ADD_ASSIGNMENT_URL, this.assignment).subscribe(res => {
       this.showModal = false;
       this.assignments.push(res);
       this.showLoader = false;
@@ -88,7 +88,7 @@ export class ListAssignmentsComponent implements OnInit {
     }
     this.showLoader = true;
 
-    this.apiServices.add(UPDATE_ASSIGNMENT_URL, this.assignment).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_ASSIGNMENT_URL, this.assignment).subscribe(res => {
       this.closeModal();
       this.showLoader = false;
       this.openSnackBar('Assignment updated.', 'Success!');
@@ -96,7 +96,7 @@ export class ListAssignmentsComponent implements OnInit {
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

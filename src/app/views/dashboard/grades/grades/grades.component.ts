@@ -99,7 +99,7 @@ export class GradesComponent implements OnInit {
   }
 
   update() {
-    this.apiServices.add(UPDATE_GRADE_URL, this.current).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_GRADE_URL, this.current).subscribe(res => {
       this.showModal = false;
       this.isDelete = false;
       this.isUpdate = false;

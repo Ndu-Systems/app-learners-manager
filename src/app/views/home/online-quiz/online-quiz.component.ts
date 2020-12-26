@@ -91,7 +91,7 @@ export class OnlineQuizComponent implements OnInit {
     }
     studentTest.Score = (score / questions) * 100 || 0;
 
-    this.apiServices.add(SAVE_STUDENT_TEST_URL, studentTest).subscribe(data => {
+    this.apiServices.actionQuery(SAVE_STUDENT_TEST_URL, studentTest).subscribe(data => {
       if (data) {
         this.showModal = true;
         this.yourScore = (score / questions) * 100;

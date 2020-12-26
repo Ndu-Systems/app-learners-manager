@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { ADD_SUBJECT_URL, UPDATE_SUBJECT_URL, STATUS_DELETED } from 'src/app/_services/_shared/constants';
 import { Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class SubjectsComponent implements OnInit {
 
   @Input() subjects: Subject[];
   @Input() grade: Grade;
-
+  @Output() updatedSubjects: EventEmitter<Subject[]> = new EventEmitter(null);
   showModal: boolean;
   name: string;
 
@@ -31,7 +31,7 @@ export class SubjectsComponent implements OnInit {
   isUpdate: boolean;
   current: Subject;
   modalHeading = 'Add new subject';
-  text= '';
+  text = '';
   grades: any;
   isDelete: boolean;
   crumbs: BreadCrumbModel[] = [];
@@ -101,19 +101,34 @@ export class SubjectsComponent implements OnInit {
       this.current.Description = this.description;
       this.current.Code = this.code;
       this.current.PassMark = this.passMark;
-      this.apiServices.add(UPDATE_SUBJECT_URL, this.current).subscribe(res => {
-        this.showModal = false;
+      this.apiServices.actionQuery(UPDATE_SUBJECT_URL, this.current).subscribe(res => {
+        const modelToUpdate = res as Subject;
         this.code = '';
         this.name = '';
         this.description = '';
-        this.isDelete = false;
         if (!this.subjects) {
           this.subjects = [];
         }
-        this.subjects.push(res);
+        if (this.isDelete) {
+
+          const model = this.subjects.find(x => x.SubjectId === modelToUpdate.SubjectId);
+          if (model) {
+            const index = this.subjects.indexOf(model);
+            this.subjects.splice(index, 1);
+          }
+        } else {
+          const model = this.subjects.find(x => x.SubjectId === modelToUpdate.SubjectId);
+          if (model) {
+            const index = this.subjects.indexOf(model);
+            this.subjects[index] = modelToUpdate;
+          }
+        }
+        this.updatedSubjects.emit(this.subjects);
+        this.isDelete = false;
+        this.showModal = false;
       })
     } else {
-      this.apiServices.add(ADD_SUBJECT_URL, data).subscribe(res => {
+      this.apiServices.actionQuery(ADD_SUBJECT_URL, data).subscribe(res => {
         this.showModal = false;
         this.code = '';
         this.name = '';
@@ -125,6 +140,7 @@ export class SubjectsComponent implements OnInit {
           let sub: Subject = res;
           sub.Lessons = [];
           this.subjects.push(sub);
+          this.updatedSubjects.emit(this.subjects);
           this.openSnackBar('Subject created.', 'Success!');
         }
       })
@@ -162,7 +178,7 @@ export class SubjectsComponent implements OnInit {
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

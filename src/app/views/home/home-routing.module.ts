@@ -48,7 +48,6 @@ const routes: Routes = [
       { path: 'student-assignment', component: StudentAssignmentComponent },
       { path: 'features', component: FeaturesComponent }
     ]
-
   }
 ];
 

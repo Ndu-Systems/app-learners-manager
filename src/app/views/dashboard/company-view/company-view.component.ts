@@ -84,14 +84,14 @@ export class CompanyViewComponent implements OnInit {
   }
 
   update() {
-    this.apiServices.add(UPDATE_COMPANY_URL, this.company).subscribe(res => {
+    this.apiServices.actionQuery(UPDATE_COMPANY_URL, this.company).subscribe(res => {
       this.closeModal();
       this.openSnackBar('Company updated  created.', 'Success!');
     })
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }

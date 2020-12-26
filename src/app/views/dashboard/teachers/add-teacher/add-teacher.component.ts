@@ -73,7 +73,7 @@ export class AddTeacherComponent implements OnInit {
     this.showLoader = true;
     model.Studentsubjects = [];
     
-    this.apiService.add(`${ADD_LEARNER_URL}`, model).subscribe(data => {
+    this.apiService.actionQuery(`${ADD_LEARNER_URL}`, model).subscribe(data => {
       // send email logic here.
       if (data.Email) {
         this.sendEmail(data);

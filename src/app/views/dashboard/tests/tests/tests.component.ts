@@ -97,12 +97,12 @@ export class TestsComponent implements OnInit {
       return false;
     }
     if (this.isDelete || this.isUpdate) {
-      this.apiServices.add(UPDATE_TEST_URL, this.current).subscribe(res => {
+      this.apiServices.actionQuery(UPDATE_TEST_URL, this.current).subscribe(res => {
         this.showModal = false;
         this.openSnackBar('Test updated.', 'Success!');
       })
     } else {
-      this.apiServices.add(ADD_TEST_URL, this.current).subscribe(res => {
+      this.apiServices.actionQuery(ADD_TEST_URL, this.current).subscribe(res => {
         this.showModal = false;
         this.openSnackBar('Test created.', 'Success!');
         this.tests.push(res);
@@ -135,7 +135,7 @@ export class TestsComponent implements OnInit {
   }
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
-      duration: 3000
+      duration: 5000
     });
 
   }
