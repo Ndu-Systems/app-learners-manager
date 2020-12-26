@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { NavigationModel } from 'src/app/_models';
 import { Assignment } from 'src/app/_models/assignment.model';
 import { ImageModel } from 'src/app/_models/image.model';
 import { AccountService, ApiService } from 'src/app/_services';
@@ -24,6 +25,8 @@ export class ListAssignmentsComponent implements OnInit {
   showLoader: boolean;
   showPreview: boolean;
   showDelete: boolean;
+  navigationModel: NavigationModel;
+
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,

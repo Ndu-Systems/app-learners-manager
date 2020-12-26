@@ -24,16 +24,18 @@ export class StudentSubjectsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const currentSelectedSubject = this.studentPortalService.getCurrentSelectedStudentsubject;
-    if (this.subjects && this.subjects.length) {
-      if (currentSelectedSubject && currentSelectedSubject.Id) {
-        this.studentsubject = currentSelectedSubject;
-      } else {
-        this.studentsubject = this.subjects[0];
-      }
-      this.subjectId = this.studentsubject.SubjectId;
+    console.log(this.subjects);
+    this.studentsubject = this.subjects[0];
+    // const currentSelectedSubject = this.studentPortalService.getCurrentSelectedStudentsubject;
+    // if (this.subjects && this.subjects.length) {
+    //   if (currentSelectedSubject && currentSelectedSubject.Id) {
+    //     this.studentsubject = currentSelectedSubject;
+    //   } else {
+    //     this.studentsubject = this.subjects[0];
+    //   }
+    //   this.subjectId = this.studentsubject.SubjectId;
 
-    }
+    // }
 
   }
   subjectChanged(subjectId: string) {

@@ -107,6 +107,13 @@
     display: none;
     background: $white;
 
+    .title {
+      h1.h1 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+    }
+
     .modal {
       background: $white;
       bottom: 0;

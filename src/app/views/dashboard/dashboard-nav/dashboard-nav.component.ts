@@ -17,6 +17,7 @@ export class DashboardNavComponent implements OnInit {
   user: User;
   user$: Observable<User>;
   navigationModel: NavigationModel;
+  navigationSubjectObservable$: Observable<NavigationModel>;
   navigationSubject: NavigationModel;
   constructor(
     private accountService: AccountService,
@@ -30,14 +31,10 @@ export class DashboardNavComponent implements OnInit {
     this.user$.subscribe(data => {
       this.user = data;
     });
-    this.navigationModel = {
-      IsDashboard: true,
-      NavUrl: 'dashboard',
-      Title: 'Dashboard'
-    };
-
-    this.navigationService.updateNavigationState(this.navigationModel);
-    this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
+    this.navigationSubjectObservable$ = this.navigationService.navigationObservable;    
+    this.navigationSubjectObservable$.subscribe(data => this.navigationSubject = data);
+  
+     
     if (this.user.UserType === ADMIN) {
       this.setAdminRoute();
     }
@@ -53,7 +50,7 @@ export class DashboardNavComponent implements OnInit {
   }
 
   goBack() {
-    this.navigationSubject.IsDashboard = true;
+    // this.navigationSubject.IsDashboard = true;
     this.routerTo.navigate(['dashboard/grades']);
   }
 
@@ -70,7 +67,7 @@ export class DashboardNavComponent implements OnInit {
         this.navigationModel.Title = model.label;
     }
     this.navigationService.updateNavigationState(this.navigationModel);
-    this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
+    // this.navigationSubject = (JSON.parse(localStorage.getItem(NAVIGATION)));
   }
 
   setAdminRoute() {

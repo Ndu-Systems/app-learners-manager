@@ -6,10 +6,10 @@
   background: $white;
   padding: 1rem;
 
-  @media only screen and (max-width: 600px) {      
+  @media only screen and (max-width: 600px) {
     display: block;
     position: relative;
-    margin: 0;     
+    margin: 0;
   }
 
   h1 {
@@ -156,6 +156,42 @@
     }
   }
 
+  .input-editor {
+    height: 30rem;
+    overflow: scroll;
+
+    .ql-toolbar.ql-snow {
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+      padding: 8px;
+      position: fixed;
+      width: 61rem;
+      background: $white;
+      top: 10rem;
+      z-index: 1000;
+      border: none;
+    }
+
+    .ql-container.ql-snow {
+      border: 1px solid #ccc;
+      margin-top: 4rem;
+      margin-bottom: 0rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      height: 35rem;
+
+      .ql-toolbar.ql-snow {
+        width: 22rem;
+        top: 9.5rem;
+      }
+
+      .ql-container.ql-snow {
+        margin-top: 14rem;
+      }
+    }
+  }
 
 
 }

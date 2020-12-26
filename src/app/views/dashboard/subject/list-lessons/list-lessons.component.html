@@ -51,33 +51,36 @@
   </div>
 
   <div class="form">
-    <label for="">Lesson tittle**</label>
-    <input type="text"
-           placeholder="e.g. How to write a strong introduction."
-           [(ngModel)]="tittle">
 
-
-    <span *ngIf="contentType === 'Blog'">
-      <label for="">
-        Lesson Body**
-        <span>
-          Be more descriptive as you can use images and color highlighters to emphasize more.
-        </span>
-      </label>
-      <quill-editor placeholder="Start typing or click image icon to uplaod"
-                    class="editor"
-                    [styles]="editorStyle"
-                    [(ngModel)]="contentBody">
-
-      </quill-editor>
-    </span>
-    <button mat-button
-            color="primary"
-            class="btn-float"
-            (click)="formatBody()"> Save Lesson</button>
-    <div class="error" *ngIf="error">
-      {{error}}
+    <div class="form-group">
+      <label for="">Lesson tittle**</label>
+      <input type="text"
+             placeholder="e.g. How to write a strong introduction."
+             [(ngModel)]="tittle">
     </div>
+
+    <div class="form-group">
+      <div class="input-editor"
+           *ngIf="contentType === 'Blog'">
+        <quill-editor placeholder="Start typing or click image icon to uplaod"
+                      class="editor"
+                      [styles]="editorStyle"
+                      [(ngModel)]="contentBody">
+
+        </quill-editor>
+      </div>
+    </div>
+    <div class="action">
+      <button mat-button
+              color="primary"
+              (click)="formatBody()"> Save Lesson</button>
+      <h5 class="error"
+          *ngIf="error">
+        {{error}}
+      </h5>
+    </div>
+
+
   </div>
 </div>
 
@@ -100,7 +103,8 @@
             color="primary"
             class="secondary"
             (click)="closeModal()"> Cancel</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>

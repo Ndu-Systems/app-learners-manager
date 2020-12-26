@@ -79,12 +79,16 @@
                [(ngModel)]="current.FinishTime">
       </div>
     </div>
-    <button mat-button
-            color="primary"
-            (click)="save()"> Save Test</button>
-    <div class="error" *ngIf="error">
-      {{error}}
+    <div class="action">
+      <button mat-button
+              color="primary"
+              (click)="save()"> Save Test</button>
+      <h5 class="error"
+           *ngIf="error">
+        {{error}}
+      </h5>
     </div>
+
   </div>
 </div>
 
@@ -105,7 +109,8 @@
             color="primary"
             class="secondary"
             (click)="closeModal()"> Cancel</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>

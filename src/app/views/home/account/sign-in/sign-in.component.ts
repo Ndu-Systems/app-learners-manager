@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
 import { ADMIN, LEARNER, TEACHER } from 'src/app/_shared';
 import { LocationStrategy } from '@angular/common';
-import { TokenModel } from 'src/app/_models';
+import { NavigationModel, TokenModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
+import { NavigationService } from 'src/app/_services';
 
 @Component({
   selector: 'app-sign-in',
@@ -28,13 +29,15 @@ export class SignInComponent implements OnInit {
   logoUrl;
   token: string;
   showLoader: boolean = false;
+  navigationModel: NavigationModel;
 
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private accountService: AccountService,
     private location: LocationStrategy,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar, 
+    private navigationService: NavigationService,
 
   ) {
   }
@@ -87,27 +90,38 @@ export class SignInComponent implements OnInit {
         this.error = '';
         this.accountService.updateUserState(user);
         let userRoles = user.Roles;
-        setTimeout(() => {
 
-          if (userRoles) {
-            if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
+
+        if (userRoles) {
+          if (user.Roles.find(x => x.RoleName === ADMIN || TEACHER)) {
+            setTimeout(() => {
               this.showLoader = false;
+              this.navigationModel = {
+                IsDashboard: true,
+                NavUrl: 'grades',
+                Title: `View Grades/Levels`
+              };
+              this.navigationService.updateNavigationState(this.navigationModel);
               this.routeTo.navigate(['dashboard/grades']);
-            }
-            if (user.Roles.find(x => x.RoleName === LEARNER)) {
+            }, 1500);
+          }
+          if (user.Roles.find(x => x.RoleName === LEARNER)) {
+            setTimeout(() => {
               this.showLoader = false;
               this.routeTo.navigate(['/my-portal']);
-            }
-          }
+            }, 1500);
 
-          if (!userRoles) {
-            this.showLoader = false;
-
-            const message = 'User have no roles';
-            this.openSnackBar(message, 'Forbidden!');
-            this.routeTo.navigate(['']);
           }
-        }, 2000);
+        }
+
+        if (!userRoles) {
+          this.showLoader = false;
+
+          const message = 'User have no roles';
+          this.openSnackBar(message, 'Forbidden!');
+          this.routeTo.navigate(['']);
+        }
+
       }
       else {
         let err: any = user;
@@ -116,7 +130,6 @@ export class SignInComponent implements OnInit {
       }
     })
   }
-
 
 
   toggleNav() {

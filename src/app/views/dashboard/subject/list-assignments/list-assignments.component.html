@@ -5,12 +5,12 @@
     <div class="lesson"
          *ngFor="let assignment of assignments"
          (click)="preview(assignment)">
-         <i class="material-icons">
-          description
-        </i>
+      <i class="material-icons">
+        description
+      </i>
       <h1 class="tittle">
-         
-          {{assignment.Tittle}}
+
+        {{assignment.Tittle}}
         <span class="stat">
           {{assignment.Points}} Points | Due: {{assignment.DueDate | date: 'mediumDate'}}
         </span>
@@ -74,13 +74,16 @@
                 placeholder="e.g. How to write a strong introduction.">
       </textarea>
     </div>
-    <button mat-button
-            color="primary"
-            class="btn-float"
-            (click)="save()"> Save Assignment</button>
-    <div class="error" *ngIf="error">
-      {{error}}
+    <div class="action">
+      <button mat-button
+              color="primary"
+              (click)="save()"> Save Assignment</button>
+      <h5 class="error"
+          *ngIf="error">
+        {{error}}
+      </h5>
     </div>
+
   </div>
 </div>
 
@@ -131,11 +134,13 @@
               color="primary"
               class="btn-float"
               (click)="update()"> Save Changes</button>
-      <div class="error" *ngIf="error">
+      <div class="error"
+           *ngIf="error">
         {{error}}
       </div>
     </div>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -160,7 +165,8 @@
             color="primary"
             class="secondary"
             (click)="closeModal()"> Cancel</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>

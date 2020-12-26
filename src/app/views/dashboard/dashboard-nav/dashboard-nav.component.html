@@ -1,117 +1,114 @@
-<div class="nav desktop">
-  <div class="logo">
-    <img src="assets/images/common/logo.png"
-         alt="">
-  </div>
-  <ul>
-    <li *ngFor="let item of navItems">
-      <a [routerLink]="item.routerLink"
-         routerLinkActive="active-link"
-         [routerLinkActiveOptions]="{exact: true}">
-        <div class="nav-item">
-          {{item.label}}
-        </div>
-      </a>
-    </li>
+ <div class="nav desktop">
+   <div class="logo">
+     <img src="assets/images/common/logo.png"
+          alt="">
+   </div>
+   <ul>
+     <li *ngFor="let item of navItems">
+       <a [routerLink]="item.routerLink"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+         <div class="nav-item">
+           {{item.label}}
+         </div>
+       </a>
+     </li>
 
-    <div class="user-profile">
-      <img src="assets/images/common/user.svg"
-           alt="">
-      <h1>{{user.Name}} {{user.Surname}}</h1>
-    </div>
-    <li>
-      <a class="logout"
-         (click)="logout()"
-         routerLinkActive="active-link"
-         [routerLinkActiveOptions]="{exact: true}">
-        <!-- <div class="nav-item">
-          <img src="assets/images/dashboard/nav/logout.svg"
-               alt="feed"
-               class="hl-on">
-          <img src="assets/images/dashboard/nav/logout.svg"
-               alt="feed"
-               class="hl-off">
-          Logout
-        </div> -->
-        
-      </a>
-    </li>
-  </ul>
-  <button (click)="logout()" mat-button class="logout" color="primary">
-    logout
-    <img src="assets/images/common/logout.svg"
-    alt="feed"
-    class="hl-on">
-  </button>
-</div>
+     <div class="user-profile">
+       <img src="assets/images/common/user.svg"
+            alt="">
+       <h1>{{user.Name}} {{user.Surname}}</h1>
+     </div>
+     <li>
+       <a class="logout"
+          (click)="logout()"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+       </a>
+     </li>
+   </ul>
+   <button (click)="logout()"
+           mat-button
+           class="logout"
+           color="primary">
+     logout
+     <img src="assets/images/common/logout.svg"
+          alt="feed"
+          class="hl-on">
+   </button>
+ </div>
 
-<div class="nav mobile">
-  <div class="col-1-of-3"
-       *ngIf="navigationSubject">
-    <img src="assets/images/common/arrow.svg"
-         alt="feed"
-         class="hl-off"
-         *ngIf="!navigationSubject.IsDashboard"
-         (click)="goBack()">
-    <img src="assets/images/common/burger-menu.svg"
-         alt="feed"
-         class="hl-off"
-         *ngIf="navigationSubject.IsDashboard"
-         (click)="toggleMenu()">
+ <div class="nav mobile">
+   <div class="col-1-of-3"
+        *ngIf="navigationSubject">
+     <img src="assets/images/common/arrow.svg"
+          alt="feed"
+          class="hl-off"
+          *ngIf="!navigationSubject.IsDashboard"
+          (click)="goBack()">
+     <img src="assets/images/common/burger-menu.svg"
+          alt="feed"
+          class="hl-off"
+          *ngIf="navigationSubject.IsDashboard"
+          (click)="toggleMenu()">
 
-    <div class=""
-         *ngIf="navigationSubject.IsDashboard"></div>
-    <div class="notification"
-         *ngIf="navigationSubject.IsDashboard">
-      <!-- <img class="bell"
-           src="assets/images/common/notification.svg"
-           alt=""> -->
-      <div class="span">
-        <h1 class="h1">30</h1>
-      </div>
-    </div>
-  </div>
-  <div class="mobile-menu"
-       *ngIf="showModal">
-    <div class="overlay"
-         *ngIf="true"
-         (click)="toggleMenu()"></div>
-    <div class="modal"
-         *ngIf="true">
-      <div class="col-1-of-3">
-        <img src="assets/images/common/arrow.svg"
-             alt="feed"
-             class="hl-off"
-             (click)="toggleMenu()">
-        <div>
-          <h1 class="h1 fundani">fundani.co.za</h1>
-        </div>
-        
-      </div>
-      <div class="user-profile"
-           *ngIf="user">
-        <img src="assets/images/common/user.svg"
-             alt="">
-        <h1>{{user.Name}} {{user.Surname}}</h1>
-      </div>
-      <ul>
-        <li *ngFor="let item of navItems">
-          <a [routerLink]="item.routerLink"
-             routerLinkActive="active-link"
-             [routerLinkActiveOptions]="{exact: true}"
-             (click)="updateNavigation(item);toggleMenu()">
-            <div class="nav-item">
-              {{item.label}}
-            </div>
-          </a>
-        </li>
-      </ul> 
-      <button (click)="logout()" mat-button class="logout" color="primary">
-        logout
-        <img src="assets/images/common/logout.svg"
-        alt="feed"
-        class="hl-on">
-      </button>
-    </div>
-  </div>
-</div>
+     <div class="title">
+       <h1 class="h1">
+         {{navigationSubject.Title}}
+       </h1>
+     </div>
+     <div class="notification"
+          *ngIf="navigationSubject.IsDashboard">
+       <div class="span">
+         <h1 class="h1">30</h1>
+       </div>
+     </div>
+
+   </div>
+   <div class="mobile-menu"
+        *ngIf="showModal">
+     <div class="overlay"
+          *ngIf="true"
+          (click)="toggleMenu()"></div>
+     <div class="modal"
+          *ngIf="true">
+       <div class="col-1-of-3">
+         <img src="assets/images/common/arrow.svg"
+              alt="feed"
+              class="hl-off"
+              (click)="toggleMenu()">
+         <div>
+           <h1 class="h1 fundani">fundani.co.za</h1>
+         </div>
+
+       </div>
+       <div class="user-profile"
+            *ngIf="user">
+         <img src="assets/images/common/user.svg"
+              alt="">
+         <h1>{{user.Name}} {{user.Surname}}</h1>
+       </div>
+       <ul>
+         <li *ngFor="let item of navItems">
+           <a [routerLink]="item.routerLink"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{exact: true}"
+              (click)="updateNavigation(item);toggleMenu()">
+             <div class="nav-item">
+               {{item.label}}
+             </div>
+           </a>
+         </li>
+       </ul>
+       <button (click)="logout()"
+               mat-button
+               class="logout"
+               color="primary">
+         logout
+         <img src="assets/images/common/logout.svg"
+              alt="feed"
+              class="hl-on">
+       </button>
+     </div>
+   </div>
+ </div>

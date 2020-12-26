@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
 import { AccountService } from 'src/app/_services/account.service';
 import { Grade, Subject } from 'src/app/_models/grade.model';
-import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
+import { BreadCrumbModel, HeaderBannerModel, NavigationModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
 import { ADMIN } from 'src/app/_shared';
+import { NavigationService } from 'src/app/_services';
 
 
 @Component({
@@ -42,12 +43,15 @@ export class SubjectsComponent implements OnInit {
     ctaLabel: '+ Add subject'
   };
   isAdmin: boolean;
+  navigationModel: NavigationModel;
 
   constructor(
     private apiServices: ApiService,
     private router: Router,
     private accountService: AccountService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private navigationService: NavigationService,
+
   ) {
   }
 
@@ -70,6 +74,12 @@ export class SubjectsComponent implements OnInit {
   }
 
   openSubject(subject: Subject) {
+    this.navigationModel = {
+      IsDashboard: false,
+      NavUrl: 'subject',
+      Title: `View Subject`
+    };
+    this.navigationService.updateNavigationState(this.navigationModel);
     this.router.navigate(['dashboard/subject', subject.SubjectId]);
   }
 

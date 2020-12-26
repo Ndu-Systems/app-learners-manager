@@ -55,8 +55,12 @@ export class MyPortalComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-    this.studentsubjects = this.studentPortalService.currentStudentSubjectListValue;
+    
     this.studentPortalService.getStudentSubjectList(this.user.UserId);
+    
+    this.studentsubjects = this.studentPortalService.currentStudentSubjectListValue;
+
+    
     this.studentPortalService.studentSubjectListObservable.subscribe(data => {
       if (data) {
         this.studentsubjects = data;

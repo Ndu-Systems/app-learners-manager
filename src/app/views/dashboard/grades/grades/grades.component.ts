@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
 import { AccountService } from 'src/app/_services/account.service';
 import { Grade } from 'src/app/_models/grade.model';
-import { BreadCrumbModel, HeaderBannerModel, InstitutionTypeModel, GenericQueryModel } from 'src/app/_models';
+import { BreadCrumbModel, HeaderBannerModel, InstitutionTypeModel, GenericQueryModel, NavigationModel } from 'src/app/_models';
 import { GET_INSTITUTION_TYPES_API } from 'src/app/_services/_shared';
 import { GradeService } from 'src/app/_services/grade.service';
 import { Observable } from 'rxjs';
 import { TeacherSubject } from 'src/app/_models/teacher.grade.subject ';
 import { ADMIN } from 'src/app/_shared';
+import { NavigationService } from 'src/app/_services';
 
 @Component({
   selector: 'app-grades',
@@ -41,6 +42,8 @@ export class GradesComponent implements OnInit {
       Link: '/dashboard/grades'
     }
   ];
+  navigationModel: NavigationModel;
+
   headerBanner: HeaderBannerModel = {
     Header: 'Grades',
     SubHeader: 'A collection of grade subjects.'
@@ -50,6 +53,8 @@ export class GradesComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private gradeService: GradeService,
+    private navigationService: NavigationService,
+
 
   ) { }
 
@@ -65,16 +70,12 @@ export class GradesComponent implements OnInit {
       }
    
     }
-    // this.gradeService.getGrades(this.user.CompanyId);
-    // this.gradeService.getTeacherGradesSubjects(this.user.UserId, this.user.UserType, this.user.CompanyId);
-    // this.gradeService.gardesObservable.subscribe(data => {
-    //   if (data) {
-    //     this.allGrades = data;
-    //   }
-    // });
-
-    // this.requestPermission();
-    // this.nonPersistentNotification();
+    this.navigationModel = {
+      IsDashboard: true,
+      NavUrl: 'dashboard',
+      Title: 'Dashboard'
+    };
+    this.navigationService.updateNavigationState(this.navigationModel);
     this.getInstitutionTypes();
     if (this.user.UserType === ADMIN) {
       this.isAdmin = true;;
