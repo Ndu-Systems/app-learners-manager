@@ -22,7 +22,6 @@
     <div class="subjects">
       <div class="subject"
            *ngFor="let subject of subjects">  
-
         <section class="example-section">
           <mat-checkbox [checked]="subject.IsSelected"
                         class="example-margin" (click)="onSubjectSelect(subject)">{{subject.Name}}</mat-checkbox>

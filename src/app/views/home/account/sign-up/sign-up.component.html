@@ -99,6 +99,12 @@
             <a routerLink="/sign-in"> <span>Already got an account?</span> Sign in</a>
           </div>
         </div>
+        <div *ngIf="personalErrors.length > 0"
+              class="error">
+          <h4 *ngFor="let error of personalErrors">
+            {{error}}
+          </h4>
+        </div>
       </div>
 
       <div class="organization-details"
@@ -162,13 +168,21 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="pills">
-          <div class="pill"
-               *ngFor="let item of GradesToSelect">
-            <h1>
-              {{item.Name}}
-            </h1>
+
+        <div class="form-group"
+             *ngIf="GradesToSelect.length > 0">
+          <label for="exampleInputName">Subjects</label>
+          <div class="subjects">
+            <div class="subject"
+                 *ngFor="let item of GradesToSelect">
+              <section class="example-section">
+                <mat-checkbox [checked]="item.IsSelected"
+                              class="example-margin"
+                              (click)="onGradeSelect(item)">{{item.Name}}</mat-checkbox>
+              </section>
+            </div>
           </div>
+
         </div>
 
       </div>
@@ -180,7 +194,8 @@
                 [disabled]="!rForm.valid">
           Sign up
         </button>
-        <span class="error" *ngIf="error">{{error}}</span>
+        <span class="error"
+              *ngIf="error">{{error}}</span>
 
       </div>
     </form>

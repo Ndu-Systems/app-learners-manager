@@ -13,10 +13,14 @@
     }
   }
 
+  .overlay {
+    background: rgba(0, 0, 0, 0.514);
+  }
+
   .user-profile {
     text-align: center;
     padding-bottom: 0;
-    margin-top: 2rem;
+    margin-top: 0rem;
     padding: 1rem 0;
 
     h1 {
@@ -164,6 +168,8 @@
     }
   }
 
+
+
   @media only screen and (max-width: 600px) {
     &.desktop {
       display: none;
@@ -240,7 +246,7 @@
 
         .user-profile {
           display: grid;
-          grid-template-columns: 15% auto;
+          grid-template-columns: 30% auto;
 
           img {
             height: 5rem;
@@ -248,8 +254,15 @@
 
           h1 {
             font-size: 1rem;
-            font-weight: 500;
-            margin-top: 2rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            text-align: left;
+
+            span {
+              display: block;
+              color: $grey;
+              font-size: .85rem;
+            }
           }
         }
 

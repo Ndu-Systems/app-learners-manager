@@ -18,6 +18,10 @@ import { MatSnackBar } from '@angular/material';
 export class SignUpComponent implements OnInit {
   rForm: FormGroup;
   error: string;
+  personalErrors: string[] = [];
+  companyErrors: string[] = [];
+  gradeErrors: string[] = [];
+
   grades: Grade[];
   subjects: Subject[];
   selectedSubjects: any[] = [];
@@ -35,6 +39,7 @@ export class SignUpComponent implements OnInit {
   InstitutionTypeId: string;
   InstitutionTypes: InstitutionTypeModel[] = [];
   GradesToSelect: Grade[] = [];
+  companyGrades: Grade[] = [];
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
@@ -74,7 +79,7 @@ export class SignUpComponent implements OnInit {
     model.Roles.push({ Name: ADMIN });
     this.showLoader = true;
     model.Grades = [];
-    this.GradesToSelect.forEach(item => {
+    this.companyGrades.forEach(item => {
       let itemToAdd: GradeSignUpModel = {
         GradeId: item.GradeId
       };
@@ -131,11 +136,38 @@ export class SignUpComponent implements OnInit {
 
   loadOrganizationDetails() {
     this.loading = true;
-    setTimeout(() => {
-      this.showPersonalDetails = false;
+    this.personalErrors = [];
+    const name = this.rForm.get('Name').value;
+    const surname = this.rForm.get('Surname').value;
+    const phoneNumber = this.rForm.get('PhoneNumber').value;
+    const email = this.rForm.get('Email').value;
+    const password = this.rForm.get('Password').value;
+    if (name === null || name === '') {
+      this.personalErrors.push('Name is required');
+    }
+    if (surname === null || surname === '') {
+      this.personalErrors.push('Surname is required');
+    }
+    if (phoneNumber === null || phoneNumber === '') {
+      this.personalErrors.push('Phone number is required');
+    }
+    if (password === null || password === '') {
+      this.personalErrors.push('Password is required');
+    }
+    if (email === null || email === '') {
+      this.personalErrors.push('Email is required');
+    }
+    if (this.personalErrors.length > 0) {
       this.loading = false;
-      this.showOrganizationDetails = true;
-    }, 2000);
+      return;
+    } else {
+      setTimeout(() => {
+        this.showPersonalDetails = false;
+        this.loading = false;
+        this.showOrganizationDetails = true;
+      }, 2000);
+    }
+
   }
 
   loadInstitutionDetails() {
@@ -149,13 +181,21 @@ export class SignUpComponent implements OnInit {
       this.showInstitutionDetails = true;
       this.showSignUp = true;
     }, 1000);
-    
+
   }
 
   onSelectedInstitutionType(item: InstitutionTypeModel) {
+    this.GradesToSelect = [];
     this.GradesToSelect = item.Grades;
   }
-
+  onGradeSelect(grade: Grade) {
+    const index = this.companyGrades.indexOf(grade);
+    if (index < 0) {
+      this.companyGrades.push(grade);
+    } else {
+      this.companyGrades.splice(index, 1);
+    }
+  }
   sendEmail(data: SignUpModel) {
     const emailToSend: Email = {
       Email: data.Email,
@@ -220,5 +260,7 @@ export class SignUpComponent implements OnInit {
     let snackBarRef = this._snackBar.open(message, heading, {
       duration: 5000
     });
-   }
+  }
+
+
 }

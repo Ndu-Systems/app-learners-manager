@@ -17,7 +17,9 @@
      <div class="user-profile">
        <img src="assets/images/common/user.svg"
             alt="">
-       <h1>{{user.Name}} {{user.Surname}}</h1>
+       <h1>{{user.Name}} {{user.Surname}}
+         <span></span>
+       </h1>
      </div>
      <li>
        <a class="logout"
@@ -58,7 +60,7 @@
        </h1>
      </div>
      <div class="notification"
-          *ngIf="navigationSubject.IsDashboard">
+          *ngIf="false">
        <div class="span">
          <h1 class="h1">30</h1>
        </div>
@@ -86,7 +88,9 @@
             *ngIf="user">
          <img src="assets/images/common/user.svg"
               alt="">
-         <h1>{{user.Name}} {{user.Surname}}</h1>
+         <h1 class="h1">{{user.Name}} {{user.Surname}}
+           <span>{{user.Roles[0].RoleName}}</span>
+         </h1>
        </div>
        <ul>
          <li *ngFor="let item of navItems">
