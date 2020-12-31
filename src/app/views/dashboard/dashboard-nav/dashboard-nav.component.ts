@@ -31,10 +31,10 @@ export class DashboardNavComponent implements OnInit {
     this.user$.subscribe(data => {
       this.user = data;
     });
-    this.navigationSubjectObservable$ = this.navigationService.navigationObservable;    
+    this.navigationSubjectObservable$ = this.navigationService.navigationObservable;
     this.navigationSubjectObservable$.subscribe(data => this.navigationSubject = data);
-  
-     
+
+
     if (this.user.UserType === ADMIN) {
       this.setAdminRoute();
     }
@@ -100,6 +100,7 @@ export class DashboardNavComponent implements OnInit {
       // }
     ];
   }
+
   setTeacherRoute() {
     this.navItems = [
       {
@@ -108,5 +109,9 @@ export class DashboardNavComponent implements OnInit {
         routerLink: '/dashboard/grades',
       }
     ];
+  }
+
+  toProfile() {
+    this.routerTo.navigate(['/dashboard/profile']);
   }
 }

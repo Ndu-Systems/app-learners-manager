@@ -11,7 +11,7 @@ export interface User {
   UserType?: string;
   Surname: string;
   GradeId?: string;
-  CellphoneNumber: string;
+  PhoneNumber: string;
   Address?: string;
   Password: string;
   CompanyId?: string;
@@ -35,7 +35,6 @@ export interface User {
   Grades?: Grade[];
   Grade?: Grade;
   Billing?: any[];
-  PhoneNumber: any;
   Company?: CompanyModel;
 }
 
@@ -60,7 +59,7 @@ export interface UserModel {
   Teachersubjects: any[];
   Billing: BillingModel;
   CompanyName?: string;
-  Handler?:string;
+  Handler?: string;
 }
 export interface Role {
   Name: string;

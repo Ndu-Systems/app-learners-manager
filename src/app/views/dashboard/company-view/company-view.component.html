@@ -1,63 +1,68 @@
-<div class="company">
-  <div class="dp"
-       *ngIf="!company.Dp"
-       (click)="showUplaod()">
-    <span class="material-icons">
-      camera_alt
-    </span>
-  </div>
-  <div class="round-dp"
-       *ngIf="company.Dp"
-       (click)="showUplaod()">
-    <div class="image"
-         *ngIf="company.Dp">
-      <img [src]="company.Dp"
-           alt="">
+<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+<div class="container-fluid">
+  <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
+  <div class="company">
+    <div class="dp"
+         *ngIf="!company.Dp"
+         (click)="showUplaod()">
+      <span class="material-icons">
+        camera_alt
+      </span>
     </div>
-  </div>
-  <div class="col-1-of-2">
-    <div class="details">
-      <h1 class="header">
-        Organization Details
-      </h1>
-      <h1>
-        {{company.Name}}
-        <span>
-          {{company.Description}}
-        </span>
-        <button class="link"
-              (click)="showEditUplaod()">
-          Edit organization profile
-        </button>
-      </h1>
-      <h1 class="stat"
-          *ngIf="gradeCount && gradeCount > 0">
-        number of grades
-        <span>
-          {{gradeCount}}
-        </span>
-      </h1>
+    <div class="round-dp"
+         *ngIf="company.Dp"
+         (click)="showUplaod()">
+      <div class="image"
+           *ngIf="company.Dp">
+        <img [src]="company.Dp"
+             alt="">
+      </div>
     </div>
-    <div class="details"
-         *ngIf="Institution.InstitutionType">
-      <h1 class="header">
-        Institution Details
-      </h1>
-      <h1>
-        {{Institution.InstitutionType.Name}}
-        <span>
-          {{Institution.InstitutionType.Description}}
-        </span>
-      </h1>
+    <div class="col-1-of-2">
+      <div class="details">
+        <h1 class="header">
+          Organization Details
+        </h1>
+        <h1>
+          {{company.Name}}
+          <span>
+            {{company.Description}}
+          </span>
+          <button class="link"
+                  (click)="showEditUplaod()">
+            Edit organization profile
+          </button>
+        </h1>
+        <h1 class="stat"
+            *ngIf="gradeCount && gradeCount > 0">
+          number of grades
+          <span>
+            {{gradeCount}}
+          </span>
+        </h1>
+      </div>
+      <div class="details"
+           *ngIf="Institution.InstitutionType">
+        <h1 class="header">
+          Institution Details
+        </h1>
+        <h1>
+          {{Institution.InstitutionType.Name}}
+          <span>
+            {{Institution.InstitutionType.Description}}
+          </span>
+        </h1>
 
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
 
 <div class="overlay"
      *ngIf="showModal"
      (click)="closeModal()"></div>
+
 <div class="modal"
      *ngIf="addDp">
   <div class="close"
@@ -120,7 +125,8 @@
     <button mat-button
             color="primary"
             (click)="update()"> Save changes</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>

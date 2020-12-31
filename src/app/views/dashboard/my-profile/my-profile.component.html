@@ -1,0 +1,117 @@
+<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+<div class="container-fluid">
+  <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
+  <div class="my-profile col-1-of-4"
+       *ngIf="user">
+    <div class="tab user-profile">
+      <span *ngIf="!user.DP">
+        <img src="assets/images/common/user.svg"
+             alt="">
+      </span>
+    </div>
+    <div class="tab form">
+      <div class="form-group">
+        <label for="exampleInputName">Name</label>
+        <input type="text"
+               class="form-control"
+               id="exampleInputFirstName"
+               [(ngModel)]="user.Name"
+               placeholder="Enter First Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputSurname">Surname</label>
+        <input type="text"
+               class="form-control"
+               id="exampleInputSurname"
+               [(ngModel)]="user.Surname"
+               placeholder="Enter Surname">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail">Email</label>
+        <input type="email"
+               class="form-control"
+               id="exampleInputEmail"
+               [(ngModel)]="user.Email"
+               disabled
+               placeholder="Enter Email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPhoneNumber">Cellphone</label>
+        <input type="text"
+               class="form-control"
+               id="exampleInputPhoneNumber"
+               [(ngModel)]="user.PhoneNumber"
+               placeholder="Enter Cellphone Number">
+      </div>
+    </div>
+    <div class="tab form">
+      <div class="form-group">
+        <label for="exampleInputEmail">login</label>
+        <input type="text"
+               class="form-control"
+               id="exampleInputEmail"
+               [(ngModel)]="user.Email"
+               disabled
+               placeholder="Enter Email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">
+          Password
+        </label>
+        <input type="password"
+               [type]="hidePassword? 'password': 'text'"
+               class="form-control"
+               [(ngModel)]="user.Password"
+               id="exampleInputPassword1"
+               disabled
+               placeholder="Password">
+        <mat-icon class="pointer"
+                  (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+        <div class="showPassword"
+             (click)="hidePassword = !hidePassword">
+        </div>
+      </div>
+    </div>
+    <div class="tab form">
+      <div class="company-profile"
+           *ngIf="user.Company">
+        <span *ngIf="!user.Company.Dp">
+          <img src="assets/images/common/user.svg"
+               alt="">
+        </span>
+        <span *ngIf="user.Company.Dp">
+          <img [src]="user.Company.Dp"
+               alt="">
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputCompanyName">CompanyName</label>
+        <input type="text"
+               class="form-control"
+               id="exampleInputCompanyName"
+               disabled
+               [(ngModel)]="user.Company.Name">
+      </div>
+      <div class="form-group"
+           *ngIf="user.Company.Handler">
+        <label for="exampleInputHandler">Handler</label>
+        <input type="text"
+               class="form-control"
+               id="exampleInputHandler"
+               disabled
+               [(ngModel)]="user.Company.Handler"
+               placeholder="Enter Surname">
+      </div>
+      <div class="form-group"
+           *ngIf="user.Company.Description">
+        <label for="exampleInputCompanyDescription">Description</label>
+        <textarea name="exampleInputCompanyDescription"
+                  [(ngModel)]="user.Company.Description"
+                  id="exampleInputCompanyDescription"
+                  cols="30"
+                  rows="5"></textarea>
+      </div>
+    </div>
+  </div>
+</div>

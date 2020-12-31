@@ -1,7 +1,7 @@
 import { Institution } from './../../../_models/company.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { CompanyModel } from 'src/app/_models';
+import { BreadCrumbModel, CompanyModel, HeaderBannerModel } from 'src/app/_models';
 import { AccountService, ApiService, DocumentsService } from 'src/app/_services';
 import { UPDATE_COMPANY_URL } from 'src/app/_services/_shared';
 import { environment } from 'src/environments/environment';
@@ -23,8 +23,21 @@ export class CompanyViewComponent implements OnInit {
   isUpdate: boolean;
   error: string;
   Institution: Institution;
-
+  crumbs: BreadCrumbModel[] = [
+    {
+      Label: 'grades',
+      Link: '/dashboard/grades'
+    },
+    {
+      Label: 'View Organization',
+      Link: '/dashboard/company'
+    },
+  ];
   user:User;
+  headerBanner: HeaderBannerModel = {
+    Header: 'Organization Details',
+    SubHeader: 'You organization information.'
+  };
   constructor(
     private documentsService: DocumentsService,
     private apiServices: ApiService,
@@ -78,7 +91,6 @@ export class CompanyViewComponent implements OnInit {
         this.dpUrl = `${environment.API_URL}/api/upload/${url}`;
         this.company.Dp = this.dpUrl;
       });
-
     });
 
   }

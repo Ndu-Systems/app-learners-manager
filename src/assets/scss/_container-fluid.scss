@@ -3,7 +3,8 @@
     padding: 1rem;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
-
+    min-height: 90vh;
+    overflow-y: scroll;
     .col-1-of-4 {
         grid-gap: 0;
 

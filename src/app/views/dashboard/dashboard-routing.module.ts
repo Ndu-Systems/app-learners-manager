@@ -27,6 +27,7 @@ import { AddAssignmentComponent } from './subject/add-assignment/add-assignment.
 import { ImagesComponent } from 'src/app/_shared/components/images/images.component';
 import { TeacherGradesComponent } from './grades/teacher-grades/teacher-grades.component';
 import { CompanyViewComponent } from './company-view/company-view.component';
+import { MyProfileComponent, UserDpComponent } from './my-profile';
 
 
 const routes: Routes = [
@@ -44,8 +45,9 @@ const routes: Routes = [
       { path: 'view-learner/:id', component: ViewLearnerComponent },
       { path: 'view-teacher/:id', component: ViewTeachersComponent },
       { path: 'learners', component: LearnersComponent },
-      { path: 'teachers', component: TeachersComponent }, 
-      { path: 'company', component: CompanyViewComponent }, 
+      { path: 'teachers', component: TeachersComponent },
+      { path: 'company', component: CompanyViewComponent },
+      { path: 'profile', component: MyProfileComponent },
     ]
   }
 ];
@@ -78,7 +80,9 @@ export const declarations: Array<any> = [
   AddAssignmentComponent,
   ImagesComponent,
   TeacherGradesComponent,
-  CompanyViewComponent
+  CompanyViewComponent,
+  UserDpComponent,
+  MyProfileComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
