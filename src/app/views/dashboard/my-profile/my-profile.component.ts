@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
+import { BreadCrumbModel, ButtonActionModel, HeaderBannerModel } from 'src/app/_models';
 import { User } from 'src/app/_models/user.model';
 import { AccountService, EmailService } from 'src/app/_services';
 import { UserService } from 'src/app/_services/user.service';
+import { DELETE_ACTION, SAVE_ACTION } from 'src/app/_shared';
 
 @Component({
   selector: 'app-my-profile',
@@ -27,6 +28,16 @@ export class MyProfileComponent implements OnInit {
     Header: 'Your profile',
     SubHeader: 'You profile information.'
   };
+  actionButtons: ButtonActionModel[] = [
+    {
+      actionType: 'save',
+      label: 'profile'
+    },
+    {
+      actionType: 'delete',
+      label: 'profile'
+    },
+  ]
   hidePassword = true;
   constructor(
     private accountService: AccountService,
@@ -37,7 +48,14 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.currentUserValue;
-
   }
 
+  onClickedAction($event) {
+    if ($event === SAVE_ACTION) {
+      alert('Perform save action');
+    }
+    if ($event === DELETE_ACTION) {
+      alert('Perform delete action');
+    }
+  }
 }

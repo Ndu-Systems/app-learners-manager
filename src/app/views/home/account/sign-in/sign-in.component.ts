@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
 import { ADMIN, LEARNER, TEACHER } from 'src/app/_shared';
 import { LocationStrategy } from '@angular/common';
@@ -28,15 +28,17 @@ export class SignInComponent implements OnInit {
   shopPrimaryColor;
   logoUrl;
   token: string;
+  returnUrl: string;
   showLoader: boolean = false;
   navigationModel: NavigationModel;
 
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
+    private route: ActivatedRoute,
     private accountService: AccountService,
     private location: LocationStrategy,
-    private _snackBar: MatSnackBar, 
+    private _snackBar: MatSnackBar,
     private navigationService: NavigationService,
 
   ) {
@@ -102,13 +104,15 @@ export class SignInComponent implements OnInit {
                 Title: `View Grades/Levels`
               };
               this.navigationService.updateNavigationState(this.navigationModel);
-              this.routeTo.navigate(['dashboard/grades']);
+              this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard/grades';
+              this.routeTo.navigate([this.returnUrl]);
             }, 1500);
           }
           if (user.Roles.find(x => x.RoleName === LEARNER)) {
             setTimeout(() => {
               this.showLoader = false;
-              this.routeTo.navigate(['/my-portal']);
+              this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/my-portal';
+              this.routeTo.navigate([this.returnUrl]);
             }, 1500);
 
           }

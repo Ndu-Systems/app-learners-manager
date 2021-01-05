@@ -10,7 +10,7 @@ import { SubjectComponent } from './subject/subject/subject.component';
 import { TopicComponent } from './subject/topic/topic.component';
 import { TestsComponent } from './tests/tests/tests.component';
 import { TestComponent } from './tests/test/test.component';
-import { HeaderBannerComponent, BreadcrumbComponent, StatCardComponent } from './shared';
+import { HeaderBannerComponent, BreadcrumbComponent, StatCardComponent, ActionsSectionComponent} from './shared';
 import { LearnersComponent } from './learners/learners/learners.component';
 import { StudentsubjectsPipe } from 'src/app/_pipes/studentsubjects.pipe';
 import { AddLearnerComponent } from './learners/add-learner/add-learner.component';
@@ -28,11 +28,13 @@ import { ImagesComponent } from 'src/app/_shared/components/images/images.compon
 import { TeacherGradesComponent } from './grades/teacher-grades/teacher-grades.component';
 import { CompanyViewComponent } from './company-view/company-view.component';
 import { MyProfileComponent, UserDpComponent } from './my-profile';
+import { AuthGuard } from 'src/app/_guards';
 
 
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'grades', component: GradesComponent },
@@ -82,8 +84,9 @@ export const declarations: Array<any> = [
   TeacherGradesComponent,
   CompanyViewComponent,
   UserDpComponent,
-  MyProfileComponent
-];
+  MyProfileComponent,
+  ActionsSectionComponent
+ ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

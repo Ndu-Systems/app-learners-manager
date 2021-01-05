@@ -16,5 +16,6 @@ export * from './institution-type.model';
 export * from './generic.model.ts';
 export * from './billing.model';
 export * from './company.model';
+export * from './button.action.model';
 // end:ng42.barrel
 

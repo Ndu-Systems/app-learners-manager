@@ -1,0 +1,53 @@
+.actions-section {
+    .buttons {
+
+        display: grid;
+        grid-template-columns: repeat(5, 20%);
+        grid-gap: 1rem;
+        padding: 1rem 0;
+
+        .mat-button {
+            text-transform: capitalize;
+
+            &.mat-primary {
+                font-weight: 400;
+                font-size: .75rem;
+            }
+
+            &.mobile {
+                display: none;
+            }
+
+            &.desktop {
+                display: block;
+            }
+
+            &.save {
+                background: $success;
+            }
+
+            &.delete {
+                background: $danger;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .buttons {
+            grid-template-columns: repeat(1, 100%);
+            grid-gap: 0.5rem;
+
+            .mat-button {
+
+
+                &.mobile {
+                    display: block;
+                }
+
+                &.desktop {
+                    display: none;
+                }
+            }
+        }
+    }
+}

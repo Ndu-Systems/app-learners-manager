@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dash-loader',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-loader.component.scss']
 })
 export class DashLoaderComponent implements OnInit {
-
+  @Input() showLoader: boolean;
   constructor() { }
 
   ngOnInit() {

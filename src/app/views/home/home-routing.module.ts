@@ -23,6 +23,7 @@ import { StudentSubjectsListComponent } from './student-portal/my-portal/student
 import { StudentAssignmentComponent } from './student-portal/my-portal/student-assignment/student-assignment.component';
 import { FeaturesComponent } from './features/features.component';
 import { StudentCompanyComponent } from './student-portal/my-portal/student-company/student-company.component';
+import { AuthGuard } from 'src/app/_guards';
 
 const routes: Routes = [
   {
@@ -34,18 +35,18 @@ const routes: Routes = [
       { path: 'sign-up', component: SignUpComponent },
       { path: 'pricing', component: PricingTableComponent },
       { path: 'contact-us', component: ContactUsComponent },
-      { path: 'my-portal', component: MyPortalComponent },
-      { path: 'view-subject', component: ViewSubjectComponent },
-      { path: 'view-tests', component: ViewTestsComponent },
-      { path: 'take-test', component: TakeTestComponent },
-      { path: 'read-topic', component: ReadTopicComponent },
+      { path: 'my-portal', component: MyPortalComponent, canActivate: [AuthGuard] },
+      { path: 'view-subject', component: ViewSubjectComponent, canActivate: [AuthGuard] },
+      { path: 'view-tests', component: ViewTestsComponent, canActivate: [AuthGuard] },
+      { path: 'take-test', component: TakeTestComponent , canActivate: [AuthGuard]},
+      { path: 'read-topic', component: ReadTopicComponent , canActivate: [AuthGuard]},
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'read/:id', component: ReadComponent },
       { path: 'online-quiz/:id', component: OnlineQuizComponent },
-      { path: 'question/:id', component: ViewQuestionComponent },
-      { path: 'questions-hub', component: ListQuestionsComponent },
-      { path: 'student-assignment', component: StudentAssignmentComponent },
+      { path: 'question/:id', component: ViewQuestionComponent, canActivate: [AuthGuard] },
+      { path: 'questions-hub', component: ListQuestionsComponent , canActivate: [AuthGuard]},
+      { path: 'student-assignment', component: StudentAssignmentComponent , canActivate: [AuthGuard]},
       { path: 'features', component: FeaturesComponent }
     ]
   }

@@ -1,7 +1,7 @@
 .headerBanner {
     display: grid;
     grid-template-columns: 50% auto;
-    margin-bottom: 1rem;
+    border-bottom: 1px solid $cloud;
 
     .header {
         h1 {
@@ -9,6 +9,7 @@
             font-size: 1.25rem;
             font-weight: 500;
             color: $primary;
+
             .sub-title {
                 font-size: 0.66rem;
                 display: block;
@@ -16,6 +17,7 @@
                 font-weight: 500;
             }
         }
+        border-bottom: none;
     }
 
     .cta {
@@ -27,13 +29,14 @@
         }
     }
 
-    
+
     @media only screen and (max-width: 600px) {
         .header {
             h1 {
-                font-size: 1rem;    
+                font-size: 1rem;
+
                 .sub-title {
-                
+
                     font-weight: 400;
                 }
             }

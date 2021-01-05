@@ -37,7 +37,7 @@ export class LearnersComponent implements OnInit {
       Link: '/dashboard/learners'
     },
   ];
-
+ 
   headerBanner: HeaderBannerModel = {
     Header: 'Learners',
     SubHeader: 'A collection of learners for your organization.',
@@ -68,6 +68,8 @@ export class LearnersComponent implements OnInit {
       this.users = data;
     });
     this.userService.getUsers(this.user.CompanyId, LEARNER);
+    this.spinner();
+
   }
   add() {
     this.showModal = true;
@@ -82,7 +84,12 @@ export class LearnersComponent implements OnInit {
     this.showConfirm = false;
     this.proofOfPayment = undefined;
   }
-
+  spinner() {
+    this.showLoader = true;  
+    setTimeout(() => {
+      this.showLoader = false;   
+    }, 1500);
+  }
   open(id) {
     this.router.navigate(['dashboard/subjects', id]);
   }

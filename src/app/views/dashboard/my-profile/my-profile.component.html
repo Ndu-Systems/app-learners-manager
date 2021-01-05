@@ -109,9 +109,12 @@
         <textarea name="exampleInputCompanyDescription"
                   [(ngModel)]="user.Company.Description"
                   id="exampleInputCompanyDescription"
+                  disabled
                   cols="30"
                   rows="5"></textarea>
       </div>
     </div>
   </div>
+  <app-actions-section [actionButtons]="actionButtons"
+                       (clickedAction)="onClickedAction($event)"></app-actions-section>
 </div>

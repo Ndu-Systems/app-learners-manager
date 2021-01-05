@@ -2,5 +2,6 @@
 export * from './header-banner';
 export * from './breadcrumb';
 export * from './stat-card';
-// end:ng42.barrel
+export * from './actions-section';
+ // end:ng42.barrel
 

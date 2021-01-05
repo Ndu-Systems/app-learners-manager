@@ -1,0 +1,33 @@
+<div class="actions-section">
+  <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
+  <div class="buttons">
+    <!-- save button -->
+    <span *ngIf="saveBtn">
+      <button mat-button
+              class="save desktop"
+              color="primary"
+              (click)="onActionClicked('save')">💾 Save {{saveBtn?.label}}</button>
+      <button mat-button
+              class="save mobile"
+              color="primary"  (click)="onActionClicked('save')">💾 Save {{saveBtn?.label}}</button>
+    </span>
+    <!-- edit button -->
+    <span *ngIf="editBtn">
+      <button mat-button
+              class="update desktop"
+              color="primary"  (click)="onActionClicked('edit')">✏️ Edit {{editBtn?.label}}</button>
+      <button mat-button
+              class="update mobile"
+              color="primary"  (click)="onActionClicked('edit')">✏️ Edit {{editBtn?.label}}</button>
+    </span>
+    <!-- delete button -->
+    <span *ngIf="deleteBtn">
+      <button mat-button
+              class="delete desktop"
+              color="primary"  (click)="onActionClicked('delete')">🗑️ Delete {{deleteBtn?.label}}</button>
+      <button mat-button
+              class="delete mobile"
+              color="primary"  (click)="onActionClicked('delete')">🗑️ Delete {{deleteBtn?.label}}</button>
+    </span>
+  </div>
+</div>
