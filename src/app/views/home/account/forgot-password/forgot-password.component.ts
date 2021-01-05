@@ -59,17 +59,17 @@ export class ForgotPasswordComponent implements OnInit {
             setTimeout(() => {
               this.showLoader = false;
               this.showModal = true;
-              this.openSnackBar('Your account has been verified. Check your email', 'Success!');
+              this.openSnackBar('Your account has been verified. Check your email', 'Got It!');
               this.routeTo.navigate(['sign-in']);
             }, 0);
           } else {
-            this.openSnackBar('Something went wrong, please try again later!', 'Error!');
+            this.openSnackBar('Something went wrong, please try again later!', 'Got It!');
             this.routeTo.navigate(['']);
             return;
           }
         });
       } else {
-        this.openSnackBar('Something went wrong, please try again later!', 'Error!');
+        this.openSnackBar('Something went wrong, please try again later!', 'Got It!');
         this.routeTo.navigate(['']);
       }
     });

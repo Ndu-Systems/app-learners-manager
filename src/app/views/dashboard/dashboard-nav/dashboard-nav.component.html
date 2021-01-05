@@ -14,12 +14,22 @@
        </a>
      </li>
 
-     <div class="user-profile"  (click)="toProfile()">
+     <div class="user-profile"
+          (click)="toProfile()">
        <img src="assets/images/common/user.svg"
             alt="">
        <h1>{{user.Name}} {{user.Surname}}
          <span></span>
        </h1>
+
+       <div class="role"
+            *ngIf="user.Roles[0] as role">
+         <h1 class="h1">Role:
+           <span>
+             {{role.RoleName}}
+           </span>
+         </h1>
+       </div>
      </div>
      <li>
        <a class="logout"
@@ -85,7 +95,8 @@
 
        </div>
        <div class="user-profile"
-            *ngIf="user" (click)="toProfile();toggleMenu()">
+            *ngIf="user"
+            (click)="toProfile();toggleMenu()">
          <img src="assets/images/common/user.svg"
               alt="">
          <h1 class="h1">{{user.Name}} {{user.Surname}}

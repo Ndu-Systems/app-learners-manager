@@ -73,7 +73,7 @@ export class ResetPasswordComponent implements OnInit {
   getUserByToken() {
     this.showLoader = true;
     if (this.token === undefined) {
-      this.openSnackBar('You should not be here, please contact support!', 'Forbidden!');
+      this.openSnackBar('You should not be here, please contact support!', 'Got It!');
       this.routeTo.navigate(['']);
     }
 
@@ -86,7 +86,7 @@ export class ResetPasswordComponent implements OnInit {
         }
         this.showLoader = false;
       } else {
-        this.openSnackBar('You should not be here, please contact support!', 'Forbidden!');
+        this.openSnackBar('You should not be here, please contact support!', 'Got It!');
         this.routeTo.navigate(['']);
       }
     });
@@ -102,16 +102,16 @@ export class ResetPasswordComponent implements OnInit {
     }
     this.accountService.changePassword(model).subscribe(data => {
       if (data > 0) {
-        this.openSnackBar('Please login with your new credentials', 'Success!');
+        this.openSnackBar('Please login with your new credentials', 'Got It!');
         this.routeTo.navigate(['sign-in']);
       }
       else if(data === 'invalid request') {
-        this.openSnackBar('Invalid request, please try again!', 'Error!');
+        this.openSnackBar('Invalid request, please try again!', 'Got It!');
         this.rForm.reset();
         return;
       }
       else {
-        this.openSnackBar('Something went wrong, please try again later!', 'Error!');
+        this.openSnackBar('Something went wrong, please try again later!', 'Got It!');
         this.routeTo.navigate(['']);
       }
     });

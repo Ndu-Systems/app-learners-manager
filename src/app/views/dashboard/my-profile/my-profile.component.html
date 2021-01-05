@@ -8,6 +8,19 @@
         <img src="assets/images/common/user.svg"
              alt="">
       </span>
+      <div class="role"
+           *ngIf="user.Roles[0] as role">
+        <h1 class="h1">Registered:
+          <span>
+            {{user.CreateDate | date: 'mediumDate'}}
+          </span>
+        </h1>
+        <h1 class="h1">Role:
+          <span>
+            {{role.RoleName}}
+          </span>
+        </h1>
+      </div>
     </div>
     <div class="tab form">
       <div class="form-group">

@@ -1,5 +1,4 @@
 .my-profile {
- 
     &.col-1-of-4 {
         grid-template-columns: 15% 25% 25% auto;
 
@@ -24,6 +23,32 @@
             font-weight: 500;
             font-size: 12px;
             margin: 0;
+        }
+
+        .role {
+            text-align: left;
+            padding: 1rem 0;
+            padding-right: 1rem;
+
+            h1.h1 {
+                font-weight: 700;
+                font-size: .85rem;
+                color: $grey;
+                margin-bottom: .5rem;
+                border-bottom: 1px solid $grey;
+
+                &:last-child() {
+                    margin-bottom: 0;
+                    border-bottom: none;
+                }
+
+                span {
+                    display: block;
+                    font-weight: 400;
+                    color: $black;
+                }
+
+            }
         }
     }
 

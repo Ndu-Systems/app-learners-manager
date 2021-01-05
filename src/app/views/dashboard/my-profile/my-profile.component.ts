@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { BreadCrumbModel, ButtonActionModel, HeaderBannerModel } from 'src/app/_models';
 import { User } from 'src/app/_models/user.model';
-import { AccountService, EmailService } from 'src/app/_services';
+import { AccountService, ApiService, EmailService } from 'src/app/_services';
 import { UserService } from 'src/app/_services/user.service';
 import { DELETE_ACTION, SAVE_ACTION } from 'src/app/_shared';
 
@@ -30,19 +30,16 @@ export class MyProfileComponent implements OnInit {
   };
   actionButtons: ButtonActionModel[] = [
     {
-      actionType: 'save',
+      actionType: SAVE_ACTION,
       label: 'profile'
-    },
-    {
-      actionType: 'delete',
-      label: 'profile'
-    },
+    }
   ]
   hidePassword = true;
   constructor(
     private accountService: AccountService,
     private emailService: EmailService,
     private userService: UserService,
+    private apiServices: ApiService,
     private _snackBar: MatSnackBar
   ) { }
 
@@ -52,10 +49,25 @@ export class MyProfileComponent implements OnInit {
 
   onClickedAction($event) {
     if ($event === SAVE_ACTION) {
-      alert('Perform save action');
+      this.userService.updateUser(this.user).subscribe(data => {
+        if (data) {
+          this.accountService.updateUserState(data);
+          const message = 'Successfully updated profile';
+          this.openSnackBar(message, 'Got It!');
+        }
+      });
     }
     if ($event === DELETE_ACTION) {
       alert('Perform delete action');
     }
   }
+
+
+  openSnackBar(message, heading) {
+    let snackBarRef = this._snackBar.open(message, heading, {
+      duration: 5000
+    });
+  }
+
+  
 }

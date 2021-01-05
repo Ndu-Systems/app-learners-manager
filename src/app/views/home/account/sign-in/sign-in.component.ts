@@ -70,9 +70,9 @@ export class SignInComponent implements OnInit {
       this.accountService.activateUser(tokenModel)
         .subscribe(data => {
           if (data > 0) {
-            const message = 'Account successfully activated, Please login';
-            this.openSnackBar(message, 'Success!');
-            return;
+            const message = 'Account successfully activated, Please Set your password.';
+            this.openSnackBar(message, 'Got It!');
+            this.routeTo.navigate(['reset-password']);
           }
         });
     }
@@ -144,6 +144,5 @@ export class SignInComponent implements OnInit {
     let snackBarRef = this._snackBar.open(message, heading, {
       duration: 5000
     });
-
   }
 }

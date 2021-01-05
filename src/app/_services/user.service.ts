@@ -68,4 +68,8 @@ export class UserService {
     }));
   }
 
+  updateUser(model: User): Observable<User> {
+    return this.http.post<User>(`${this.url}/api/user/update-user.php`, model);
+  }
+
 }

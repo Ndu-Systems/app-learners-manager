@@ -6,14 +6,15 @@
     .header {
         h1 {
             margin: 0;
-            font-size: 1.25rem;
-            font-weight: 500;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: $primary;
 
             .sub-title {
                 font-size: 0.66rem;
                 display: block;
-                color: $darker-grey;
+                color: $grey;
+                font-style: italic;
                 font-weight: 500;
             }
         }

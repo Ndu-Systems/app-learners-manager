@@ -209,7 +209,7 @@ export class SignUpComponent implements OnInit {
         if (response > 0) {
           setTimeout(() => {
             this.showLoader = false;
-            this.openSnackBar('Account Registered successfully. Check your email', 'Success!');
+            this.openSnackBar('Account Registered successfully. Check your email', 'Got It!');
             this.routeTo.navigate(['']);
           }, 1000);
         }

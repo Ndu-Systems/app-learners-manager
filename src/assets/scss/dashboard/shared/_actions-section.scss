@@ -1,4 +1,17 @@
 .actions-section {
+    .headerBanner {
+        grid-template-columns: 100%;
+        .header {
+            h1 {
+                font-size: .85rem;
+                font-weight: 700;
+                span {
+                    color: $grey;
+                    font-style: italic;
+                }
+            }
+        }
+    }
     .buttons {
 
         display: grid;

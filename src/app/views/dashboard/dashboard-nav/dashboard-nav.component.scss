@@ -32,6 +32,17 @@
     img {
       width: 3.5rem;
     }
+    .role {
+      h1{
+    
+        font-weight: 700;
+        color: $grey;
+        span {
+          font-weight: 500;
+          color: $black;
+        }
+      }
+    }
   }
 
   ul {
