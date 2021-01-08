@@ -8,6 +8,7 @@
         grid-template-columns: 100%;
     }
 }
+
 ::ng-deep {
 
     .mat-checkbox-ripple .mat-ripple-element,
@@ -15,6 +16,7 @@
         background-color: $primary !important;
     }
 }
+
 .subjects {
     padding-top: .6rem;
 
@@ -85,6 +87,28 @@
 }
 
 .institution-type-details {}
+
+.select-all {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: .5rem;
+
+    button {
+        background: $primary;
+        color: $white;
+        font-size: 0.75rem;
+        margin: .5rem 0;
+
+        &.clear {
+            background: $white;
+            color: $grey;
+            border: 1px solid $grey;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 50% auto;        
+    }
+}
 
 .pills {
     display: grid;

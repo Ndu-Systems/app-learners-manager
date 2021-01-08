@@ -21,13 +21,13 @@
   }
 
   .col-1-of-2 {
-    grid-gap: 0;
+    grid-gap: 1rem;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
-    margin: .5rem;
+    margin: .5rem 0;
 
     label {
       font-weight: 700;

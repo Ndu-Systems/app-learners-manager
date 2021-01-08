@@ -58,7 +58,7 @@ export class SignUpComponent implements OnInit {
         Validators.required,
         Validators.email
       ])),
-      Password: [null, Validators.required],
+      Password: ['notset', Validators.required],
       PhoneNumber: [null, Validators.required],
       Name: [null, Validators.required],
       CompanyName: [null, Validators.required],
@@ -133,7 +133,6 @@ export class SignUpComponent implements OnInit {
     this.selectedSubjects.push(subject);
   }
 
-
   loadOrganizationDetails() {
     this.loading = true;
     this.personalErrors = [];
@@ -188,6 +187,7 @@ export class SignUpComponent implements OnInit {
     this.GradesToSelect = [];
     this.GradesToSelect = item.Grades;
   }
+
   onGradeSelect(grade: Grade) {
     const index = this.companyGrades.indexOf(grade);
     if (index < 0) {
@@ -196,6 +196,20 @@ export class SignUpComponent implements OnInit {
       this.companyGrades.splice(index, 1);
     }
   }
+
+  selectAll() {
+    this.GradesToSelect.forEach(item => {
+      item.IsSelected = true;
+      this.onGradeSelect(item);
+    });
+  }
+  clearAll() {
+    this.GradesToSelect.forEach(item => {
+      item.IsSelected = false;     
+    });
+    this.companyGrades = [];
+  }
+
   sendEmail(data: SignUpModel) {
     const emailToSend: Email = {
       Email: data.Email,

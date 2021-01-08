@@ -24,13 +24,15 @@ import { StudentAssignmentComponent } from './student-portal/my-portal/student-a
 import { FeaturesComponent } from './features/features.component';
 import { StudentCompanyComponent } from './student-portal/my-portal/student-company/student-company.component';
 import { AuthGuard } from 'src/app/_guards';
+import { SplashScreenComponent } from './splash-screen';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
-      { path: '', component: IndexComponent },
+      { path: '', component: SignInComponent },
+      { path: 'before-start', component: SplashScreenComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent },
       { path: 'pricing', component: PricingTableComponent },
@@ -78,7 +80,8 @@ export const declarations = [
   StudentSubjectsListComponent,
   StudentAssignmentComponent,
   FeaturesComponent,
-  StudentCompanyComponent
+  StudentCompanyComponent,
+  SplashScreenComponent
 ];
 
 @NgModule({

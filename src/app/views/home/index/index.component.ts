@@ -34,14 +34,14 @@ export class IndexComponent implements OnInit {
     }, 1500);
   }
   getStarted() {
+
     this.navigationModel = {
       IsHome: false,
       NavUrl: '',
       Title: 'Home'
     };
     this.navigationService.updateNavigationState(this.navigationModel);
-    this.routeTo.navigate(['sign-up']);
-
+    this.routeTo.navigate(['before-start']);
   }
 
 }
