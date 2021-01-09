@@ -159,6 +159,7 @@
   .input-editor {
     height: 30rem;
     overflow: scroll;
+    padding: 1rem;
 
     .ql-toolbar.ql-snow {
       border: 1px solid #ccc;
@@ -166,9 +167,9 @@
       font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
       padding: 8px;
       position: fixed;
-      width: 61rem;
+      width: 66.2rem;
       background: $white;
-      top: 10rem;
+      top: 12rem;
       z-index: 1000;
       border: none;
     }
@@ -184,11 +185,12 @@
 
       .ql-toolbar.ql-snow {
         width: 22rem;
-        top: 9.5rem;
+        position: relative;
+        top: unset;
       }
 
       .ql-container.ql-snow {
-        margin-top: 14rem;
+        margin-top: 1rem;
       }
     }
   }

@@ -23,7 +23,6 @@
     </div>
   </div>
 
-
   <ng-template #nodata>
     <div class="nodata">
       <h1>
@@ -52,7 +51,7 @@
 
   <div class="form">
     <div class="form-group">
-      <label for="">Assignment tittle**</label>
+      <label for="">Assignment title**</label>
       <input type="text"
              placeholder="e.g. How to write a strong introduction."
              [(ngModel)]="assignment.Tittle">
@@ -99,7 +98,7 @@
     </div>
 
     <div class="form">
-      <label for="">Assignment tittle**</label>
+      <label for="">Assignment title**</label>
       <input type="text"
              placeholder="e.g. How to write a strong introduction."
              [(ngModel)]="assignment.Tittle">
@@ -127,17 +126,18 @@
                     [otherId]="assignment.AssignmentId"
                     (onUploadFinished)="uploadFinished($event)"></app-images>
       </div>
-
-
-
-      <button mat-button
-              color="primary"
-              class="btn-float"
-              (click)="update()"> Save Changes</button>
-      <div class="error"
-           *ngIf="error">
-        {{error}}
+      
+      <div class="action">
+        <button mat-button
+                color="primary"
+                class="btn-float"
+                (click)="update()"> Save Changes</button>
+        <h5 class="error"
+            *ngIf="error">
+          {{error}}
+        </h5>
       </div>
+
     </div>
     <div class="error"
          *ngIf="error">

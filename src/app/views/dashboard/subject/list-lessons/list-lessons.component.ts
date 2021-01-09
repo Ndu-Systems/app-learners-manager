@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { TopicComponent } from '../topic/topic.component';
 import { DomSanitizer } from '@angular/platform-browser'
 import { MatSnackBar } from '@angular/material';
+import { ButtonActionModel } from 'src/app/_models';
+import { ADD_ACTION } from 'src/app/_shared';
 
 
 @Component({
@@ -38,6 +40,12 @@ export class ListLessonsComponent implements OnInit {
     marginBottom: '30px',
   }
   showLoader: boolean;
+  actionButtons: ButtonActionModel[] = [
+    {
+      actionType: ADD_ACTION,
+      label: 'lesson'
+    }
+  ]
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,

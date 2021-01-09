@@ -1,4 +1,4 @@
-<div class="main-list"
+<!-- <div class="main-list"
      *ngIf="subject">
   <div class="header">
     <div class="go-back">      
@@ -33,7 +33,49 @@
                             [subjectName]="subject.Name"></app-list-assignments>
     </mat-tab>
   </mat-tab-group>
+</div> -->
+
+
+<div class="container-fluid"
+     *ngIf="subject">
+  <div class="item-overview">
+    <div class="heading">
+      <h1 class="h1">{{subject.Name}}
+        <span>
+          {{subject.Description}}
+        </span>
+      </h1>
+      <h1 class="h4">
+        Created: {{subject.CreateDate| date: 'mediumDate'}}
+        <span>
+          last update: {{subject.ModifyDate| date: 'mediumDate'}}
+        </span>
+      </h1>
+    </div>
+    <mat-tab-group (selectedTabChange)="onTabChanged($event)"
+                   [selectedIndex]="selectedIndex"
+                   mat-align-tabs="start">
+      <mat-tab label="Lessons">
+        <app-list-lessons [lessons]="subject.Lessons"
+                          [subjectId]="subject.SubjectId"
+                          [subjectName]="subject.Name">
+        </app-list-lessons>
+      </mat-tab>
+      <!-- <mat-tab label="Quiz tests">
+        <app-tests [tests]="subject.Tests"
+                   [SubjectId]="subject.SubjectId"></app-tests>
+      </mat-tab>
+      <mat-tab label="Assignments">
+        <app-list-assignments [assignments]="subject.Assignments"
+                              [subjectId]="subject.SubjectId"
+                              [gradeId]="subject.GradeId"
+                              [subjectName]="subject.Name"></app-list-assignments>
+      </mat-tab> -->
+    </mat-tab-group>
+  </div>
 </div>
+
+
 <div class="overlay"
      *ngIf="showModal || showDelete || showPreview"
      (click)="closeModal()"></div>
@@ -79,7 +121,8 @@
     <button mat-button
             color="primary"
             (click)="formatBody()"> Save content</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -104,7 +147,8 @@
             color="primary"
             class="secondary"
             (click)="closeModal()"> Cancel</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>

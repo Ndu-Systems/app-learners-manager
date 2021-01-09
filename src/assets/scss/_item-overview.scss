@@ -1,0 +1,80 @@
+.item-overview {
+
+    .heading {
+        padding-bottom: 1rem;
+        border-bottom: solid 1px $grey;
+        display: grid;
+        grid-template-columns: 80% auto;
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+
+            span {
+                display: block;
+                font-size: 1rem;
+                color: $grey;
+                font-weight: 500;
+            }
+
+            &.h4 {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .list-items {
+        padding: 1rem;
+        height: 63vh;
+        overflow-y: scroll;
+
+        .item {
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 10% 45% 25% auto;
+            border: solid 1px $grey;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: $border-radius;
+
+            .material-icons {
+                color: $primary;
+            }
+
+            h1 {
+                font-size: 1.12rem;
+                margin: 0;
+
+                &.title {
+                    font-weight: 600;
+                }
+
+                &.h1 {
+                    font-weight: 500;
+                }
+
+                span {
+
+                    display: block;
+                    font-weight: 300;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .heading {
+            grid-template-columns: 100%;
+        }
+
+        .list-items {
+            padding: .5rem;
+
+            .item {
+                grid-template-columns: 100%;
+            }
+        }
+    }
+}

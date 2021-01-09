@@ -2,6 +2,16 @@
   <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
   <div class="buttons">
     <!-- save button -->
+    <span *ngIf="addBtn">
+      <button mat-button
+              class="update desktop"
+              color="primary"
+              (click)="onActionClicked('add')">➕  Add new {{addBtn?.label}}</button>
+      <button mat-button
+              class="update mobile"
+              color="primary"  (click)="onActionClicked('add')">➕  Add new {{addBtn?.label}}</button>
+    </span>
+    <!-- save button -->
     <span *ngIf="saveBtn">
       <button mat-button
               class="save desktop"

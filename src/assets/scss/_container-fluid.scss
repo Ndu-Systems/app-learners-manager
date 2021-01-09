@@ -3,7 +3,7 @@
     padding: 1rem;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
-    min-height: 90vh;
+    min-height: 100vh;
     overflow-y: scroll;
     .col-1-of-4 {
         grid-gap: 0;
@@ -98,7 +98,7 @@
         color: $primary;
         height: 2rem;
         width: 2rem;
-        margin: 1rem;
+        margin: 1rem;        
 
         @media only screen and (max-width: 600px) {}
     }

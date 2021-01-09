@@ -1,28 +1,35 @@
 <div class=""
      *ngIf="lessons">
-  <div class="lessons"
+  <div class="list-items"
        *ngIf="lessons.length; else nodata">
-    <div class="lesson"
+    <div class="item"
          *ngFor="let lesson of lessons"
          (click)="preview(lesson)">
       <i class="material-icons">
         description
       </i>
-      <h1 class="tittle">
+      <h1 class="title">
         {{lesson.Tittle}}
-        <span class="stat">(0) people read this...</span>
-        <span class="stat">(0) people discussing this..</span>
+        <span>
+          subject name
+        </span>
+      </h1>
+      <h1 class="h1">
+        {{lesson.ContentType}}
+        <span>
+          lesson type
+        </span>
+      </h1>
+      <h1 class="stat">(0) 🎓 / (0) 📲
+        <span>
+          quick stats
+        </span>
       </h1>
     </div>
-
-    <div class="add-new">
-      <button mat-button
-              class="desktop"
-              color="primary"
-              (click)="add()"> Add new lesson</button>
-    </div>
   </div>
-
+  <app-actions-section [actionButtons]="actionButtons"
+                       (clickedAction)="add($event)"
+                       *ngIf="lessons.length"></app-actions-section>
   <ng-template #nodata>
     <div class="nodata">
       <h1>
@@ -34,10 +41,6 @@
     </div>
   </ng-template>
 </div>
-
-
-
-
 <div class="overlay"
      *ngIf="showModal || showDelete || showPreview"
      (click)="closeModal()"></div>
