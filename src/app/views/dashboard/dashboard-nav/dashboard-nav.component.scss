@@ -23,20 +23,35 @@
     margin-top: 0rem;
     padding: 1rem 0;
     cursor: pointer;
+
     h1 {
       font-weight: 500;
       font-size: 12px;
       margin: 0;
     }
 
+    .action {
+      margin-top: .5rem;
+      display: block;
+      h1 {
+        font-size: .85rem;
+        color: $primary;
+        margin: .5rem;
+        text-transform: capitalize;
+        font-style: italic;
+      }
+    }
+
     img {
       width: 3.5rem;
     }
+
     .role {
-      h1{
-    
+      h1 {
+
         font-weight: 700;
         color: $grey;
+
         span {
           font-weight: 500;
           color: $black;
@@ -192,7 +207,7 @@
       display: block;
       position: fixed;
       z-index: 999;
-      width: 92%;
+      width: 100%;
 
       .col-1-of-3 {
         grid-template-columns: 15% auto 25%;
@@ -257,7 +272,7 @@
 
         .user-profile {
           display: grid;
-          grid-template-columns: 30% auto;
+          grid-template-columns: 50% auto;
 
           img {
             height: 5rem;

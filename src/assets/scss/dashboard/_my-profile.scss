@@ -1,4 +1,22 @@
 .my-profile {
+    .dp-img {
+        cursor: pointer;
+
+        &.round-dp {
+            height: 10rem;
+            width: 10rem;
+            margin: 0 auto;
+        }
+
+        i {
+            position: absolute;
+            left: 17.5rem;
+            top: 15rem;
+            color: grey;
+            opacity: .5;
+        }
+    }
+
     &.col-1-of-4 {
         grid-template-columns: 15% 25% 25% auto;
 
@@ -17,13 +35,13 @@
         padding-bottom: 0;
         margin-top: 0rem;
         padding: 1rem 0;
-        cursor: pointer;
 
         h1 {
             font-weight: 500;
             font-size: 12px;
             margin: 0;
         }
+  
 
         .role {
             text-align: left;
@@ -71,6 +89,14 @@
     }
 
     @media only screen and (max-width: 600px) {
+        .dp-img {
+
+            i {
+                left: 11.5rem;
+                top: 16rem;
+            }
+        }
+
         &.col-1-of-4 {
             grid-template-columns: 100%;
         }

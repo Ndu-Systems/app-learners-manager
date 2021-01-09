@@ -74,7 +74,6 @@ export class CompanyViewComponent implements OnInit {
   imageChanged(event) {
     const files = event.target.files;
     this.uplaodFile(files);
-
   }
 
 
@@ -86,7 +85,7 @@ export class CompanyViewComponent implements OnInit {
     Array.from(files).forEach(file => {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('name', `otc.${file.name.split('.')[file.name.split('.').length - 1]}`); // file extention
+      formData.append('name', `fundani.${file.name.split('.')[file.name.split('.').length - 1]}`); // file extention
       this.documentsService.uploadFile(formData).subscribe(url => {
         this.dpUrl = `${environment.API_URL}/api/upload/${url}`;
         this.company.Dp = this.dpUrl;
@@ -105,6 +104,5 @@ export class CompanyViewComponent implements OnInit {
     let snackBarRef = this._snackBar.open(message, heading, {
       duration: 5000
     });
-
   }
 }

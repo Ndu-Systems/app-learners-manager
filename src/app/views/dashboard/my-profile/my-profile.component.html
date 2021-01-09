@@ -3,11 +3,8 @@
   <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
   <div class="my-profile col-1-of-4"
        *ngIf="user">
-    <div class="tab user-profile">
-      <span *ngIf="!user.DP">
-        <img src="assets/images/common/user.svg"
-             alt="">
-      </span>
+    <div class="tab user-profile">     
+      <app-user-dp></app-user-dp>
       <div class="role"
            *ngIf="user.Roles[0] as role">
         <h1 class="h1">Registered:

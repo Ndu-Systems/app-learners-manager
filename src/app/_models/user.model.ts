@@ -25,7 +25,7 @@ export interface User {
   ConfirmPassword?: string;
   StatusId: any;
   UserToken?: any;
-  DP?: any;
+  Dp?: any;
   SystemRole?: string;
   SecurityToken?: string;
   Roles?: UserRole[];
