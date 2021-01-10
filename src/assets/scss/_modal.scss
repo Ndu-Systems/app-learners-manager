@@ -20,6 +20,7 @@
     left: 0;
     width: 100%;
     padding: 1rem;
+    z-index: 999;
 
     .material-icons {
       margin-right: 0;
@@ -96,8 +97,78 @@
     margin-top: 2rem;
   }
 
+  .questions {
+    background: $city-ligth;
+    height: 80vh;
+
+    &.col-of-2 {
+      grid-template-columns: 40% auto;
+    }
+
+    .list-items {
+      height: 80vh;
+      overflow-y: scroll;
+
+      .item {
+        display: grid;
+        grid-template-columns: 10% 30% 30% 30%;
+        padding: 1rem;
+        background: $white;
+        margin: 1rem;
+        border-radius: $border-radius;
+        cursor: pointer;
+
+        h1 {
+          font-size: 1.25rem;
+          font-weight: 600;
+
+          span {
+            font-size: .75rem;
+            display: block;
+            color: $grey;
+            font-style: italic;
+          }
+        }
+      }
+    }
+
+    .list-details {
+      padding-top: 1rem;
+      padding-right: 2rem;
+      overflow-y: scroll;
+
+      .html-view {
+        padding: 1rem;
+
+        h1 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin: 0;
+
+          span {
+            font-size: .75rem;
+            display: block;
+            color: $grey;
+            font-style: italic;
+          }
+        }
+
+        .question-text {
+          padding: .2rem;
+          border: solid 1px $grey;
+          margin: 1rem 0;
+          border-radius: $border-radius;
+        }
+      }
+    }
+  }
+
   @media only screen and (max-width: 600px) {
     padding: 1rem;
+
+    .modal-toolbar {
+      grid-template-columns: 10% auto;
+    }
 
     .preview {
       margin: 0;
@@ -115,8 +186,31 @@
         top: unset;
       }
     }
+
     .modal-content {
       padding: 2rem 0rem;
+    }
+
+    .questions {
+      .list-items {
+        height: 60vh;
+
+        .item {
+          grid-template-columns: 50% auto;
+
+          .dp {
+            width: 4rem;
+            height: 4rem;
+            font-size: 1.8rem;
+          }
+        }
+      }
+
+      .list-details {
+        height: 80vh;
+        padding-right: 0;
+
+      }
     }
   }
 }

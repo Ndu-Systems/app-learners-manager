@@ -1,11 +1,9 @@
-$border-radius: 10px;
-
 .my-portal {
     background: $grey;
     .top-header {
         display: grid;
         grid-template-columns: 10% 25% 25% auto 30%;
-        box-shadow: $box-shadow;
+        
         border-radius: $border-radius;
         padding: 0 1rem;
         margin-bottom: 1rem;
@@ -99,7 +97,7 @@ $border-radius: 10px;
         display: grid;
         grid-template-columns: 10% auto;
         grid-gap: 1rem;
-        box-shadow: $box-shadow;
+        
         border-radius: $border-radius;
         padding: 1rem;
         margin-bottom: 1rem;
@@ -156,8 +154,7 @@ $border-radius: 10px;
         background: $white;
         box-sizing: border-box;
         padding: 1rem;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
+        border-radius: $border-radius;        
         margin-bottom: 1rem;
 
         .intro {

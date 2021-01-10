@@ -1,5 +1,5 @@
-<div class="main">
-  <div class="arrow-back" (click)="backClicked()">
+<div class="modal">
+  <!-- <div class="arrow-back" (click)="backClicked()">
     <div class="img">
       <img src="assets/images/common/arrow.svg" alt="arrow-image-src">
     </div>
@@ -7,9 +7,19 @@
     <div class="heading">
       All questions
     </div>
+  </div> -->
+
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="backClicked()">
+      west
+    </span>
+    <h1 class="h1">
+      All questions
+    </h1>
   </div>
 
-  <div class="main-list" *ngIf="questions">
+  <!-- <div class="main-list" *ngIf="questions">
     <div class="q-list">
       <div class="items">
         <div class="item pointer" *ngFor="let item of questions" (click)="view(item)">
@@ -24,7 +34,7 @@
               <h1>
                 <span class="name">{{item.Name}} {{item.Surname}}</span>
                 <span class="date">{{item.CreateDate| date: 'mediumDate'}}</span>
-                <span class="tittle"> {{item.Tittle}} </span>
+                <span class="tittle"> {{item.Title}} ?</span>
               </h1>
             </div>
           </div>
@@ -47,6 +57,59 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="modal-content">
+    <div class="questions col-1-of-2">
+      <div class="list-items">
+        <span *ngFor="let item of questions"
+              (click)="view(item)">
+          <div class="item details"
+               [ngClass]="item.Class">
+            <div class="icon">
+              <div class="user-dp">
+                <div class="dp">{{item.Name[0]}}{{item.Surname[0]}}</div>
+              </div>
+            </div>
+            <h1 class="h1">
+              {{item.Name}} {{item.Surname}}
+              <span>
+                Posted: {{item.CreateDate| date: 'mediumDate'}}
+              </span>
+            </h1>
+            <h1 class="h1">
+              {{item.Title}} ?
+              <span>
+                Question Title
+              </span>
+            </h1>
+            <h1 class="h1">
+              {{item.Comments.length}} users
+              <span>
+                Talking about this.
+              </span>
+            </h1>
+          </div>
+        </span>
+      </div>
+      <div class="list-details">
+        <div class="html-view"
+             *ngIf="question">
+          <h1 class="h1">
+            {{ question.Title}}
+            <span>Title</span>
+          </h1>
+          <div class="question-text" [innerHtml]="question.QuestionBody"></div>
+          <app-home-comments [otherId]="question.PublicQuestionId"
+                             [comments]="question.Comments"></app-home-comments>
+        </div>
+        <div *ngIf="!question">
+          <div class="nodata">
+            <h1>
+              Please select a question to view.
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>

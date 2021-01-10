@@ -1,6 +1,7 @@
 export interface PublicQuestion {
     PublicQuestionId?: string;
     Tittle: string;
+    Title?: string;
     GradeId: string;
     SubjectId: string;
     QuestionBody: string;

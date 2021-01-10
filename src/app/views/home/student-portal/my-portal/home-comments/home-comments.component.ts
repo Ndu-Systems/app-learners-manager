@@ -55,6 +55,10 @@ export class HomeCommentsComponent implements OnInit {
     comment.ShowReply = true;
     this.parentId = comment.ParentId
   }
+
+  cancel(comment) {
+     comment.ShowReply = false;
+  }
   
   postReplyComment(comment) {
     if (!comment) {

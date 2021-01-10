@@ -25,7 +25,7 @@ export class PublicQuestionsComponent implements OnInit {
   index: number;
   error: string;
   editorStyle = {
-    height: '1500px',
+    height: '35vh',
     marginBottom: '30px',
   }
 
@@ -42,7 +42,7 @@ export class PublicQuestionsComponent implements OnInit {
   askQuestion() {
     this.showModal = true;
     this.showAskQuestion = true;
-    this.modalHeading = 'Ask a public question';
+    this.modalHeading = 'Ask your question';
     this.publicQuestion = {
       Tittle: '',
       GradeId: '',
@@ -112,14 +112,16 @@ export class PublicQuestionsComponent implements OnInit {
     let snackBarRef = this._snackBar.open(message, heading, {
       duration: 5000
     });
-
   }
 
   postPublicQuestion() {
     console.log(this.publicQuestion);
     this.apiServices.actionQuery(ADD_PUBLIC_QUESTION_URL, this.publicQuestion).subscribe(data => {
-      console.log(data);
-
+      if(data && data.PublicQuestionId) {
+        this.gotToAllQuestions();
+      } else {
+        this.openSnackBar('Something went wrong, try later', 'Got it');
+      }
     })
   }
 

@@ -1,1 +1,8 @@
 @import '../../../../../assets/scss/color';
+@media only screen and (max-width: 600px) {
+    .modal .form {
+        margin: 0;
+        margin-top: 3.5rem;
+        height: 96vh;
+    }
+}

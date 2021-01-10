@@ -43,11 +43,14 @@
      (click)="closeModal()"></div>
 <div class="modal"
      *ngIf="showModal">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
 
   <div class="form">
@@ -94,11 +97,14 @@
 <div class="modal"
      *ngIf="showDelete">
   <div class="delete-modal">
-    <div class="close"
-         (click)="closeModal()">
-      <span class="material-icons">
+    <div class="modal-toolbar">
+      <span class="material-icons"
+            (click)="closeModal()">
         west
-      </span> {{modalHeading}}
+      </span>
+      <h1 class="h1">
+        {{modalHeading}}
+      </h1>
     </div>
 
     <button mat-button

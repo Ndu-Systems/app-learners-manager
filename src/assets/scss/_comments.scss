@@ -2,10 +2,10 @@
   position: relative;
   .comment-box {
       margin-top: 2rem;
-      width: 97%;
+      width: 90%;
       background: $cloud;
       border: none;
-      border-radius: 0;
+      border-radius: $border-radius;
       padding: 1rem;
       margin: 0rem auto;
       height: 6rem;
@@ -18,24 +18,23 @@
       background: $primary;
       padding: .5rem 1.5rem;
       border: none;
-      border-radius: 2rem;
+      border-radius: $border-radius;
       font-weight: 400;
       position: absolute;
-      right: 3rem;
-      bottom: 3rem;
+      right: 0rem;
+      bottom: .5rem;
       width: 3rem;
   }
 }
 
-.comments {
-  padding: 3rem 2rem;
+.comments { 
   min-width: 10rem;
   background: $white;
   border-radius: .5rem;
 
   h1 {
       text-align: left;
-      padding: 1rem;
+      padding: 1rem 0;
 
       @media only screen and (max-width: 600px) {
           font-size: 1.2rem;

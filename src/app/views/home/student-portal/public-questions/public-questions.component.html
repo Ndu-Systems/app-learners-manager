@@ -47,18 +47,18 @@
 
 <div class="modal"
      *ngIf="showAskQuestion">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
 
-
-
-
-  <div>
-    <div class="form">
+  <div class="form">
+    <div class="form-group">
       <label for="">Which subject are you asking about?</label>
       <select [(ngModel)]="subjectId">
         <option value=""
@@ -66,14 +66,16 @@
         <option *ngFor="let item of subjects"
                 [value]="item.SubjectId">{{item?.Name}}</option>
       </select>
-
+    </div>
+    <div class="form-group">
       <label for="">
-        Tittle
+        Title
         <span>Be specific and imagine you’re asking a question to another person</span>
       </label>
       <input type="text"
              [(ngModel)]="tittle">
-
+    </div>
+    <div class="form-group">
       <label for="">
         Body
         <span>
@@ -84,19 +86,16 @@
       <quill-editor class="editor"
                     [styles]="editorStyle"
                     [(ngModel)]="questionBody">
-
       </quill-editor>
-      <br>
+    </div>
+    <div class="action">
       <button mat-button
               color="primary"
-              class="btn-float"
               (click)="formatBody()"> Post your question</button>
-      <div class="error" *ngIf="error">
+      <h5 class="error"
+          *ngIf="error">
         {{error}}
-      </div>
+      </h5>
     </div>
-
   </div>
-
-
 </div>
