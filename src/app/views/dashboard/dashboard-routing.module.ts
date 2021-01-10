@@ -29,6 +29,7 @@ import { TeacherGradesComponent } from './grades/teacher-grades/teacher-grades.c
 import { CompanyViewComponent } from './company-view/company-view.component';
 import { MyProfileComponent, UserDpComponent } from './my-profile';
 import { AuthGuard } from 'src/app/_guards';
+import { LessonPreviewComponent } from './subject/list-lessons';
 
 
 const routes: Routes = [
@@ -85,7 +86,8 @@ export const declarations: Array<any> = [
   CompanyViewComponent,
   UserDpComponent,
   MyProfileComponent,
-  ActionsSectionComponent
+  ActionsSectionComponent,
+  LessonPreviewComponent
  ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

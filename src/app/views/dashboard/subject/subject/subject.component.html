@@ -1,41 +1,3 @@
-<!-- <div class="main-list"
-     *ngIf="subject">
-  <div class="header">
-    <div class="go-back">      
-      <h1>
-        {{subject.Name}}
-        <span>
-          {{subject.Description}}
-        </span>
-      </h1>
-    </div>
-    <div class="header-stats">
-
-    </div>
-  </div>
-  <mat-tab-group (selectedTabChange)="onTabChanged($event)"
-                 [selectedIndex]="selectedIndex"
-                 mat-align-tabs="start">
-    <mat-tab label="Lessons">
-      <app-list-lessons [lessons]="subject.Lessons"
-                        [subjectId]="subject.SubjectId"
-                        [subjectName]="subject.Name">
-      </app-list-lessons>
-    </mat-tab>
-    <mat-tab label="Quiz tests">
-      <app-tests [tests]="subject.Tests"
-                 [SubjectId]="subject.SubjectId"></app-tests>
-    </mat-tab>
-    <mat-tab label="Assignments">
-      <app-list-assignments [assignments]="subject.Assignments"
-                            [subjectId]="subject.SubjectId"
-                            [gradeId]="subject.GradeId"
-                            [subjectName]="subject.Name"></app-list-assignments>
-    </mat-tab>
-  </mat-tab-group>
-</div> -->
-
-
 <div class="container-fluid"
      *ngIf="subject">
   <div class="item-overview">
@@ -61,7 +23,7 @@
                           [subjectName]="subject.Name">
         </app-list-lessons>
       </mat-tab>
-      <!-- <mat-tab label="Quiz tests">
+      <mat-tab label="Quiz tests">
         <app-tests [tests]="subject.Tests"
                    [SubjectId]="subject.SubjectId"></app-tests>
       </mat-tab>
@@ -70,7 +32,7 @@
                               [subjectId]="subject.SubjectId"
                               [gradeId]="subject.GradeId"
                               [subjectName]="subject.Name"></app-list-assignments>
-      </mat-tab> -->
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

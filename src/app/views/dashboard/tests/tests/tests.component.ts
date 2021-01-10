@@ -6,8 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { STATUS_DELETED, GET_TESTS_URL, UPDATE_TEST_URL, ADD_TEST_URL } from 'src/app/_services/_shared';
 import { Subject } from 'src/app/_models/grade.model';
 import { Tests } from 'src/app/_models/tests.model';
-import { BreadCrumbModel, HeaderBannerModel } from 'src/app/_models';
+import { BreadCrumbModel, ButtonActionModel, HeaderBannerModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
+import { ADD_ACTION } from 'src/app/_shared';
 
 @Component({
   selector: 'app-tests',
@@ -34,6 +35,12 @@ export class TestsComponent implements OnInit {
     ctaLabel: '+ Add test'
   };
   showPreview: boolean;
+  actionButtons: ButtonActionModel[] = [
+    {
+      actionType: ADD_ACTION,
+      label: 'test'
+    }
+  ]
   constructor(
     private apiServices: ApiService,
     private activatedRoute: ActivatedRoute,
@@ -99,12 +106,12 @@ export class TestsComponent implements OnInit {
     if (this.isDelete || this.isUpdate) {
       this.apiServices.actionQuery(UPDATE_TEST_URL, this.current).subscribe(res => {
         this.showModal = false;
-        this.openSnackBar('Test updated.', 'Success!');
+        this.openSnackBar('Test updated.', 'Got it!');
       })
     } else {
       this.apiServices.actionQuery(ADD_TEST_URL, this.current).subscribe(res => {
         this.showModal = false;
-        this.openSnackBar('Test created.', 'Success!');
+        this.openSnackBar('Test created.', 'Got it!');
         this.tests.push(res);
       })
     }

@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { NavigationModel } from 'src/app/_models';
+import { ButtonActionModel, NavigationModel } from 'src/app/_models';
 import { Assignment } from 'src/app/_models/assignment.model';
 import { ImageModel } from 'src/app/_models/image.model';
 import { AccountService, ApiService } from 'src/app/_services';
 import { ImageService } from 'src/app/_services/image.service';
 import { ADD_ASSIGNMENT_URL, UPDATE_ASSIGNMENT_URL } from 'src/app/_services/_shared';
+import { ADD_ACTION } from 'src/app/_shared';
 
 @Component({
   selector: 'app-list-assignments',
@@ -26,7 +27,12 @@ export class ListAssignmentsComponent implements OnInit {
   showPreview: boolean;
   showDelete: boolean;
   navigationModel: NavigationModel;
-
+  actionButtons: ButtonActionModel[] = [
+    {
+      actionType: ADD_ACTION,
+      label: 'assignment'
+    }
+  ];
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -67,23 +73,22 @@ export class ListAssignmentsComponent implements OnInit {
     this.showPreview = false;
   }
   save() {
-
     this.error = '';
     if (!this.assignment.Tittle) {
       this.error = `⚠️ Enter  assignment  title`;
       return false;
     }
     this.showLoader = true;
-
+    console.log(this.assignment);
     this.apiServices.actionQuery(ADD_ASSIGNMENT_URL, this.assignment).subscribe(res => {
       this.showModal = false;
       this.assignments.push(res);
       this.showLoader = false;
-      this.openSnackBar('Assignment created.', 'Success!');
-    })
+      this.openSnackBar('Assignment created.', 'Got it!');
+    });
   }
-  update() {
 
+  update() {
     this.error = '';
     if (!this.assignment.Tittle) {
       this.error = `⚠️ Enter  assignment  title`;
@@ -94,7 +99,7 @@ export class ListAssignmentsComponent implements OnInit {
     this.apiServices.actionQuery(UPDATE_ASSIGNMENT_URL, this.assignment).subscribe(res => {
       this.closeModal();
       this.showLoader = false;
-      this.openSnackBar('Assignment updated.', 'Success!');
+      this.openSnackBar('Assignment updated.', 'Got it!');
     })
   }
   openSnackBar(message, heading) {

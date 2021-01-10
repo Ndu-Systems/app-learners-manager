@@ -1,26 +1,36 @@
 <div class=""
      *ngIf="tests">
-  <div class="tests"
+  <div class="list-items"
        *ngIf="tests.length; else nodata">
-    <div class="test"
+    <div class="item"
          *ngFor="let test of tests"
          (click)="preview(test)">
       <i class="material-icons">
         playlist_add_check
       </i>
-      <h1 class="tittle">
+      <h1 class="title">
         {{test.Name}}
-        <span class="stat"> 5 took this test</span>
+        <span>
+          test name
+        </span>
+      </h1>
+      <h1 class="h1">{{test.CreateDate| date: 'mediumDate'}}
+        <span>
+          date created
+        </span>
+      </h1>
+      <h1 class="stat">(5) 🎓 took test
+        <span>
+          quick stats
+        </span>
       </h1>
     </div>
-    <div class="add-new">
-      <button mat-button
-              color="primary"
-              (click)="add()"> Set a test</button>
-    </div>
+
   </div>
 
-
+  <app-actions-section [actionButtons]="actionButtons"
+                       (clickedAction)="add()"
+                       *ngIf="tests.length"></app-actions-section>
 
   <ng-template #nodata>
     <div class="nodata">
@@ -39,11 +49,14 @@
      (click)="closeModal()"></div>
 <div class="modal"
      *ngIf="showModal">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
 
   <div class="form">
@@ -84,7 +97,7 @@
               color="primary"
               (click)="save()"> Save Test</button>
       <h5 class="error"
-           *ngIf="error">
+          *ngIf="error">
         {{error}}
       </h5>
     </div>
@@ -96,11 +109,15 @@
 <div class="modal "
      *ngIf="isDelete">
   <div class="delete-modal">
-    <h1>
-      {{modalHeading}}
-    </h1>
-
-
+    <div class="modal-toolbar">
+      <span class="material-icons"
+            (click)="closeModal()">
+        west
+      </span>
+      <h1 class="h1">
+        {{modalHeading}}
+      </h1>
+    </div>
     <button mat-button
             color="primary"
             class="danger"
@@ -119,16 +136,16 @@
 
 <div class="modal test-modal"
      *ngIf="showPreview && current">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
-    <!-- <button mat-button (click)="edit()" style="float: right; width: 7rem;">
-      Edit
-    </button> -->
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
-  <div class="body">
+  <div class="modal-content">
     <app-test [test]="current"></app-test>
   </div>
 </div>

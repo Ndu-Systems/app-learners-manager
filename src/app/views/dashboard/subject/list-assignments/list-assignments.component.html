@@ -1,28 +1,36 @@
 <div class=""
      *ngIf="assignments">
-  <div class="lessons"
+  <div class="list-items"
        *ngIf="assignments.length; else nodata">
-    <div class="lesson"
+    <div class="item"
          *ngFor="let assignment of assignments"
          (click)="preview(assignment)">
       <i class="material-icons">
         description
       </i>
-      <h1 class="tittle">
-
+      <h1 class="title">
         {{assignment.Tittle}}
-        <span class="stat">
-          {{assignment.Points}} Points | Due: {{assignment.DueDate | date: 'mediumDate'}}
+        <span>
+          assignment name
+        </span>
+      </h1>
+      <h1 class="h1">
+        {{assignment.Points}}
+        <span>Points
+        </span>
+      </h1>
+
+      <h1 class="h1">
+        {{assignment.DueDate | date: 'mediumDate'}}
+        <span>Due date
         </span>
       </h1>
     </div>
-    <div class="add-new">
-      <button mat-button
-              color="primary"
-              (click)="add()"> Add new assignment</button>
-    </div>
-  </div>
 
+  </div>
+  <app-actions-section [actionButtons]="actionButtons"
+                       (clickedAction)="add()"
+                       *ngIf="assignments.length"></app-actions-section>
   <ng-template #nodata>
     <div class="nodata">
       <h1>
@@ -42,11 +50,14 @@
      (click)="closeModal()"></div>
 <div class="modal"
      *ngIf="showModal && assignment">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
 
   <div class="form">
@@ -90,47 +101,50 @@
 <div class="modal"
      *ngIf="showPreview && assignment">
   <div class="delete-modal">
-    <div class="close"
-         (click)="closeModal()">
-      <span class="material-icons">
+    <div class="modal-toolbar">
+      <span class="material-icons"
+            (click)="closeModal()">
         west
-      </span> {{modalHeading}}
+      </span>
+      <h1 class="h1">
+        {{modalHeading}}
+      </h1>
     </div>
 
     <div class="form">
-      <label for="">Assignment title**</label>
-      <input type="text"
-             placeholder="e.g. How to write a strong introduction."
-             [(ngModel)]="assignment.Tittle">
+      <div class="form-group">
+        <label for="">Assignment title**</label>
+        <input type="text"
+               placeholder="e.g. How to write a strong introduction."
+               [(ngModel)]="assignment.Tittle">
+      </div>
+      <div class="form-group">
+        <label for="">Assignment points**</label>
+        <input type="number"
+               placeholder="e.g. 100"
+               [(ngModel)]="assignment.Points">
+      </div>
+      <div class="form-group">
 
-      <label for="">Assignment points**</label>
-      <input type="number"
-             placeholder="e.g. 100"
-             [(ngModel)]="assignment.Points">
-
-      <label for="">Assignment due date**</label>
-      <input type="date"
-             [(ngModel)]="assignment.DueDate">
-
-      <label for="">Assignment Instructions</label>
-
-      <textarea [(ngModel)]="assignment.Instructions"
-                placeholder="e.g. How to write a strong introduction.">
-
-      </textarea>
-
-
+        <label for="">Assignment due date**</label>
+        <input type="date"
+               [(ngModel)]="assignment.DueDate">
+      </div>
+      <div class="form-group">
+        <label for="">Assignment Instructions</label>
+        <textarea [(ngModel)]="assignment.Instructions"
+                  placeholder="e.g. How to write a strong introduction.">
+        </textarea>
+      </div>
       <div class="files">
         <label for="">Assignment Files</label>
         <app-images [images]="assignment.Images"
                     [otherId]="assignment.AssignmentId"
                     (onUploadFinished)="uploadFinished($event)"></app-images>
       </div>
-      
       <div class="action">
         <button mat-button
                 color="primary"
-                class="btn-float"
                 (click)="update()"> Save Changes</button>
         <h5 class="error"
             *ngIf="error">
@@ -150,11 +164,14 @@
 <div class="modal"
      *ngIf="showDelete">
   <div class="delete-modal">
-    <div class="close"
-         (click)="closeModal()">
-      <span class="material-icons">
+    <div class="modal-toolbar">
+      <span class="material-icons"
+            (click)="closeModal()">
         west
-      </span> {{modalHeading}}
+      </span>
+      <h1 class="h1">
+        {{modalHeading}}
+      </h1>
     </div>
 
     <button mat-button

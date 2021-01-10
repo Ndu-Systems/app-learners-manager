@@ -18,9 +18,10 @@ import { MatSnackBar } from '@angular/material';
 export class TestComponent implements OnInit {
   TestId: any;
   @Input() test: Tests;
+  @Input() modalHeading: string;
+  @Input() showPreview: boolean;
   user: User;
   sections: Section[];
-  modalHeading: string;
   current: Section;
   name: any;
   isUpdate: boolean;
@@ -167,7 +168,7 @@ export class TestComponent implements OnInit {
       }
       res.Answers = [];
       this.test.Questions.push(res);
-      this.openSnackBar('Question  created.', 'Success!');
+      this.openSnackBar('Success, Question  created.', 'Got it!');
 
     })
   }
@@ -214,7 +215,7 @@ export class TestComponent implements OnInit {
       this.addingQuestion = false;
       this.question = '';
       this.contentBody = '';
-      this.openSnackBar('Answers saved.', 'Success!');
+      this.openSnackBar('Success, Answers saved', 'Got it!');
 
     })
   }

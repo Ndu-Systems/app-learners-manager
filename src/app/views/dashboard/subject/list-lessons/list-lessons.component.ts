@@ -45,7 +45,7 @@ export class ListLessonsComponent implements OnInit {
       actionType: ADD_ACTION,
       label: 'lesson'
     }
-  ]
+  ];
   constructor(
     private apiServices: ApiService,
     private accountService: AccountService,
@@ -169,7 +169,7 @@ export class ListLessonsComponent implements OnInit {
         this.showDelete = false;
         this.isUpdate = false;
         this.showLoader = false;
-        this.openSnackBar('Lesson updated.', 'Success!');
+        this.openSnackBar('Lesson updated.', 'Got it!');
       })
     } else {
       this.apiServices.actionQuery(ADD_CONTENT_URL, this.content).subscribe(res => {
@@ -178,7 +178,7 @@ export class ListLessonsComponent implements OnInit {
         this.description = '';
         this.lessons.push(res);
         this.showLoader = false;
-        this.openSnackBar('Lesson created.', 'Success!');
+        this.openSnackBar('Lesson created.', 'Got it!');
       })
     }
   }
@@ -189,7 +189,6 @@ export class ListLessonsComponent implements OnInit {
     this.modalHeading = 'Preview & comments';
     this.htmlPreview = this.sanitizer.bypassSecurityTrustHtml(this.current.ContentBody);
     this.htmlPreview = this.sanitizer.bypassSecurityTrustHtml(this.current.ContentBody);
-
   }
 
   edit() {
@@ -226,7 +225,7 @@ export class ListLessonsComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    this.openSnackBar('Link copied to clipboard!', 'Ready to paste & share');
+    this.openSnackBar('Link copied to clipboard!', 'Got It!');
 
   }
 

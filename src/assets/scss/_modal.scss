@@ -1,198 +1,122 @@
 .modal {
   position: fixed;
-  background: $cloud;
+  background: $city-ligth;
   z-index: 1001;
+  box-sizing: border-box;
   left: 0;
   width: 100%;
   top: 0;
   overflow-y: scroll;
-  max-height: 100vh;
-  height: 100%;
-  padding: 4rem 16rem;
-  box-sizing: border-box;
-  align-items: center;
+  height: 100vh;
+  padding: 2rem;
 
-  ::-webkit-scrollbar-thumb {
-    background: #009CD7;
-    width: 1px;
-  }
-
-  form {
-    width: 40%;
-    margin: 2rem auto;
-
-    @media only screen and (max-width: 600px) {
-      width: 80%;
-    }
-  }
-
-  @media only screen and (max-width: 600px) {
-    // height: 100vh;
-    max-height: 100vh;
-  }
-
-  .main-list {
-    background: none;
-  }
-
-  .close {
-    text-align: left;
-    cursor: pointer;
-    font-weight: 800;
-    border-bottom: 1px solid $grey;
-    position: fixed;
+  .modal-toolbar {
+    display: grid;
+    grid-template-columns: 4% auto;
     background: $white;
+    box-shadow: $box-shadow;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 500;
     padding: 1rem;
 
-
     .material-icons {
-      font-size: 1.4rem;
-      position: relative;
-      top: .2rem;
-      margin-right: 2rem;
-
-      @media only screen and (max-width: 600px) {
-        margin-right: 0;
-      }
-    }
-
-    .edit {
-      position: relative;
-      left: 57rem;
-      background: $grey;
-
-      .material-icons {
-        margin: .2rem;
-        top: 0;
-      }
-
-    }
-
-    .share {
-      position: relative;
-      left: 60rem;
-      background: $grey;
-
-      .material-icons {
-        margin: .2rem;
-        top: 0;
-      }
-    }
-
-    @media only screen and (max-width: 600px) {
-      position: relative;
-      display: grid;
-      grid-template-columns: 100%;   
-    }
-
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 1.6rem;
-  }
-
-  p {
-    padding: 2rem;
-  }
-
-  .editor {
-    p {
-      padding: 0;
-      text-align: left;
-      margin: .3rem;
+      margin-right: 0;
+      cursor: pointer;
+      margin: .1rem 0;
     }
 
     h1 {
-      text-align: left;
-      margin: .3rem;
-    }
+      margin: 0;
 
-  }
-
-  label,
-  input,
-  textarea,
-  select {
-    display: block;
-    margin: .5 0rem;
-  }
-
-  label {
-    font-weight: 600;
-    margin-top: 1rem;
-    margin-bottom: .3rem;
-    font-size: 1.1rem;
-
-    span {
-      display: block;
-      font-weight: 500;
-      font-size: .8rem;
+      &.h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
     }
   }
 
-  input,
-  textarea,
-  select {
+  .preview {
+    margin: 2rem;
     padding: 1rem;
-    width: 97.5%;
-    margin: 1rem 0;
-    margin-top: 0;
+    background: $white;
 
-    @media only screen and (max-width: 600px) {
-      width: 88%;
+
+    h1 {
+      &.section-title {
+        font-size: 1rem;
+        font-weight: 400;
+        color: $grey;
+        font-style: italic;
+      }
     }
-  }
 
-  button {
-    @media only screen and (max-width: 600px) {
-      margin: 1rem auto;
-      z-index: 500;
+    .sections {
+      height: 75vh;
+      overflow-y: scroll;
+      padding: 1rem;
+
+      .section {
+        .editor {
+          border: solid 1px $grey;
+          padding: 1rem;
+          border-radius: $border-radius;
+        }
+      }
     }
-  }
 
-  .secondary {
-    @media only screen and (max-width: 600px) {
-      bottom: 6rem;
+    .actions-section {
+      .buttons {
+        button {
+          width: 100%;
+
+          &.update {
+            background: $primary;
+            color: $white;
+          }
+
+          &.share {
+            border: solid 1px $primary;
+            color: $primary;
+          }
+        }
+      }
     }
+
   }
 
-  .btn-float {
-    position: fixed;
-    z-index: 500;
-    right: 2.5rem;
-    bottom: 8%;
-    font-size: .8rem !important;
-    padding: .5rem 1rem;
-    width: 10rem !important;
+  .form {
+    margin: 2rem;
   }
 
-  .col-1-of-2 {
-
-    input,
-    textarea,
-    select {
-      width: 80%;
-    }
-  }
-
-  select {
-    width: 100%;
-    cursor: pointer;
+  .modal-content {
+    padding: 2rem;
+    background: white;
+    margin-top: 2rem;
   }
 
   @media only screen and (max-width: 600px) {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    bottom: 0;
-    top: 0;
-    padding: 4rem 1rem;
+    padding: 1rem;
+
+    .preview {
+      margin: 0;
+      margin-top: 1rem;
+    }
+
+    .form {
+      margin: 0;
+      margin-top: 3.5rem;
+      height: 91vh;
+
+      .input-editor .ql-toolbar.ql-snow {
+        width: 19rem;
+        position: relative;
+        top: unset;
+      }
+    }
+    .modal-content {
+      padding: 2rem 0rem;
+    }
   }
-
-
 }

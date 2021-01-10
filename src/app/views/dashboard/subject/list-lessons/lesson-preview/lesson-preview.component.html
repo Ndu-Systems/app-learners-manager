@@ -1,0 +1,211 @@
+<div class="modal"
+     *ngIf="showPreview && current">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
+      west
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
+  </div>
+  <div class="preview">
+    <div class="sections col-1-of-2">
+      <div class="section">
+        <h1 class="section-title">
+          Lesson Content
+        </h1>
+        <div class="html-view editor">
+          <div [innerHtml]="htmlPreview"></div>
+          <div class="edit">
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h1 class="section-title">
+          Socials
+        </h1>
+        <mat-tab-group>
+          <mat-tab label="Comments && Questions">
+            <div class="comments"
+                 *ngIf="current">
+              <div class="comment wider"
+                   *ngFor="let comment of current.Comments  ; let i = index">
+                <span *ngIf="!comment.ParentId">
+                  <div class="user-dp">
+                    <div class="dp">
+                      {{comment.User.Name[0]}}{{comment.User.Surname[0]}}
+                    </div>
+                    <p>
+                      {{comment.User.Name}} {{comment.User.Surname}}
+                      <span class="messaage">
+                        {{comment.Name}}
+                      </span>
+                      <span class="messaage">
+                        <div class="reply">
+                          <a (click)="replyMessage(comment)"
+                             *ngIf="!comment.ShowReply">
+                            <span class="material-icons">
+                              reply
+                            </span>
+                            Reply
+                          </a>
+
+                          <div class="reply-input"
+                               *ngIf="comment.ShowReply">
+                            <input type="text"
+                                   placeholder="Type reply message here..."
+                                   [(ngModel)]="comment.Reply">
+                            <button (click)="postComment(comment)">
+                              <span class="material-icons">
+                                send
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </span>
+                      <span class="messaage">
+                        <div class="btn-show-replies"
+                             *ngIf="!comment.ShowReplies && comment.Replies.length > 0"
+                             (click)="toggleReplies(comment)">
+                          <a>-- View replies ({{comment.Replies.length}})</a>
+                        </div>
+                        <div class="btn-show-replies"
+                             *ngIf="comment.ShowReplies && comment.Replies.length > 0"
+                             (click)="toggleReplies(comment)">
+                          <a>-- Hide replies</a>
+                        </div>
+                      </span>
+                    </p>
+                  </div>
+
+                  <div class="comment-text">
+                    {{comment.Name}}
+
+                    <div class="replies">
+                      <div class="comment wider"
+                           *ngFor="let rep of comment.Replies  ; let i = index">
+                        <div class="user-dp">
+                          <div class="dp">
+                            {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
+                          </div>
+
+                          <p>
+                            {{rep.User.Name}} {{rep.User.Surname}}
+                          </p>
+                        </div>
+
+                        <div class="comment-text">
+                          {{rep.Name}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="reply">
+                      <a (click)="replyMessage(comment)"
+                         *ngIf="!comment.ShowReply">
+                        <span class="material-icons">
+                          reply
+                        </span>
+                        Reply
+                      </a>
+
+                      <div class="reply-input"
+                           *ngIf="comment.ShowReply">
+                        <input type="text"
+                               placeholder="Type reply message here..."
+                               [(ngModel)]="comment.Reply">
+                        <button (click)="postComment(comment)">
+                          <span class="material-icons">
+                            send
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="comment-text"
+                       *ngIf="comment.ShowReplies">
+                    <div class="replies">
+                      <div class="comment wider"
+                           *ngFor="let rep of comment.Replies  ; let i = index">
+                        <div class="user-dp">
+                          <div class="dp">
+                            {{rep.User.Name[0]}}{{rep.User.Surname[0]}}
+                          </div>
+
+                          <p>
+                            {{rep.User.Name}} {{rep.User.Surname}}
+                            <span class="messaage">
+                              {{rep.Name}}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </span>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Read and understood">
+            <div class="students-likes">
+              <div class="student"
+                   *ngFor="let student of current.Students  ; let i = index">
+                <div class="user-dp">
+                  <div class="dp">
+                    {{student.User.Name[0]}}{{student.User.Surname[0]}}
+                  </div>
+
+                  <p>
+                    {{student.User.Name}} {{student.User.Surname}}
+                    <span class="date">
+                      {{student.CreateDate | date: 'medium'}}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div class="actions-section">
+      <div class="buttons">
+        <span>
+          <button mat-button
+                  class="update desktop"
+                  color="primary"
+                  (click)="update()">
+            <span class="material-icons">
+              edit
+            </span> update lesson
+          </button>
+          <button mat-button
+                  class="update mobile"
+                  color="primary"
+                  (click)="update()">
+            <span class="material-icons">
+              edit
+            </span> edit</button>
+        </span>
+        <span>
+          <button mat-button
+                  class="share desktop"
+                  color="primary"
+                  (click)="share()">
+            <span class="material-icons">
+              share
+            </span> share
+          </button>
+          <button mat-button
+                  class="share mobile"
+                  color="primary"
+                  (click)="share()">
+            <span class="material-icons">
+              share
+            </span> share</button>
+        </span>
+      </div>
+    </div>
+  </div>

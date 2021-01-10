@@ -1,63 +1,71 @@
 <mat-tab-group *ngIf="test">
-
   <mat-tab label="Questions">
-
-    <div class="main-list" *ngIf="test">
-
-      <button class="share" mat-button (click)="copyText()">
+    <div class=""
+         *ngIf="test">
+      <button class="share"
+              mat-button
+              (click)="copyText()">
         <span class="material-icons">
           share
         </span> Share
       </button>
-
-      <div class="" *ngIf="test.Questions">
-        <div class="questions" *ngIf="test.Questions.length; else nodata">
-          <div class="question" *ngFor="let question of test.Questions; let i = index" (click)="preview(question)">
+      <div class=""
+           *ngIf="test.Questions">
+        <div class="questions"
+             *ngIf="test.Questions.length; else nodata">
+          <div class="question"
+               *ngFor="let question of test.Questions; let i = index"
+               (click)="preview(question)">
             <p>
               <span class="tittle">
-                <span class="material-icons pointer"  (click)="deleteQuestion(question, i)">
+                <span class="material-icons pointer"
+                      (click)="deleteQuestion(question, i)">
                   delete
                 </span>
                 {{question.Question}}
               </span>
             </p>
-
-            <div class="image" *ngIf="question.ImageUrl">
-              <img [src]="question.ImageUrl" alt="">
+            <div class="image"
+                 *ngIf="question.ImageUrl">
+              <img [src]="question.ImageUrl"
+                   alt="">
             </div>
             <div class="answers">
               <div *ngFor="let answer of question.Answers">
-
-                <div class="answer" *ngIf="answer.StatusId === '1'">
+                <div class="answer"
+                     *ngIf="answer.StatusId === '1'">
                   <div class="col value">
-                    <input type="text" [(ngModel)]="answer.Answer">
+                    <input type="text"
+                           [(ngModel)]="answer.Answer">
                   </div>
-
                   <div class="col is-correct">
                     <mat-checkbox [(ngModel)]="answer.IsCoorect"></mat-checkbox>
                   </div>
-
                   <div class="col value">
-                    <button mat-button color="primary" class="btn btn-remove" (click)="deleteAnswer(answer)">
+                    <button mat-button
+                            color="primary"
+                            class="btn btn-remove"
+                            (click)="deleteAnswer(answer)">
                       <span class="material-icons">
                         delete_outline
                       </span>
                     </button>
                   </div>
-
                 </div>
-
               </div>
             </div>
             <div class="add">
-              <button class="secondary" (click)="addAnswer(question)">Add answer</button>
+              <button class="secondary"
+                      (click)="addAnswer(question)">Add answer</button>
               <button (click)="saveAnswers(question.Answers)">Save answers</button>
             </div>
           </div>
 
           <div class="question add-row">
             <div class="add">
-              <button mat-button color="primary" (click)="addQuestion()"> Add new question</button>
+              <button mat-button
+                      color="primary"
+                      (click)="addQuestion()"> Add new question</button>
             </div>
           </div>
         </div>
@@ -73,9 +81,6 @@
           </div>
         </ng-template>
       </div>
-
-
-
       <ng-template #nodata>
         <div class="nodata">
           <h1>
@@ -86,13 +91,13 @@
           </h1>
         </div>
       </ng-template>
-
-
     </div>
   </mat-tab>
   <mat-tab label="Results">
     <div class="students main-list">
-      <div class="student" *ngFor="let student of test.Students  ; let i = index" (click)="viewTestAnswers(student)">
+      <div class="student"
+           *ngFor="let student of test.Students  ; let i = index"
+           (click)="viewTestAnswers(student)">
         <div class="user-dp">
           <div class="dp">
             {{student.User.Name[0]}}{{student.User.Surname[0]}}
@@ -111,95 +116,133 @@
         </div>
       </div>
     </div>
-
-
-
   </mat-tab>
 </mat-tab-group>
 
-<div class="overlay" *ngIf="showModal || isDelete || addingQuestion || showStudentAnswers" (click)="closeModal()"></div>
-<div class="modal" *ngIf="showModal">
-  <div class="close" (click)="closeModal()">
+<div class="overlay"
+     *ngIf="showModal || isDelete || addingQuestion || showStudentAnswers"
+     (click)="closeModal()"></div>
+<div class="modal"
+     *ngIf="showModal">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
   </div>
   <div class="form">
     <label for="">Section name**</label>
-    <input type="text" [(ngModel)]="name">
+    <input type="text"
+           [(ngModel)]="name">
 
 
-    <button mat-button color="primary" (click)="saveSection()"> Save Section</button>
-    <div class="error" *ngIf="error">
+    <button mat-button
+            color="primary"
+            (click)="saveSection()"> Save Section</button>
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>
 </div>
 
 
-<div class="modal" *ngIf="isDelete">
+<div class="modal"
+     *ngIf="isDelete">
   <div class="delete-modal">
-    <div class="close" (click)="closeModal()">
+    <div class="close"
+         (click)="closeModal()">
       <span class="material-icons">
         west
       </span> {{modalHeading}}
     </div>
 
 
-    <button mat-button color="primary" class="danger" (click)="saveSection()"> Yes, delete</button>
-    <button mat-button color="primary" class="secondary" (click)="closeModal()"> Cancel</button>
-    <div class="error" *ngIf="error">
+    <button mat-button
+            color="primary"
+            class="danger"
+            (click)="saveSection()"> Yes, delete</button>
+    <button mat-button
+            color="primary"
+            class="secondary"
+            (click)="closeModal()"> Cancel</button>
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>
 </div>
 
 
-<div class="modal" *ngIf="addingQuestion">
-  <div class="close" (click)="closeModal()">
-    <span class="material-icons">
+<div class="modal"
+     *ngIf="addingQuestion">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
-  </div>
-
-  <div class="form">
-    <label for="">Question**</label>
-    <textarea name="" [(ngModel)]="question"></textarea>
-
-    <label for="">Score</label>
-    <input type="text" [(ngModel)]="score">
-
-    <span *ngIf="!contentBody">
-      <label for="">Uplaod the image </label>
-      <input type="file" multiple (change)="imageChanged($event)">
     </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
+  </div>
+  <div class="form">
+
+    <div class="form-group">
+      <label for="">Question**</label>
+      <textarea name=""
+                [(ngModel)]="question"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="">Score</label>
+      <input type="text"
+             [(ngModel)]="score">
+    </div>
+    <div class="form-group"
+         *ngIf="!contentBody">
+      <label for="">Uplaod the image </label>
+      <input type="file"
+             multiple
+             (change)="imageChanged($event)">
+    </div>
+
 
     <span *ngIf="contentBody">
-      <img class="uploadedImage" [src]="contentBody" alt="">
+      <img class="uploadedImage"
+           [src]="contentBody"
+           alt="">
     </span>
 
 
-    <button mat-button color="primary" (click)="saveQuestion()"> Save question</button>
-    <div class="error" *ngIf="error">
+    <button mat-button
+            color="primary"
+            (click)="saveQuestion()"> Save question</button>
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>
 </div>
 
-<div class="modal" *ngIf="showStudentAnswers">
-  <div class="close" (click)="closeModal()">
+<div class="modal"
+     *ngIf="showStudentAnswers">
+  <div class="close"
+       (click)="closeModal()">
     <span class="material-icons">
       west
     </span> {{modalHeading}}
   </div>
 
   <div>
-    <div *ngFor="let answer of studentAnswers  ; let i = index" [ngClass]="answer.Class">
+    <div *ngFor="let answer of studentAnswers  ; let i = index"
+         [ngClass]="answer.Class">
       <p>
         {{ answer.Question.Question}}
       </p>
-      <div class="image" *ngIf="answer.Question.ImageUrl">
-        <img class="qa-image" [src]="answer.Question.ImageUrl" alt="">
+      <div class="image"
+           *ngIf="answer.Question.ImageUrl">
+        <img class="qa-image"
+             [src]="answer.Question.ImageUrl"
+             alt="">
       </div>
       <p>
         Student Answer: <b> {{ answer.Question.StudentAnswer}}</b>
