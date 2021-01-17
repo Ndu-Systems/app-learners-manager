@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
 import { AccountService } from 'src/app/_services/account.service';
 import { Grade, Subject } from 'src/app/_models/grade.model';
-import { BreadCrumbModel, HeaderBannerModel, NavigationModel } from 'src/app/_models';
+import { BreadCrumbModel, ButtonActionModel, HeaderBannerModel, NavigationModel } from 'src/app/_models';
 import { MatSnackBar } from '@angular/material';
-import { ADMIN } from 'src/app/_shared';
+import { ADD_ACTION, ADMIN } from 'src/app/_shared';
 import { NavigationService } from 'src/app/_services';
 
 
@@ -44,7 +44,12 @@ export class SubjectsComponent implements OnInit {
   };
   isAdmin: boolean;
   navigationModel: NavigationModel;
-
+  actionButtons: ButtonActionModel[] = [
+    {
+      actionType: ADD_ACTION,
+      label: 'subject'
+    }
+  ];
   constructor(
     private apiServices: ApiService,
     private router: Router,

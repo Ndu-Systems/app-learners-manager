@@ -1,130 +1,121 @@
-<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
-<div class="container-fluid">
+<div class="container-fluid"
+     *ngIf="!showModal">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
   <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
-  <div class="my-profile col-1-of-4"
-       *ngIf="user">
-    <div class="tab user-profile">     
-      <app-user-dp></app-user-dp>
-      <div class="role"
-           *ngIf="user.Roles[0] as role">
-        <h1 class="h1">Registered:
-          <span>
-            {{user.CreateDate | date: 'mediumDate'}}
-          </span>
-        </h1>
-        <h1 class="h1">Role:
-          <span>
-            {{role.RoleName}}
-          </span>
-        </h1>
-      </div>
-    </div>
-    <div class="tab form">
-      <div class="form-group">
-        <label for="exampleInputName">Name</label>
-        <input type="text"
-               class="form-control"
-               id="exampleInputFirstName"
-               [(ngModel)]="user.Name"
-               placeholder="Enter First Name">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputSurname">Surname</label>
-        <input type="text"
-               class="form-control"
-               id="exampleInputSurname"
-               [(ngModel)]="user.Surname"
-               placeholder="Enter Surname">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail">Email</label>
-        <input type="email"
-               class="form-control"
-               id="exampleInputEmail"
-               [(ngModel)]="user.Email"
-               disabled
-               placeholder="Enter Email">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPhoneNumber">Cellphone</label>
-        <input type="text"
-               class="form-control"
-               id="exampleInputPhoneNumber"
-               [(ngModel)]="user.PhoneNumber"
-               placeholder="Enter Cellphone Number">
-      </div>
-    </div>
-    <div class="tab form">
-      <div class="form-group">
-        <label for="exampleInputEmail">login</label>
-        <input type="text"
-               class="form-control"
-               id="exampleInputEmail"
-               [(ngModel)]="user.Email"
-               disabled
-               placeholder="Enter Email">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">
-          Password
-        </label>
-        <input type="password"
-               [type]="hidePassword? 'password': 'text'"
-               class="form-control"
-               [(ngModel)]="user.Password"
-               id="exampleInputPassword1"
-               disabled
-               placeholder="Password">
-        <mat-icon class="pointer"
-                  (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
-        </mat-icon>
-        <div class="showPassword"
-             (click)="hidePassword = !hidePassword">
+  <div class="container">
+    <div class="view-container col-1-of-2">
+      <div class="panel detail-card">
+        <div class="profile">
+          <app-user-dp></app-user-dp>
+          <div class="details">
+            <h1 class="h1">
+              {{user.Name}} {{user.Surname}}
+              <span>
+                Full name
+              </span>
+            </h1>
+            <h1 class="h1">
+              {{user.CreateDate | date: 'fullDate'}}
+              <span>
+                Registered Date
+              </span>
+            </h1>
+            <div class="role"
+                 *ngIf="user.Roles[0] as role">
+              <h1 class="h1">
+                {{role.RoleName}}
+                <span>
+                  Role
+                </span>
+              </h1>
+            </div>
+            <h1 class="h1">
+              {{user.Email}}
+              <span>
+                Email
+              </span>
+            </h1>
+            <h1 class="h1">
+              {{user.PhoneNumber}}
+              <span>
+                Contact number
+              </span>
+            </h1>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="tab form">
-      <div class="company-profile"
-           *ngIf="user.Company">
-        <span *ngIf="!user.Company.Dp">
-          <img src="assets/images/common/user.svg"
-               alt="">
-        </span>
-        <span *ngIf="user.Company.Dp">
-          <img [src]="user.Company.Dp"
-               alt="">
-        </span>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputCompanyName">CompanyName</label>
-        <input type="text"
-               class="form-control"
-               id="exampleInputCompanyName"
-               disabled
-               [(ngModel)]="user.Company.Name">
-      </div>
-      <div class="form-group"
-           *ngIf="user.Company.Handler">
-        <label for="exampleInputHandler">Handler</label>
-        <input type="text"
-               class="form-control"
-               id="exampleInputHandler"
-               disabled
-               [(ngModel)]="user.Company.Handler"
-               placeholder="Enter Surname">
-      </div>
-      <div class="form-group"
-           *ngIf="user.Company.Description">
-        <label for="exampleInputCompanyDescription">Description</label>
-        <textarea name="exampleInputCompanyDescription"
-                  [(ngModel)]="user.Company.Description"
-                  id="exampleInputCompanyDescription"
-                  disabled
-                  cols="30"
-                  rows="5"></textarea>
+      <div class="list-card">
+        <div class="card"
+             *ngIf="user.Company as company">
+          <div class="card-header">
+            <h1 class="h1">
+              Company info
+            </h1>
+          </div>
+          <div class="card-content">
+            <div class="image">
+              <img src="assets/images/common/school.svg"
+                   alt=""
+                   *ngIf="!company.Dp">
+              <img [src]="company.Dp"
+                   alt=""
+                   *ngIf="company.Dp">
+            </div>
+            <div class="details">
+              <h1 class="h1">
+                {{company.Name}}
+                <span>Name</span>
+              </h1>
+              <h1 class="h1">
+                {{company.Handler}}
+                <span>Handler</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="card"
+             *ngIf="user.Company.Institutions[0] as institution">
+          <div class="card-header">
+            <h1 class="h1">
+              Institution info
+            </h1>
+          </div>
+          <div class="card-content">
+            <div class="details">
+              <h1 class="h1">
+                {{institution.InstitutionType.Name}}
+                <span>Name</span>
+              </h1>
+              <h1 class="h1">
+                {{institution.InstitutionType.CreateDate | date: 'mediumDate'}}
+                <span>
+                  Registered Date
+                </span>
+              </h1>
+            </div>
+            <div class="details">
+              <h1 class="h1">
+                {{institution.InstitutionType.Description}}
+                <span>Description</span>
+              </h1>
+              <h1 class="h1">
+                {{institution.Grades.length}}
+                <span>Number of grades / levels</span>
+              </h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <app-actions-section [actionButtons]="actionButtons"
                        (clickedAction)="onClickedAction($event)"></app-actions-section>
+
+
 </div>
+
+<app-edit-profile *ngIf="showModal && isUpdate"
+                  [user]="user"
+                  (closeModal)="closeModal()"
+                  (onClicked)="onClickedAction($event)">
+</app-edit-profile>

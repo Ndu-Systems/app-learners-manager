@@ -1,6 +1,6 @@
-<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 
 <div class="container-fluid">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
   <app-header-banner [headerBanner]="headerBanner"
                      (showModalEventEmitter)="add()"></app-header-banner>
   <div class="main-list"
@@ -82,7 +82,7 @@ Subjects
 
 <div class="modal"
      *ngIf="showConfirm">
-  <div class="close"
+  <div class="modal-toolbar"
        (click)="cancelStatusChange()">
     <span class="material-icons">
       west
@@ -102,7 +102,7 @@ Subjects
 </div>
 <div class="modal"
      *ngIf="proofOfPayment">
-  <div class="close"
+  <div class="modal-toolbar"
        (click)="closeModal()">
     <span class="material-icons">
       west
@@ -117,7 +117,7 @@ Subjects
 </div>
 <div class="modal"
      *ngIf="showAddLearner">
-  <div class="close"
+  <div class="modal-toolbar"
        (click)="closeModal()">
     <span class="material-icons">
       west

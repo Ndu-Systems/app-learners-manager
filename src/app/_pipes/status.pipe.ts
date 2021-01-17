@@ -13,6 +13,18 @@ export class StatusToStringPipe implements PipeTransform {
         Name: 'Active'
       },
       {
+        Id: 2,
+        Name: 'Disabled'
+      },
+      {
+        Id: 3,
+        Name: 'Suspended'
+      },
+      {
+        Id: 4,
+        Name: 'AwaitingActivation'
+      },
+      {
         Id: 99,
         Name: 'Archived'
       }

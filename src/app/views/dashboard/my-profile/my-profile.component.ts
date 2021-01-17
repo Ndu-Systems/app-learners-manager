@@ -4,7 +4,7 @@ import { BreadCrumbModel, ButtonActionModel, HeaderBannerModel } from 'src/app/_
 import { User } from 'src/app/_models/user.model';
 import { AccountService, ApiService, EmailService } from 'src/app/_services';
 import { UserService } from 'src/app/_services/user.service';
-import { DELETE_ACTION, SAVE_ACTION } from 'src/app/_shared';
+import { DELETE_ACTION, EDIT_ACTION, SAVE_ACTION } from 'src/app/_shared';
 
 @Component({
   selector: 'app-my-profile',
@@ -28,13 +28,16 @@ export class MyProfileComponent implements OnInit {
     Header: 'Your profile',
     SubHeader: 'You profile information.'
   };
-  actionButtons: ButtonActionModel[] = [
+  actionButtons: ButtonActionModel[] = [    
     {
-      actionType: SAVE_ACTION,
+      actionType: EDIT_ACTION,
       label: 'profile'
     }
   ]
   hidePassword = true;
+  showModal: boolean;
+  isUpdate: boolean;
+  modalHeading: string;
   constructor(
     private accountService: AccountService,
     private emailService: EmailService,
@@ -56,18 +59,30 @@ export class MyProfileComponent implements OnInit {
           this.openSnackBar(message, 'Got It!');
         }
       });
+      this.closeModal();
     }
     if ($event === DELETE_ACTION) {
       alert('Perform delete action');
     }
+    if($event === EDIT_ACTION) {
+      this.showEdit();
+    }
   }
 
+  closeModal() {
+    this.showModal = false;
+
+  }
 
   openSnackBar(message, heading) {
     let snackBarRef = this._snackBar.open(message, heading, {
       duration: 5000
     });
   }
-
+  showEdit() {
+    this.showModal = true;
+    this.isUpdate = true;
+    this.modalHeading = 'Edit your organization profile';
+  }
   
 }

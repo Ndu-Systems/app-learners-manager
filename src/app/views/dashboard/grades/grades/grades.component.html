@@ -21,7 +21,7 @@
       (click)="closeModal()"></div>
  <div class="modal"
       *ngIf="showModal && !isDelete">
-   <div class="close"
+   <div class="modal-toolbar"
         (click)="closeModal()">
      <span class="material-icons">
        west
@@ -30,13 +30,15 @@
 
  </div>
 
-
  <div class="modal"
       *ngIf="isDelete">
    <div class="delete-modal">
-     <span class="material-icons">
-       west
-     </span> {{modalHeading}}
+     <div class="modal-toolbar"
+          (click)="closeModal()">
+       <span class="material-icons">
+         west
+       </span> {{modalHeading}}
+     </div>
      <button mat-button
              color="primary"
              class="danger"

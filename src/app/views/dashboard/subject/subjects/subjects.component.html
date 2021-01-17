@@ -3,72 +3,57 @@
     {{grade?.Name}}: module /subjects
   </h1>
 </div>
-<div class="card-list"
-     *ngIf="subjects.length; else nosubjects;">
-  <div class="dashboard-card"
-       *ngFor="let item of subjects">
-    <div class="card-img">
-      <img src="assets/images/dashboard/education.jpg"
-           alt="placeholder">
-    </div>
-
-    <div class="menu">
-      <button class="menu-icon">
-        <i class="material-icons">
-          settings
-        </i>
-      </button>
-      
-      <div class="menu-items">
-        <a (click)="edit(item)">
-          <i class="material-icons">
-            edit
-          </i>&nbsp;Edit item</a>
-
-        <a (click)="delete(item)">
-          <i class="material-icons delete">
-            delete
-          </i>&nbsp;Delete item</a>
+<section>
+  <div class="cards-wrapper"
+       *ngIf="subjects.length; else nosubjects;">
+    <div class="subject-card"
+         *ngFor="let item of subjects">
+      <div class="time-stamp">
+        <h1 class="h1">{{item.CreateDate | date:'EEEE ,MMMM d, y'}}</h1>
+        <h1 class="h1 date">{{item.CreateDate | date:'h:mm a'}}</h1>
       </div>
-    </div>
-    <div class="card-content">
-      <h1 class="heading">
-        {{item.Name}}
-      </h1>
-      <div class="topics">
-        <img src="assets/images/dashboard/book.svg"
-             alt="placeholder"><a class="cta">({{item.Lessons?.length || 0}}) lessons</a>
-      </div>
-      <div class="card-stats">
+      <div class="card-header"
+           (click)="openSubject(item)">
         <h1 class="h1">
-          number of test/assignments
-        </h1>
-        <h1 class="h1 value">
-          ({{item.Tests?.length || 0}})
+          {{item.Name}}
         </h1>
       </div>
-    </div>
-    <div class="card-actions">
-      <button mat-button
-              color="primary"
-              class="cta"
-              (click)="openSubject(item)">
-        view {{item.Name}}
-      </button>
-    </div>
+      <div class="card-img"
+           (click)="openSubject(item)">
+        <img src="assets/images/dashboard/education.jpg"
+             alt="placeholder">
+      </div>
+      <div class="card-content">
+        <h1 class="item">
+          👨‍🎓 (0) Learners
+        </h1>
+        <h1 class="item">
+          📚 ({{item?.Topics?.length}}) Lessons
+        </h1>
+        <h1 class="item">
+          🧪 ({{item?.Tests?.length}}) Tests
+        </h1>
+      </div>
+      <div class="card-actions">
+        <button mat-button
+                class=""
+                (click)="edit(item)"
+                color="primary">✏️ Edit subject</button>
 
+        <button mat-button
+                class="delete"
+                color="primary"
+                (click)="delete(item)">🗑️ Archive subject</button>
+
+      </div>
+    </div>
   </div>
-  <button mat-button
-          class="add-new desktop"
-          color="primary"
-          *ngIf="isAdmin"
-          (click)="add()"> Add new subject</button>
-  <button mat-button
-          class="add-new mobile"
-          color="primary"
-          *ngIf="isAdmin"
-          (click)="add()"> + Subject</button>
-</div>
+  <p class="scroll">scroll horizontally</p>
+
+</section>
+<app-actions-section [actionButtons]="actionButtons"
+                     (clickedAction)="add()"
+                     *ngIf="subjects.length"></app-actions-section>
 
 <ng-template #nosubjects>
   <div class="nodata">
@@ -82,18 +67,19 @@
   </div>
 </ng-template>
 
-
-
 <div class="overlay"
      *ngIf="showModal || isDelete"
      (click)="closeModal()"></div>
 <div class="modal"
      *ngIf="showModal">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
 
   <div class="form">
@@ -123,7 +109,8 @@
     <button mat-button
             color="primary"
             (click)="save()"> Save subject </button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>
@@ -132,11 +119,14 @@
 
 <div class="modal"
      *ngIf="isDelete">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
   <div class="cta-form">
     <img src="assets/images/common/delete.svg"
@@ -152,7 +142,8 @@
             color="primary"
             class="danger"
             (click)="save()"> Yes, delete</button>
-    <div class="error" *ngIf="error">
+    <div class="error"
+         *ngIf="error">
       {{error}}
     </div>
   </div>

@@ -67,7 +67,6 @@ export class LearnersComponent implements OnInit {
     this.userService.userListObservable.subscribe(data => {
       this.users = data;
     });
-    this.userService.getUsers(this.user.CompanyId, LEARNER);
     this.spinner();
 
   }
@@ -87,6 +86,7 @@ export class LearnersComponent implements OnInit {
   spinner() {
     this.showLoader = true;  
     setTimeout(() => {
+      this.userService.getUsers(this.user.CompanyId, LEARNER);
       this.showLoader = false;   
     }, 1500);
   }

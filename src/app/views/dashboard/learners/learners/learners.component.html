@@ -1,5 +1,5 @@
-   <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
    <div class="container-fluid">
+    <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
      <app-header-banner [headerBanner]="headerBanner"
                         (showModalEventEmitter)="add()"></app-header-banner>
      <div class="main-list"
@@ -124,4 +124,4 @@
      <app-add-learner (doneAdding)="doneAdding($event)"></app-add-learner>
    </div>
 
-   <app-dash-loader *ngIf="showLoader"></app-dash-loader>
+   <app-dash-loader *ngIf="true"></app-dash-loader>

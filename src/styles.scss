@@ -12,10 +12,13 @@
 ::-webkit-scrollbar {
   width: 1px;
   background: transparent;
+  cursor: pointer;
+
 }
 
 ::-webkit-scrollbar-thumb {
   background: #009CD7;
+  cursor: pointer;
   width: 1px; 
 }
 
@@ -43,4 +46,13 @@ body {
   top: 2rem;
   right: 2rem;
   box-shadow: $box-shadow;
+}
+
+
+p.scroll {
+  text-align: center;
+  font-style: italic;
+  font-weight: 400;
+  color: $grey;
+  margin: 0;
 }

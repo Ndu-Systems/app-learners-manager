@@ -1,13 +1,12 @@
-<app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 <div class="container-fluid">
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
   <app-header-banner [headerBanner]="headerBanner"></app-header-banner>
   <div class="company">
     <div class="dp"
          *ngIf="!company.Dp"
          (click)="showUplaod()">
-      <span class="material-icons">
-        camera_alt
-      </span>
+      <img src="assets/images/common/school.svg"
+           alt="">
     </div>
     <div class="round-dp"
          *ngIf="company.Dp"
@@ -65,11 +64,14 @@
 
 <div class="modal"
      *ngIf="addDp">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
   <div class="form">
     <label for="">Select image </label>
@@ -92,13 +94,15 @@
 
 <div class="modal"
      *ngIf="isUpdate">
-  <div class="close"
-       (click)="closeModal()">
-    <span class="material-icons">
+  <div class="modal-toolbar">
+    <span class="material-icons"
+          (click)="closeModal()">
       west
-    </span> {{modalHeading}}
+    </span>
+    <h1 class="h1">
+      {{modalHeading}}
+    </h1>
   </div>
-
   <div class="form">
     <div class="form-group">
       <label for="NameCtrl">Name</label>

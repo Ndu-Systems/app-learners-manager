@@ -27,7 +27,7 @@ import { AddAssignmentComponent } from './subject/add-assignment/add-assignment.
 import { ImagesComponent } from 'src/app/_shared/components/images/images.component';
 import { TeacherGradesComponent } from './grades/teacher-grades/teacher-grades.component';
 import { CompanyViewComponent } from './company-view/company-view.component';
-import { MyProfileComponent, UserDpComponent } from './my-profile';
+import { EditProfileComponent, MyProfileComponent, UserDpComponent } from './my-profile';
 import { AuthGuard } from 'src/app/_guards';
 import { LessonPreviewComponent } from './subject/list-lessons';
 
@@ -87,8 +87,9 @@ export const declarations: Array<any> = [
   UserDpComponent,
   MyProfileComponent,
   ActionsSectionComponent,
-  LessonPreviewComponent
- ];
+  LessonPreviewComponent,
+  EditProfileComponent
+  ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

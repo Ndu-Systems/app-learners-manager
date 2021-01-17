@@ -83,7 +83,7 @@ body {
 
 
 .main-list {
-    padding: 0rem 2rem;
+    padding: 1rem;
     height: 80vh;
     overflow-y: scroll;
     background: $white;
@@ -141,13 +141,11 @@ body {
 
 .breadcrumb {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
 
     .bread {
         display: flex;
         margin-right: 2rem;
-        // grid-template-columns: 90% auto;
-
         .text {
             text-align: center;
 

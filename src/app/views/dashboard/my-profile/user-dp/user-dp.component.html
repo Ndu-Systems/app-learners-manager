@@ -1,17 +1,17 @@
-      <div class="dp-img"
+      <div class="dp-img round-dp"
            *ngIf="!user.Dp"
            (click)="showUpload()">
-        <img src="assets/images/common/user.svg"
-             alt="">
-        <i class="material-icons">
-          camera_alt
-        </i>
+           <img src="assets/images/common/user.svg"
+                alt="">
+           <i class="material-icons">
+                camera_alt
+           </i>
       </div>
       <div class="dp-img round-dp"
            *ngIf="user.Dp"
            (click)="showUpload()">
-        <img [src]="user.Dp"
-             alt="">
+           <img [src]="user.Dp"
+                alt="">
       </div>
 
       <div class="overlay"
@@ -20,27 +20,30 @@
 
       <div class="modal"
            *ngIf="addDp">
-        <div class="close"
-             (click)="closeModal()">
-          <span class="material-icons">
-            west
-          </span> {{modalHeading}}
-        </div>
-        <div class="form">
-          <label for="">Select image </label>
-          <input type="file"
-                 (change)="imageChanged($event)">
-          <div class="preview"
-               *ngIf="dpUrl">
-            <img [src]="dpUrl"
-                 alt="">
-          </div>
-          <button mat-button
-                  color="primary"
-                  (click)="confirm()"> Confirm</button>
-          <div class="error"
-               *ngIf="error">
-            {{error}}
-          </div>
-        </div>
+           <div class="modal-toolbar">
+                <span class="material-icons"
+                      (click)="closeModal()">
+                     west
+                </span>
+                <h1 class="h1">
+                     {{modalHeading}}
+                </h1>
+           </div>
+           <div class="form">
+                <label for="">Select image </label>
+                <input type="file"
+                       (change)="imageChanged($event)">
+                <div class="preview"
+                     *ngIf="dpUrl">
+                     <img [src]="dpUrl"
+                          alt="">
+                </div>
+                <button mat-button
+                        color="primary"
+                        (click)="confirm()"> Confirm</button>
+                <div class="error"
+                     *ngIf="error">
+                     {{error}}
+                </div>
+           </div>
       </div>

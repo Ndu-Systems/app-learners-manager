@@ -4,9 +4,10 @@
     }
 
     ul.breadcrumb {
-        padding: 0 10px;
-        list-style: none;    
-        border-radius: 0.5rem;
+        padding: 0;
+        list-style: none;        
+        border-bottom: solid 1px $cloud;
+        padding-bottom: .5rem;
     }
 
     ul.breadcrumb li {
